@@ -1,0 +1,12 @@
+% !TeX spellcheck = en_EN-English
+
+One of sub-task for prediction of patient future is to group medical procedures into clusters because there are many procedures that even thought have different codes they are essentially same or similar enough that leaving them separate would only cause issue for predicting model.
+
+For this task Lorenzi et al. from Duke University in Durham developed novel algorithm called Predictive Hierarchical Clustering \cite{lorenzi2017predictive}. This algorithm was developed for agglomerative clustering of surgical CPT codes. This algorithm uses one-pass bottom-up approach where they utilize EHR, more precisely using 317 predictors like lab values and patients history, excluding CPT information for 3,723,252 patients and 3,132 CPT codes where each patient have one main surgical CPT code. For each CPT code then they create tree containing patients with that code. Then at each iteration, the algorithm considers merging all pairs of existing trees. To compare two trees they utilize two hypothesis, first hypothesis say that data in both trees are generated from same model, while second say data in each tree is generated from models with different parameters. Final value is weighted average of probabilities of these two hypothesis considering data in trees, where weigth is probability of first hypothesis \ref{hierClust}.
+
+\begin{equation}
+	\label{hierClust}
+	p(D_k \vert T_k) = p(H_1^k)p(D_k \vert H_1^k) + (1 - p(H_1^k))p(D_i \vert T_i)p(D_j \vert T_j)
+\end{equation} 
+
+Where $D_k$ is set of data in merged tree (merged $T_i$ and $T_j$), $T_k$ is merged tree, $H_1^k$ is first hypothesis, $D_i$ and $D_j$ are data in trees $T_i$ and $T_j$.

@@ -1,0 +1,17 @@
+\begin{thebibliography}{1}
+
+\bibitem{levy2022comparison}
+Joshua Levy, Nishitha Vattikonda, Christian Haudenschild, Brock Christensen,
+  and Louis Vaickus.
+\newblock Comparison of machine-learning algorithms for the prediction of
+  current procedural terminology (cpt) codes from pathology reports.
+\newblock {\em Journal of Pathology Informatics}, 13:100165, 2022.
+
+\bibitem{lorenzi2017predictive}
+Elizabeth~C Lorenzi, Stephanie~L Brown, Zhifei Sun, and Katherine Heller.
+\newblock Predictive hierarchical clustering: Learning clusters of cpt codes
+  for improving surgical outcomes.
+\newblock In {\em Machine Learning for Healthcare Conference}, pages 231--242.
+  PMLR, 2017.
+
+\end{thebibliography}

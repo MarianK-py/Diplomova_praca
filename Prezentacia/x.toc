@@ -1,0 +1,8 @@
+\babel@toc {slovak}{}\relax 
+\beamer@sectionintoc {1}{Cieľ práce}{2}{0}{1}
+\beamer@sectionintoc {2}{Dáta}{4}{0}{2}
+\beamer@sectionintoc {3}{Embedding}{7}{0}{3}
+\beamer@subsectionintoc {3}{1}{Výkony}{8}{0}{3}
+\beamer@subsectionintoc {3}{2}{Diagnózy}{9}{0}{3}
+\beamer@subsectionintoc {3}{3}{Lieky}{10}{0}{3}
+\beamer@sectionintoc {4}{Ďalšie kroky}{11}{0}{4}

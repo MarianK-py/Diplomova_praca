@@ -1,0 +1,23 @@
+- time series forecasting for diagnosis and forecasting (compilation)
+https://link.springer.com/chapter/10.1007/978-981-10-4361-1_138
+
+- prediction of cost of cancer
+https://academic.oup.com/jnci/article-abstract/103/2/117/2568866
+
+- prediction of high cost patients
+https://www.ncbi.nlm.nih.gov/pmc/articles/PMC3999564/
+
+- healthcare costs
+https://www.sciencedirect.com/science/article/pii/S1532046419300310
+
+- COVID critical state prediction
+https://www.nature.com/articles/s41746-021-00482-9
+
+- predict future of patient
+https://www.nature.com/articles/srep26094.
+
+- predict future patient diseases
+https://link.springer.com/chapter/10.1007/978-3-319-30671-1_66
+
+- diseas prediction
+https://www.ijcait.com/IJCAIT/21/213.pdf
