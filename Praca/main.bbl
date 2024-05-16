@@ -1,11 +1,10 @@
 \begin{thebibliography}{1}
 
-\bibitem{levy2022comparison}
-Joshua Levy, Nishitha Vattikonda, Christian Haudenschild, Brock Christensen,
-  and Louis Vaickus.
-\newblock Comparison of machine-learning algorithms for the prediction of
-  current procedural terminology (cpt) codes from pathology reports.
-\newblock {\em Journal of Pathology Informatics}, 13:100165, 2022.
+\bibitem{caballer2019predicting}
+Vicent Caballer-Tarazona, Natividad Guadalajara-Olmeda, and David
+  Vivas-Consuelo.
+\newblock Predicting healthcare expenditure by multimorbidity groups.
+\newblock {\em Health Policy}, 123(4):427--434, 2019.
 
 \bibitem{lorenzi2017predictive}
 Elizabeth~C Lorenzi, Stephanie~L Brown, Zhifei Sun, and Katherine Heller.
@@ -13,5 +12,13 @@ Elizabeth~C Lorenzi, Stephanie~L Brown, Zhifei Sun, and Katherine Heller.
   for improving surgical outcomes.
 \newblock In {\em Machine Learning for Healthcare Conference}, pages 231--242.
   PMLR, 2017.
+
+\bibitem{miotto2016deep}
+Riccardo Miotto, Li~Li, and Joel~T Dudley.
+\newblock Deep learning to predict patient future diseases from the electronic
+  health records.
+\newblock In {\em Advances in Information Retrieval: 38th European Conference
+  on IR Research, ECIR 2016, Padua, Italy, March 20--23, 2016. Proceedings 38},
+  pages 768--774. Springer, 2016.
 
 \end{thebibliography}

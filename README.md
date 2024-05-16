@@ -17,3 +17,11 @@ na určenie minulej, súčasnej a predikovania budúcej nákladovej skupiny paci
 - návrh modelu (neurónovej siete)
 - nastavovanie a trénovanie modelu
 - validácia a hodnotenie modelu
+
+## Priebežná verzia práce
+
+https://github.com/MarianK-py/Diplomova_praca/blob/main/Praca/main.pdf
+
+## Kód k projektu
+
+https://github.com/MarianK-py/Diplomova_praca_kod (priebežne privátne kvôli možnej prítomnosti citlivých údajov)
