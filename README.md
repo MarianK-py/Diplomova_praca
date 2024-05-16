@@ -4,23 +4,35 @@ témou diplomovej práce je predikcia budúcich nákladov (budúcej nákladovej 
 
 ## Dáta o pacientovi
 
-na určenie minulej, súčasnej a predikovania budúcej nákladovej skupiny pacienta budeme využívať tri typy dát:
+### Datasety
 
+- ambulantná zdravotná starostlivosť
+- ústavná zdravotná starostlivosť
+- predpísané lieky
+
+
+### Využívané dáta
+
+- čas od prvého vyšetrenia
+- vek pacienta
 - ochorenia pacienta
 - vyšetrenia pacienta
 - lieky pacienta
+- náklady (na vyšetrenie/liek)
+- (ďalšie pridané neskôr)
 
 ## Plán práce
 
-- vektorizácia celého záznamu pacienta
-- vytvorenie časového radu záznamov pre pacienta
-- návrh modelu (neurónovej siete)
-- nastavovanie a trénovanie modelu
-- validácia a hodnotenie modelu
+- embedding popisov/kódov -> takmer hotovo
+- vektorizácia celého záznamu pacienta -> najbližsie týždne
+- vytvorenie časového radu záznamov pre pacienta -> najbližsie týždne
+- návrh modelu (neurónovej siete) -> zimný semester -> septermber
+- nastavovanie a trénovanie modelu -> zimný semester -> október/november
+- validácia a hodnotenie modelu -> zimný semester -> december
 
 ## Priebežná verzia práce
 
-[PDF diplomovej práve](https://github.com/MarianK-py/Diplomova_praca/blob/main/Praca/main.pdf)
+[PDF diplomovej práce](https://github.com/MarianK-py/Diplomova_praca/blob/main/Praca/main.pdf)
 
 ## Kód k projektu
 

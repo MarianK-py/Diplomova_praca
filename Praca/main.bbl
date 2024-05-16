@@ -6,6 +6,18 @@ Vicent Caballer-Tarazona, Natividad Guadalajara-Olmeda, and David
 \newblock Predicting healthcare expenditure by multimorbidity groups.
 \newblock {\em Health Policy}, 123(4):427--434, 2019.
 
+\bibitem{chechulin2014predicting}
+Yuriy Chechulin, Amir Nazerian, Saad Rais, and Kamil Malikov.
+\newblock Predicting patients with high risk of becoming high-cost healthcare
+  users in ontario (canada).
+\newblock {\em Healthcare Policy}, 9(3):68, 2014.
+
+\bibitem{choi2018mime}
+Edward Choi, Cao Xiao, Walter Stewart, and Jimeng Sun.
+\newblock Mime: Multilevel medical embedding of electronic health records for
+  predictive healthcare.
+\newblock {\em Advances in neural information processing systems}, 31, 2018.
+
 \bibitem{lorenzi2017predictive}
 Elizabeth~C Lorenzi, Stephanie~L Brown, Zhifei Sun, and Katherine Heller.
 \newblock Predictive hierarchical clustering: Learning clusters of cpt codes
@@ -20,5 +32,11 @@ Riccardo Miotto, Li~Li, and Joel~T Dudley.
 \newblock In {\em Advances in Information Retrieval: 38th European Conference
   on IR Research, ECIR 2016, Padua, Italy, March 20--23, 2016. Proceedings 38},
   pages 768--774. Springer, 2016.
+
+\bibitem{morid2019healthcare}
+Mohammad~Amin Morid, Olivia R~Liu Sheng, Kensaku Kawamoto, Travis Ault, Josette
+  Dorius, and Samir Abdelrahman.
+\newblock Healthcare cost prediction: Leveraging fine-grain temporal patterns.
+\newblock {\em Journal of biomedical informatics}, 91:103113, 2019.
 
 \end{thebibliography}
