@@ -20,8 +20,8 @@ na určenie minulej, súčasnej a predikovania budúcej nákladovej skupiny paci
 
 ## Priebežná verzia práce
 
-https://github.com/MarianK-py/Diplomova_praca/blob/main/Praca/main.pdf
+[a link](https://github.com/MarianK-py/Diplomova_praca/blob/main/Praca/main.pdf)
 
 ## Kód k projektu
 
-https://github.com/MarianK-py/Diplomova_praca_kod (priebežne privátne kvôli možnej prítomnosti citlivých údajov)
+[a link](https://github.com/MarianK-py/Diplomova_praca_kod) (priebežne privátne kvôli možnej prítomnosti citlivých údajov)
