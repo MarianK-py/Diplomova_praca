@@ -1,8 +1,10 @@
 \contentsline {chapter}{\numberline {1}Introduction}{2}{chapter.1}%
 \contentsline {chapter}{\numberline {2}Similar studies}{3}{chapter.2}%
-\contentsline {chapter}{\numberline {3}Medical data}{4}{chapter.3}%
-\contentsline {chapter}{\numberline {4}Proposed method}{5}{chapter.4}%
-\contentsline {chapter}{\numberline {5}Software design}{6}{chapter.5}%
-\contentsline {chapter}{\numberline {6}Implementation}{7}{chapter.6}%
-\contentsline {chapter}{\numberline {7}Research}{8}{chapter.7}%
-\contentsline {chapter}{\numberline {8}Results}{9}{chapter.8}%
+\contentsline {chapter}{\numberline {3}Medical data}{5}{chapter.3}%
+\contentsline {section}{\numberline {3.1}Diagnosis embedding}{5}{section.3.1}%
+\contentsline {section}{\numberline {3.2}Drug embedding}{8}{section.3.2}%
+\contentsline {chapter}{\numberline {4}Proposed method}{10}{chapter.4}%
+\contentsline {chapter}{\numberline {5}Software design}{11}{chapter.5}%
+\contentsline {chapter}{\numberline {6}Implementation}{12}{chapter.6}%
+\contentsline {chapter}{\numberline {7}Research}{13}{chapter.7}%
+\contentsline {chapter}{\numberline {8}Results}{14}{chapter.8}%

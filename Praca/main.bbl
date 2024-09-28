@@ -1,10 +1,29 @@
+\newcommand{\noopsort}[1]{} \newcommand{\printfirst}[2]{#1}
+  \newcommand{\singleletter}[1]{#1} \newcommand{\switchargs}[2]{#2#1}
 \begin{thebibliography}{1}
+
+\bibitem{atc_who}
+{A}natomical {T}herapeutic {C}hemical ({A}{T}{C}) {C}lassification --- who.int.
+\newblock \url{https://www.who.int/tools/atc-ddd-toolkit/atc-classification}.
+\newblock [Accessed 25-09-2024].
+
+\bibitem{ncziMKCH}
+Medzinárodná klasifikácia chorôb - {M}{K}{C}{H}-10 --- nczisk.sk.
+\newblock
+  \url{https://www.nczisk.sk/Standardy-v-zdravotnictve/Pages/Medzinarodna-klasifikacia-chorob-MKCH-10.aspx}.
+\newblock [Accessed 16-09-2024].
 
 \bibitem{caballer2019predicting}
 Vicent Caballer-Tarazona, Natividad Guadalajara-Olmeda, and David
   Vivas-Consuelo.
 \newblock Predicting healthcare expenditure by multimorbidity groups.
 \newblock {\em Health Policy}, 123(4):427--434, 2019.
+
+\bibitem{cdcICD10CM}
+CDC.
+\newblock {I}{C}{D}-10-{C}{M} --- cdc.gov.
+\newblock \url{https://www.cdc.gov/nchs/icd/icd-10-cm/index.html}.
+\newblock [Accessed 16-09-2024].
 
 \bibitem{chechulin2014predicting}
 Yuriy Chechulin, Amir Nazerian, Saad Rais, and Kamil Malikov.
