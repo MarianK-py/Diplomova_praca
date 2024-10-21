@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.24 (MiKTeX 22.12) (preloaded format=pdflatex 2023.1.22)  28 SEP 2024 18:10
+This is pdfTeX, Version 3.141592653-2.6-1.40.24 (MiKTeX 22.12) (preloaded format=pdflatex 2023.1.22)  21 OCT 2024 21:20
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -651,7 +651,7 @@ LaTeX Font Info:    Trying to load font information for U+msb on input line 83.
 (C:\Users\majko\AppData\Local\Programs\MiKTeX\tex/latex/amsfonts\umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 )
-<images/FMFI_logo_BP.png, id=43, 284.7438pt x 284.7438pt>
+<images/FMFI_logo_BP.png, id=59, 284.7438pt x 284.7438pt>
 File: images/FMFI_logo_BP.png Graphic file (type png)
 <use images/FMFI_logo_BP.png>
 Package pdftex.def Info: images/FMFI_logo_BP.png  used on input line 88.
@@ -671,7 +671,7 @@ Package pdftex.def Info: images/FMFI_logo_BP.png  used on input line 120.
  [3] [4
 
 ]
-<zadaniePrace.PDF, id=68, page=1, 597.50731pt x 845.04607pt>
+<zadaniePrace.PDF, id=84, page=1, 597.50731pt x 845.04607pt>
 File: zadaniePrace.PDF Graphic file (type pdf)
 <use zadaniePrace.PDF, page 1>
 Package pdftex.def Info: zadaniePrace.PDF , page1 used on input line 159.
@@ -742,73 +742,94 @@ Underfull \hbox (badness 10000) in paragraph at lines 3--5
 
 ])) (data/data.tex [4]
 Chapter 3.
-) (embedding/embedding.tex
-Underfull \hbox (badness 10000) in paragraph at lines 7--8
+[5
+
+]) (proposed methods/proposed_methods.tex [6]
+Chapter 4.
+(proposed methods/embedding.tex
+Underfull \hbox (badness 10000) in paragraph at lines 10--11
 
  []
 
-<images/ICD-10-CM.png, id=220, 813.0375pt x 520.94624pt>
+<images/ICD-10-CM.png, id=254, 813.0375pt x 520.94624pt>
 File: images/ICD-10-CM.png Graphic file (type png)
 <use images/ICD-10-CM.png>
-Package pdftex.def Info: images/ICD-10-CM.png  used on input line 12.
+Package pdftex.def Info: images/ICD-10-CM.png  used on input line 15.
 (pdftex.def)             Requested size: 352.81552pt x 226.06131pt.
 
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 18--23
+Underfull \hbox (badness 10000) in paragraph at lines 21--26
 
  []
 
-[5
+[7
 
-] [6 <./images/ICD-10-CM.png>]
-<images/diagnosis_embed_showcase.png, id=236, 873.2625pt x 484.81125pt>
+] [8 <./images/ICD-10-CM.png>]
+<images/diagnosis_embed_showcase.png, id=275, 873.2625pt x 484.81125pt>
 File: images/diagnosis_embed_showcase.png Graphic file (type png)
 <use images/diagnosis_embed_showcase.png>
 Package pdftex.def Info: images/diagnosis_embed_showcase.png  used on input lin
-e 35.
+e 39.
 (pdftex.def)             Requested size: 352.81552pt x 195.87402pt.
-
-
-LaTeX Warning: `!h' float specifier changed to `!ht'.
-
 
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
- [7]
-<images/atc_l1_classification_who.jpg, id=242, 578.16pt x 480.29437pt>
+ [9]
+<images/atc_l1_classification_who.jpg, id=281, 578.16pt x 480.29437pt>
 File: images/atc_l1_classification_who.jpg Graphic file (type jpg)
 <use images/atc_l1_classification_who.jpg>
 Package pdftex.def Info: images/atc_l1_classification_who.jpg  used on input li
-ne 65.
+ne 69.
 (pdftex.def)             Requested size: 352.81552pt x 293.08905pt.
 
 
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
-) (proposed methods/proposed_methods.tex [8 <./images/diagnosis_embed_showcase.
-png>] [9 <./images/atc_l1_classification_who.jpg>]
-Chapter 4.
-) (software design/software_design.tex [10
 
-]
+Underfull \hbox (badness 10000) in paragraph at lines 75--77
+
+ []
+
+[10 <./images/diagnosis_embed_showcase.png>] [11 <./images/atc_l1_classificatio
+n_who.jpg>]
+Underfull \hbox (badness 10000) in paragraph at lines 113--115
+
+ []
+
+[12]
+Underfull \hbox (badness 10000) in paragraph at lines 129--131
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 139--141
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 142--144
+
+ []
+
+[13])) (software design/software_design.tex [14]
 Chapter 5.
-) (implementation/implementation.tex [11
+) (implementation/implementation.tex [15
 
 ]
 Chapter 6.
-) (research/research.tex [12
+) (research/research.tex [16
 
 ]
 Chapter 7.
-) (results/results.tex [13
+) (results/results.tex [17
 
 ]
 Chapter 8.
-) (conclusion.tex [14
+) (conclusion.tex [18
 
-]) [15
+]) [19
 
 ] (main.bbl
 LaTeX Font Info:    Trying to load font information for T1+cmtt on input line 7
@@ -817,36 +838,36 @@ LaTeX Font Info:    Trying to load font information for T1+cmtt on input line 7
 (C:\Users\majko\AppData\Local\Programs\MiKTeX\tex/latex/base\t1cmtt.fd
 File: t1cmtt.fd 2022/07/10 v2.5l Standard LaTeX font definitions
 )
-Underfull \hbox (badness 10000) in paragraph at lines 11--15
+Underfull \hbox (badness 10000) in paragraph at lines 23--27
 []\T1/cmr/m/n/12 Medzinárodná klasi-fiká-cia chorôb - MKCH-10 --- nczisk.sk.
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 11--15
+Underfull \hbox (badness 10000) in paragraph at lines 23--27
 []$\T1/cmtt/m/n/12 https : / / www . nczisk . sk / Standardy-[]v-[]zdravotnictv
 e / Pages /
  []
 
-)
+[20
+
+
+])
 
 Package caption Warning: Unused \captionsetup[sub] on input line 34.
 See the caption package documentation for explanation.
 
-[16
-
-
-] (main.aux)
+[21] (main.aux)
 Package rerunfilecheck Info: File `main.out' has not changed.
-(rerunfilecheck)             Checksum: 21AEDFC7C509ADC340828300CCF979AA;1126.
+(rerunfilecheck)             Checksum: 0CAD752C3C98BC8BB13931509301F6C0;2084.
  ) 
 Here is how much of TeX's memory you used:
- 13201 strings out of 476404
- 216509 string characters out of 2789524
+ 13256 strings out of 476404
+ 217202 string characters out of 2789524
  1861324 words of memory out of 3000000
- 33204 multiletter control sequences out of 15000+600000
- 522897 words of font info for 59 fonts, out of 8000000 for 9000
+ 33229 multiletter control sequences out of 15000+600000
+ 524440 words of font info for 61 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 63i,8n,67p,1300b,439s stack positions out of 10000i,1000n,20000p,200000b,80000s
+ 63i,8n,67p,1908b,578s stack positions out of 10000i,1000n,20000p,200000b,80000s
 {C:/Users/majko/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/cm-super/cm-sup
 er-t1.enc}{C:/Users/majko/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/cm-supe
 r/cm-super-ts1.enc}<C:/Users/majko/AppData/Local/Programs/MiKTeX/fonts/type1/pu
@@ -856,15 +877,16 @@ eX/fonts/type1/public/amsfonts/cm/cmr12.pfb><C:/Users/majko/AppData/Local/Progr
 ams/MiKTeX/fonts/type1/public/amsfonts/cm/cmr8.pfb><C:/Users/majko/AppData/Loca
 l/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy10.pfb><C:/Users/majko/App
 Data/Local/Programs/MiKTeX/fonts/type1/public/cm-super/sfbx1200.pfb><C:/Users/m
-ajko/AppData/Local/Programs/MiKTeX/fonts/type1/public/cm-super/sfbx1728.pfb><C:
-/Users/majko/AppData/Local/Programs/MiKTeX/fonts/type1/public/cm-super/sfbx2488
+ajko/AppData/Local/Programs/MiKTeX/fonts/type1/public/cm-super/sfbx1440.pfb><C:
+/Users/majko/AppData/Local/Programs/MiKTeX/fonts/type1/public/cm-super/sfbx1728
 .pfb><C:/Users/majko/AppData/Local/Programs/MiKTeX/fonts/type1/public/cm-super/
-sfrm1200.pfb><C:/Users/majko/AppData/Local/Programs/MiKTeX/fonts/type1/public/c
-m-super/sfti1200.pfb><C:/Users/majko/AppData/Local/Programs/MiKTeX/fonts/type1/
-public/cm-super/sftt1200.pfb>
-Output written on main.pdf (30 pages, 775143 bytes).
+sfbx2488.pfb><C:/Users/majko/AppData/Local/Programs/MiKTeX/fonts/type1/public/c
+m-super/sfrm1200.pfb><C:/Users/majko/AppData/Local/Programs/MiKTeX/fonts/type1/
+public/cm-super/sfti1200.pfb><C:/Users/majko/AppData/Local/Programs/MiKTeX/font
+s/type1/public/cm-super/sftt1200.pfb>
+Output written on main.pdf (35 pages, 819979 bytes).
 PDF statistics:
- 365 PDF objects out of 1000 (max. 8388607)
- 71 named destinations out of 1000 (max. 500000)
- 106 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 452 PDF objects out of 1000 (max. 8388607)
+ 101 named destinations out of 1000 (max. 500000)
+ 138 words of extra memory for PDF output out of 10000 (max. 10000000)
 

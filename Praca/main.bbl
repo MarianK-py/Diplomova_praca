@@ -1,17 +1,34 @@
 \newcommand{\noopsort}[1]{} \newcommand{\printfirst}[2]{#1}
   \newcommand{\singleletter}[1]{#1} \newcommand{\switchargs}[2]{#2#1}
-\begin{thebibliography}{1}
+\begin{thebibliography}{10}
 
 \bibitem{atc_who}
 {A}natomical {T}herapeutic {C}hemical ({A}{T}{C}) {C}lassification --- who.int.
 \newblock \url{https://www.who.int/tools/atc-ddd-toolkit/atc-classification}.
 \newblock [Accessed 25-09-2024].
 
+\bibitem{word2vec}
+{G}it{H}ub - essential-data/word2vec-sk: {V}ector representations of {S}lovak
+  words trained using word2vec --- github.com.
+\newblock \url{https://github.com/essential-data/word2vec-sk}.
+\newblock [Accessed 19-10-2024].
+
+\bibitem{labse_kaggle}
+{G}oogle | {L}a{B}{S}{E} | {K}aggle --- kaggle.com.
+\newblock
+  \url{https://www.kaggle.com/models/google/labse/tensorFlow2/labse/1?tfhub-redirect=true}.
+\newblock [Accessed 18-10-2024].
+
 \bibitem{ncziMKCH}
 Medzinárodná klasifikácia chorôb - {M}{K}{C}{H}-10 --- nczisk.sk.
 \newblock
   \url{https://www.nczisk.sk/Standardy-v-zdravotnictve/Pages/Medzinarodna-klasifikacia-chorob-MKCH-10.aspx}.
 \newblock [Accessed 16-09-2024].
+
+\bibitem{labse_hug}
+sentence-transformers/{L}a{B}{S}{E} · {H}ugging {F}ace --- huggingface.co.
+\newblock \url{https://huggingface.co/sentence-transformers/LaBSE}.
+\newblock [Accessed 19-10-2024].
 
 \bibitem{caballer2019predicting}
 Vicent Caballer-Tarazona, Natividad Guadalajara-Olmeda, and David
@@ -36,6 +53,20 @@ Edward Choi, Cao Xiao, Walter Stewart, and Jimeng Sun.
 \newblock Mime: Multilevel medical embedding of electronic health records for
   predictive healthcare.
 \newblock {\em Advances in neural information processing systems}, 31, 2018.
+
+\bibitem{bert}
+Jacob Devlin, Ming-Wei Chang, Kenton Lee, and Kristina Toutanova.
+\newblock Bert: Pre-training of deep bidirectional transformers for language
+  understanding.
+\newblock In {\em Proceedings of the 2019 Conference of the North American
+  Chapter of the Association for Computational Linguistics: Human Language
+  Technologies, Volume 1 (Long and Short Papers)}, pages 4171--4186, 2019.
+
+\bibitem{labse_paper}
+Fangxiaoyu Feng, Yinfei Yang, Daniel Cer, Naveen Arivazhagan, and Wei Wang.
+\newblock Language-agnostic bert sentence embedding.
+\newblock In {\em Proceedings of the 60th Annual Meeting of the Association for
+  Computational Linguistics (Volume 1: Long Papers)}, pages 878--891, 2022.
 
 \bibitem{lorenzi2017predictive}
 Elizabeth~C Lorenzi, Stephanie~L Brown, Zhifei Sun, and Katherine Heller.

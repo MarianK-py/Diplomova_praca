@@ -1,10 +1,15 @@
 \contentsline {chapter}{\numberline {1}Introduction}{2}{chapter.1}%
 \contentsline {chapter}{\numberline {2}Similar studies}{3}{chapter.2}%
 \contentsline {chapter}{\numberline {3}Medical data}{5}{chapter.3}%
-\contentsline {section}{\numberline {3.1}Diagnosis embedding}{5}{section.3.1}%
-\contentsline {section}{\numberline {3.2}Drug embedding}{8}{section.3.2}%
-\contentsline {chapter}{\numberline {4}Proposed method}{10}{chapter.4}%
-\contentsline {chapter}{\numberline {5}Software design}{11}{chapter.5}%
-\contentsline {chapter}{\numberline {6}Implementation}{12}{chapter.6}%
-\contentsline {chapter}{\numberline {7}Research}{13}{chapter.7}%
-\contentsline {chapter}{\numberline {8}Results}{14}{chapter.8}%
+\contentsline {section}{\numberline {3.1}Records of medical procedures from ambulatory health care}{5}{section.3.1}%
+\contentsline {section}{\numberline {3.2}Records of prescribed medicines}{6}{section.3.2}%
+\contentsline {chapter}{\numberline {4}Proposed method}{7}{chapter.4}%
+\contentsline {section}{\numberline {4.1}Embedding of patient}{7}{section.4.1}%
+\contentsline {subsection}{\numberline {4.1.1}Diagnosis embedding}{7}{subsection.4.1.1}%
+\contentsline {subsection}{\numberline {4.1.2}Drug embedding}{10}{subsection.4.1.2}%
+\contentsline {subsection}{\numberline {4.1.3}Medical procedure embedding}{12}{subsection.4.1.3}%
+\contentsline {subsubsection}{Transformer (BERT model)}{13}{section*.21}%
+\contentsline {chapter}{\numberline {5}Software design}{15}{chapter.5}%
+\contentsline {chapter}{\numberline {6}Implementation}{16}{chapter.6}%
+\contentsline {chapter}{\numberline {7}Research}{17}{chapter.7}%
+\contentsline {chapter}{\numberline {8}Results}{18}{chapter.8}%

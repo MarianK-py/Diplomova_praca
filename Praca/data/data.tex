@@ -2,6 +2,42 @@
 
 \chapter{Medical data} \label{chap:data}
 
+To train and verify model we used anonymized data obtained from Slovak National health information center also known under abbreviation NCZI. Our data consisted of two dataset:
+\begin{itemize}
+	\item Records of medical procedures from ambulatory health care
+	\item Records of prescribed medicines
+\end{itemize}
+
+\section{Records of medical procedures from ambulatory health care}
+
+Each row in this dataset contains information about single medical procedure done to patient. Each record consist of these variable:
+\begin{itemize}
+	\item date of the procedure - date when procedure was performed
+	\item code of the patient - identification code unique for the patient
+	\item age of the patient - age of the patient at the time of procedure
+	\item gender of the patient
+	\item code of the diagnosis - identification code unique for the diagnosis for which procedure was prescribed
+	\item code of the procedure - identification code unique for the medical procedure 
+	\item cost of the procedure - cost associated with performing of the procedure
+\end{itemize}
+
+For our prediction we use most of these information, date of the procedure combined with patient age is used to create timestamp information used to order all records for patient as well as one of the dimension of record embedding. Identification code of patient is used to be able to gather all records for single patient. Identification codes for diagnosis and procedure are matched with their corresponding numerical vector and embedded into vector corresponding to record (see \ref{embedding}). Cost is encoded into cost category and used as information of cost associated with embedding of record.
+
+\section{Records of prescribed medicines}
+
+Similarly to dataset containing procedures, each row of this dataset contains informations about single prescription of drug to specific patient.  Each record consist of these variable:
+\begin{itemize}
+	\item date of the prescription - date when drug was prescribed
+	\item code of the patient - identification code unique for the patient
+	\item age of the patient - age of the patient at the time of procedure
+	\item gender of the patient
+	\item code of the diagnosis - identification code unique for the diagnosis for which drug was prescribed
+	\item code of the drug - identification code unique for the medical procedure 
+	\item cost of the drug - cost associated with performing of the procedure
+\end{itemize}
+
+Use of these variable is also similar to procedures, with only difference that instead of using encoding procedure into record embedding we encode drug.
+
 \mycomment{
 EQUATION SHOWCASE:
 \begin{equation}

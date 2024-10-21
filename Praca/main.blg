@@ -11,45 +11,48 @@ Repeated entry---line 84 of file references.bib
 I'm skipping whatever remains of this entry
 Warning--to sort, need author or key in atc_who
 Warning--to sort, need author or key in ncziMKCH
-You've used 9 entries,
+Warning--to sort, need author or key in labse_kaggle
+Warning--to sort, need author or key in word2vec
+Warning--to sort, need author or key in labse_hug
+You've used 14 entries,
             2118 wiz_defined-function locations,
-            554 strings with 6067 characters,
-and the built_in function-call counts, 3031 in all, are:
-= -- 298
-> -- 147
-< -- 2
-+ -- 59
-- -- 50
-* -- 201
-:= -- 486
-add.period$ -- 30
-call.type$ -- 9
-change.case$ -- 52
+            576 strings with 7183 characters,
+and the built_in function-call counts, 4632 in all, are:
+= -- 458
+> -- 201
+< -- 4
++ -- 82
+- -- 68
+* -- 288
+:= -- 700
+add.period$ -- 45
+call.type$ -- 14
+change.case$ -- 76
 chr.to.int$ -- 0
-cite$ -- 11
-duplicate$ -- 110
-empty$ -- 242
-format.name$ -- 50
-if$ -- 650
+cite$ -- 19
+duplicate$ -- 179
+empty$ -- 396
+format.name$ -- 68
+if$ -- 1023
 int.to.chr$ -- 0
-int.to.str$ -- 9
-missing$ -- 6
-newline$ -- 50
-num.names$ -- 14
-pop$ -- 70
+int.to.str$ -- 14
+missing$ -- 8
+newline$ -- 75
+num.names$ -- 18
+pop$ -- 121
 preamble$ -- 2
-purify$ -- 43
+purify$ -- 62
 quote$ -- 0
-skip$ -- 79
+skip$ -- 136
 stack$ -- 0
-substring$ -- 158
-swap$ -- 29
-text.length$ -- 2
+substring$ -- 255
+swap$ -- 56
+text.length$ -- 4
 text.prefix$ -- 0
 top$ -- 0
-type$ -- 36
-warning$ -- 2
-while$ -- 24
-width$ -- 10
-write$ -- 100
+type$ -- 56
+warning$ -- 5
+while$ -- 34
+width$ -- 16
+write$ -- 149
 (There was 1 error message)

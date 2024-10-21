@@ -1,3 +1,16 @@
 % !TeX spellcheck = en_EN-English
 
 \chapter{Proposed method}
+
+Task of predicting future cost of a patient can be split input multiple sub-tasks which follow each other. The sub-tasks are these:
+
+\begin{enumerate}
+	\item Embed patient history into numerical vectors
+	\item Compute expected number of records patient would have in next year
+	\item Predict future records for patient
+	\item Predict cost of each future record
+	\item Complete total cost of patient for next year
+\end{enumerate}
+
+
+\input{proposed methods/embedding}
