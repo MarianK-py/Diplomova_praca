@@ -9,7 +9,11 @@
 \contentsline {subsection}{\numberline {4.1.2}Drug embedding}{10}{subsection.4.1.2}%
 \contentsline {subsection}{\numberline {4.1.3}Medical procedure embedding}{12}{subsection.4.1.3}%
 \contentsline {subsubsection}{Transformer (BERT model)}{13}{section*.21}%
-\contentsline {chapter}{\numberline {5}Software design}{15}{chapter.5}%
-\contentsline {chapter}{\numberline {6}Implementation}{16}{chapter.6}%
-\contentsline {chapter}{\numberline {7}Research}{17}{chapter.7}%
-\contentsline {chapter}{\numberline {8}Results}{18}{chapter.8}%
+\contentsline {subsubsection}{Pooling layer}{15}{section*.22}%
+\contentsline {subsubsection}{Dense layer}{16}{section*.23}%
+\contentsline {subsubsection}{Normalization layer}{16}{section*.24}%
+\contentsline {section}{\numberline {4.2}Embedding of patient}{16}{section.4.2}%
+\contentsline {chapter}{\numberline {5}Software design}{17}{chapter.5}%
+\contentsline {chapter}{\numberline {6}Implementation}{18}{chapter.6}%
+\contentsline {chapter}{\numberline {7}Research}{19}{chapter.7}%
+\contentsline {chapter}{\numberline {8}Results}{20}{chapter.8}%

@@ -54,6 +54,21 @@ Edward Choi, Cao Xiao, Walter Stewart, and Jimeng Sun.
   predictive healthcare.
 \newblock {\em Advances in neural information processing systems}, 31, 2018.
 
+\bibitem{bert_pretr_3}
+Alexis Conneau and Guillaume Lample.
+\newblock Cross-lingual language model pretraining.
+\newblock {\em Advances in neural information processing systems}, 32, 2019.
+
+\bibitem{bert_pretr_1}
+Jacob Devlin, Ming-Wei Chang, Kenton Lee, and Kristina Toutanova.
+\newblock {BERT}: Pre-training of deep bidirectional transformers for language
+  understanding.
+\newblock In Jill Burstein, Christy Doran, and Thamar Solorio, editors, {\em
+  Proceedings of the 2019 Conference of the North {A}merican Chapter of the
+  Association for Computational Linguistics: Human Language Technologies,
+  Volume 1 (Long and Short Papers)}, pages 4171--4186, Minneapolis, Minnesota,
+  June 2019. Association for Computational Linguistics.
+
 \bibitem{bert}
 Jacob Devlin, Ming-Wei Chang, Kenton Lee, and Kristina Toutanova.
 \newblock Bert: Pre-training of deep bidirectional transformers for language
@@ -88,5 +103,11 @@ Mohammad~Amin Morid, Olivia R~Liu Sheng, Kensaku Kawamoto, Travis Ault, Josette
   Dorius, and Samir Abdelrahman.
 \newblock Healthcare cost prediction: Leveraging fine-grain temporal patterns.
 \newblock {\em Journal of biomedical informatics}, 91:103113, 2019.
+
+\bibitem{bert_pretr_2}
+Yi~Sun, Yu~Zheng, Chao Hao, and Hangping Qiu.
+\newblock Nsp-bert: A prompt-based few-shot learner through an original
+  pre-training task--next sentence prediction.
+\newblock {\em arXiv preprint arXiv:2109.03564}, 2021.
 
 \end{thebibliography}
