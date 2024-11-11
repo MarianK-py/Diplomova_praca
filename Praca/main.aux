@@ -20,6 +20,7 @@
 \newlabel{chap:abstract_en}{{}{viii}{Abstract}{chapter*.4}{}}
 \newlabel{chap:abstract_sk}{{}{ix}{Abstrakt}{chapter*.6}{}}
 \citation{atc_who}
+\citation{elman_img}
 \@writefile{toc}{\contentsline {chapter}{\numberline {1}Introduction}{2}{chapter.1}\protected@file@percent }
 \@writefile{lof}{\addvspace {10\p@ }}
 \@writefile{lot}{\addvspace {10\p@ }}
@@ -36,59 +37,76 @@
 \newlabel{chap:data}{{3}{5}{Medical data}{chapter.3}{}}
 \@writefile{toc}{\contentsline {section}{\numberline {3.1}Records of medical procedures from ambulatory health care}{5}{section.3.1}\protected@file@percent }
 \@writefile{toc}{\contentsline {section}{\numberline {3.2}Records of prescribed medicines}{6}{section.3.2}\protected@file@percent }
-\citation{cdcICD10CM}
-\citation{ncziMKCH}
 \@writefile{toc}{\contentsline {chapter}{\numberline {4}Proposed method}{7}{chapter.4}\protected@file@percent }
 \@writefile{lof}{\addvspace {10\p@ }}
 \@writefile{lot}{\addvspace {10\p@ }}
 \@writefile{toc}{\contentsline {section}{\numberline {4.1}Embedding of patient}{7}{section.4.1}\protected@file@percent }
 \newlabel{embedding}{{4.1}{7}{Embedding of patient}{section.4.1}{}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {4.1.1}Diagnosis embedding}{7}{subsection.4.1.1}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.1.1}Timestamp}{7}{subsection.4.1.1}\protected@file@percent }
+\citation{cdcICD10CM}
+\citation{ncziMKCH}
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.1.2}Diagnosis embedding}{8}{subsection.4.1.2}\protected@file@percent }
 \@writefile{lof}{\contentsline {figure}{\numberline {4.1}{\ignorespaces Structure of MKCH-10 code\relax }}{8}{figure.caption.15}\protected@file@percent }
 \newlabel{fig:icd-10-cm}{{4.1}{8}{Structure of MKCH-10 code\relax }{figure.caption.15}{}}
-\newlabel{mkch_subdiv}{{4.1.1}{8}{Diagnosis embedding}{figure.caption.15}{}}
-\citation{atc_who}
-\citation{atc_who}
+\newlabel{mkch_subdiv}{{4.1.2}{8}{Diagnosis embedding}{figure.caption.15}{}}
 \@writefile{lof}{\contentsline {figure}{\numberline {4.2}{\ignorespaces Showcase of resulting embedding of specific diagnosis (rounded to two decimal places)\relax }}{10}{figure.caption.16}\protected@file@percent }
 \newlabel{fig:diag_emb_show}{{4.2}{10}{Showcase of resulting embedding of specific diagnosis (rounded to two decimal places)\relax }{figure.caption.16}{}}
 \@writefile{lot}{\contentsline {table}{\numberline {4.1}{\ignorespaces Similarities of embedding of multiple chosen MKCH-10 codes\relax }}{10}{table.caption.17}\protected@file@percent }
 \newlabel{tab:diag_emb_show}{{4.1}{10}{Similarities of embedding of multiple chosen MKCH-10 codes\relax }{table.caption.17}{}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {4.1.2}Drug embedding}{10}{subsection.4.1.2}\protected@file@percent }
+\citation{atc_who}
+\citation{atc_who}
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.1.3}Drug embedding}{11}{subsection.4.1.3}\protected@file@percent }
 \@writefile{lof}{\contentsline {figure}{\numberline {4.3}{\ignorespaces Fourteen main anatomical or pharmacological groups and their corresponding first level ATC code \cite  {atc_who}\relax }}{11}{figure.caption.18}\protected@file@percent }
 \newlabel{fig:atc_l1}{{4.3}{11}{Fourteen main anatomical or pharmacological groups and their corresponding first level ATC code \cite {atc_who}\relax }{figure.caption.18}{}}
-\@writefile{lot}{\contentsline {table}{\numberline {4.2}{\ignorespaces Lengths of random vectors assigned to each information level of ATC code\relax }}{11}{table.caption.19}\protected@file@percent }
-\newlabel{tab:drug_lev_len}{{4.2}{11}{Lengths of random vectors assigned to each information level of ATC code\relax }{table.caption.19}{}}
+\@writefile{lot}{\contentsline {table}{\numberline {4.2}{\ignorespaces Lengths of random vectors assigned to each information level of ATC code\relax }}{12}{table.caption.19}\protected@file@percent }
+\newlabel{tab:drug_lev_len}{{4.2}{12}{Lengths of random vectors assigned to each information level of ATC code\relax }{table.caption.19}{}}
+\@writefile{lot}{\contentsline {table}{\numberline {4.3}{\ignorespaces Similarities of embedding of multiple chosen ATC codes\relax }}{12}{table.caption.20}\protected@file@percent }
+\newlabel{tab:drug_emb_show}{{4.3}{12}{Similarities of embedding of multiple chosen ATC codes\relax }{table.caption.20}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.1.4}Medical procedure embedding}{12}{subsection.4.1.4}\protected@file@percent }
 \citation{labse_kaggle}
 \citation{word2vec}
 \citation{labse_hug}
-\@writefile{lot}{\contentsline {table}{\numberline {4.3}{\ignorespaces Similarities of embedding of multiple chosen ATC codes\relax }}{12}{table.caption.20}\protected@file@percent }
-\newlabel{tab:drug_emb_show}{{4.3}{12}{Similarities of embedding of multiple chosen ATC codes\relax }{table.caption.20}{}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {4.1.3}Medical procedure embedding}{12}{subsection.4.1.3}\protected@file@percent }
 \@writefile{toc}{\contentsline {subsubsection}{Transformer (BERT model)}{13}{section*.21}\protected@file@percent }
 \citation{bert_pretr_1}
 \citation{bert_pretr_2}
 \citation{bert_pretr_3}
-\@writefile{toc}{\contentsline {subsubsection}{Pooling layer}{15}{section*.22}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsubsection}{Pooling layer}{16}{section*.22}\protected@file@percent }
 \@writefile{toc}{\contentsline {subsubsection}{Dense layer}{16}{section*.23}\protected@file@percent }
 \@writefile{toc}{\contentsline {subsubsection}{Normalization layer}{16}{section*.24}\protected@file@percent }
-\@writefile{toc}{\contentsline {section}{\numberline {4.2}Embedding of patient}{16}{section.4.2}\protected@file@percent }
-\newlabel{record_prediction}{{4.2}{16}{Embedding of patient}{section.4.2}{}}
-\@writefile{toc}{\contentsline {chapter}{\numberline {5}Software design}{17}{chapter.5}\protected@file@percent }
+\citation{num_of_vis}
+\@writefile{toc}{\contentsline {section}{\numberline {4.2}Prediction of future number of rerecords}{17}{section.4.2}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {4.3}Future record prediction}{17}{section.4.3}\protected@file@percent }
+\newlabel{record_prediction}{{4.3}{17}{Future record prediction}{section.4.3}{}}
+\citation{elman}
+\citation{elman_img}
+\citation{elman_img}
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.3.1}Recurrent neural network}{18}{subsection.4.3.1}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.3.2}Elman RNN}{18}{subsection.4.3.2}\protected@file@percent }
+\newlabel{eqn:elman}{{4.1}{18}{Elman RNN}{equation.4.3.1}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {4.4}{\ignorespaces Architecture of Elman RNN \cite  {elman_img}\relax }}{18}{figure.caption.25}\protected@file@percent }
+\newlabel{fig:elman_arch}{{4.4}{18}{Architecture of Elman RNN \cite {elman_img}\relax }{figure.caption.25}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.3.3}Gated recurrent unit}{19}{subsection.4.3.3}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.3.4}Long short-term memory}{19}{subsection.4.3.4}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {4.5}{\ignorespaces Architecture of GRU hidden layer\relax }}{20}{figure.caption.26}\protected@file@percent }
+\newlabel{fig:gru_arch}{{4.5}{20}{Architecture of GRU hidden layer\relax }{figure.caption.26}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {4.6}{\ignorespaces Architecture of LSTM hidden layer\relax }}{20}{figure.caption.27}\protected@file@percent }
+\newlabel{fig:lstm_arch}{{4.6}{20}{Architecture of LSTM hidden layer\relax }{figure.caption.27}{}}
+\@writefile{toc}{\contentsline {chapter}{\numberline {5}Software design}{21}{chapter.5}\protected@file@percent }
 \@writefile{lof}{\addvspace {10\p@ }}
 \@writefile{lot}{\addvspace {10\p@ }}
-\newlabel{chap:softwaredesign}{{5}{17}{Software design}{chapter.5}{}}
-\@writefile{toc}{\contentsline {chapter}{\numberline {6}Implementation}{18}{chapter.6}\protected@file@percent }
+\newlabel{chap:softwaredesign}{{5}{21}{Software design}{chapter.5}{}}
+\@writefile{toc}{\contentsline {chapter}{\numberline {6}Implementation}{22}{chapter.6}\protected@file@percent }
 \@writefile{lof}{\addvspace {10\p@ }}
 \@writefile{lot}{\addvspace {10\p@ }}
-\newlabel{chap:implementation}{{6}{18}{Implementation}{chapter.6}{}}
-\@writefile{toc}{\contentsline {chapter}{\numberline {7}Research}{19}{chapter.7}\protected@file@percent }
+\newlabel{chap:implementation}{{6}{22}{Implementation}{chapter.6}{}}
+\@writefile{toc}{\contentsline {chapter}{\numberline {7}Research}{23}{chapter.7}\protected@file@percent }
 \@writefile{lof}{\addvspace {10\p@ }}
 \@writefile{lot}{\addvspace {10\p@ }}
-\newlabel{chap:research}{{7}{19}{Research}{chapter.7}{}}
-\@writefile{toc}{\contentsline {chapter}{\numberline {8}Results}{20}{chapter.8}\protected@file@percent }
+\newlabel{chap:research}{{7}{23}{Research}{chapter.7}{}}
+\@writefile{toc}{\contentsline {chapter}{\numberline {8}Results}{24}{chapter.8}\protected@file@percent }
 \@writefile{lof}{\addvspace {10\p@ }}
 \@writefile{lot}{\addvspace {10\p@ }}
-\newlabel{chap:results}{{8}{20}{Results}{chapter.8}{}}
+\newlabel{chap:results}{{8}{24}{Results}{chapter.8}{}}
 \citation{*}
 \bibstyle{plain}
 \bibdata{references}
@@ -97,17 +115,20 @@
 \bibcite{labse_kaggle}{{3}{}{{}}{{}}}
 \bibcite{ncziMKCH}{{4}{}{{}}{{}}}
 \bibcite{labse_hug}{{5}{}{{}}{{}}}
-\bibcite{caballer2019predicting}{{6}{}{{}}{{}}}
-\bibcite{cdcICD10CM}{{7}{}{{}}{{}}}
-\bibcite{chechulin2014predicting}{{8}{}{{}}{{}}}
-\bibcite{choi2018mime}{{9}{}{{}}{{}}}
-\bibcite{bert_pretr_3}{{10}{}{{}}{{}}}
-\bibcite{bert_pretr_1}{{11}{}{{}}{{}}}
-\bibcite{bert}{{12}{}{{}}{{}}}
-\bibcite{labse_paper}{{13}{}{{}}{{}}}
-\bibcite{lorenzi2017predictive}{{14}{}{{}}{{}}}
-\bibcite{miotto2016deep}{{15}{}{{}}{{}}}
-\bibcite{morid2019healthcare}{{16}{}{{}}{{}}}
-\bibcite{bert_pretr_2}{{17}{}{{}}{{}}}
+\bibcite{elman_img}{{6}{}{{}}{{}}}
+\bibcite{num_of_vis}{{7}{}{{}}{{}}}
+\bibcite{caballer2019predicting}{{8}{}{{}}{{}}}
+\bibcite{cdcICD10CM}{{9}{}{{}}{{}}}
+\bibcite{chechulin2014predicting}{{10}{}{{}}{{}}}
+\bibcite{choi2018mime}{{11}{}{{}}{{}}}
+\bibcite{bert_pretr_3}{{12}{}{{}}{{}}}
+\bibcite{bert_pretr_1}{{13}{}{{}}{{}}}
+\bibcite{bert}{{14}{}{{}}{{}}}
+\bibcite{elman}{{15}{}{{}}{{}}}
+\bibcite{labse_paper}{{16}{}{{}}{{}}}
+\bibcite{lorenzi2017predictive}{{17}{}{{}}{{}}}
+\bibcite{miotto2016deep}{{18}{}{{}}{{}}}
+\bibcite{morid2019healthcare}{{19}{}{{}}{{}}}
+\bibcite{bert_pretr_2}{{20}{}{{}}{{}}}
 \providecommand\NAT@force@numbers{}\NAT@force@numbers
-\gdef \@abspage@last{37}
+\gdef \@abspage@last{42}

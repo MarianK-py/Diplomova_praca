@@ -15,4 +15,14 @@ Task of predicting future cost of a patient can be split input multiple sub-task
 
 \input{proposed methods/embedding}
 
+\section{Prediction of future number of rerecords}
+
+Our task is to get information about how much will cost patient in the future, more specifically, how much it will cost in the next. Since our approach predicts future records, assign to them cost and sum the cost into resulting cost, we need to somehow be able to assess how many records need to be generated in order to simulate approximately next year. For this task we tried two different approaches.
+\\
+
+First approach was to predict approximate number of records using linear regression which gets counts of records from previous years and predict next one. Other approach used stopping criterion, which uses timestamp information which is available in each input and generated records, and stop generating once difference between last timestamp from patient data and last generated timestamp surpass one year threshold.
+\\
+
+Each of these method have it's own disadvantages. In case of linear regression, number of records per year can vary significantly, so even though we expect increase \cite{num_of_vis} regression might not be able to catch this trend, especially if patient data consist of only few years in the past. Potential issue with second approach is that it's dependent on how well model learned that timestamp should always increase.  
+
 \input{proposed methods/future_records_prediction}

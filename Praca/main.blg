@@ -14,45 +14,45 @@ Warning--to sort, need author or key in ncziMKCH
 Warning--to sort, need author or key in labse_kaggle
 Warning--to sort, need author or key in word2vec
 Warning--to sort, need author or key in labse_hug
-You've used 17 entries,
+You've used 20 entries,
             2118 wiz_defined-function locations,
-            591 strings with 7867 characters,
-and the built_in function-call counts, 5799 in all, are:
-= -- 572
-> -- 271
-< -- 5
-+ -- 108
-- -- 91
-* -- 369
-:= -- 896
-add.period$ -- 55
-call.type$ -- 17
-change.case$ -- 95
+            611 strings with 8386 characters,
+and the built_in function-call counts, 7004 in all, are:
+= -- 694
+> -- 324
+< -- 6
++ -- 129
+- -- 109
+* -- 459
+:= -- 1085
+add.period$ -- 64
+call.type$ -- 20
+change.case$ -- 113
 chr.to.int$ -- 0
-cite$ -- 22
-duplicate$ -- 224
-empty$ -- 473
-format.name$ -- 91
-if$ -- 1269
+cite$ -- 25
+duplicate$ -- 269
+empty$ -- 568
+format.name$ -- 109
+if$ -- 1524
 int.to.chr$ -- 0
-int.to.str$ -- 17
-missing$ -- 11
-newline$ -- 90
-num.names$ -- 26
-pop$ -- 140
+int.to.str$ -- 20
+missing$ -- 14
+newline$ -- 105
+num.names$ -- 32
+pop$ -- 157
 preamble$ -- 2
-purify$ -- 78
+purify$ -- 93
 quote$ -- 0
-skip$ -- 173
+skip$ -- 207
 stack$ -- 0
-substring$ -- 310
-swap$ -- 70
-text.length$ -- 5
+substring$ -- 407
+swap$ -- 83
+text.length$ -- 6
 text.prefix$ -- 0
 top$ -- 0
-type$ -- 68
+type$ -- 80
 warning$ -- 5
-while$ -- 44
-width$ -- 19
-write$ -- 183
+while$ -- 57
+width$ -- 22
+write$ -- 216
 (There was 1 error message)

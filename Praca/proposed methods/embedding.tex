@@ -3,7 +3,11 @@
 \section{Embedding of patient}
 \label{embedding}
 
-First of sub-tasks for prediction of patient future costs is to embed each patient record into numerical vector that would be understandable for neural network. Some of patient information like age are easy to embed as they are ordered numerical values to begin with, while others are much more tricky. More specifically we needed to figure our how to embed three main information: diagnosis, medical procedure and prescribed drug.
+First of sub-tasks for prediction of patient future costs is to embed each patient record into numerical vector that would be understandable for neural network. For each record of a patient we embed four information. First and easy to implement is a timestamp which is computed using numerical and date values, then there three more tricky information and those are diagnosis, medical procedure and prescribed drug. 
+
+\subsection{Timestamp}
+
+Attribute what we call timestamp of patients record can more precisely described as approximation of patients age at the moment of either medical procedure or drug prescription. This timestamp is computed using two of available information and those are age of patient in years and date of record. Computation for single patient is done like this: we found first record of patient, meaning record with earliest date, and we take age in years of that patient in that moment and set it as a timestamp, for each next record we that age from first record and add difference between first record and currently processed one conversed to fraction of years. This way timestamp contains approximation of age of patient while also containing information about order of records and comparative timeframe between each two records.
 
 \subsection{Diagnosis embedding}
 
@@ -167,4 +171,6 @@ Final layer is normalization which task is only to normalize resulting vector, s
 \\
 
 After we embed each description of procedure using LaBSE model, we get 768 dimensional vectors assigned to them. As this dimensionality is relatively high, especially when we consider that descriptions of procedures used limited primarily medical vocabulary, we decided to use dimension reduction technique in order to remove dimensions which are least informative and contribute mostly noise. We used principal component analysis (PCA).
+\\
 
+Finally we create record embedding by concatenating all four parts. Since we have two separate datasets, one for prescribed drugs and one for medical procedures, we always have only three out of four information available for each record, since timestamp and diagnosis are always available, we substitute missing part with vector of zeros with appropriate length which is most neutral embedding since we centered both medical procedure and drug prescription embedding around zero.
