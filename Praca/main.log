@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.24 (MiKTeX 22.12) (preloaded format=pdflatex 2023.1.22)  11 NOV 2024 20:57
+This is pdfTeX, Version 3.141592653-2.6-1.40.24 (MiKTeX 22.12) (preloaded format=pdflatex 2023.1.22)  17 NOV 2024 21:09
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -651,7 +651,7 @@ LaTeX Font Info:    Trying to load font information for U+msb on input line 83.
 (C:\Users\majko\AppData\Local\Programs\MiKTeX\tex/latex/amsfonts\umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 )
-<images/FMFI_logo_BP.png, id=87, 284.7438pt x 284.7438pt>
+<images/FMFI_logo_BP.png, id=91, 284.7438pt x 284.7438pt>
 File: images/FMFI_logo_BP.png Graphic file (type png)
 <use images/FMFI_logo_BP.png>
 Package pdftex.def Info: images/FMFI_logo_BP.png  used on input line 88.
@@ -671,7 +671,7 @@ Package pdftex.def Info: images/FMFI_logo_BP.png  used on input line 120.
  [3] [4
 
 ]
-<zadaniePrace.PDF, id=112, page=1, 597.50731pt x 845.04607pt>
+<zadaniePrace.PDF, id=116, page=1, 597.50731pt x 845.04607pt>
 File: zadaniePrace.PDF Graphic file (type pdf)
 <use zadaniePrace.PDF, page 1>
 Package pdftex.def Info: zadaniePrace.PDF , page1 used on input line 159.
@@ -753,7 +753,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 14--15
 
  []
 
-<images/ICD-10-CM.png, id=307, 813.0375pt x 520.94624pt>
+<images/ICD-10-CM.png, id=317, 813.0375pt x 520.94624pt>
 File: images/ICD-10-CM.png Graphic file (type png)
 <use images/ICD-10-CM.png>
 Package pdftex.def Info: images/ICD-10-CM.png  used on input line 19.
@@ -764,7 +764,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 25--30
  []
 
 [8 <./images/ICD-10-CM.png>] [9]
-<images/diagnosis_embed_showcase.png, id=322, 873.2625pt x 484.81125pt>
+<images/diagnosis_embed_showcase.png, id=332, 873.2625pt x 484.81125pt>
 File: images/diagnosis_embed_showcase.png Graphic file (type png)
 <use images/diagnosis_embed_showcase.png>
 Package pdftex.def Info: images/diagnosis_embed_showcase.png  used on input lin
@@ -774,7 +774,7 @@ e 43.
 Underfull \vbox (badness 4792) has occurred while \output is active []
 
  [10 <./images/diagnosis_embed_showcase.png>]
-<images/atc_l1_classification_who.jpg, id=329, 578.16pt x 480.29437pt>
+<images/atc_l1_classification_who.jpg, id=339, 578.16pt x 480.29437pt>
 File: images/atc_l1_classification_who.jpg Graphic file (type jpg)
 <use images/atc_l1_classification_who.jpg>
 Package pdftex.def Info: images/atc_l1_classification_who.jpg  used on input li
@@ -791,42 +791,42 @@ Underfull \hbox (badness 10000) in paragraph at lines 117--119
  []
 
 [12]
-Underfull \hbox (badness 10000) in paragraph at lines 133--135
+Underfull \hbox (badness 10000) in paragraph at lines 134--136
 
  []
 
 [13]
-Underfull \hbox (badness 10000) in paragraph at lines 143--145
+Underfull \hbox (badness 10000) in paragraph at lines 144--146
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 146--148
+Underfull \hbox (badness 10000) in paragraph at lines 147--149
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 149--151
+Underfull \hbox (badness 10000) in paragraph at lines 150--152
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 152--154
+Underfull \hbox (badness 10000) in paragraph at lines 153--155
 
  []
 
 [14]
-Underfull \hbox (badness 10000) in paragraph at lines 155--157
+Underfull \hbox (badness 10000) in paragraph at lines 156--158
 
  []
 
 [15]
-Underfull \hbox (badness 10000) in paragraph at lines 170--172
+Underfull \hbox (badness 10000) in paragraph at lines 171--173
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 173--175
+Underfull \hbox (badness 10000) in paragraph at lines 174--176
 
  []
 
@@ -860,7 +860,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 28--30
 
  []
 
-<images/Elman_RNN_architecture.png, id=393, 639.89063pt x 258.9675pt>
+<images/Elman_RNN_architecture.png, id=403, 639.89063pt x 258.9675pt>
 File: images/Elman_RNN_architecture.png Graphic file (type png)
 <use images/Elman_RNN_architecture.png>
 Package pdftex.def Info: images/Elman_RNN_architecture.png  used on input line 
@@ -886,7 +886,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 53--55
 
  []
 
-<images/GRU_arch.png, id=405, 681.54625pt x 711.65875pt>
+<images/GRU_arch.png, id=415, 681.54625pt x 711.65875pt>
 File: images/GRU_arch.png Graphic file (type png)
 <use images/GRU_arch.png>
 Package pdftex.def Info: images/GRU_arch.png  used on input line 59.
@@ -894,32 +894,93 @@ Package pdftex.def Info: images/GRU_arch.png  used on input line 59.
 
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
-<images/LSTM_arch.png, id=407, 831.105pt x 793.96625pt>
+
+Underfull \hbox (badness 10000) in paragraph at lines 69--71
+
+ []
+
+[19]
+Underfull \hbox (badness 10000) in paragraph at lines 72--74
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 75--77
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 78--80
+
+ []
+
+<images/LSTM_arch.png, id=421, 831.105pt x 793.96625pt>
 File: images/LSTM_arch.png Graphic file (type png)
 <use images/LSTM_arch.png>
-Package pdftex.def Info: images/LSTM_arch.png  used on input line 75.
+Package pdftex.def Info: images/LSTM_arch.png  used on input line 87.
 (pdftex.def)             Requested size: 264.61333pt x 252.7902pt.
 
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
-)) (software design/software_design.tex [19] [20 <./images/GRU_arch.png> <./ima
-ges/LSTM_arch.png>]
+
+Underfull \hbox (badness 10000) in paragraph at lines 95--97
+
+ []
+
+
+Underfull \vbox (badness 7759) has occurred while \output is active []
+
+ [20 <./images/GRU_arch.png>]
+<images/trans_arch.png, id=429, 204.765pt x 308.1111pt>
+File: images/trans_arch.png Graphic file (type png)
+<use images/trans_arch.png>
+Package pdftex.def Info: images/trans_arch.png  used on input line 101.
+(pdftex.def)             Requested size: 264.61333pt x 398.18898pt.
+
+
+LaTeX Warning: `!h' float specifier changed to `!ht'.
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 107--109
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 110--112
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 113--115
+
+ []
+
+[21 <./images/LSTM_arch.png>]
+Underfull \hbox (badness 10000) in paragraph at lines 116--118
+
+ []
+
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+ [22 <./images/trans_arch.png>]) (proposed methods/cost_prediction.tex))
+(software design/software_design.tex [23]
 Chapter 5.
-) (implementation/implementation.tex [21
+) (implementation/implementation.tex [24
 
 ]
 Chapter 6.
-) (research/research.tex [22
+) (research/research.tex [25
 
 ]
 Chapter 7.
-) (results/results.tex [23
+) (results/results.tex [26
 
 ]
 Chapter 8.
-) (conclusion.tex [24
+) (conclusion.tex [27
 
-]) [25
+]) [28
 
 ] (main.bbl
 LaTeX Font Info:    Trying to load font information for T1+cmtt on input line 7
@@ -938,29 +999,29 @@ Underfull \hbox (badness 10000) in paragraph at lines 23--27
 e / Pages /
  []
 
-[26
+[29
 
 
-] [27])
+] [30])
 
 Package caption Warning: Unused \captionsetup[sub] on input line 34.
 See the caption package documentation for explanation.
 
-[28] (main.aux)
+[31] (main.aux)
 
 Package rerunfilecheck Warning: File `main.out' has changed.
 (rerunfilecheck)                Rerun to get outlines right
 (rerunfilecheck)                or use package `bookmark'.
 
 Package rerunfilecheck Info: Checksums for `main.out':
-(rerunfilecheck)             Before: 745EB11BA325D318919C17914A2CC11A;3337
-(rerunfilecheck)             After:  46852AC3BA8070E13EEA14655A4D5625;3286.
+(rerunfilecheck)             Before: 175275A03DEF237E723DC458B85A17BE;3403
+(rerunfilecheck)             After:  4B8854DD1FAFCADB1FD1BE0C7D675CC3;3574.
  ) 
 Here is how much of TeX's memory you used:
- 13340 strings out of 476404
- 218952 string characters out of 2789524
+ 13366 strings out of 476404
+ 219593 string characters out of 2789524
  1861324 words of memory out of 3000000
- 33280 multiletter control sequences out of 15000+600000
+ 33295 multiletter control sequences out of 15000+600000
  524440 words of font info for 61 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  63i,8n,67p,2277b,614s stack positions out of 10000i,1000n,20000p,200000b,80000s
@@ -981,9 +1042,9 @@ m-super/sfbx2488.pfb><C:/Users/majko/AppData/Local/Programs/MiKTeX/fonts/type1/
 public/cm-super/sfrm1200.pfb><C:/Users/majko/AppData/Local/Programs/MiKTeX/font
 s/type1/public/cm-super/sfti1200.pfb><C:/Users/majko/AppData/Local/Programs/MiK
 TeX/fonts/type1/public/cm-super/sftt1200.pfb>
-Output written on main.pdf (42 pages, 1009146 bytes).
+Output written on main.pdf (45 pages, 1263325 bytes).
 PDF statistics:
- 562 PDF objects out of 1000 (max. 8388607)
- 128 named destinations out of 1000 (max. 500000)
- 209 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 595 PDF objects out of 1000 (max. 8388607)
+ 135 named destinations out of 1000 (max. 500000)
+ 222 words of extra memory for PDF output out of 10000 (max. 10000000)
 

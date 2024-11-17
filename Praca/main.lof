@@ -7,7 +7,8 @@
 \contentsline {figure}{\numberline {4.3}{\ignorespaces Fourteen main anatomical or pharmacological groups and their corresponding first level ATC code \cite {atc_who}\relax }}{11}{figure.caption.18}%
 \contentsline {figure}{\numberline {4.4}{\ignorespaces Architecture of Elman RNN \cite {elman_img}\relax }}{18}{figure.caption.25}%
 \contentsline {figure}{\numberline {4.5}{\ignorespaces Architecture of GRU hidden layer\relax }}{20}{figure.caption.26}%
-\contentsline {figure}{\numberline {4.6}{\ignorespaces Architecture of LSTM hidden layer\relax }}{20}{figure.caption.27}%
+\contentsline {figure}{\numberline {4.6}{\ignorespaces Architecture of LSTM hidden layer\relax }}{21}{figure.caption.27}%
+\contentsline {figure}{\numberline {4.7}{\ignorespaces Architecture of one encoder-decoder block in transformer model from original "Attention is all you need" paper \cite {attentionAllYouNeed}\relax }}{22}{figure.caption.28}%
 \addvspace {10\p@ }
 \addvspace {10\p@ }
 \addvspace {10\p@ }

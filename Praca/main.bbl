@@ -128,4 +128,9 @@ Yi~Sun, Yu~Zheng, Chao Hao, and Hangping Qiu.
   pre-training task--next sentence prediction.
 \newblock {\em arXiv preprint arXiv:2109.03564}, 2021.
 
+\bibitem{attentionAllYouNeed}
+A~Vaswani.
+\newblock Attention is all you need.
+\newblock {\em Advances in Neural Information Processing Systems}, 2017.
+
 \end{thebibliography}

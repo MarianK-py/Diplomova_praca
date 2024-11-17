@@ -9,7 +9,7 @@
 \contentsline {subsection}{\numberline {4.1.2}Diagnosis embedding}{8}{subsection.4.1.2}%
 \contentsline {subsection}{\numberline {4.1.3}Drug embedding}{11}{subsection.4.1.3}%
 \contentsline {subsection}{\numberline {4.1.4}Medical procedure embedding}{12}{subsection.4.1.4}%
-\contentsline {subsubsection}{Transformer (BERT model)}{13}{section*.21}%
+\contentsline {subsubsection}{Encoder-only transformer (BERT model)}{13}{section*.21}%
 \contentsline {subsubsection}{Pooling layer}{16}{section*.22}%
 \contentsline {subsubsection}{Dense layer}{16}{section*.23}%
 \contentsline {subsubsection}{Normalization layer}{16}{section*.24}%
@@ -19,7 +19,9 @@
 \contentsline {subsection}{\numberline {4.3.2}Elman RNN}{18}{subsection.4.3.2}%
 \contentsline {subsection}{\numberline {4.3.3}Gated recurrent unit}{19}{subsection.4.3.3}%
 \contentsline {subsection}{\numberline {4.3.4}Long short-term memory}{19}{subsection.4.3.4}%
-\contentsline {chapter}{\numberline {5}Software design}{21}{chapter.5}%
-\contentsline {chapter}{\numberline {6}Implementation}{22}{chapter.6}%
-\contentsline {chapter}{\numberline {7}Research}{23}{chapter.7}%
-\contentsline {chapter}{\numberline {8}Results}{24}{chapter.8}%
+\contentsline {subsection}{\numberline {4.3.5}Transformer}{21}{subsection.4.3.5}%
+\contentsline {section}{\numberline {4.4}Record cost prediction}{23}{section.4.4}%
+\contentsline {chapter}{\numberline {5}Software design}{24}{chapter.5}%
+\contentsline {chapter}{\numberline {6}Implementation}{25}{chapter.6}%
+\contentsline {chapter}{\numberline {7}Research}{26}{chapter.7}%
+\contentsline {chapter}{\numberline {8}Results}{27}{chapter.8}%
