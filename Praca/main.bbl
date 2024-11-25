@@ -101,6 +101,13 @@ Fangxiaoyu Feng, Yinfei Yang, Daniel Cer, Naveen Arivazhagan, and Wei Wang.
 \newblock In {\em Proceedings of the 60th Annual Meeting of the Association for
   Computational Linguistics (Volume 1: Long Papers)}, pages 878--891, 2022.
 
+\bibitem{MLParch}
+Miao Jin, Qinzhuo Liao, Shirish Patil, Abdulazeez Abdulraheem, Dhafer
+  Al-Shehri, and Guenther Glatz.
+\newblock Hyperparameter tuning of artificial neural networks for well
+  production estimation considering the uncertainty in initialized parameters.
+\newblock {\em ACS omega}, 7(28):24145--24156, 2022.
+
 \bibitem{lorenzi2017predictive}
 Elizabeth~C Lorenzi, Stephanie~L Brown, Zhifei Sun, and Katherine Heller.
 \newblock Predictive hierarchical clustering: Learning clusters of cpt codes

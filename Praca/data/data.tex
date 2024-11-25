@@ -2,15 +2,24 @@
 
 \chapter{Medical data} \label{chap:data}
 
-To train and verify model we used anonymized data obtained from Slovak National health information center also known under abbreviation NCZI. Our data consisted of two dataset:
+To train and verify model we used anonymized data obtained from Slovak National health information center also known under abbreviation NCZI. 
+\\
+
+Data we have can be split into two categories, those are patients records and mapping table. 
+
+\section{Patients records}
+
+Patients records are split into two dataset:
 \begin{itemize}
 	\item Records of medical procedures from ambulatory health care
 	\item Records of prescribed medicines
 \end{itemize}
 
-\section{Records of medical procedures from ambulatory health care}
+In total we have data about (ADD NUMBER HERE) patients.
 
-Each row in this dataset contains information about single medical procedure done to patient. Each record consist of these variable:
+\subsection{Records of medical procedures from ambulatory health care}
+
+Each row of this dataset is single patient record contains information about single medical procedure done to them, in total this dataset consist of (ADD NUMBER HERE) records. Each record consist of these variable:
 \begin{itemize}
 	\item date of the procedure - date when procedure was performed
 	\item code of the patient - identification code unique for the patient
@@ -23,9 +32,9 @@ Each row in this dataset contains information about single medical procedure don
 
 For our prediction we use most of these information, date of the procedure combined with patient age is used to create timestamp information used to order all records for patient as well as one of the dimension of record embedding. Identification code of patient is used to be able to gather all records for single patient. Identification codes for diagnosis and procedure are matched with their corresponding numerical vector and embedded into vector corresponding to record (see \ref{embedding}). Cost is encoded into cost category and used as information of cost associated with embedding of record.
 
-\section{Records of prescribed medicines}
+\subsection{Records of prescribed medicines}
 
-Similarly to dataset containing procedures, each row of this dataset contains informations about single prescription of drug to specific patient.  Each record consist of these variable:
+Similarly to dataset containing procedures, each row is single record of single prescription of drug to specific patient, in total we have (ADD NUMBER HERE) records of prescribed drugs. Each record consist of these variable:
 \begin{itemize}
 	\item date of the prescription - date when drug was prescribed
 	\item code of the patient - identification code unique for the patient
@@ -37,6 +46,17 @@ Similarly to dataset containing procedures, each row of this dataset contains in
 \end{itemize}
 
 Use of these variable is also similar to procedures, with only difference that instead of using encoding procedure into record embedding we encode drug.
+
+\section{Mappings}
+
+Other than datasets containing patients data we use three mapping files to map identification codes used for attributes in patients records datasets to corresponding embedding vectors. Mapping datasets are:
+\begin{itemize}
+	\item Diagnosis mapping
+	\item Drug mapping
+	\item Medical procedure mapping
+\end{itemize}
+
+
 
 \mycomment{
 EQUATION SHOWCASE:

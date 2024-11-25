@@ -2,4 +2,13 @@
 
 \chapter{Software design} \label{chap:softwaredesign}
 
+Whole code was written using Python language. We chose this language for its ease of use and extensive support for data processing and machine learning.
+\\
 
+Whole code can be split into three parts:
+
+\begin{enumerate}
+	\item Embedding - code to add embedded vectors into mapping files, has to be run once 
+	\item Model training and validation - code to setup, train, validate and save prediction models, has to be run once 
+	\item Predictor - code to load trained models and predict future cost of inputted patients 
+\end{enumerate}
