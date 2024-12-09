@@ -85,7 +85,9 @@ To confirm this we do similar check as we did with diagnosis code and compute si
 \end{table}  
 
 Also similarly to diagnosis we can test whether our embeddings would cluster mainly first level of code or not. Since there are 14 main anatomical or pharmacological groups \ref{fig:atc_l1} we used K-means algorithm with 14 clusters and got these results:
+\\
 
+Based on results of these tests we can conclude that embeddings works generally as intended.
 
 \begin{table}[!h]
 	\begin{tabular}{|p{0.15\textwidth}|p{0.2\textwidth}|p{0.5\textwidth}|}
@@ -109,7 +111,10 @@ Also similarly to diagnosis we can test whether our embeddings would cluster mai
 \end{table}
 
 We can see that clusters mostly consist of embeddings with same first level values. There are some exceptions which are most likely caused by uneven number of drug in each category. Because of this categories with smallest number of drug like P, S, D, H or G got assigned to cluster along with bigger category and categories with biggest number of drugs like N, C or V got split into multiple categories.  
+\\
+
+Based on results of these tests we can conclude that embeddings works generally as intended.
 
 \subsection{Medical procedure embedding}
 
-
+Embedding of medical procedures is two step operation, firstly embedding using LaBSE model and second dimension reduction using PCA. 

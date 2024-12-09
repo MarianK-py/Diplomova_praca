@@ -7,7 +7,6 @@ témou diplomovej práce je predikcia budúcich nákladov (budúcej nákladovej 
 ### Datasety
 
 - ambulantná zdravotná starostlivosť
-- ústavná zdravotná starostlivosť
 - predpísané lieky
 
 
@@ -19,20 +18,32 @@ témou diplomovej práce je predikcia budúcich nákladov (budúcej nákladovej 
 - vyšetrenia pacienta
 - lieky pacienta
 - náklady (na vyšetrenie/liek)
-- (ďalšie pridané neskôr)
+
+## Použíté modely
+
+- LaBSE -> embedding popisu zdravotníckeho výkonu
+- RNN -> predikcia budúcich záznamov
+- Decoder-only Transformer -> predikcia budúcich záznamov
+- MLP -> Predikcia cenovej kategórie záznamu
 
 ## Plán práce
 
-- embedding popisov/kódov -> takmer hotovo
-- vektorizácia celého záznamu pacienta -> najbližsie týždne
-- vytvorenie časového radu záznamov pre pacienta -> najbližsie týždne
-- návrh modelu (neurónovej siete) -> zimný semester -> septermber
-- nastavovanie a trénovanie modelu -> zimný semester -> október/november
-- validácia a hodnotenie modelu -> zimný semester -> december
+- embedding popisov/kódov -> hotovo
+- vektorizácia celého záznamu pacienta -> hotovo
+- vytvorenie časového radu záznamov pre pacienta -> hotovo
+- návrh modelu (neurónovej siete) -> hotovo
+- trénovanie modelov na malom datasete (lokálne) -> hotovo
+- trénovanie modelov a nastavovanie hyperparametrov na veľkom datasete (server) -> január, február
+- validácia celého modelu a spísanie výsledkov -> marec
+- kotrola gramatiky a syntaxu -> apríl
 
 ## Priebežná verzia práce
 
 [PDF diplomovej práce](https://github.com/MarianK-py/Diplomova_praca/blob/main/Praca/main.pdf)
+
+## Prezentácia na seminár
+
+[PDF prezentácie na seminár](https://github.com/MarianK-py/Diplomova_praca/blob/main/Prezentacia%20Seminar%202/x.pdf)
 
 ## Kód k projektu
 
