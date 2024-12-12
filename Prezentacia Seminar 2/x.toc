@@ -12,5 +12,7 @@
 \beamer@subsectionintoc {4}{4}{Predikcia cenovej kategórie záznamu}{15}{0}{4}
 \beamer@sectionintoc {5}{Trénovanie, testovanie a validácia}{16}{0}{5}
 \beamer@subsectionintoc {5}{1}{Trénovanie a testovanie}{17}{0}{5}
-\beamer@subsectionintoc {5}{2}{Validácia}{18}{0}{5}
-\beamer@sectionintoc {6}{Ďalšie kroky}{19}{0}{6}
+\beamer@subsectionintoc {5}{2}{Trénovanie modelu na predikciu budúcich záznamov}{18}{0}{5}
+\beamer@subsectionintoc {5}{3}{Trénovanie modelu na predikciu cenovej kategórie}{20}{0}{5}
+\beamer@subsectionintoc {5}{4}{Validácia}{22}{0}{5}
+\beamer@sectionintoc {6}{Ďalšie kroky}{23}{0}{6}

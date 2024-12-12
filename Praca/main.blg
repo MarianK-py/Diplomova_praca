@@ -9,50 +9,56 @@ Repeated entry---line 84 of file references.bib
  : @article{miotto2016deep
  :                        ,
 I'm skipping whatever remains of this entry
+I was expecting a `,' or a `}'---line 260 of file references.bib
+ :  
+ :  note = {[Accessed  __-__-2025]},
+(Error may have been on previous line)
+I'm skipping whatever remains of this entry
 Warning--to sort, need author or key in atc_who
 Warning--to sort, need author or key in ncziMKCH
 Warning--to sort, need author or key in labse_kaggle
 Warning--to sort, need author or key in word2vec
 Warning--to sort, need author or key in labse_hug
-You've used 22 entries,
+Warning--empty year in chatGPT
+You've used 23 entries,
             2118 wiz_defined-function locations,
-            625 strings with 8814 characters,
-and the built_in function-call counts, 7701 in all, are:
-= -- 761
-> -- 364
+            631 strings with 8883 characters,
+and the built_in function-call counts, 7910 in all, are:
+= -- 781
+> -- 371
 < -- 6
-+ -- 145
-- -- 123
-* -- 514
-:= -- 1207
-add.period$ -- 70
-call.type$ -- 22
-change.case$ -- 126
++ -- 148
+- -- 125
+* -- 525
+:= -- 1246
+add.period$ -- 73
+call.type$ -- 23
+change.case$ -- 130
 chr.to.int$ -- 0
-cite$ -- 27
-duplicate$ -- 290
-empty$ -- 616
-format.name$ -- 123
-if$ -- 1661
+cite$ -- 29
+duplicate$ -- 300
+empty$ -- 633
+format.name$ -- 125
+if$ -- 1702
 int.to.chr$ -- 0
-int.to.str$ -- 22
-missing$ -- 16
-newline$ -- 115
-num.names$ -- 36
-pop$ -- 168
+int.to.str$ -- 23
+missing$ -- 17
+newline$ -- 120
+num.names$ -- 38
+pop$ -- 172
 preamble$ -- 2
-purify$ -- 104
+purify$ -- 107
 quote$ -- 0
-skip$ -- 221
+skip$ -- 228
 stack$ -- 0
-substring$ -- 454
-swap$ -- 85
+substring$ -- 459
+swap$ -- 86
 text.length$ -- 6
 text.prefix$ -- 0
 top$ -- 0
-type$ -- 88
-warning$ -- 5
-while$ -- 63
-width$ -- 24
-write$ -- 237
-(There was 1 error message)
+type$ -- 92
+warning$ -- 6
+while$ -- 65
+width$ -- 25
+write$ -- 247
+(There were 2 error messages)

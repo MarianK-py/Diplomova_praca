@@ -61,6 +61,7 @@
 {
   \begin{frame}<beamer>
     \frametitle{Obsah}
+    \fontsize{9pt}{10pt}\selectfont
     \tableofcontents[currentsection,currentsubsection]
   \end{frame}
 }
@@ -114,21 +115,20 @@
 		\item<1> Datasety:
 		\begin{itemize}
 			\item<1> Dataset ambulantnej zdravotnej starostlivosti 
-			\item<1> Dataset ústavnej zdravotnej starostlivosti
 			\item<1> Dataset predpísaných liekov
 		\end{itemize}
-		\item<1> V súčastnosti využívaná malá anonymizovaná vzorka
+		\item<1> V tejto chvíli modely trénované na malej anonymizovanej vzorke
+		\item<1> Kód pripravený na trénovanie na veľkej vzorka na serveri
 	\end{itemize} 
 \end{frame}
 
 \begin{frame}  
-	\frametitle{Najdôležitejšie údaje pre časový rad}
+	\frametitle{Údaje pre časový rad}
 	\begin{itemize}
-		\item<1> Čas od prvého výkonu
-		\item<1> Vek pacienta
+		\item<1> Čas od narodenia pacienta
 		\item<1> Medicínsky výkon
-		\item<1> Diagnóza
 		\item<1> Liek 
+		\item<1> Diagnóza
 		\item<1> Cena výkonu/lieku
 	\end{itemize} 
 \end{frame}
@@ -213,6 +213,7 @@
 		\item<1> predikcia cenových kategórii budúcich záznamov
 		\item<1> výpočet celkovej cenovej kategórie
 	\end{enumerate}
+	\includegraphics[height=0.7cm]{images/model_workflow.png}
 \end{frame}
 
 \subsection{Výpočet počtu budúcich záznamov}
@@ -234,7 +235,7 @@
 		\item<1> testované modely
 		 \begin{itemize}
 		 	\item<1> Long short-term memory
-		 	\item<1> Decoder-only transformaer
+		 	\item<1> Decoder-only transformer
 		 \end{itemize}
 	\end{itemize}
 	\begin{center}
@@ -265,8 +266,53 @@
 	\begin{itemize}
 		\item<1> predikčné modely sa trénujú a testujú samostatne
 		\item<1> ako chyba predikcie záznamu sa využíva váhovaná euklidovská vzdialenosť od reálneho záznamu
-		\item<1> ako chyba predikcie cenovej kategórie sa využíva euklidovská vzdialenosť od one-hot vektora skutočnej skutočnej cenovej kategórie
+		\item<1> ako chyba predikcie cenovej kategórie sa využíva euklidovská vzdialenosť od one-hot vektora skutočnej cenovej kategórie
 		
+	\end{itemize}
+\end{frame}
+
+\subsection{Trénovanie modelu na predikciu budúcich záznamov}
+
+\begin{frame}
+	\frametitle{Trénovanie modelu na predikciu budúcich záznamov}
+
+	\begin{columns}[T]%{cl}  
+		\begin{column}{.48\textwidth}<1->%{c}
+			LSTM model 
+			\includegraphics[height=3cm]{images/rnn_train_loss_1.png}<1>
+			\includegraphics[height=3cm]{images/rnn_train_loss_2.png}<2>
+			
+			\begin{itemize}
+				\item<1-> trénovacia chyba: 6.11
+				\item<1-> testovacia chyba: 10.21
+			\end{itemize}
+		\end{column}
+		%&
+		\hfill%
+		\begin{column}{.48\textwidth}<1->%{l}
+			Decoder-only transformer  
+			\includegraphics[height=3cm]{images/trans_train_loss_1.png}<1>
+			\includegraphics[height=3cm]{images/trans_train_loss_2.png}<2>
+			
+			\begin{itemize} 
+				\item<1-> trénovacia chyba: 8.17
+				\item<1-> testovacia chyba: 9.69
+			\end{itemize}
+		\end{column}  
+	\end{columns}
+\end{frame}
+
+\subsection{Trénovanie modelu na predikciu cenovej kategórie}
+
+\begin{frame}
+	\frametitle{Trénovanie modelu na predikciu cenovej kategórie}
+	MLP model \\
+	\includegraphics[height=5cm]{images/mlp_train_loss_1.png}<1>
+	\includegraphics[height=5cm]{images/mlp_train_loss_2.png}<2>
+	\begin{itemize}
+		\item<1-> trénovacia chyba: 0.028
+		\item<1-> testovacia chyba: 0.029
+		\item<1-> presnosť: 80.4\%
 	\end{itemize}
 \end{frame}
 
@@ -284,11 +330,11 @@
 \end{frame}
 
 \section{Ďalšie kroky}
-
+ 
 \begin{frame}
 	\frametitle{Ďalšie kroky}
 	\begin{itemize}
-		\item<1> trénovanie, testovanie a nastavovanie hyperparametrov modelov na väčšom datasete serveri 
+		\item<1> trénovanie, testovanie a nastavovanie hyperparametrov modelov na väčšom datasete na serveri 
 		\item<1> výber najlepších hyperparametrov
 		\item<1> spísanie výsledkov
 	\end{itemize}
