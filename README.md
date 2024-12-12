@@ -12,11 +12,10 @@ témou diplomovej práce je predikcia budúcich nákladov (budúcej nákladovej 
 
 ### Využívané dáta
 
-- čas od prvého vyšetrenia
 - vek pacienta
-- ochorenia pacienta
 - vyšetrenia pacienta
 - lieky pacienta
+- ochorenia pacienta
 - náklady (na vyšetrenie/liek)
 
 ## Použíté modely
@@ -47,4 +46,4 @@ témou diplomovej práce je predikcia budúcich nákladov (budúcej nákladovej 
 
 ## Kód k projektu
 
-[Kód diplomovej práce](https://github.com/MarianK-py/Diplomova_praca_kod) (priebežne privátne kvôli možnej prítomnosti citlivých údajov)
+[Kód diplomovej práce](https://github.com/MarianK-py/diploma_thesis_code) (priebežne privátne kvôli možnej prítomnosti citlivých údajov)
