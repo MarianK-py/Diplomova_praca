@@ -207,11 +207,11 @@
 \begin{frame}
 	\frametitle{Proces predikcie}
 	\begin{enumerate}
-		\item<1> načítanie dát pacienta, embedding a normalizácia
-		\item<1> výpočet počtu záznamov na budúci rok
-		\item<1> predikcia budúcich záznamov
-		\item<1> predikcia cenových kategórii budúcich záznamov
-		\item<1> výpočet celkovej cenovej kategórie
+		\item<1> Načítanie dát pacienta, embedding a normalizácia
+		\item<1> Výpočet počtu záznamov na budúci rok
+		\item<1> Predikcia budúcich záznamov
+		\item<1> Predikcia cenových kategórii budúcich záznamov
+		\item<1> Výpočet celkovej cenovej kategórie
 	\end{enumerate}
 	\includegraphics[height=0.7cm]{images/model_workflow.png}
 \end{frame}
@@ -232,7 +232,7 @@
 	\frametitle{Predikcia budúcich záznamov}
 	\begin{itemize}
 		\item<1> využitie fixného maximálneho okna pre umožnenie paralelizácie trénovania
-		\item<1> testované modely
+		\item<1> Testované modely
 		 \begin{itemize}
 		 	\item<1> Long short-term memory
 		 	\item<1> Decoder-only transformer
@@ -249,8 +249,8 @@
 \begin{frame}
 	\frametitle{Predikcia cenovej kategórie záznamu}
 	\begin{itemize}
-		\item<1> namiesto konkrétnej ceny predikujeme cenovú kategóriu
-		\item<1> použitý model: Multilayer perceptron
+		\item<1> Namiesto konkrétnej ceny predikujeme cenovú kategóriu
+		\item<1> Použitý model: Multilayer perceptron
 	\end{itemize}
 	\begin{center}
 		\includegraphics[height=4cm]{images/MLP_arch.png}
@@ -264,9 +264,9 @@
 \begin{frame}
 	\frametitle{Trénovanie a testovanie}
 	\begin{itemize}
-		\item<1> predikčné modely sa trénujú a testujú samostatne
-		\item<1> ako chyba predikcie záznamu sa využíva váhovaná euklidovská vzdialenosť od reálneho záznamu
-		\item<1> ako chyba predikcie cenovej kategórie sa využíva euklidovská vzdialenosť od one-hot vektora skutočnej cenovej kategórie
+		\item<1> Predikčné modely sa trénujú a testujú samostatne
+		\item<1> Chyba predikcie záznamu - váhovaná euklidovská vzdialenosť od reálneho záznamu
+		\item<1> Chyba predikcie cenovej kategórie - euklidovská vzdialenosť od one-hot vektora skutočnej cenovej kategórie
 		
 	\end{itemize}
 \end{frame}
@@ -283,8 +283,8 @@
 			\includegraphics[height=3cm]{images/rnn_train_loss_2.png}<2>
 			
 			\begin{itemize}
-				\item<1-> trénovacia chyba: 6.11
-				\item<1-> testovacia chyba: 10.21
+				\item<1-> Trénovacia chyba: 6.11
+				\item<1-> Testovacia chyba: 10.21
 			\end{itemize}
 		\end{column}
 		%&
@@ -295,8 +295,8 @@
 			\includegraphics[height=3cm]{images/trans_train_loss_2.png}<2>
 			
 			\begin{itemize} 
-				\item<1-> trénovacia chyba: 8.17
-				\item<1-> testovacia chyba: 9.69
+				\item<1-> Trénovacia chyba: 8.17
+				\item<1-> Testovacia chyba: 9.69
 			\end{itemize}
 		\end{column}  
 	\end{columns}
@@ -310,9 +310,9 @@
 	\includegraphics[height=5cm]{images/mlp_train_loss_1.png}<1>
 	\includegraphics[height=5cm]{images/mlp_train_loss_2.png}<2>
 	\begin{itemize}
-		\item<1-> trénovacia chyba: 0.028
-		\item<1-> testovacia chyba: 0.029
-		\item<1-> presnosť: 80.4\%
+		\item<1-> Trénovacia chyba: 0.028
+		\item<1-> Testovacia chyba: 0.029
+		\item<1-> Presnosť: 80.4\%
 	\end{itemize}
 \end{frame}
 
@@ -322,10 +322,16 @@
 	\frametitle{Validácia}
 	
 		\begin{enumerate}
-			\item<1> rozdelenie záznamov pacienta na posledný rok a staršie 
-			\item<1> výpočet skutočnej celkovej cenovej kategórie pacienta v poslednom roku 
-			\item<1> predikcia počtu záznamov, jednotlivých záznamov, ich cenovej kategórie a celkovej cenovej kategórie
-			\item<1> výpočet chyby ako euklidovská vzdialenosť medzi predikovanou a skutočnou cenovou kategóriou v poslednom roku 
+			\item<1> Rozdelenie záznamov pacienta na posledný rok a staršie 
+			\item<1> Výpočet skutočnej celkovej cenovej kategórie pacienta v poslednom roku 
+			\item<1> Predikcia počtu záznamov, jednotlivých záznamov, ich cenovej kategórie a celkovej cenovej kategórie
+			\item<1> Výpočet chyby ako euklidovská vzdialenosť medzi predikovanou a skutočnou cenovou kategóriou v poslednom roku 
+			\item<1> Predbežné výsledky:
+			\begin{enumerate}
+				\item<1> Správna kategória: 22\%
+				\item<1> Blízka kategória: 34\%
+				\item<1> Nesprávna kategória: 44\%
+			\end{enumerate}
 		\end{enumerate}
 \end{frame}
 
@@ -334,9 +340,9 @@
 \begin{frame}
 	\frametitle{Ďalšie kroky}
 	\begin{itemize}
-		\item<1> trénovanie, testovanie a nastavovanie hyperparametrov modelov na väčšom datasete na serveri 
-		\item<1> výber najlepších hyperparametrov
-		\item<1> spísanie výsledkov
+		\item<1> Trénovanie, testovanie a nastavovanie hyperparametrov modelov na väčšom datasete na serveri 
+		\item<1> Výber najlepších hyperparametrov
+		\item<1> Spísanie výsledkov
 	\end{itemize}
 \end{frame}
 

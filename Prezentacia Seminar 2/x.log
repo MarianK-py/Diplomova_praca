@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.24 (MiKTeX 22.12) (preloaded format=pdflatex 2023.1.22)  12 DEC 2024 17:53
+This is pdfTeX, Version 3.141592653-2.6-1.40.24 (MiKTeX 22.12) (preloaded format=pdflatex 2023.1.22)  12 DEC 2024 19:44
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1252,10 +1252,10 @@ Package rerunfilecheck Info: File `x.out' has not changed.
 (rerunfilecheck)             Checksum: A882FE42AB6B746691FC489803CFB6C5;2776.
  ) 
 Here is how much of TeX's memory you used:
- 24318 strings out of 476404
- 474823 string characters out of 2789524
+ 24327 strings out of 476404
+ 475105 string characters out of 2789524
  1867324 words of memory out of 3000000
- 44049 multiletter control sequences out of 15000+600000
+ 44058 multiletter control sequences out of 15000+600000
  554914 words of font info for 91 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  128i,15n,122p,423b,599s stack positions out of 10000i,1000n,20000p,200000b,80000s
@@ -1263,7 +1263,7 @@ Here is how much of TeX's memory you used:
 /Users/majko/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/symbols/
 msam10.pfb><C:/Users/majko/AppData/Local/Programs/MiKTeX/fonts/type1/urw/helvet
 ic/uhvr8a.pfb>
-Output written on x.pdf (24 pages, 832032 bytes).
+Output written on x.pdf (24 pages, 832230 bytes).
 PDF statistics:
  1280 PDF objects out of 1440 (max. 8388607)
  66 named destinations out of 1000 (max. 500000)
