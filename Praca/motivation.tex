@@ -1,7 +1,17 @@
 % !TeX spellcheck = en_EN-English
 
-\chapter*{Motivation}
+%\chapter{Motivation and introduction}
+\chapter*{Introduction}
 % spomenut vysledky  v clanku 
 % preco sme sa rozhodli spravit tuto pracu
 
-Being able to accurately predict cost of patient in next period is important for both government and health insurance company.
+State governments and insurance companies collect and store vast amounts of medical data, including patient histories, treatment records, prescriptions, and billing information. This data can be used for various purposes such as detection of fraudulent activities, locate contagious disease outbreaks or allocate a future supply of purchased medication. 
+\\
+
+Another interesting application is predicting a patient's future health, allowing for forecasts of potential diseases they may develop and the treatments they might require. Unfortunately because of large amount of significant factor which information medical records does not contain this task is almost impossible to do.
+\\
+
+That's why in this study we will focus on simpler problem and that is to predict expected cost of patient in next year, meaning expected total cost of medications and medical procedures provided to patient during a year. In general we had two tasks to do, firstly embed patients records into numeric vector and secondly to train model to predict future cost of patient based on theirs previous records.
+\\
+
+In first chapter we will take a quick look at studies solving similar problems. Second chapter is then dedicated to introduction to data we used. After that in third chapter we introduce models and techniques we used for embedding of records and for prediction task. In forth chapter is short chapter about more technical aspect of software design meaning what language and libraries we used. After than in fifth chapter we specify how we implemented solutions to our two tasks. Sixth chapter is dedicated to preliminary research, meaning to testing of embedding and different model parameters. Finally in seventh chapter we discuss results of final model.  

@@ -9,7 +9,7 @@ This task is most important while also hardest to train. Our goal is to create m
 Fortunately our ultimate goal is not to predict specific patient future but only estimate how much would he most likely cost. So we expect that even though we wouldn't predict what exactly happens we would be able to estimate total cost of those records.
 \\
 
-We try multiple different model for this prediction. First three models we tried were recurrent neural networks (RNN). More specifically we tried multi-layer Elman RNN, multi-layered gated recurrent unit (GRU) RNN and multi-layer long short-term memory (LSTM) RNN. Last model we tried was Transformer.
+We try multiple different model for this prediction. First three models we tried were Recurrent Neural Networks (RNN). More specifically we tried multi-layer Elman RNN, multi-layered Gated Recurrent Unit (GRU) RNN and multi-layer Long Short-Term Memory (LSTM) RNN. Last model we tried was Transformer.
 \\
 
 \subsection{Recurrent neural network}
@@ -22,7 +22,7 @@ Elman RNN also known as simple recurrent network (SNR) is type of recurrent neur
 
 \begin{equation}
 	\label{eqn:elman}
-	h_t = act(x_t W^T_i + b_i + h_{t-1} W^T + b)
+	h_t = act(x_t W^T_i + b_i + h_{t-1} W^T + b).
 \end{equation} 
 
 Usually this result is directly used as output or go into single fully-connected feed-forward layer. In multi-layered version of this network, result of first hidden layer would go into next hidden layer together with result of that specific layer in previous step and again both would get multiplied by matrices of weight specific for that layer, summed and results goes through activation function.
@@ -33,15 +33,15 @@ Usually this result is directly used as output or go into single fully-connected
 	
 	\includegraphics[width=0.85\textwidth]{images/Elman_RNN_architecture.png}
 	
-	\caption{Architecture of Elman RNN \cite{elman_img}}
+	\caption{Architecture of Elman RNN \cite{elman_img}.}
 	\label{fig:elman_arch}
 \end{figure}
 
   
 
-\subsection{Gated recurrent unit}
+\subsection{Gated Recurrent Unit}
  
-Gated recurrent unit is more complex recurrent neural network compared to Elman RNN. This model was developed as simplification of even more complex LSTM model. We can say that it consist mainly of three parts that interact with each other and together create final prediction. Those parts are reset gate, update gate and candidate hidden state computation. We can see structure of hidden layer of GRU on figure \ref{fig:gru_arch}. On this diagram sigmoid means fully-connected feed-forward layer with sigmoid activation function and tanh means fully-connected feed-forward layer with hyperbolic tangent activation function.
+Gated recurrent unit is more complex RNN compared to Elman RNN. This model was developed as simplification of even more complex LSTM model. We can say that it consist mainly of three parts that interact with each other and together create final prediction. Those parts are reset gate, update gate and candidate hidden state computation. We can see structure of hidden layer of GRU on figure \ref{fig:gru_arch}. On this diagram sigmoid means fully-connected feed-forward layer with sigmoid activation function and tanh means fully-connected feed-forward layer with hyperbolic tangent activation function.
 \\
 
 Reset gate is on left side of diagram, it's task is to using input and previous hidden state vectors modify previous hidden state vector which goes into candidate hidden state computation. This should helps capture short-term dependencies in time series by removing part of information from previous hidden state vector.
@@ -50,7 +50,7 @@ Reset gate is on left side of diagram, it's task is to using input and previous 
 Candidate hidden vector computation is part that is similar to Elman RNN with two differences, firstly inputted hidden layer is modified by reset gate result and secondly resulting vector from this part is only candidate which goes into further calculation. This candidate contains mostly current and short-term past information thanks to specific vectors that input consist of. 
 \\
 
-Update gate, similarly to reset gate, uses concatenation of input and previous hidden state vector on input, but this time results are used to modify both previous hidden state and candidate hidden state in a way that resulting hidden state is weighted average of those two vectors where weights are results from this gate. This should help to capture long-term dependencies in time series from previous hidden state vector and reintroducing it into final hidden state by combining it with candidate hidden state vector that should contain mostly current and short-term information. 
+Update gate, similarly to reset gate, uses concatenation of input and previous hidden state vector on input, but this time results are used to modify both previous hidden state and candidate hidden state in a way that resulting hidden state is weighted average of those two vectors where weights are results from this gate. This should help to capture long-term dependencies in time series from previous hidden state vector and reintroducing it into final hidden state by combining it with candidate hidden state vector that should contain mostly current and short-term information. This whole architecture is shown on Fig. \ref{fig:gru_arch}.
 \\ 
 
 \begin{figure}[!h]
@@ -58,15 +58,15 @@ Update gate, similarly to reset gate, uses concatenation of input and previous h
 	
 	\includegraphics[width=0.6\textwidth]{images/GRU_arch.png}
 	
-	\caption{Architecture of GRU hidden layer}
+	\caption{Architecture of GRU hidden layer.}
 	\label{fig:gru_arch}
 \end{figure}
  
 Multi-layered version is achieved by stacking hidden layers where hidden state vector of one layer is input vector of next one.
  
-\subsection{Long short-term memory}
+\subsection{Long Short-Term Memory}
 
-As mentioned earlier, long short-term memory is more complex predecessor of GRU. This model was developed with aim to mitigate vanishing gradient problem, that cause lack of long-term memory in models like Elman RNN, mainly by introducing memory vector, sometimes called memory cell, that should maintain information over longer period. As we can see in figure \ref{fig:lstm_arch} this model consist of three gates, candidate memory computation. Legend in this diagram have same meaning as one in GRU architecture diagram.
+As mentioned earlier, LSTM is more complex predecessor of GRU. This model was developed with aim to mitigate vanishing gradient problem, that cause lack of long-term memory in models like Elman RNN, mainly by introducing memory vector, sometimes called memory cell, that should maintain information over longer period. As we can see in figure \ref{fig:lstm_arch} this model consist of three gates, candidate memory computation. Legend in this diagram have same meaning as one in GRU architecture diagram.
 \\
 
 All three gates and candidate memory computation has same input, which consist of input and previous hidden state vectors. In all of them this input goes into fully-connected feed-forward layer and then into activation function. In case of gates this activation function is sigmoid function, that bound all values into range (0,1), while candidate memory calculation uses hyperbolic tangent as activation function.
@@ -78,7 +78,7 @@ Forget gate has the task of removing unnecessary information from memory vector 
 Input gate together with candidate memory vector computation are meant to introduce new information into memory cell after adjustment from forget gate. Firstly model computes candidate memory then, then this vector is adjusted by input gate result and finally added to the modified previous memory vector. This results in new memory vector.
 \\
 
-Finally output gate is used to determine how much each part of memory should contribute into new hidden state vector.
+Finally output gate is used to determine how much each part of memory should contribute into new hidden state vector. We can see diagram of this process on Fig. \ref{fig:lstm_arch}.
 
  
 \begin{figure}[!h]
@@ -86,13 +86,13 @@ Finally output gate is used to determine how much each part of memory should con
  	
 	\includegraphics[width=0.6\textwidth]{images/LSTM_arch.png}
  	
- 	\caption{Architecture of LSTM hidden layer}
+ 	\caption{Architecture of LSTM hidden layer.}
  	\label{fig:lstm_arch}
 \end{figure}
 
 \subsection{Transformer}
 
-Last tested model was transformer, compared to transformer explained in subsection \ref{emb:trans} here we tried more standard architecture that contains that contains both encoder and decoder shown in figure \ref{fig:trans}. Encoder in this model is meant to contextualized representation of input while decoder takes this contextualized representation and mixes together with previous outputs to get prediction of next output. Other than these two main blocks this model usually also contains tokenizer and embedding layer to prepare in going data and fully-connected feed-forward layer with softmax activation function to turn result of decoder into probability distribution of possible tokens.  
+Last tested model was transformer, compared to transformer explained in subsection \ref{emb:trans} here we tried more standard architecture that contains that contains both encoder and decoder shown in Fig. \ref{fig:trans}. Encoder in this model is meant to contextualized representation of input while decoder takes this contextualized representation and mixes together with previous outputs to get prediction of next output. Other than these two main blocks this model usually also contains tokenizer and embedding layer to prepare in going data and fully-connected feed-forward layer with softmax activation function to turn result of decoder into probability distribution of possible tokens.  
 \\
 
 \begin{figure}[!h]
@@ -100,14 +100,14 @@ Last tested model was transformer, compared to transformer explained in subsecti
 	
 	\includegraphics[width=0.6\textwidth]{images/trans_arch.png}
 	
-	\caption{Architecture of one encoder-decoder block in transformer model from original "Attention is all you need" paper \cite{attentionAllYouNeed}}
+	\caption{Architecture of one encoder-decoder block in transformer model from original "Attention is all you need" paper \cite{attentionAllYouNeed}.}
 	\label{fig:trans}
 \end{figure}
 
-In our implementation we don't need tokenizer as our data are already in form of patient records which correspond to our tokens. In case of token embedding, we use embedding explained in section \ref{embedding} and we add positional encoding to make sure model take into account also order of records.
+In our implementation we don't need tokenizer as our data are already in form of patient records which correspond to our tokens. In case of token embedding, we use embedding explained in Sec. \ref{embedding} and we add positional encoding to make sure model take into account also order of records.
 \\
 
-Encoder architecture is very similar to one used in BERT and explained in \ref{emb:trans}, so it consist of multiple attention blocks where each block consist of multi-headed self-attention and multi-layered feed-forward neural network.
+Encoder architecture is very similar to one used in BERT and explained in Sec. \ref{emb:trans}, so it consist of multiple attention blocks where each block consist of multi-headed self-attention and multi-layered feed-forward neural network.
 \\
 
 Architecture of decoder, similarly to encoder, consist of multiple attention blocks, however in this case attention block consist of three parts instead of two. First is masked multi-headed self-attention which is similar to normal self-attention with only difference being application of masking to make sure that words on some specific positions does not affect words on other specific positions. Decoder use what's called casual or look-ahead masking which forbid future tokens to affect past ones, in our case this guarantees that record cannot be affected by record which happened after so in the future from it's perspective. Second part is multi-headed cross-attention, which takes two lists of token embeddings and compute effect of tokens in first list onto tokens in second list. In this case key and value vectors are computed from contextualized representation computed by encoder while query vectors are computed from results of self-attention in decoder. Final part of decoder attention block is multi-layered feed-forward neural network that further extract information from embeddings information from all attention heads. 

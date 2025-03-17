@@ -7,6 +7,12 @@
 \newblock \url{https://www.who.int/tools/atc-ddd-toolkit/atc-classification}.
 \newblock [Accessed 25-09-2024].
 
+\bibitem{w2v}
+{G}it{H}ub - essential-data/word2vec-sk: {V}ector representations of {S}lovak
+  words trained using word2vec --- github.com.
+\newblock \url{https://github.com/essential-data/word2vec-sk}.
+\newblock [Accessed 04-03-2025].
+
 \bibitem{word2vec}
 {G}it{H}ub - essential-data/word2vec-sk: {V}ector representations of {S}lovak
   words trained using word2vec --- github.com.
@@ -42,6 +48,12 @@ Andreas Berzel, Gillian~Z Heller, and Walter Zucchini.
 \newblock Estimating the number of visits to the doctor.
 \newblock {\em Australian \& New Zealand Journal of Statistics},
   48(2):213--224, 2006.
+
+\bibitem{ntlk}
+Steven Bird, Ewan Klein, and Edward Loper.
+\newblock {\em Natural language processing with Python: analyzing text with the
+  natural language toolkit}.
+\newblock " O'Reilly Media, Inc.", 2009.
 
 \bibitem{caballer2019predicting}
 Vicent Caballer-Tarazona, Natividad Guadalajara-Olmeda, and David
@@ -101,6 +113,17 @@ Fangxiaoyu Feng, Yinfei Yang, Daniel Cer, Naveen Arivazhagan, and Wei Wang.
 \newblock In {\em Proceedings of the 60th Annual Meeting of the Association for
   Computational Linguistics (Volume 1: Long Papers)}, pages 878--891, 2022.
 
+\bibitem{numpy}
+Charles~R. Harris, K.~Jarrod Millman, St{\'{e}}fan~J. van~der Walt, Ralf
+  Gommers, Pauli Virtanen, David Cournapeau, Eric Wieser, Julian Taylor,
+  Sebastian Berg, Nathaniel~J. Smith, Robert Kern, Matti Picus, Stephan Hoyer,
+  Marten~H. van Kerkwijk, Matthew Brett, Allan Haldane, Jaime~Fern{\'{a}}ndez
+  del R{\'{i}}o, Mark Wiebe, Pearu Peterson, Pierre G{\'{e}}rard-Marchant,
+  Kevin Sheppard, Tyler Reddy, Warren Weckesser, Hameer Abbasi, Christoph
+  Gohlke, and Travis~E. Oliphant.
+\newblock Array programming with {NumPy}.
+\newblock {\em Nature}, 585(7825):357--362, September 2020.
+
 \bibitem{MLParch}
 Miao Jin, Qinzhuo Liao, Shirish Patil, Abdulazeez Abdulraheem, Dhafer
   Al-Shehri, and Guenther Glatz.
@@ -108,12 +131,33 @@ Miao Jin, Qinzhuo Liao, Shirish Patil, Abdulazeez Abdulraheem, Dhafer
   production estimation considering the uncertainty in initialized parameters.
 \newblock {\em ACS omega}, 7(28):24145--24156, 2022.
 
+\bibitem{adam}
+Diederik~P Kingma and Jimmy Ba.
+\newblock Adam: A method for stochastic optimization.
+\newblock {\em arXiv preprint arXiv:1412.6980}, 2014.
+
+\bibitem{cbow}
+Waldemar Lopez.
+\newblock {\em VECTOR REPRESENTATION OF INTERNET DOMAIN NAMES USING WORD
+  EMBEDDING TECHNIQUES}.
+\newblock PhD thesis, 11 2019.
+
 \bibitem{lorenzi2017predictive}
 Elizabeth~C Lorenzi, Stephanie~L Brown, Zhifei Sun, and Katherine Heller.
 \newblock Predictive hierarchical clustering: Learning clusters of cpt codes
   for improving surgical outcomes.
 \newblock In {\em Machine Learning for Healthcare Conference}, pages 231--242.
   PMLR, 2017.
+
+\bibitem{w2vOrigPaper}
+Tomas Mikolov, Kai Chen, Greg Corrado, and Jeffrey Dean.
+\newblock Efficient estimation of word representations in vector space, 2013.
+
+\bibitem{skipgram}
+Nada Mimouni, Jean-Claude Moissinac, and Anh~Tuan Vu.
+\newblock Domain specific knowledge graph embedding for analogical link
+  discovery.
+\newblock 06 2020.
 
 \bibitem{miotto2016deep}
 Riccardo Miotto, Li~Li, and Joel~T Dudley.
@@ -133,6 +177,30 @@ Mohammad~Amin Morid, Olivia R~Liu Sheng, Kensaku Kawamoto, Travis Ault, Josette
 Online.
 \newblock In: Chatgpt vezia 4.
 \newblock {\em Available at: OpenAI, URL}, Task:.
+
+\bibitem{pandas}
+The pandas~development team.
+\newblock pandas-dev/pandas: Pandas, February 2020.
+
+\bibitem{scikitlearn}
+F.~Pedregosa, G.~Varoquaux, A.~Gramfort, V.~Michel, B.~Thirion, O.~Grisel,
+  M.~Blondel, P.~Prettenhofer, R.~Weiss, V.~Dubourg, J.~Vanderplas, A.~Passos,
+  D.~Cournapeau, M.~Brucher, M.~Perrot, and E.~Duchesnay.
+\newblock Scikit-learn: Machine learning in {P}ython.
+\newblock {\em Journal of Machine Learning Research}, 12:2825--2830, 2011.
+
+\bibitem{gensim}
+Radim Rehurek and Petr Sojka.
+\newblock Gensim--python framework for vector space modelling.
+\newblock {\em NLP Centre, Faculty of Informatics, Masaryk University, Brno,
+  Czech Republic}, 3(2), 2011.
+
+\bibitem{sentence_transformer}
+Nils Reimers and Iryna Gurevych.
+\newblock Sentence-bert: Sentence embeddings using siamese bert-networks.
+\newblock In {\em Proceedings of the 2019 Conference on Empirical Methods in
+  Natural Language Processing}. Association for Computational Linguistics, 11
+  2019.
 
 \bibitem{bert_pretr_2}
 Yi~Sun, Yu~Zheng, Chao Hao, and Hangping Qiu.

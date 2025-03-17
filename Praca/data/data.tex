@@ -2,8 +2,11 @@
 
 \chapter{Medical data} \label{chap:data}
 
-To train and verify model we used anonymized data obtained from Slovak National health information center also known under abbreviation NCZI. 
+To train and verify model we used fully anonymized data with matching structure to data of Slovak National Health Information Center also known under abbreviation NCZI. 
 \\
+
+By full anonymization we mean that our data not only does not contain any private information specific to single patient such as their identification number but also their record are modified in way that removes traceability. Do achieve this drugs, medical procedures and diagnosis are sometimes replaced by different but similar ones, also dates are given jitter to further obfuscate patient medical history.
+\\  
 
 Data we have can be split into two categories, those are patients records and mapping table. 
 
@@ -15,7 +18,7 @@ Patients records are split into two dataset:
 	\item Records of prescribed medicines
 \end{itemize}
 
-In total we have data about (ADD NUMBER HERE) patients.
+In total we have data about 173355 patients. Each patient have at least 70 records.
 
 \subsection{Records of medical procedures from ambulatory health care}
 
@@ -41,7 +44,7 @@ Similarly to dataset containing procedures, each row is single record of single 
 	\item age of the patient - age of the patient at the time of procedure
 	\item gender of the patient
 	\item code of the diagnosis - identification code unique for the diagnosis for which drug was prescribed
-	\item code of the drug - identification code unique for the medical procedure 
+	\item code of the drug - identification code unique for the drug 
 	\item cost of the drug - cost associated with performing of the procedure
 \end{itemize}
 
@@ -55,6 +58,8 @@ Other than datasets containing patients data we use three mapping files to map i
 	\item Drug mapping
 	\item Medical procedure mapping
 \end{itemize}
+
+These datasets are publicly available dimensional table from maintained and used by NCZI. In general all three mapping table have comparable structure consisting of three main attributes. First is internal identification number used by NCZI to join these mappings on patients records. Then second attribute is official code, in case of drugs and diagnosis it's an internationally standardized structured code while medical procedures uses code specific for Slovakia which unfortunately lack any kind of meaningful structure. Final last important part is textual description. 
 
 
 

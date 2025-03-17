@@ -1,6 +1,6 @@
 % !TeX spellcheck = en_EN-English
 
-\section{Embedding of patient}
+\section{Embedding of Patient}
 \label{embeddingImple}
 
 First of sub-tasks for prediction of patient future costs is to embed each patient record into numerical vector that would be understandable for neural network. For each record of a patient we embed four information. First and easy to implement is a timestamp which is computed using numerical and date values, then there three more tricky information and those are diagnosis, medical procedure and prescribed drug. 
@@ -11,7 +11,7 @@ To compute timestamp we first took all records for single patient and found one 
 
 \subsection{Diagnosis embedding}
 
-AS discussed in \ref{diagEmb} embedding of diagnose is based on MKCH-10-SK (ICD-10-CM) code of disease. Where we split this code into three parts and embed each other independently and finally concatenate result.
+AS discussed in Sec. \ref{diagEmb} embedding of diagnose is based on MKCH-10-SK (ICD-10-CM) code of disease. Where we split this code into three parts and embed each other independently and finally concatenate result.
 \\
 
 To embed main category we generated vector containing random numbers using uniform distribution for each letter of English alphabet we choose to sample these random numbers from interval [-0.5, 0.5]. We choose this interval mostly arbitrarily since we were planing to pass recording embedding into normalization function once it complete.
@@ -24,7 +24,7 @@ Most important part was to assign lengths to vector of each part in a way that w
 Main category, the most important part, got vector of length 28, subcategory part got length 7 and finally details got length 3.
 \\
 
-Showcase of resulting embedding can be seen on image \ref{fig:diag_emb_show} where each part is highlighted by different color and all values are rounded to two decimal.
+Showcase of resulting embedding can be seen on Fig. \ref{fig:diag_emb_show} where each part is highlighted by different color and all values are rounded to two decimal.
 
 \begin{figure}[!h]
 	\centering
@@ -32,14 +32,14 @@ Showcase of resulting embedding can be seen on image \ref{fig:diag_emb_show} whe
 	% TODO image needs update after change of lengths of each embeddings
 	\includegraphics[width=0.8\textwidth]{images/diagnosis_embed_showcase.png} 
 	
-	\caption{Showcase of resulting embedding of specific diagnosis (rounded to two decimal places)}
+	\caption{Showcase of resulting embedding of specific diagnosis (rounded to two decimal places).}
 	\label{fig:diag_emb_show}
 \end{figure} 
 
 
 \subsection{Drug embedding}
 
-Embedding was done in very similar way as in diagnosis embedding, meaning each level was embedded separately and final embedding was done as concatenations of them. In this case each level was embed using random vector from uniform distribution with interval [-0.5, 0.5]. We used random vectors for each level since none of levels contains any internal sub-groupings similar to subgroups of diagnosis (see \ref{mkch_subdiv} subgroup codes). To encode importance of levels we again used lengths of random vectors, where with higher level vectors shortens. Lengths of vectors for each level can be seen in \ref{tab:drug_lev_len}. So total length of embedding is same as embedding for diagnosis.In case code is incomplete, meaning it's missing higher levels, missing part is substituted with zeros which we consider neutral elements.
+Embedding was done in very similar way as in diagnosis embedding, meaning each level was embedded separately and final embedding was done as concatenations of them. In this case each level was embed using random vector from uniform distribution with interval [-0.5, 0.5]. We used random vectors for each level since none of levels contains any internal sub-groupings similar to subgroups of diagnosis (see Sec. \ref{mkch_subdiv} subgroup codes). To encode importance of levels we again used lengths of random vectors, where with higher level vectors shortens. Lengths of vectors for each level can be seen in Tab. \ref{tab:drug_lev_len}. So total length of embedding is same as embedding for diagnosis.In case code is incomplete, meaning it's missing higher levels, missing part is substituted with zeros which we consider neutral elements.
 \\
 
 \begin{table}[!h]
@@ -53,7 +53,7 @@ Embedding was done in very similar way as in diagnosis embedding, meaning each l
 		4 & 2 \\ \hline
 		5 & 1 \\ \hline
 	\end{tabular}
-	\caption{Lengths of random vectors assigned to each information level of ATC code}
+	\caption{Lengths of random vectors assigned to each information level of ATC code.}
 	\label{tab:drug_lev_len}
 \end{table}  
 
@@ -61,10 +61,17 @@ With this embedding we should get codes whose similarity is more dependent on wh
 
 \subsection{Medical procedure embedding}
 
-Embedding of medical procedure was straightforward since we used already trained model. We inputted all medical procedure descriptions into LaBSE model resulting in 768 dimensional vector for each. Once all descriptions were embedded we took all embedding and performed principal component analysis (PCA) on them. Finally from results of PCA we took first 119 dimensions which account for over 90\% of variance in original embedding, meaning we substantially decreased dimensionality of embedding while retaining most of the information.
+Embedding of medical procedure was straightforward since we used already trained model. 
 \\
+%In case of LLM model we inputted complete medical procedure descriptions into model to generate their embeddings, and then took those embedding and performed principal component analysis (PCA) on them to decrease dimensionality while retaining most of variance, in other words information, from original embedding. In case of Word2vec model we firstly
+%\\
 
-For LLM we choose language-agnostic BERT sentence embedding also known under abbreviation LaBSE. It's a model developed by Goggle to encode text into high dimensional vectors. This model was trained 109 languages including Slovak. Main goal of this model is to generate similar representation to pairs of sentences which have same meaning and are only translations in two different language \cite{labse_kaggle}. This approach should produce better results compared to standard text embedding models trained solely on Slovak language, since LaBSE model is during training comparing embedding not only to similar sentences in Slovak language but also their translation in other which could mitigate a relatively small amount of Slovak language data compared to other more commonly used languages. Additionally this model could know domain specific words in our case medical terms which are left in foreign language and would most likely not be found in Slovak only corpus. To confirm this expectation, we compare results to Word2Vec model trained on purely Slovak language using corpus containing 110 million words \cite{word2vec}. As a way of comparison we choose to  firstly group embedding into categories using K-nearest neighbors algorithm (KNN), and visually asses whether description in resulting categories show any resemblance or whether they seem random. 
+As discussed in \ref{procedureEmb}, for LLM we choose LaBSE model. It's a model developed by Goggle to encode text into high dimensional vectors. This model was trained 109 languages including Slovak. Main goal of this model is to generate similar representation to pairs of sentences which have same meaning and are only translations in two different language \cite{labse_kaggle}. Using this model was straightforward and we just had to input complete description of procedure into to receive 768 dimensional dense encoding of it. After computing all embedding we performed principal component analysis (PCA) to reduce dimensionality of this embedding while maintaining most of the variance or in other words most of the information stored inside it.
+\\
+%This approach should produce better results compared to standard text embedding models trained solely on Slovak language, since LaBSE model is during training comparing embedding not only to similar sentences in Slovak language but also their translation in other which could mitigate a relatively small amount of Slovak language data compared to other more commonly used languages. Additionally this model could know domain specific words in our case medical terms which are left in foreign language and would most likely not be found in Slovak only corpus. To confirm this expectation, we compare results to Word2Vec model trained on purely Slovak language using corpus containing 110 million words \cite{word2vec}. As a way of comparison we choose to  firstly group embedding into categories using K-nearest neighbors algorithm (KNN), and visually asses whether description in resulting categories show any resemblance or whether they seem random. 
+%\\
+
+We tried also different approach using Word2vec model trained specifically for Slovak language. More specifically we used word2vec-sk model made by company Essential Data \cite{w2v}. This model was trained on corpus containing around 110 millions of words. More specifically we choose version of model trained using CBOW approach. Since this model is trained to embed words not a text, we firstly split description of procedure into words and lemmatize those words, in other word change into their base form, then using Word2vec model we embed each word into dense 200 dimensional vector separately and finally create description embedding as an average of embeddings of all words in it.
 \\
 
 Finally we create record embedding by concatenating all four parts. Since we have two separate datasets, one for prescribed drugs and one for medical procedures, we always have only three out of four information available for each record, since timestamp and diagnosis are always available, we substitute missing part with vector of zeros with appropriate length which is most neutral embedding since we centered both medical procedure and drug prescription embedding around zero.

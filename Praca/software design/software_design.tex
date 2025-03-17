@@ -1,14 +1,26 @@
 % !TeX spellcheck = en_EN-English
 
-\chapter{Software design} \label{chap:softwaredesign}
+\chapter{Software Design} \label{chap:softwaredesign}
 
-Whole code was written using Python language. We chose this language for its ease of use and extensive support for data processing and machine learning.
+This chapter is dedicated to introduce software used to create, train, validate and used machine learning model described in this thesis.
+Whole code was written using Python language, more specifically in \texttt{Python 3.11.4}. We chose this language for its ease of use and wide selection of libraries for data processing and machine learning. All scripts are available at the GitHub repository \url{https://github.com/MarianK-py/diploma_thesis_code}.
 \\
 
 Whole code can be split into three parts:
 
 \begin{enumerate}
-	\item Embedding - code to add embedded vectors into mapping files, has to be run once 
+	\item Embedding - code to add create embedding mapping files
 	\item Model training and validation - code to setup, train, validate and save prediction models, has to be run once 
 	\item Predictor - code to load trained models and predict future cost of inputted patients 
 \end{enumerate}
+
+Now we will introduce libraries and pre-trained models used in our code. Firstly ones used in general and then specific ones used in each part mentioned above.
+
+\section{General}
+
+Some of the libraries were used in all parts of code to maintain some coherence in technologies used. 
+\\
+
+To this category belong \texttt{Pandas 2.2.1} library a fast, powerful, flexible and easy to use open source data analysis and manipulation tool \cite{pandas} which was used to load, manipulate and save all datasets. Another one is \texttt{Numpy 1.26.4} library an open source project that enables numerical computing with Python \cite{numpy} which we use for computations such as random number generation, computations of mean and standard deviation for data normalization and many more.
+
+\input{software design/embedDesign}

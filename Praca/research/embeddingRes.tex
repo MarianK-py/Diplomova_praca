@@ -117,4 +117,32 @@ Based on results of these tests we can conclude that embeddings works generally 
 
 \subsection{Medical procedure embedding}
 
-Embedding of medical procedures is two step operation, firstly embedding using LaBSE model and second dimension reduction using PCA. 
+As said in previous chapters we tried two different approaches both using pretrained models. After we embed medical procedure descriptions both ways we quickly found out that a lot of procedures did not received any embedding from Word2vec model, more specifically 731 out of 7329 procedures, so almost 10\% were not embedded, and even among procedures that receive any kind of embedding there were a lot words that were not embedded and so they didn't contributed to resulting embedding. This was caused mostly by limitations of Word2vec model that is able to embed only words which are in it's dictionary, so words available in it's training corpus, and it seems like a lot of professional medical terms such as 'polycystické' or 'cytokín' were not in corpus. Similar issue potentially could have happened also while using LaBSE model, however we found no case where LaBSE model was not able whole procedure. Also thanks to most professional medical terms being similar across multiple languages and fact that LaBSE model was trained on much bigger corpus consisting of 109 distinct languages it's highly probable that much more terms were successfully embed creating much better embedding of whole description. 
+\\
+
+Since results of embedding using Word2vec model has a lot of issue we decided to proceed using only LaBSE model which was at least able to embed all descriptions. This model gave us embedding with 768 dimensions, in order to densify this information while maintaining most of it we decided to use PCA. We specifically wanted to first few dimensions that would explain over 90\% of variance, since in the case of PCA, the fraction of explained variance is often used as a good proxy for the fraction of preserved information. After running this algorithm we ended up with 119 dimensional embedding that explained 90.4\% of variance of original embedding.
+\\
+
+To confirm that resulting embedding successfully encode description of procedure and gave similar procedures similar embedding we did same thing as in case of drug and disease embedding validation and try to group embeddings using K-means algorithm. However in this case we did not have any information similar to highest level of codes for drugs and diagnosis on which we could base our validation, so we decided to just manually look through clusters to assess whether procedures inside them have meaningful connections.
+\\
+
+Since we have 7329 procedures we choose our K, so number of clusters, to be 365 to have on average close to 20 procedures in single group. This decision was mostly arbitrary. After checking multiple clusters we found cases such as group cluster number 215 which procedures are listed in Fig. \ref{fig:G215} where we can see that all procedures has something to do with transplantation. However in some cases clusters contained mixture of seemingly random procedures, such as procedures in cluster 45 in Fig. \ref{fig:G45} where we can see mixture evaluation of final reports mixed with investigation of pharmacokinetics and papillosphincterotomy, fortunately it seems content of clusters like these is not purely random but consist of multiple subgroups which might indicate embedding works as intended and we just clustered procedures into too few groups.
+
+
+\begin{figure}[!h]
+	\centering
+	
+	\includegraphics[width=0.6\textwidth]{images/G215.png}
+	
+	\caption{Medical procedures grouped in cluster number 215.}
+	\label{fig:G215}
+\end{figure}
+
+\begin{figure}[!h]
+	\centering
+	
+	\includegraphics[width=1.1\textwidth]{images/G45.png}
+	
+	\caption{Medical procedures grouped in cluster number 45.}
+	\label{fig:G45}
+\end{figure}

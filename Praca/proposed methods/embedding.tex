@@ -1,6 +1,6 @@
 % !TeX spellcheck = en_EN-English
 
-\section{Embedding of patient}
+\section{Embedding of Patient}
 \label{embedding}
 
 First of sub-tasks for prediction of patient future costs is to embed each patient record into numerical vector that would be understandable for neural network. For each record of a patient we embed four information. First and easy to implement is a timestamp which is computed using numerical and date values, then there three more tricky information and those are diagnosis, medical procedure and prescribed drug. 
@@ -19,11 +19,11 @@ Base diagnose information we embed was ICD-10-CM code of disease.ICD-10-CM stand
 	
 	\includegraphics[width=0.8\textwidth]{images/ICD-10-CM.png}
 	
-	\caption{Structure of MKCH-10 code}
+	\caption{Structure of MKCH-10 code.}
 	\label{fig:icd-10-cm}
 \end{figure}
 
-This code consist of three parts as shown on image \ref{fig:icd-10-cm}. First part is one letter that encodes main categories of diseases also known as chapter, for example codes starting with G are diseases of the nervous system. 
+This code consist of three parts as shown on Fig. \ref{fig:icd-10-cm}. First part is one letter that encodes main categories of diseases also known as chapter, for example codes starting with G are diseases of the nervous system. 
 After that there is two numeric characters that further specify subcategory of disease such as codes from G40 to G47 which are episodic and paroxysmal disorders and specifically G47 are sleep disorders. 
 We can see that episodic and paroxysmal disorders are only up to G47, meaning that theoretically there can exist subgroups G48 and G49 which have 4 in second position but does not belong to same G4 subcategory as G40 or G47 \label{mkch_subdiv}. Thankfully this is not the case and in cases like this when higher lower subcategory (like G4) does not have 10 lower level subcategories (like G47) these subcategories does not exist at all and in case it have more than 10 lower level subcategories it gets multiple consecutive high level subcategories, for example disorders of other endocrine glands spans from E20 to E35. 
 Then code contains dot after which there are characters that further describe details of disease such as etiology, anatomic site and severity. Official documentation of ICD-10-CM codes stands that codes can be up to 7 characters long meaning that after first three characters specifying category there can be up to 4 alphanumeric to further specify the disease \b{CITE}, however Slovak version MKCH-10 codes contains at most two numeric characters to specify disease \b{cite} and these details are organized in a way where the first position conveys higher-level information than the second, for example G47.3 is sleep apnea and G47.30 is primary central sleep apnea.
@@ -39,14 +39,14 @@ Importance of each level was encoded using different lengths of vector for each 
 \subsection{Drug embedding}
 \label{drugEmb}
 
-Similarly to diagnosis, to embed drug information we embed international code associated to these drug. In case of drugs it was Anatomical Therapeutic Chemical classification system also known under abbreviation ATC. In a same way as MKCH-10 code this code can be split into multiple parts where each next part contains finer information. It contains of 5 parts or levels. First level encodes main anatomical or pharmacological groups. There are fourteen such groups, encoded by single letter, which are shown in the figure \ref{fig:atc_l1}. Then second level encodes pharmacological or therapeutic subgroup using two digit number, after that there two levels that further specify pharmacological, therapeutic or even chemical subgroup, these two levels are both encoded using single letter each. Final fifth encoded with two digit number contains information about specific chemical substance inside drug.
+Similarly to diagnosis, to embed drug information we embed international code associated to these drug. In case of drugs it was Anatomical Therapeutic Chemical classification system also known under abbreviation ATC. In a same way as MKCH-10 code this code can be split into multiple parts where each next part contains finer information. It contains of 5 parts or levels. First level encodes main anatomical or pharmacological groups. There are fourteen such groups, encoded by single letter, which are shown in the Fig. \ref{fig:atc_l1}. Then second level encodes pharmacological or therapeutic subgroup using two digit number, after that there two levels that further specify pharmacological, therapeutic or even chemical subgroup, these two levels are both encoded using single letter each. Final fifth encoded with two digit number contains information about specific chemical substance inside drug.
 
 \begin{figure}[!h]
 	\centering
 	
 	\includegraphics[width=0.8\textwidth]{images/atc_l1_classification_who.jpg}
 	
-	\caption{Fourteen main anatomical or pharmacological groups and their corresponding first level ATC code \cite{atc_who}}
+	\caption{Fourteen main anatomical or pharmacological groups and their corresponding first level ATC code \cite{atc_who}.}
 	\label{fig:atc_l1}
 \end{figure}
 
@@ -57,11 +57,12 @@ Embedding was done in very similar way as in diagnosis embedding, meaning each l
 \subsection{Medical procedure embedding}
 \label{procedureEmb}
 
-Final part to embed was medical procedures. In this case there is no structured code that can be used and is implemented in Slovak healthcare systems. So what we have done is to embed description of the procedures. For that we used large language model (LLM) trained on multiple languages including Slovak. Dimensionality of resulting embedding was then reduced using PCA, to get rid of dimensions with small variance meaning they encode small amount of information. 
+Final part to embed was medical procedures. In this case there is no structured code that can be used and is implemented in Slovak healthcare systems. So what we have done is to embed description of the procedures. For that we tried two different approaches, first was large language model (LLM) trained on multiple languages including Slovak and second was Word2vec model specific for Slovak language. Dimensionality of resulting embedding was then reduced using PCA, to get rid of dimensions with small variance meaning they encode small amount of information. 
 \\
 
-For LLM we choose language-agnostic BERT sentence embedding also known under abbreviation LaBSE. It's a model developed by Goggle to encode text into high dimensional vectors. This model was trained 109 languages including Slovak. Main goal of this model is to generate similar representation to pairs of sentences which have same meaning and are only translations in two different language \cite{labse_kaggle}. This approach should produce better results compared to standard text embedding models trained solely on Slovak language, since LaBSE model is during training comparing embedding not only to similar sentences in Slovak language but also their translation in other which could mitigate a relatively small amount of Slovak language data compared to other more commonly used languages. Additionally this model could know domain specific words in our case medical terms which are left in foreign language and would most likely not be found in Slovak only corpus. To confirm this expectation, we compare results to Word2Vec model trained on purely Slovak language using corpus containing 110 million words \cite{word2vec}. As a way of comparison we choose to  firstly group embedding into categories using K-nearest neighbors algorithm (KNN), and visually asses whether description in resulting categories show any resemblance or whether they seem random. 
+For LLM we specifically choose language-agnostic BERT sentence embedding also known under abbreviation LaBSE. Which is a model trained with main goal being to generate similar representation to pairs of sentences which have same meaning and are only translations in two different language \cite{labse_kaggle}. 
 \\
+
 Architecture of LaBSE model consist of 4 parts \cite{labse_hug}:
 
 \begin{enumerate}
@@ -96,10 +97,10 @@ Third and most important layer is encoding. This is the layer in which contextua
 Each head of self-attention layer takes a input set of embeddings and to compute new set of embeddings which should encode not only original information but also information about relationship between original ones, in other words it encodes effect of tokens onto each other. To do that it compute for each input embedding three vectors usually called key, query and value by multiplying input embedding with three matrices which values are learned during training. After that to get new embedding query vector is multiplied with matrix created from key vectors so resulting vector is vector of dot product of single query and all keys, this vector then goes through softmax function to normalize result. In some transformer models before softmax this vector get masked. Masking is done by setting values where key vector belongs to later embedding than query to minus infinity, this way after softmax this values become zeros. This is done so that later embedding does not affect previous ones. It's mostly useful in models trained to predict next token in order for model to learn to predict only based on tokens from past on not future. However in case of model like BERT where emphasis is on extracting as much information from input text masking is not done. Final step to get new embedding is to multiply vector we got after applying softmax with matrix composed of value vector to get linear combination of value vectors. This resulting vector is new embedding. This is done for all query vectors. List list resulting vectors is output embedding of attention head. Since this model use multi-headed attention more specifically in case of LaBSE 12-headed attention, this process is simultaneously independently done 12 times and results of each head are than concatenated into final result of attention. By using multiple head we expect that each head can extract different information from input and final concatenation give us result that contains all extracted information.    
 \\
 
-This concatenation of new embeddings goes than into multi-layered feed-forward neural network sometimes also called multilayer perceptron or MLP for short, architecture of this model is explained in subsection \ref{MLP}.
+This concatenation of new embeddings goes than into multi-layered feed-forward neural network sometimes also called Multilayer Perceptron or MLP for short, architecture of this model is explained in Sec. \ref{MLP}.
 \\
 
-Result goes to next attention block and process is repeated again. Result of final attention block then goes to last part which is task layer, this layer can be viewed as simple decoder that map resulting embeddings back into token space. Based on this results is then model pre-trained. Training process of BERT model usually consist of two tasks on which are model trained at the same time. First is masked language modeling (MLM) where 15\% of input tokens are masked meaning either replaced by mask placeholder or by random different token, after that masked input goes into model, then from resulting tokens are taken those on position of masked tokens in input and are compared to correct token before masking which creates error that is back-propagated through model updating it's parameters \cite{bert_pretr_1}. Other task usually used is called next sentence prediction (NSP), in this task model gets input which start with special classify token and after that two spans of texts separated by special separator token. Task of model is to say whether these two spans of text can appear one after another or more precisely whether they appeared one after another in training corpus and put this information into first token of result encoded by two special tokens either "is next" or "not next" token and similarly difference between expected and resulting first token create error that back-propagates through model \cite{bert_pretr_2}. However in some BERT-based model like LaBSE second task is replaced with translation language modeling (TLM), this task is extention of MLM in which model gets two concatenated sentence instead of one and where the second sentence is translation of the first in another language, rest of the task is than same as in MLM, so whole input gets masked and model is tasked to predict masked tokens \cite{bert_pretr_3}. Task layer is used primarly in only during pre-training and is omitted when model is used for different task as many use-cases does not need tokens in results but use embeddings from encoding layer as form of text encoding which is that further used in task specific layers on which then model is fine-tuned.
+Result goes to next attention block and process is repeated again. Result of final attention block then goes to last part which is task layer, this layer can be viewed as simple decoder that map resulting embeddings back into token space. Based on this results is then model pre-trained. Training process of BERT model usually consist of two tasks on which are model trained at the same time. First is Masked Language Modeling (MLM) where 15\% of input tokens are masked meaning either replaced by mask placeholder or by random different token, after that masked input goes into model, then from resulting tokens are taken those on position of masked tokens in input and are compared to correct token before masking which creates error that is back-propagated through model updating it's parameters \cite{bert_pretr_1}. Other task usually used is called Next Sentence Prediction (NSP), in this task model gets input which start with special classify token and after that two spans of texts separated by special separator token. Task of model is to say whether these two spans of text can appear one after another or more precisely whether they appeared one after another in training corpus and put this information into first token of result encoded by two special tokens either "is next" or "not next" token and similarly difference between expected and resulting first token create error that back-propagates through model \cite{bert_pretr_2}. However in some BERT-based model like LaBSE second task is replaced with translation language modeling (TLM), this task is extention of MLM in which model gets two concatenated sentence instead of one and where the second sentence is translation of the first in another language, rest of the task is than same as in MLM, so whole input gets masked and model is tasked to predict masked tokens \cite{bert_pretr_3}. Task layer is used primarly in only during pre-training and is omitted when model is used for different task as many use-cases does not need tokens in results but use embeddings from encoding layer as form of text encoding which is that further used in task specific layers on which then model is fine-tuned.
 
 \subsubsection{Pooling layer}
 
@@ -118,3 +119,36 @@ After we embed each description of procedure using LaBSE model, we get 768 dimen
 \\
 
 Finally we create record embedding by concatenating all four parts. Since we have two separate datasets, one for prescribed drugs and one for medical procedures, we always have only three out of four information available for each record, since timestamp and diagnosis are always available, we substitute missing part with vector of zeros with appropriate length which is most neutral embedding since we centered both medical procedure and drug prescription embedding around zero.
+
+\subsubsection{Word2vec model}
+
+Word2vec is a neural network-based method for generating word embeddings, which are dense vector representations of words that capture their semantic meaning and relationships, in other words properties like distance between two embeddings contains some underlying information about those words such as their similarity. There are two main approaches to implementing Word2vec:
+
+\begin{itemize}
+	\item Continuous bag-of-words (CBOW) 
+	\item Skip-gram
+\end{itemize}
+
+Model using CBOW approach gets sequence of words called context with one being missing and on the output it's trying to predict missing target word. Model initially assign one-hot encoding to each word in it's dictionary. During training, each word from context is firstly converted into it's one hot encoded embedding which is then multiplied by weight matrix to get their lower dimensional dense embedding, dense embedding of all words in context are then averaged out and resulting embedding goes into hidden layer which transform vector back into dimension of vocabulary, finally softmax function is applied to get probability of each word from vocabulary to be predicted as missing word. We can see this architecture in \ref{fig:cbow_arch}. Training is usually done using fixed context window moving along training text.
+\\
+
+
+\begin{figure}[!h]
+	\centering
+	
+	\includegraphics[width=1\textwidth]{images/CBOW_arch.png}
+	
+	\caption{Architecture of NN to train CBOW implenetation of Word2vec model \cite{cbow}.}
+	\label{fig:cbow_arch}
+\end{figure}
+
+Skip-gram approach works in opposite way, where model gets target word and is trying to predict context around it. Similarly to CBOW, input word is firstly one-hot encoded then multiplied by weight matrix to transform it into dense encoding, the goes into next layer to transform it back into dimension of vocabulary goes into softmax creating vector of probabilities of surrounding context words. Error of Skip-gram is the sum of the negative log-likelihood of all context words. We can see this architecture in \ref{fig:skip_arch}.
+
+\begin{figure}[!h]
+	\centering
+	
+	\includegraphics[width=1\textwidth]{images/Skip_arch.png}
+	
+	\caption{Architecture of NN to train Skip-gram implenetation of Word2vec model \cite{skipgram}}
+	\label{fig:skip_arch}
+\end{figure}
