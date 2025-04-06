@@ -7,23 +7,15 @@ For embedding we used couple additional libraries since we utilized couple of al
 \\
 
 \begin{itemize}
-	\item \texttt{Scikit-learn 1.2.2} - simple and efficient tools for predictive data analysis \cite{scikitlearn},  we specifically use function to compute PCA in order to decrease dimensionality of medical procedure embedding and function K-means clustering in order to check embedding has desired property
+	\item \texttt{Scikit-learn 1.2.2} - simple and efficient tools for predictive data analysis \cite{scikitlearn},  we specifically use function to compute PCA in order to decrease dimensionality of medical procedure embedding and function K-means clustering in order to check embedding has desired property.
 	
-	\item \texttt{NTLK}
+	\item \texttt{NTLK 3.8.1} - this abbreviation stands for Natural Language Toolkit, it's a library for building Python programs to work with human language data \cite{ntlk}, in our case we used tokenizer function to split description of medial procedures into tokens, in our case words. 
 	
-	\item \texttt{Simplemma}
+	\item \texttt{Simplemma 1.1.2} - which provides a simple and multilingual approach to look for base forms or lemmata \cite{simplemma}, we used to lemmatize our tokenized text since lemmatizer provided by this library contains also Slovak and Czech languages.  
 	
-	\item \texttt{SentenceTransformer}
+	\item \texttt{SentenceTransformer 2.2.2} - go-to Python module for accessing, using, and training state-of-the-art text and image embedding models \cite{sentence_transformer}, which allowed to easily load LaBSE model from Hugging face.
 	
-	\item \texttt{Gensim}
+	\item \texttt{Gensim 4.3.3} - library for topic modelling, document indexing and similarity retrieval with large corpora \cite{gensim}, which we used to load Word2vec model trained specifically for Slovak language
 \end{itemize}
 
 
-
-Simplemma (lemmatizer)
-
-sentence transformers (LaBSE)
-
-gensim (word2vec)
-
-ntlk (word tokenizer)

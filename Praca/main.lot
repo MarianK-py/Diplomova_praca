@@ -3,9 +3,14 @@
 \addvspace {10\p@ }
 \addvspace {10\p@ }
 \addvspace {10\p@ }
-\contentsline {table}{\numberline {5.1}{\ignorespaces Lengths of random vectors assigned to each information level of ATC code.\relax }}{29}{table.caption.30}%
-\contentsline {table}{\numberline {5.2}{\ignorespaces Intervals of cost for each category.\relax }}{30}{table.caption.32}%
+\contentsline {table}{\numberline {5.1}{\ignorespaces Lengths of random vectors assigned to each information level of ATC code.\relax }}{31}{table.caption.30}%
+\contentsline {table}{\numberline {5.2}{\ignorespaces Intervals of cost for each category.\relax }}{32}{table.caption.32}%
 \addvspace {10\p@ }
-\contentsline {table}{\numberline {6.1}{\ignorespaces Similarities of embedding of multiple chosen MKCH-10 codes\relax }}{32}{table.caption.33}%
-\contentsline {table}{\numberline {6.2}{\ignorespaces Similarities of embedding of multiple chosen ATC codes\relax }}{34}{table.caption.35}%
+\contentsline {table}{\numberline {6.1}{\ignorespaces Similarities of embedding of multiple chosen MKCH-10 codes\relax }}{37}{table.caption.33}%
+\contentsline {table}{\numberline {6.2}{\ignorespaces Size of clusters and frequencies of first level diagnosis codes in them.\relax }}{38}{table.caption.34}%
+\contentsline {table}{\numberline {6.3}{\ignorespaces Similarities of embedding of multiple chosen ATC codes\relax }}{39}{table.caption.35}%
+\contentsline {table}{\numberline {6.4}{\ignorespaces Size of clusters and frequencies of first level drug codes in them.\relax }}{40}{table.caption.36}%
+\contentsline {table}{\numberline {6.5}{\ignorespaces Test and valuation loss for different number of layers and width of layer in LSTM model.\relax }}{43}{table.caption.39}%
+\contentsline {table}{\numberline {6.6}{\ignorespaces Test and valuation loss for different number of layers and number of heads in Transformer model.\relax }}{44}{table.caption.40}%
+\contentsline {table}{\numberline {6.7}{\ignorespaces Test and valuation loss for different number of layers and number of heads in Transformer model.\relax }}{44}{table.caption.41}%
 \addvspace {10\p@ }

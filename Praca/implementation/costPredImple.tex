@@ -43,4 +43,4 @@ Model itself consist of input layer of size 196 (final size of our embedding) af
 We optimize multiple parameters of network itself as well few parameters important for training. From perspective of model itself we tried multiple number of layers so depths of model, as well as their size and non-linear functions in-between them. From training perspective tried three loss functions, more precisely we tried mean square loss, cross entropy loss and negative log likelihood loss, and multiple values for learning rate. For optimizer we choose Adam \cite{adam}.  
 \\
 
-Setting of parameters was done by training multiple models on smaller subset of dataset locally and then final model was trained on chosen parameters with complete dataset on server.
+Setting of parameters was done by training multiple models on smaller subset of dataset locally and then final model was trained on chosen hyperparameters with complete dataset on server. All model were trained using using batch approach to limit amount of data loaded at once while not computing gradient solely on loss from single input, in our case single patient record.

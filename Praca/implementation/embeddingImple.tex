@@ -7,11 +7,11 @@ First of sub-tasks for prediction of patient future costs is to embed each patie
 
 \subsection{Timestamp}
 
-To compute timestamp we first took all records for single patient and found one with earliest date. This record is then used as pivot for computation of all timestamp for patient. To compute timestamp for this record we took age of patient multiplied by 365 to get approximate age of patient in days which served as a timestamp. For all subsequent records we compute difference between date of record and date of first record in days and add this difference to timestamp from first record to create one for this record.
+To compute timestamp we first took all records for single patient and found one with earliest date. This record is then used as pivot for computation of all timestamp for patient. To compute timestamp for this record we took age of patient in years add half year and multiplied it by 365 to get approximate age of patient in days which served as a timestamp, we add half a year in order to improve approximation since we have only age in years meaning we don't know whether they had birthday one or eleven months ago, however we expect it to be on average six months so half of a year. For all subsequent records we compute difference between date of record and date of first record in days and add this difference to timestamp from first record to create one for this record. 
 
 \subsection{Diagnosis embedding}
 
-AS discussed in Sec. \ref{diagEmb} embedding of diagnose is based on MKCH-10-SK (ICD-10-CM) code of disease. Where we split this code into three parts and embed each other independently and finally concatenate result.
+As discussed in Sec. \ref{diagEmb} embedding of diagnose is based on MKCH-10-SK (ICD-10-CM) code of disease. Where we split this code into three parts and embed each other independently and finally concatenate result.
 \\
 
 To embed main category we generated vector containing random numbers using uniform distribution for each letter of English alphabet we choose to sample these random numbers from interval [-0.5, 0.5]. We choose this interval mostly arbitrarily since we were planing to pass recording embedding into normalization function once it complete.

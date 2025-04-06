@@ -25,6 +25,11 @@
   \url{https://www.kaggle.com/models/google/labse/tensorFlow2/labse/1?tfhub-redirect=true}.
 \newblock [Accessed 18-10-2024].
 
+\bibitem{pytorchLSTM}
+{L}{S}{T}{M} --- {P}y{T}orch 2.6 documentation --- pytorch.org.
+\newblock \url{https://pytorch.org/docs/stable/generated/torch.nn.LSTM.html}.
+\newblock [Accessed 23-03-2025].
+
 \bibitem{ncziMKCH}
 Medzinárodná klasifikácia chorôb - {M}{K}{C}{H}-10 --- nczisk.sk.
 \newblock
@@ -42,6 +47,10 @@ Sivanand Achanta, Rambabu Banoth, Ayushi Pandey, Anandaswarup Vadapalli, and
 \newblock Contextual representation using recurrent neural network hidden state
   for statistical parametric speech synthesis.
 \newblock In {\em SSW}, pages 172--177, 2016.
+
+\bibitem{simplemma}
+Adrien Barbaresi.
+\newblock Simplemma, January 2023.
 
 \bibitem{num_of_vis}
 Andreas Berzel, Gillian~Z Heller, and Walter Zucchini.
@@ -167,6 +176,14 @@ Riccardo Miotto, Li~Li, and Joel~T Dudley.
   on IR Research, ECIR 2016, Padua, Italy, March 20--23, 2016. Proceedings 38},
   pages 768--774. Springer, 2016.
 
+\bibitem{morid2018supervised}
+Mohammad~Amin Morid, Kensaku Kawamoto, Travis Ault, Josette Dorius, and Samir
+  Abdelrahman.
+\newblock Supervised learning methods for predicting healthcare costs:
+  systematic literature review and empirical evaluation.
+\newblock In {\em AMIA annual symposium proceedings}, volume 2017, page 1312,
+  2018.
+
 \bibitem{morid2019healthcare}
 Mohammad~Amin Morid, Olivia R~Liu Sheng, Kensaku Kawamoto, Travis Ault, Josette
   Dorius, and Samir Abdelrahman.
@@ -181,6 +198,15 @@ Online.
 \bibitem{pandas}
 The pandas~development team.
 \newblock pandas-dev/pandas: Pandas, February 2020.
+
+\bibitem{pytorch}
+Adam Paszke, Sam Gross, Francisco Massa, Adam Lerer, James Bradbury, Gregory
+  Chanan, Trevor Killeen, Zeming Lin, Natalia Gimelshein, Luca Antiga, Alban
+  Desmaison, Andreas Köpf, Edward Yang, Zach DeVito, Martin Raison, Alykhan
+  Tejani, Sasank Chilamkurthy, Benoit Steiner, Lu~Fang, Junjie Bai, and Soumith
+  Chintala.
+\newblock Pytorch: An imperative style, high-performance deep learning library,
+  2019.
 
 \bibitem{scikitlearn}
 F.~Pedregosa, G.~Varoquaux, A.~Gramfort, V.~Michel, B.~Thirion, O.~Grisel,

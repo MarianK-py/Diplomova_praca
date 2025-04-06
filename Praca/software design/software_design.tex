@@ -14,7 +14,7 @@ Whole code can be split into three parts:
 	\item Predictor - code to load trained models and predict future cost of inputted patients 
 \end{enumerate}
 
-Now we will introduce libraries and pre-trained models used in our code. Firstly ones used in general and then specific ones used in each part mentioned above.
+Code for model training and validation, and code for prediction use same technologies, that's we put them into single section. Now we will introduce libraries and pre-trained models used in our code. Firstly ones used in general and then specific ones used in each part mentioned above.
 
 \section{General}
 
@@ -24,3 +24,5 @@ Some of the libraries were used in all parts of code to maintain some coherence 
 To this category belong \texttt{Pandas 2.2.1} library a fast, powerful, flexible and easy to use open source data analysis and manipulation tool \cite{pandas} which was used to load, manipulate and save all datasets. Another one is \texttt{Numpy 1.26.4} library an open source project that enables numerical computing with Python \cite{numpy} which we use for computations such as random number generation, computations of mean and standard deviation for data normalization and many more.
 
 \input{software design/embedDesign}
+
+\input{software design/modelDesign}

@@ -1,6 +1,24 @@
 % !TeX spellcheck = en_EN-English
 
-From perspective of prediction of patient future one of similar studies is study called Deep Patient by Riccardo Miotto et al. \cite{miotto2016deep} where they were predicting which disease would patient have in the future based on his current state. Their input data were contained general demographic details such as age, gender and race, and common clinical descriptors such as diagnoses, medications, procedures, and lab tests. To predict future diseases they use random forest model with one-vs.-all learning. Study focus primarily on improving results of model by reducing noise in data by reducing their dimensionality. They compared standard approaches like principle component analysis, Gaussian mixture model or K-means, but main focus was approach using stack of denoising autoencoders. Model using stack of denoising autoencoders to reduce dimension showed significantly better results compared to both model using original dataset and models using other dimensionality reduction techniques.
+Main goal of our study is to predict cost of patient in the future, so how much money would be spent on drugs and procedures for specific patient.
+\\
+ 
+One of similar studies in this regard is study by Caballer-Tarazona et al. \cite{caballer2019predicting} in which they tried to predict future cost of the patient primarily using what they called "Aggregated Clinical Risk Group 3" computed from standardized Clinical Risk Group (CRG), this variable consist of two parts, first in one of nine grouped CRGs and second part is one of six levels of severity. They also tested adding additional information such age or sex of patient to see if it helps improve model. To avoid issues with a possible large mass of observations with zero-cost they developed two-part model which first part uses logit model to determine probability of cost greater than zero and after that second model predicts expected cost in case of positive cost, for this second part they tried log-linear ordinary least square model and generalized linear model with log link. Final prediction was then multiplication of probability of non-zero cost and expected positive cost. Their models managed to get adjusted $R^2$ values of $46.4-49.4\%$, which they comment as comparable to those obtained in other similar studies that used different patient classification systems. 
 \\
 
-Another similar study, is study by Caballer-Tarazona er al. \cite{caballer2019predicting} in which they tried to predict future cost of the patient primarily using what they called "Aggregated Clinical Risk Group 3" computed from standardized Clinical Risk Group (CRG). This variable consist of the parts, first in one of nine grouped CRGs and second part is one of six levels of severity.
+This approach was in the end not viable for us since it utilize specific attributes like CRG and severity level of patient which we did not had.
+\\
+
+Another study focused on future patient cost predictions is study by Mohammad Amin Morid at al. \cite{morid2018supervised} which focuses on comparison of multiple model to compute future cost category of patient using medical claims and pharmacy claims data. 
+\\
+
+Their data for single patient consisted of 21 features all connected to amounts spend on that patient, more specifically features of their data point were for example total cost for patient, total cost for patient in last 6 months, number of months with cost above patient average or linear trend of cost.
+\\
+
+They tried to predict to which of 5 cost categories would belong in the future, in order to do that they tried and compared multiple prediction models such as Linear Regression, Random Forest and Artificial Neural Network (ANN). Also in models like Linear Regression they tried versions utilizing regularization like Lasso or Ridge models and in Random Forest models they try to improve them using Bagging or Gradient Boosting techniques.
+\\
+
+In their testing most successful model ended up being Random Forest model with Gradient Boosting which were able to predict correct cost category in almost 95\% of cases, however in highest cost bucket which should have contained only 2\% of population model was successful only in 37.5\% of cases. Second and third best models were ANN and Ridge model, which both have very similar results with around 91.5\% total correct category assessment and over 50\% correct category assessment in each cost category. So in conclusion they assess that Gradient Boosting provides the best cost on cost prediction models in general, with ANN providing superior performance for higher cost patients.
+\\
+
+This study gave us hope that our data might contain necessary information for prediction as most of features in their study and computed using information of cost of drug or procedure which is present for each record in our dataset while also containing much more about cause of that cost.

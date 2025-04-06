@@ -1,0 +1,49 @@
+% !TeX spellcheck = en_EN-English
+
+\section{Prediction of future records}
+\label{recordPredImple}
+
+For task of prediction of future records of patient based on their history we in the decided to try two models, those models were LSTM and Transformer, we very briefly tried simpler models like basic RNN and GRU but in both cases we immediately significantly worse results so we decided to omit them from our results entirely and focus on more complex models.
+\\
+
+In both tested models we optimized depth of model, meaning how many hidden layers model consist of, and dropout rate, meaning what percentage of neurons we randomly shut down, in other words set to zero, at each training step in order to let other neurons partially learn patterns from shut down neurons which reduce overfitting and hence it help model get more generalized. In case of LSTM model we additionally optimized size of hidden layer and as for Decoder-only transformer we optimized number of transformer heads.
+\\  
+
+Since our embedding of patient record consist of multiple parts that each have different length we decided to create our own modification of loss function that would take length of each part into consideration in order to give them same weight or in other words importance. We decided to base this loss function on mean square error (MSE) loss function which computes loss using this formula:
+
+\begin{equation}
+	\label{eqn:mse}
+	MSE = \frac{1}{n}\sum_{i=1}^{n}(Y_i-\hat{Y_i})^2.
+\end{equation} 
+
+Where $n$ is number of dimensions, $Y_i$ is target value at $i$-th dimension and $\hat{Y_i}$ is value predicted by model at that dimension. Using this approach each single dimension have same importance, meaning that if our vector would have 30 dimensions and would consist of two parts, one with 20 and other with 10 dimensions, first one would get twice as much importance purely because of higher number of dimensions. We decided to solve this issue by computing MSE loss of each part, and then computing mean of these losses to get final loss. We call this modified loss function subpart weighted MSE as it adjust weights of each dimension in a way to give same way to each subpart of vector, formula for this loss can be written like this:
+
+\begin{equation}
+	\label{eqn:swmse}
+	SubpartWeightedMSE = \frac{1}{p} \sum_{j=1}^{p}(\frac{1}{l_j}\sum_{i=1}^{l_j}(Y_{s_j+i}-\hat{Y_{s_j+i}})^2).
+\end{equation} 
+
+Where we can see couple of additional parameters, $p$ is number of subparts, $l_j$ is number of dimensions of $j$-th subpart and $s_j$ is index of first dimension of $j$-th subpart. For optimizer we used same one as in cost of record prediction model, which is Adam.
+\\
+
+When we begin trying to train these model we came across memory limitations, so we decided to limit context window, meaning number of past record seen by model. Whole process of data preparation for training consist if this sequence of steps:
+
+\begin{enumerate}
+	\item Get batch of patients.
+	\item For each patient in patch:
+	\begin{enumerate}
+		\item Get all records for patient.
+		\item Order records of patient.
+		\item Using moving window of our maximal context size, that moves by one record at the time, this generate list of all windows for patient.
+		\item We generate input list by removing last window and target list by removing first window.
+	\end{enumerate}
+	\item Collect inputs and targets for all patients in batch.
+\end{enumerate}
+
+In step 2. (b) we order primarily order by date in ascending order and if we have multiple records with same date then secondarily we order them based on internal ID value of diagnosis, medical procedure and drug in this order, we do this to make sure ordering is coherent throughout all training inputs.
+\\ 
+
+By generating input and target list as explained in step 2. (c) we use $i$-th window as an input we expect $(i+1)$-st on output. We did this to increase amount of information model can learn by asking model to give prediction from incomplete context, meaning that if we have context of size $n$ we do not only want to predict $(n+1)$-st record but also for all $k$ such that $0<k<n$ we want to predict $(k+1)$-st record based on first $k$ records from context. Both our tested model support this behavior, in case of LSTM model it's integrated directly in model backbone provided by \texttt{Pytorch} library since we are not using bidirectional version of model \cite{pytorchLSTM}, and in order to achieve it in Decoder-only transformer model we used causal masking inside self-attention layers which forbids queries to see keys from future based on it's perspective.
+\\
+
+Similarly to cost prediction models, these models were also firstly trained on smaller subset of data to assess best values for hyperparameters being optimized and best one was then retrained on complete dataset on server. Another similarity is that we used batch training for these models as well, however in this case since transforming patient record into lists of windows cause them to increase in memory size we use two types of batches, first is patient batch, which is group of patients that got their records transformed together and then training batch, which is usual type of batch so number of windows that goes into model at once.  

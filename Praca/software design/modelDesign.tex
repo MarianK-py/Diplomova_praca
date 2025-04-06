@@ -1,0 +1,10 @@
+% !TeX spellcheck = en_EN-English
+\newpage
+
+\section{Model training, validation and prediction}
+\label{modelDesign}
+
+For training, validation a using model for predictions we used primarily \texttt{PyTorch 2.6.0} which is an optimized tensor library for deep learning using GPUs and CPUs \cite{pytorch}. This library provided us with all required components like linear, non-linear or specialized layers to assemble both simpler neural networks like MLP, we used for prediction of cost category of record, and more complex neural networks like LSTM or Transformer, we used to predict future records. Other then building blocks for networks themselves but also other components required for model training like optimizers and loss function, with possibility to modify them for our specific requirements as we did for loss function used for future record prediction.
+\\
+
+Another library used here was \texttt{Scikit-learn 1.2.2} from which we used linear regression model, which we consider as one of possible way to know how many future record we should generate for patient to get his expected amount for next year.
