@@ -9,7 +9,7 @@ First of sub-tasks for prediction of patient future costs is to embed each patie
 \subsection{Diagnosis embedding}
 
 We need to confirm that closely related diagnosis would get embedding with smaller distance meaning higher similarity compared to less related diagnosis.
-In order to confirm that our embedding has desired properties we computed similarity of embedding of multiple codes. As similarity function we choose simple multiplicative inverse of Euclidean distance. In table \ref{tab:diag_emb_show} we can see results. Highest similarity was between codes G47.30 and G40.09 which is expected since they belong to same main category and very close subcategory, second highest was between H40.09 and H18.80 which are only other combination that belong to same main category, this confirms that main category has biggest impact since this similarity is significantly higher than that between G40.09 and H40.09 which differ only main category.
+In order to confirm that our embedding has desired properties we computed similarity of embedding of multiple codes. As similarity function we choose simple multiplicative inverse of Euclidean distance. In Tab. \ref{tab:diag_emb_show} we can see results. Highest similarity was between codes G47.30 and G40.09 which is expected since they belong to same main category and very close subcategory, second highest was between H40.09 and H18.80 which are only other combination that belong to same main category, this confirms that main category has biggest impact since this similarity is significantly higher than that between G40.09 and H40.09 which differ only main category.
 
 \begin{table}[!h]
 	\centering
@@ -30,6 +30,7 @@ In order to confirm that our embedding has desired properties we computed simila
 Another confirmation that embeddings works as intended by clustering them. More specifically we would expect that if we group embeddings into as many clusters as are main categories, each cluster should contain mostly if not only diagnosis from one main category. On order to test this we used K-means clustering with 26 clusters which is number of different main categories of diagnosis and got these results:
 
 \begin{table}[!h]
+	\centering
 	\begin{tabular}{|p{0.15\textwidth}|p{0.2\textwidth}|p{0.5\textwidth}|}
 		\hline
 		Cluster ID & Cluster size & Frequency of first level values \\ \hline
@@ -59,14 +60,16 @@ Another confirmation that embeddings works as intended by clustering them. More 
 		23 & 717 & J: 319, P: 398, \\ \hline
 		24 & 568 & I: 568, \\ \hline
 		25 & 535 & N: 535, \\ \hline
-\end{tabular}
+	\end{tabular}
+	\caption{Size of clusters and frequencies of first level diagnosis codes in them.}
+	\label{tab:diag_clusters}
 \end{table}
 
-In table we can see that almost every cluster consist of diagnosis from with only single main category. Only immediately visible issues are clusters 7 and 23 where two main categories got assigned same cluster which is most likely caused by their small size compared to other and by the fact that largest categories M and S got split into two clusters.
+In Tab. \ref{tab:diag_clusters} we can see that almost every cluster consist of diagnosis from with only single main category. Only immediately visible issues are clusters 7 and 23 where two main categories got assigned same cluster which is most likely caused by their small size compared to other and by the fact that largest categories M and S got split into two clusters.
 
 \subsection{Drug embedding}
 
-To confirm this we do similar check as we did with diagnosis code and compute similarity of four chosen ATC codes and see if our theory holds. To compute similarity we again use multiplicative inverse of Euclidean distance. We choose C01EB15, C01CA04, C10AA07 and J01CA04, we would expect first two to be most similar since they match on first levels, than first two compared to third should have slightly lower similarity since they match on only first level and finally we expect that all three would be least similar to fourth one since first level is different, even though that second and forth match on all other levels.  We can see results in table \ref{tab:drug_emb_show}. We can see that results met our expectation with highest similarity between first two and lowest between any of first three and fourth, even in case of second and forth that match on all other levels except first.
+To confirm this we do similar check as we did with diagnosis code and compute similarity of four chosen ATC codes and see if our theory holds. To compute similarity we again use multiplicative inverse of Euclidean distance. We choose C01EB15, C01CA04, C10AA07 and J01CA04, we would expect first two to be most similar since they match on first levels, than first two compared to third should have slightly lower similarity since they match on only first level and finally we expect that all three would be least similar to fourth one since first level is different, even though that second and forth match on all other levels.  We can see results in Tab. \ref{tab:drug_emb_show}. We can see that results met our expectation with highest similarity between first two and lowest between any of first three and fourth, even in case of second and forth that match on all other levels except first.
 
 \begin{table}[!h]
 	\centering
@@ -84,12 +87,11 @@ To confirm this we do similar check as we did with diagnosis code and compute si
 	\label{tab:drug_emb_show}
 \end{table}  
 
-Also similarly to diagnosis we can test whether our embeddings would cluster mainly first level of code or not. Since there are 14 main anatomical or pharmacological groups \ref{fig:atc_l1} we used K-means algorithm with 14 clusters and got these results:
+Also similarly to diagnosis we can test whether our embeddings would cluster mainly first level of code or not. Since there are 14 main anatomical or pharmacological groups as shown on Fig. \ref{fig:atc_l1} we used K-means algorithm with 14 clusters and got these results:
 \\
 
-Based on results of these tests we can conclude that embeddings works generally as intended.
-
 \begin{table}[!h]
+	\centering
 	\begin{tabular}{|p{0.15\textwidth}|p{0.2\textwidth}|p{0.5\textwidth}|}
 		\hline
 		Cluster ID & Cluster size & Frequency of first level values \\ \hline
@@ -107,10 +109,12 @@ Based on results of these tests we can conclude that embeddings works generally 
 		11 & 2367 & N: 2367, \\ \hline
 		12 & 9032 & D: 1266, G: 897, H: 1136, J: 5733, \\ \hline
 		13 & 6093 & N: 6075, P: 18, \\ \hline
-\end{tabular}
+	\end{tabular}
+\caption{Size of clusters and frequencies of first level drug codes in them.}
+\label{tab:drug_clusters}
 \end{table}
 
-We can see that clusters mostly consist of embeddings with same first level values. There are some exceptions which are most likely caused by uneven number of drug in each category. Because of this categories with smallest number of drug like P, S, D, H or G got assigned to cluster along with bigger category and categories with biggest number of drugs like N, C or V got split into multiple categories.  
+Based on results we can see on Tab. \ref{tab:drug_clusters} we concluded that embeddings works generally as intended. We can see that clusters mostly consist of embeddings with same first level values. There are some exceptions which are most likely caused by uneven number of drug in each category. Because of this categories with smallest number of drug like P, S, D, H or G got assigned to cluster along with bigger category and categories with biggest number of drugs like N, C or V got split into multiple categories.  
 \\
 
 Based on results of these tests we can conclude that embeddings works generally as intended.

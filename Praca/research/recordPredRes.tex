@@ -1,0 +1,78 @@
+% !TeX spellcheck = en_EN-English
+
+\section{Prediction of future records}
+\label{recordPredRes}
+
+As said in \ref{recordPredImple} we tried two models and those are RNN model and Decoder-only Transformer. In both cases we tried multiple combination of few hyperparameters to get most successful model. 
+\\
+
+We trained each model on same subset of data which consist of 100 patient, which have in total (get number of records) records to train model for 5 epochs and then validate each model on data from 10 patient which are different from one used in training and have (get number of records) records in total.  
+
+\subsection{LSTM}
+
+For LSTM we were interested to find best combination of number and size of hidden layers. Additionally we wanted to know whether adjusting dropout rate would improve model.
+\\
+
+As for depth we choose three values for initial testing, those were 3, 6 and 12, to have relatively shallow model, slightly deeper one and comparably significantly deeper one. For the width of these layers we choose 196 which is size embedding and then double and quadruple that size so 392 and 784. In both cases we were interested to see if increasing size of model in their corresponding dimension would have bring sizable improvement in model output quality or not. These two hyperparameters gave us 9 combination we tested, in each test we set dropout rate to 20\%, testing of different dropout rates was then afterwards on best model from this testing. 
+
+\begin{table}[]
+	\centering
+	\begin{tabular}{|l|l|l|l|}
+		\hline
+		Number of layers    & Width of layer & Test loss & Validation loss \\ \hline
+		\multirow{3}{*}{3}  & 196               &  0.4921         & 0.6389                \\ \cline{2-4} 
+		& 392              &  0.4472         & 0.6517                \\ \cline{2-4} 
+		& 784              & 0.4114          & 0.6535                \\ \hline
+		\multirow{3}{*}{6}  & 196               & 0.5156          & 0.6326                \\ \cline{2-4} 
+		& 392              & 0.4786          &   0.6452              \\ \cline{2-4} 
+		& 784              & 0.3853          &  0.6693               \\ \hline
+		\multirow{3}{*}{12} & 196               & 0.5983          & 0.6278                \\ \cline{2-4} 
+		& 392              & 0.5822          & 0.6292                \\ \cline{2-4} 
+		& 784              & 0.5780          & 0.6268                \\ \hline
+	\end{tabular}
+	\caption{Test and valuation loss for different number of layers and width of layer in LSTM model.}
+	\label{tab:lstm_train}
+\end{table}
+
+
+\subsection{Decoder-only Transformer}
+
+In case of Transformer model when we were trying to find most suitable model we focused on three hyperparameters, two directly influencing model, those were number of layers and number of heads, and one influencing training, which was dropout rate.
+\\
+
+Settling of hyperparameters was very similar to LSTM, so firstly we tried to assess best values for first two hyperparameters that influence model structure with dropout rate set to 20\% and once we got best results than we test couple of dropout rate values on that specific model. For number of layers we tested same depths of model as in LSTM meaning shallow model with only 3 layers, bit deeper model with 6 layers and relatively deep model with 12 layers to assess whether deepening model have positive effect on results. In case of number of head hyperparameter we are constricting by the fact that this number have to be divisor of number of dimension on input embedding since model split this embedding equally into the heads. Since our embedding has 196 dimension it's prime factorization is $2^2\cdot7^2$. Based on this we choose three values to test, those values were 7, 14 and 49 to see if model would profit more from bigger size of a head  or from higher number of heads. These two hyperparameters values gave us 9 combination to test.
+
+
+\begin{table}[]
+	\centering
+	\begin{tabular}{|l|l|l|l|}
+		\hline
+		Number of layers    & Number of heads & Test loss & Validation loss \\ \hline
+		\multirow{3}{*}{3}  & 7               &           &                 \\ \cline{2-4} 
+		& 14              &           &                 \\ \cline{2-4} 
+		& 49              &           &                 \\ \hline
+		\multirow{3}{*}{6}  & 7               &           &                 \\ \cline{2-4} 
+		& 14              &           &                 \\ \cline{2-4} 
+		& 49              &           &                 \\ \hline
+		\multirow{3}{*}{12} & 7               &           &                 \\ \cline{2-4} 
+		& 14              &           &                 \\ \cline{2-4} 
+		& 49              &           &                 \\ \hline
+	\end{tabular}
+	\caption{Test and valuation loss for different number of layers and number of heads in Transformer model.}
+	\label{tab:transformer_train}
+\end{table}
+
+\begin{table}[]
+	\centering
+	\begin{tabular}{|l|l|l|}
+		\hline
+		Dropout rate & Test loss & Validation loss \\ \hline
+		10\%         & 0.4840    & 0.6433                \\ \hline
+		15\%         &           &                 \\ \hline
+		20\%         &           &                 \\ \hline
+		25\%         &           &                 \\ \hline
+		30\%         &           &                 \\ \hline 
+	\end{tabular}
+	\caption{Test and valuation loss for different number of layers and number of heads in Transformer model.}
+	\label{tab:transformer_dropout}
+\end{table}
