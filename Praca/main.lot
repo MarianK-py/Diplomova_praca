@@ -11,6 +11,7 @@
 \contentsline {table}{\numberline {6.3}{\ignorespaces Similarities of embedding of multiple chosen ATC codes\relax }}{39}{table.caption.35}%
 \contentsline {table}{\numberline {6.4}{\ignorespaces Size of clusters and frequencies of first level drug codes in them.\relax }}{40}{table.caption.36}%
 \contentsline {table}{\numberline {6.5}{\ignorespaces Test and valuation loss for different number of layers and width of layer in LSTM model.\relax }}{43}{table.caption.39}%
-\contentsline {table}{\numberline {6.6}{\ignorespaces Test and valuation loss for different number of layers and number of heads in Transformer model.\relax }}{44}{table.caption.40}%
+\contentsline {table}{\numberline {6.6}{\ignorespaces Test and valuation loss for different dropout rate in LSTM model with 12 layers of width 196.\relax }}{43}{table.caption.40}%
 \contentsline {table}{\numberline {6.7}{\ignorespaces Test and valuation loss for different number of layers and number of heads in Transformer model.\relax }}{44}{table.caption.41}%
+\contentsline {table}{\numberline {6.8}{\ignorespaces Test and valuation loss for different dropout rate in Transformer model with 3 layers and 14 heads.\relax }}{45}{table.caption.42}%
 \addvspace {10\p@ }

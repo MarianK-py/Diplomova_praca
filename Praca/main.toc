@@ -44,5 +44,5 @@
 \contentsline {section}{\numberline {6.2}Prediction of record cost}{42}{section.6.2}%
 \contentsline {section}{\numberline {6.3}Prediction of future records}{42}{section.6.3}%
 \contentsline {subsection}{\numberline {6.3.1}LSTM}{42}{subsection.6.3.1}%
-\contentsline {subsection}{\numberline {6.3.2}Decoder-only Transformer}{43}{subsection.6.3.2}%
-\contentsline {chapter}{\numberline {7}Results}{45}{chapter.7}%
+\contentsline {subsection}{\numberline {6.3.2}Decoder-only Transformer}{44}{subsection.6.3.2}%
+\contentsline {chapter}{\numberline {7}Results}{46}{chapter.7}%

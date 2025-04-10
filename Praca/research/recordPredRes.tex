@@ -10,22 +10,23 @@ We trained each model on same subset of data which consist of 100 patient, which
 
 \subsection{LSTM}
 
-For LSTM we were interested to find best combination of number and size of hidden layers. Additionally we wanted to know whether adjusting dropout rate would improve model.
+For LSTM we were interested to find best combination of number and size of hidden LSTM layers. Additionally we wanted to know whether adjusting dropout rate would improve model.
 \\
 
 As for depth we choose three values for initial testing, those were 3, 6 and 12, to have relatively shallow model, slightly deeper one and comparably significantly deeper one. For the width of these layers we choose 196 which is size embedding and then double and quadruple that size so 392 and 784. In both cases we were interested to see if increasing size of model in their corresponding dimension would have bring sizable improvement in model output quality or not. These two hyperparameters gave us 9 combination we tested, in each test we set dropout rate to 20\%, testing of different dropout rates was then afterwards on best model from this testing. 
+\\
 
 \begin{table}[]
 	\centering
 	\begin{tabular}{|l|l|l|l|}
 		\hline
-		Number of layers    & Width of layer & Test loss & Validation loss \\ \hline
+		Number of layers    & Width of layer & Train loss & Validation loss \\ \hline
 		\multirow{3}{*}{3}  & 196               &  0.4921         & 0.6389                \\ \cline{2-4} 
 		& 392              &  0.4472         & 0.6517                \\ \cline{2-4} 
 		& 784              & 0.4114          & 0.6535                \\ \hline
 		\multirow{3}{*}{6}  & 196               & 0.5156          & 0.6326                \\ \cline{2-4} 
 		& 392              & 0.4786          &   0.6452              \\ \cline{2-4} 
-		& 784              & 0.3853          &  0.6693               \\ \hline
+		& 784              & 0.4285          &  0.6493               \\ \hline
 		\multirow{3}{*}{12} & 196               & 0.5983          & 0.6278                \\ \cline{2-4} 
 		& 392              & 0.5822          & 0.6292                \\ \cline{2-4} 
 		& 784              & 0.5780          & 0.6268                \\ \hline
@@ -34,45 +35,71 @@ As for depth we choose three values for initial testing, those were 3, 6 and 12,
 	\label{tab:lstm_train}
 \end{table}
 
-
-\subsection{Decoder-only Transformer}
-
-In case of Transformer model when we were trying to find most suitable model we focused on three hyperparameters, two directly influencing model, those were number of layers and number of heads, and one influencing training, which was dropout rate.
+From perspective of width of a model, we can see that shallower model with 3 and 6 layers show decrease in training with as width increase, however, at the same time we increase in validation loss indicating potential overtraining of wider models. In case of deep models with 12 layers, we see slight decrease in training loss, however this time validation loss stays mostly same for all widths of a model. 
 \\
 
-Settling of hyperparameters was very similar to LSTM, so firstly we tried to assess best values for first two hyperparameters that influence model structure with dropout rate set to 20\% and once we got best results than we test couple of dropout rate values on that specific model. For number of layers we tested same depths of model as in LSTM meaning shallow model with only 3 layers, bit deeper model with 6 layers and relatively deep model with 12 layers to assess whether deepening model have positive effect on results. In case of number of head hyperparameter we are constricting by the fact that this number have to be divisor of number of dimension on input embedding since model split this embedding equally into the heads. Since our embedding has 196 dimension it's prime factorization is $2^2\cdot7^2$. Based on this we choose three values to test, those values were 7, 14 and 49 to see if model would profit more from bigger size of a head  or from higher number of heads. These two hyperparameters values gave us 9 combination to test.
+When we look at performance of models from perspective of different depths we can see similar behavior indifferently of width of model. We can see by deepening model training loss increase which is counter-intuitive and might indicate issues during training like insufficient regularization, vanishing gradient or wrong learning rate. On the other hand we can slight decrease in validation loss indicating that deeper more were able to generalize information.
+\\
 
-
-\begin{table}[]
-	\centering
-	\begin{tabular}{|l|l|l|l|}
-		\hline
-		Number of layers    & Number of heads & Test loss & Validation loss \\ \hline
-		\multirow{3}{*}{3}  & 7               &           &                 \\ \cline{2-4} 
-		& 14              &           &                 \\ \cline{2-4} 
-		& 49              &           &                 \\ \hline
-		\multirow{3}{*}{6}  & 7               &           &                 \\ \cline{2-4} 
-		& 14              &           &                 \\ \cline{2-4} 
-		& 49              &           &                 \\ \hline
-		\multirow{3}{*}{12} & 7               &           &                 \\ \cline{2-4} 
-		& 14              &           &                 \\ \cline{2-4} 
-		& 49              &           &                 \\ \hline
-	\end{tabular}
-	\caption{Test and valuation loss for different number of layers and number of heads in Transformer model.}
-	\label{tab:transformer_train}
-\end{table}
+For testing of different dropout rate we choose deep model with 12 LSTM layers as these models outperform shallower model significantly based on validation loss, and with each layer having width of 196 as these models showed slightly better results in shallower model while having comparable results to wider model in deep model.
 
 \begin{table}[]
 	\centering
 	\begin{tabular}{|l|l|l|}
 		\hline
-		Dropout rate & Test loss & Validation loss \\ \hline
-		10\%         & 0.4840    & 0.6433                \\ \hline
-		15\%         &           &                 \\ \hline
-		20\%         &           &                 \\ \hline
-		25\%         &           &                 \\ \hline
-		30\%         &           &                 \\ \hline 
+		Dropout rate & Train loss & Validation loss \\ \hline
+		10\%         &     &                 \\ \hline
+		15\%         &     &                 \\ \hline
+		20\%         & 0.5983    & 0.6278                \\ \hline
+		25\%         &     &                 \\ \hline
+		30\%         & 0.6257    & 0.6550                \\ \hline 
+	\end{tabular}
+	\caption{Test and valuation loss for different dropout rate in LSTM model with 12 layers of width 196.}
+	\label{tab:lstm_dropout}
+\end{table}
+
+\subsection{Decoder-only Transformer}
+
+In case of Transformer model when we were trying to find most suitable model we focused on three hyperparameters, two directly influencing model, those were number of transformer layers and number of heads, and one influencing training, which was dropout rate.
+\\
+
+Settling of hyperparameters was very similar to LSTM, so firstly we tried to assess best values for first two hyperparameters that influence model structure with dropout rate set to 20\% and once we got best results than we test couple of dropout rate values on that specific model. For number of layers we tested same depths of model as in LSTM meaning shallow model with only 3 layers, bit deeper model with 6 layers and relatively deep model with 12 layers to assess whether deepening model have positive effect on results. In case of number of head hyperparameter we are constricting by the fact that this number have to be divisor of number of dimension on input embedding since model split this embedding equally into the heads. Since our embedding has 196 dimension it's prime factorization is $2^2\cdot7^2$. Based on this we choose three values to test, those values were 7, 14 and 49 to see if model would profit more from bigger size of a head  or from higher number of heads. These two hyperparameters values gave us 9 combination to test.
+
+\begin{table}[]
+	\centering
+	\begin{tabular}{|l|l|l|l|}
+		\hline
+		Number of layers    & Number of heads & Train loss & Validation loss \\ \hline
+		\multirow{3}{*}{3}  & 7        &  0.5057         &  0.6276               \\ \cline{2-4} 
+		& 14              &  0.5035         &  0.6266               \\ \cline{2-4} 
+		& 49              &  0.5103         &  0.6297               \\ \hline
+		\multirow{3}{*}{6}  & 7       & 0.4737          &  0.6416               \\ \cline{2-4} 
+		& 14              &  0.4714         &  0.6398               \\ \cline{2-4} 
+		& 49              &  0.4716         &  0.6439               \\ \hline
+		\multirow{3}{*}{12} & 7       & 0.4624          & 0.6537                \\ \cline{2-4} 
+		& 14              & 0.4301          &  0.6704               \\ \cline{2-4} 
+		& 49              & 0.4119          &  0.6729               \\ \hline
 	\end{tabular}
 	\caption{Test and valuation loss for different number of layers and number of heads in Transformer model.}
+	\label{tab:transformer_train}
+\end{table}
+
+If we look at performance of model with different head counts we can see that in case of less deep as models with 3 and 6 layers differences between number of heads are negligible with the best value being 14 head in both cases which might be just coincidence since differences are so small. In case of deeper model with 12 layers we see that increasing number and with that decreasing length vector inputted into each head decrease train loss so model fit training data better but increase validation loss so model is worse in generalization of data.
+\\
+
+From perspective of depth of model we can interesting see completely opposite behavior to what we saw in LSTM model, where in this case with increased depth of model training loss decreases significantly while validation loss increases
+
+\begin{table}[]
+	\centering
+	\begin{tabular}{|l|l|l|}
+		\hline
+		Dropout rate & Train loss & Validation loss \\ \hline
+		10\%         & 0.4840    & 0.6433                \\ \hline
+		15\%         & 0.4889    & 0.6372                \\ \hline
+		20\%         & 0.5035    & 0.6266                \\ \hline
+		25\%         & 0.5105    & 0.6232                \\ \hline
+		30\%         & 0.5200    & 0.6212                \\ \hline 
+	\end{tabular}
+	\caption{Test and valuation loss for different dropout rate in Transformer model with 3 layers and 14 heads.}
 	\label{tab:transformer_dropout}
 \end{table}
