@@ -2,11 +2,11 @@
 
 \chapter{Medical data} \label{chap:data}
 
-To train and verify model we used fully anonymized data with matching structure to data of Slovak National Health Information Center also known under abbreviation NCZI. 
+Our models were developed for a database of health insurance claims maintained by the Slovak National Health Information Center (NCZI). We focused primarily on datasets related to drug prescriptions and medical procedures administered by outpatient healthcare providers.
 \\
 
-By full anonymization we mean that our data not only does not contain any private information specific to single patient such as their identification number but also their record are modified in way that removes traceability. Do achieve this drugs, medical procedures and diagnosis are sometimes replaced by different but similar ones, also dates are given jitter to further obfuscate patient medical history.
-\\  
+To train and verify model we used completely artificial data with matching structure to data in NCZI database. The data were generated in a manner that simulates realistic patient records.
+\\
 
 Data we have can be split into two categories, those are patients records and mapping table. 
 
@@ -14,15 +14,15 @@ Data we have can be split into two categories, those are patients records and ma
 
 Patients records are split into two dataset:
 \begin{itemize}
-	\item Records of medical procedures from ambulatory health care
-	\item Records of prescribed medicines
+	\item Records of medical procedures from outpatient healthcare
+	\item Records of prescribed drugs
 \end{itemize}
 
 In total we have data about 173355 patients. Each patient have at least 70 records.
 
 \subsection{Records of medical procedures from ambulatory health care}
 
-Each row of this dataset is single patient record contains information about single medical procedure done to them, in total this dataset consist of (ADD NUMBER HERE) records. Each record consist of these variable:
+Each row of this dataset is equivalent to single patient record, meaning single medical procedure done to them, in total this dataset consist of (ADD NUMBER HERE) records. Each record consist of these variable:
 \begin{itemize}
 	\item date of the procedure - date when procedure was performed
 	\item code of the patient - identification code unique for the patient
@@ -37,7 +37,7 @@ For our prediction we use most of these information, date of the procedure combi
 
 \subsection{Records of prescribed medicines}
 
-Similarly to dataset containing procedures, each row is single record of single prescription of drug to specific patient, in total we have (ADD NUMBER HERE) records of prescribed drugs. Each record consist of these variable:
+Similarly to dataset containing procedures, each row is equivalent to single patient record, in this case it's single drug prescription for that specific patient, in total we have (ADD NUMBER HERE) records of prescribed drugs. Each record consist of these variable:
 \begin{itemize}
 	\item date of the prescription - date when drug was prescribed
 	\item code of the patient - identification code unique for the patient
@@ -60,7 +60,9 @@ Other than datasets containing patients data we use three mapping files to map i
 \end{itemize}
 
 These datasets are publicly available dimensional table from maintained and used by NCZI. In general all three mapping table have comparable structure consisting of three main attributes. First is internal identification number used by NCZI to join these mappings on patients records. Then second attribute is official code, in case of drugs and diagnosis it's an internationally standardized structured code while medical procedures uses code specific for Slovakia which unfortunately lack any kind of meaningful structure. Final last important part is textual description. 
+\\
 
+We used these dimensional table to generate embedding vectors for drugs, diagnosis and medical procedures. Process of this embedding is explained in section \ref{embeddingImple}.    
 
 
 \mycomment{

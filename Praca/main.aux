@@ -19,12 +19,12 @@
 \newlabel{chap:thank_you}{{}{vii}{Acknowledgment}{chapter*.3}{}}
 \newlabel{chap:abstract_en}{{}{viii}{Abstract}{chapter*.4}{}}
 \newlabel{chap:abstract_sk}{{}{ix}{Abstrakt}{chapter*.6}{}}
-\citation{atc_who}
-\citation{cbow}
-\citation{skipgram}
+\citation{MLParch}
 \citation{elman_img}
 \citation{attentionAllYouNeed}
-\citation{MLParch}
+\citation{cbow}
+\citation{skipgram}
+\citation{atc_who}
 \citation{lorenzi2017predictive}
 \@writefile{toc}{\contentsline {chapter}{\numberline {1}Similar studies}{2}{chapter.1}\protected@file@percent }
 \@writefile{lof}{\addvspace {10\p@ }}
@@ -41,162 +41,186 @@
 \@writefile{toc}{\contentsline {subsection}{\numberline {2.1.1}Records of medical procedures from ambulatory health care}{5}{subsection.2.1.1}\protected@file@percent }
 \@writefile{toc}{\contentsline {subsection}{\numberline {2.1.2}Records of prescribed medicines}{6}{subsection.2.1.2}\protected@file@percent }
 \@writefile{toc}{\contentsline {section}{\numberline {2.2}Mappings}{7}{section.2.2}\protected@file@percent }
-\@writefile{toc}{\contentsline {chapter}{\numberline {3}Proposed Method}{8}{chapter.3}\protected@file@percent }
+\citation{MLParch}
+\citation{MLParch}
+\citation{elman}
+\@writefile{toc}{\contentsline {chapter}{\numberline {3}Theory - models}{8}{chapter.3}\protected@file@percent }
 \@writefile{lof}{\addvspace {10\p@ }}
 \@writefile{lot}{\addvspace {10\p@ }}
-\@writefile{toc}{\contentsline {section}{\numberline {3.1}Embedding of Patient}{8}{section.3.1}\protected@file@percent }
-\newlabel{embedding}{{3.1}{8}{Embedding of Patient}{section.3.1}{}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {3.1.1}Timestamp}{8}{subsection.3.1.1}\protected@file@percent }
-\citation{cdcICD10CM}
-\citation{ncziMKCH}
-\@writefile{toc}{\contentsline {subsection}{\numberline {3.1.2}Diagnosis embedding}{9}{subsection.3.1.2}\protected@file@percent }
-\newlabel{diagEmb}{{3.1.2}{9}{Diagnosis embedding}{subsection.3.1.2}{}}
-\@writefile{lof}{\contentsline {figure}{\numberline {3.1}{\ignorespaces Structure of MKCH-10 code.\relax }}{9}{figure.caption.15}\protected@file@percent }
-\newlabel{fig:icd-10-cm}{{3.1}{9}{Structure of MKCH-10 code.\relax }{figure.caption.15}{}}
-\newlabel{mkch_subdiv}{{3.1.2}{9}{Diagnosis embedding}{figure.caption.15}{}}
-\citation{atc_who}
-\citation{atc_who}
-\@writefile{toc}{\contentsline {subsection}{\numberline {3.1.3}Drug embedding}{11}{subsection.3.1.3}\protected@file@percent }
-\newlabel{drugEmb}{{3.1.3}{11}{Drug embedding}{subsection.3.1.3}{}}
-\@writefile{lof}{\contentsline {figure}{\numberline {3.2}{\ignorespaces Fourteen main anatomical or pharmacological groups and their corresponding first level ATC code \cite  {atc_who}.\relax }}{11}{figure.caption.16}\protected@file@percent }
-\newlabel{fig:atc_l1}{{3.2}{11}{Fourteen main anatomical or pharmacological groups and their corresponding first level ATC code \cite {atc_who}.\relax }{figure.caption.16}{}}
+\newlabel{chap:thoery}{{3}{8}{Theory - models}{chapter.3}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {3.1}Multilayer perceptron}{8}{section.3.1}\protected@file@percent }
+\newlabel{MLP}{{3.1}{8}{Multilayer perceptron}{section.3.1}{}}
+\newlabel{eqn:mlp}{{3.1}{8}{Multilayer perceptron}{equation.3.1.1}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {3.2}Recurrent neural network}{8}{section.3.2}\protected@file@percent }
+\newlabel{theoryRNN}{{3.2}{8}{Recurrent neural network}{section.3.2}{}}
+\citation{elman_img}
+\citation{elman_img}
+\@writefile{lof}{\contentsline {figure}{\numberline {3.1}{\ignorespaces Architecture of multilayer perceptron \cite  {MLParch}.\relax }}{9}{figure.caption.15}\protected@file@percent }
+\newlabel{fig:mlp}{{3.1}{9}{Architecture of multilayer perceptron \cite {MLParch}.\relax }{figure.caption.15}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.2.1}Elman RNN}{9}{subsection.3.2.1}\protected@file@percent }
+\newlabel{eqn:elman}{{3.2}{9}{Elman RNN}{equation.3.2.2}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {3.2}{\ignorespaces Architecture of Elman RNN \cite  {elman_img}.\relax }}{10}{figure.caption.16}\protected@file@percent }
+\newlabel{fig:elman_arch}{{3.2}{10}{Architecture of Elman RNN \cite {elman_img}.\relax }{figure.caption.16}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.2.2}Gated Recurrent Unit}{10}{subsection.3.2.2}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {3.3}{\ignorespaces Architecture of GRU hidden layer.\relax }}{11}{figure.caption.17}\protected@file@percent }
+\newlabel{fig:gru_arch}{{3.3}{11}{Architecture of GRU hidden layer.\relax }{figure.caption.17}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.2.3}Long Short-Term Memory}{11}{subsection.3.2.3}\protected@file@percent }
+\citation{attentionAllYouNeed}
+\@writefile{lof}{\contentsline {figure}{\numberline {3.4}{\ignorespaces Architecture of LSTM hidden layer.\relax }}{12}{figure.caption.18}\protected@file@percent }
+\newlabel{fig:lstm_arch}{{3.4}{12}{Architecture of LSTM hidden layer.\relax }{figure.caption.18}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {3.3}Transformer}{12}{section.3.3}\protected@file@percent }
+\newlabel{theoryTrans}{{3.3}{12}{Transformer}{section.3.3}{}}
+\citation{attentionAllYouNeed}
+\citation{attentionAllYouNeed}
+\@writefile{lof}{\contentsline {figure}{\numberline {3.5}{\ignorespaces Architecture of one encoder-decoder block in transformer model from original "Attention is all you need" paper \cite  {attentionAllYouNeed}.\relax }}{13}{figure.caption.19}\protected@file@percent }
+\newlabel{fig:trans}{{3.5}{13}{Architecture of one encoder-decoder block in transformer model from original "Attention is all you need" paper \cite {attentionAllYouNeed}.\relax }{figure.caption.19}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.3.1}Tokenizer, Embedding layer and Positional encoding}{13}{subsection.3.3.1}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.3.2}Encoder}{14}{subsection.3.3.2}\protected@file@percent }
+\newlabel{theoryEncoder}{{3.3.2}{14}{Encoder}{subsection.3.3.2}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.3.3}Decoder}{14}{subsection.3.3.3}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {3.6}{\ignorespaces Architecture of Self-attention mechanism.\relax }}{15}{figure.caption.20}\protected@file@percent }
+\newlabel{fig:self_att}{{3.6}{15}{Architecture of Self-attention mechanism.\relax }{figure.caption.20}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.3.4}Fully-connected Feed-forward layer}{15}{subsection.3.3.4}\protected@file@percent }
 \citation{labse_kaggle}
 \citation{labse_hug}
-\@writefile{toc}{\contentsline {subsection}{\numberline {3.1.4}Medical procedure embedding}{12}{subsection.3.1.4}\protected@file@percent }
-\newlabel{procedureEmb}{{3.1.4}{12}{Medical procedure embedding}{subsection.3.1.4}{}}
-\@writefile{toc}{\contentsline {subsubsection}{Encoder-only transformer (BERT model)}{12}{section*.17}\protected@file@percent }
-\newlabel{emb:trans}{{3.1.4}{12}{Encoder-only transformer (BERT model)}{section*.17}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.3.5}Decoder-only Transformer}{16}{subsection.3.3.5}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {3.4}Language-agnostic BERT Sentence Embedding}{16}{section.3.4}\protected@file@percent }
+\newlabel{theoryLaBSE}{{3.4}{16}{Language-agnostic BERT Sentence Embedding}{section.3.4}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.4.1}Encoder-only Transformer (BERT model)}{16}{subsection.3.4.1}\protected@file@percent }
+\newlabel{emb:trans}{{3.4.1}{16}{Encoder-only Transformer (BERT model)}{subsection.3.4.1}{}}
+\@writefile{toc}{\contentsline {subsubsection}{Tokenizer layer}{17}{section*.21}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsubsection}{Embedding layer}{17}{section*.22}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsubsection}{Encoder}{17}{section*.23}\protected@file@percent }
 \citation{bert_pretr_1}
 \citation{bert_pretr_2}
 \citation{bert_pretr_3}
-\@writefile{toc}{\contentsline {subsubsection}{Pooling layer}{15}{section*.18}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsubsection}{Dense layer}{15}{section*.19}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsubsection}{Normalization layer}{15}{section*.20}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsubsection}{Task layer}{18}{section*.24}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.4.2}Pooling layer}{19}{subsection.3.4.2}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.4.3}Dense layer}{19}{subsection.3.4.3}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.4.4}Normalization layer}{19}{subsection.3.4.4}\protected@file@percent }
 \citation{cbow}
 \citation{cbow}
 \citation{skipgram}
 \citation{skipgram}
-\@writefile{toc}{\contentsline {subsubsection}{Word2vec model}{16}{section*.21}\protected@file@percent }
-\@writefile{toc}{\contentsline {section}{\numberline {3.2}Prediction of future number of records}{16}{section.3.2}\protected@file@percent }
-\citation{num_of_vis}
-\@writefile{lof}{\contentsline {figure}{\numberline {3.3}{\ignorespaces Architecture of NN to train CBOW implenetation of Word2vec model \cite  {cbow}.\relax }}{17}{figure.caption.22}\protected@file@percent }
-\newlabel{fig:cbow_arch}{{3.3}{17}{Architecture of NN to train CBOW implenetation of Word2vec model \cite {cbow}.\relax }{figure.caption.22}{}}
-\@writefile{lof}{\contentsline {figure}{\numberline {3.4}{\ignorespaces Architecture of NN to train Skip-gram implenetation of Word2vec model \cite  {skipgram}\relax }}{18}{figure.caption.23}\protected@file@percent }
-\newlabel{fig:skip_arch}{{3.4}{18}{Architecture of NN to train Skip-gram implenetation of Word2vec model \cite {skipgram}\relax }{figure.caption.23}{}}
-\@writefile{toc}{\contentsline {section}{\numberline {3.3}Future record prediction}{18}{section.3.3}\protected@file@percent }
-\newlabel{record_prediction}{{3.3}{18}{Future record prediction}{section.3.3}{}}
-\citation{elman}
-\citation{elman_img}
-\citation{elman_img}
-\@writefile{toc}{\contentsline {subsection}{\numberline {3.3.1}Recurrent neural network}{19}{subsection.3.3.1}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {3.3.2}Elman RNN}{19}{subsection.3.3.2}\protected@file@percent }
-\newlabel{eqn:elman}{{3.1}{19}{Elman RNN}{equation.3.3.1}{}}
-\@writefile{lof}{\contentsline {figure}{\numberline {3.5}{\ignorespaces Architecture of Elman RNN \cite  {elman_img}.\relax }}{20}{figure.caption.24}\protected@file@percent }
-\newlabel{fig:elman_arch}{{3.5}{20}{Architecture of Elman RNN \cite {elman_img}.\relax }{figure.caption.24}{}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {3.3.3}Gated Recurrent Unit}{20}{subsection.3.3.3}\protected@file@percent }
-\@writefile{lof}{\contentsline {figure}{\numberline {3.6}{\ignorespaces Architecture of GRU hidden layer.\relax }}{21}{figure.caption.25}\protected@file@percent }
-\newlabel{fig:gru_arch}{{3.6}{21}{Architecture of GRU hidden layer.\relax }{figure.caption.25}{}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {3.3.4}Long Short-Term Memory}{21}{subsection.3.3.4}\protected@file@percent }
-\citation{attentionAllYouNeed}
-\citation{attentionAllYouNeed}
-\@writefile{lof}{\contentsline {figure}{\numberline {3.7}{\ignorespaces Architecture of LSTM hidden layer.\relax }}{22}{figure.caption.26}\protected@file@percent }
-\newlabel{fig:lstm_arch}{{3.7}{22}{Architecture of LSTM hidden layer.\relax }{figure.caption.26}{}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {3.3.5}Transformer}{22}{subsection.3.3.5}\protected@file@percent }
-\@writefile{lof}{\contentsline {figure}{\numberline {3.8}{\ignorespaces Architecture of one encoder-decoder block in transformer model from original "Attention is all you need" paper \cite  {attentionAllYouNeed}.\relax }}{23}{figure.caption.27}\protected@file@percent }
-\newlabel{fig:trans}{{3.8}{23}{Architecture of one encoder-decoder block in transformer model from original "Attention is all you need" paper \cite {attentionAllYouNeed}.\relax }{figure.caption.27}{}}
-\@writefile{toc}{\contentsline {section}{\numberline {3.4}Record Cost Prediction}{24}{section.3.4}\protected@file@percent }
-\newlabel{recCostPred}{{3.4}{24}{Record Cost Prediction}{section.3.4}{}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {3.4.1}Multilayer perceptron}{24}{subsection.3.4.1}\protected@file@percent }
-\newlabel{MLP}{{3.4.1}{24}{Multilayer perceptron}{subsection.3.4.1}{}}
-\citation{MLParch}
-\citation{MLParch}
-\newlabel{eqn:mlp}{{3.2}{25}{Multilayer perceptron}{equation.3.4.2}{}}
-\@writefile{lof}{\contentsline {figure}{\numberline {3.9}{\ignorespaces Architecture of multilayer perceptron \cite  {MLParch}\relax }}{25}{figure.caption.28}\protected@file@percent }
-\newlabel{fig:mlp}{{3.9}{25}{Architecture of multilayer perceptron \cite {MLParch}\relax }{figure.caption.28}{}}
-\citation{pandas}
-\citation{numpy}
-\@writefile{toc}{\contentsline {chapter}{\numberline {4}Software Design}{26}{chapter.4}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {3.5}Word2vec model}{20}{section.3.5}\protected@file@percent }
+\newlabel{theoryW2v}{{3.5}{20}{Word2vec model}{section.3.5}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.5.1}CBOW approach}{20}{subsection.3.5.1}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.5.2}Skip-gram approach}{20}{subsection.3.5.2}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {3.7}{\ignorespaces Architecture of NN to train CBOW implenetation of Word2vec model \cite  {cbow}.\relax }}{21}{figure.caption.25}\protected@file@percent }
+\newlabel{fig:cbow_arch}{{3.7}{21}{Architecture of NN to train CBOW implenetation of Word2vec model \cite {cbow}.\relax }{figure.caption.25}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {3.8}{\ignorespaces Architecture of NN to train Skip-gram implenetation of Word2vec model \cite  {skipgram}\relax }}{22}{figure.caption.26}\protected@file@percent }
+\newlabel{fig:skip_arch}{{3.8}{22}{Architecture of NN to train Skip-gram implenetation of Word2vec model \cite {skipgram}\relax }{figure.caption.26}{}}
+\@writefile{toc}{\contentsline {chapter}{\numberline {4}Proposed Methods}{23}{chapter.4}\protected@file@percent }
 \@writefile{lof}{\addvspace {10\p@ }}
 \@writefile{lot}{\addvspace {10\p@ }}
-\newlabel{chap:softwaredesign}{{4}{26}{Software Design}{chapter.4}{}}
-\@writefile{toc}{\contentsline {section}{\numberline {4.1}General}{26}{section.4.1}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {4.1}Embedding of Patient}{23}{section.4.1}\protected@file@percent }
+\newlabel{embedding}{{4.1}{23}{Embedding of Patient}{section.4.1}{}}
+\citation{cdcICD10CM}
+\citation{ncziMKCH}
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.1.1}Timestamp}{24}{subsection.4.1.1}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.1.2}Diagnosis embedding}{24}{subsection.4.1.2}\protected@file@percent }
+\newlabel{diagEmb}{{4.1.2}{24}{Diagnosis embedding}{subsection.4.1.2}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {4.1}{\ignorespaces Structure of MKCH-10 code.\relax }}{24}{figure.caption.27}\protected@file@percent }
+\newlabel{fig:icd-10-cm}{{4.1}{24}{Structure of MKCH-10 code.\relax }{figure.caption.27}{}}
+\newlabel{mkch_subdiv}{{4.1.2}{25}{Diagnosis embedding}{figure.caption.27}{}}
+\citation{atc_who}
+\citation{atc_who}
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.1.3}Drug embedding}{26}{subsection.4.1.3}\protected@file@percent }
+\newlabel{drugEmb}{{4.1.3}{26}{Drug embedding}{subsection.4.1.3}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {4.2}{\ignorespaces Fourteen main anatomical or pharmacological groups and their corresponding first level ATC code \cite  {atc_who}.\relax }}{27}{figure.caption.28}\protected@file@percent }
+\newlabel{fig:atc_l1}{{4.2}{27}{Fourteen main anatomical or pharmacological groups and their corresponding first level ATC code \cite {atc_who}.\relax }{figure.caption.28}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.1.4}Medical procedure embedding}{27}{subsection.4.1.4}\protected@file@percent }
+\newlabel{procedureEmb}{{4.1.4}{27}{Medical procedure embedding}{subsection.4.1.4}{}}
+\citation{num_of_vis}
+\@writefile{toc}{\contentsline {section}{\numberline {4.2}Prediction of future number of records}{28}{section.4.2}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {4.3}Future record prediction}{28}{section.4.3}\protected@file@percent }
+\newlabel{record_prediction}{{4.3}{28}{Future record prediction}{section.4.3}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {4.4}Record Cost Prediction}{29}{section.4.4}\protected@file@percent }
+\newlabel{recCostPred}{{4.4}{29}{Record Cost Prediction}{section.4.4}{}}
+\citation{pandas}
+\citation{numpy}
+\@writefile{toc}{\contentsline {chapter}{\numberline {5}Software Design}{30}{chapter.5}\protected@file@percent }
+\@writefile{lof}{\addvspace {10\p@ }}
+\@writefile{lot}{\addvspace {10\p@ }}
+\newlabel{chap:softwaredesign}{{5}{30}{Software Design}{chapter.5}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {5.1}General}{30}{section.5.1}\protected@file@percent }
 \citation{scikitlearn}
 \citation{ntlk}
 \citation{simplemma}
 \citation{sentence_transformer}
 \citation{gensim}
-\@writefile{toc}{\contentsline {section}{\numberline {4.2}Embedding}{27}{section.4.2}\protected@file@percent }
-\newlabel{embedDesign}{{4.2}{27}{Embedding}{section.4.2}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {5.2}Embedding}{31}{section.5.2}\protected@file@percent }
+\newlabel{embedDesign}{{5.2}{31}{Embedding}{section.5.2}{}}
 \citation{pytorch}
-\@writefile{toc}{\contentsline {section}{\numberline {4.3}Model training, validation and prediction}{28}{section.4.3}\protected@file@percent }
-\newlabel{modelDesign}{{4.3}{28}{Model training, validation and prediction}{section.4.3}{}}
-\@writefile{toc}{\contentsline {chapter}{\numberline {5}Implementation}{29}{chapter.5}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {5.3}Model training, validation and prediction}{32}{section.5.3}\protected@file@percent }
+\newlabel{modelDesign}{{5.3}{32}{Model training, validation and prediction}{section.5.3}{}}
+\@writefile{toc}{\contentsline {chapter}{\numberline {6}Implementation}{33}{chapter.6}\protected@file@percent }
 \@writefile{lof}{\addvspace {10\p@ }}
 \@writefile{lot}{\addvspace {10\p@ }}
-\newlabel{chap:implementation}{{5}{29}{Implementation}{chapter.5}{}}
-\@writefile{toc}{\contentsline {section}{\numberline {5.1}Embedding of Patient}{29}{section.5.1}\protected@file@percent }
-\newlabel{embeddingImple}{{5.1}{29}{Embedding of Patient}{section.5.1}{}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {5.1.1}Timestamp}{29}{subsection.5.1.1}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {5.1.2}Diagnosis embedding}{29}{subsection.5.1.2}\protected@file@percent }
-\@writefile{lof}{\contentsline {figure}{\numberline {5.1}{\ignorespaces Showcase of resulting embedding of specific diagnosis (rounded to two decimal places).\relax }}{30}{figure.caption.29}\protected@file@percent }
-\newlabel{fig:diag_emb_show}{{5.1}{30}{Showcase of resulting embedding of specific diagnosis (rounded to two decimal places).\relax }{figure.caption.29}{}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {5.1.3}Drug embedding}{30}{subsection.5.1.3}\protected@file@percent }
-\citation{labse_kaggle}
+\newlabel{chap:implementation}{{6}{33}{Implementation}{chapter.6}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {6.1}Embedding of Patient}{33}{section.6.1}\protected@file@percent }
+\newlabel{embeddingImple}{{6.1}{33}{Embedding of Patient}{section.6.1}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {6.1.1}Timestamp}{33}{subsection.6.1.1}\protected@file@percent }
+\newlabel{timespampImple}{{6.1.1}{33}{Timestamp}{subsection.6.1.1}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {6.1.2}Diagnosis embedding}{33}{subsection.6.1.2}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {6.1}{\ignorespaces Showcase of resulting embedding of specific diagnosis (rounded to two decimal places).\relax }}{34}{figure.caption.29}\protected@file@percent }
+\newlabel{fig:diag_emb_show}{{6.1}{34}{Showcase of resulting embedding of specific diagnosis (rounded to two decimal places).\relax }{figure.caption.29}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {6.1.3}Drug embedding}{34}{subsection.6.1.3}\protected@file@percent }
 \citation{w2v}
-\@writefile{lot}{\contentsline {table}{\numberline {5.1}{\ignorespaces Lengths of random vectors assigned to each information level of ATC code.\relax }}{31}{table.caption.30}\protected@file@percent }
-\newlabel{tab:drug_lev_len}{{5.1}{31}{Lengths of random vectors assigned to each information level of ATC code.\relax }{table.caption.30}{}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {5.1.4}Medical procedure embedding}{31}{subsection.5.1.4}\protected@file@percent }
-\@writefile{toc}{\contentsline {section}{\numberline {5.2}Prediction of record cost}{32}{section.5.2}\protected@file@percent }
-\newlabel{costPredImple}{{5.2}{32}{Prediction of record cost}{section.5.2}{}}
-\@writefile{lot}{\contentsline {table}{\numberline {5.2}{\ignorespaces Intervals of cost for each category.\relax }}{32}{table.caption.32}\protected@file@percent }
-\newlabel{tab:cat_interval_record}{{5.2}{32}{Intervals of cost for each category.\relax }{table.caption.32}{}}
+\@writefile{lot}{\contentsline {table}{\numberline {6.1}{\ignorespaces Lengths of random vectors assigned to each information level of ATC code.\relax }}{35}{table.caption.30}\protected@file@percent }
+\newlabel{tab:drug_lev_len}{{6.1}{35}{Lengths of random vectors assigned to each information level of ATC code.\relax }{table.caption.30}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {6.1.4}Medical procedure embedding}{35}{subsection.6.1.4}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {6.2}Prediction of record cost}{36}{section.6.2}\protected@file@percent }
+\newlabel{costPredImple}{{6.2}{36}{Prediction of record cost}{section.6.2}{}}
 \citation{adam}
-\@writefile{lof}{\contentsline {figure}{\numberline {5.2}{\ignorespaces Histogram showing distribution of cost of records in training dataset.\relax }}{33}{figure.caption.31}\protected@file@percent }
-\newlabel{fig:cost_hist}{{5.2}{33}{Histogram showing distribution of cost of records in training dataset.\relax }{figure.caption.31}{}}
-\@writefile{toc}{\contentsline {section}{\numberline {5.3}Prediction of future records}{34}{section.5.3}\protected@file@percent }
-\newlabel{recordPredImple}{{5.3}{34}{Prediction of future records}{section.5.3}{}}
-\newlabel{eqn:mse}{{5.1}{34}{Prediction of future records}{equation.5.3.1}{}}
-\newlabel{eqn:swmse}{{5.2}{34}{Prediction of future records}{equation.5.3.2}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {6.2}{\ignorespaces Histogram showing distribution of cost of records in training dataset.\relax }}{37}{figure.caption.31}\protected@file@percent }
+\newlabel{fig:cost_hist}{{6.2}{37}{Histogram showing distribution of cost of records in training dataset.\relax }{figure.caption.31}{}}
+\@writefile{lot}{\contentsline {table}{\numberline {6.2}{\ignorespaces Intervals of cost for each category.\relax }}{37}{table.caption.32}\protected@file@percent }
+\newlabel{tab:cat_interval_record}{{6.2}{37}{Intervals of cost for each category.\relax }{table.caption.32}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {6.3}Prediction of future records}{38}{section.6.3}\protected@file@percent }
+\newlabel{recordPredImple}{{6.3}{38}{Prediction of future records}{section.6.3}{}}
+\newlabel{eqn:mse}{{6.1}{38}{Prediction of future records}{equation.6.3.1}{}}
 \citation{pytorchLSTM}
-\@writefile{toc}{\contentsline {chapter}{\numberline {6}Research}{37}{chapter.6}\protected@file@percent }
+\newlabel{eqn:swmse}{{6.2}{39}{Prediction of future records}{equation.6.3.2}{}}
+\@writefile{toc}{\contentsline {chapter}{\numberline {7}Research}{41}{chapter.7}\protected@file@percent }
 \@writefile{lof}{\addvspace {10\p@ }}
 \@writefile{lot}{\addvspace {10\p@ }}
-\newlabel{chap:research}{{6}{37}{Research}{chapter.6}{}}
-\@writefile{toc}{\contentsline {section}{\numberline {6.1}Embedding of patient}{37}{section.6.1}\protected@file@percent }
-\newlabel{embeddingRes}{{6.1}{37}{Embedding of patient}{section.6.1}{}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {6.1.1}Diagnosis embedding}{37}{subsection.6.1.1}\protected@file@percent }
-\@writefile{lot}{\contentsline {table}{\numberline {6.1}{\ignorespaces Similarities of embedding of multiple chosen MKCH-10 codes\relax }}{37}{table.caption.33}\protected@file@percent }
-\newlabel{tab:diag_emb_show}{{6.1}{37}{Similarities of embedding of multiple chosen MKCH-10 codes\relax }{table.caption.33}{}}
-\@writefile{lot}{\contentsline {table}{\numberline {6.2}{\ignorespaces Size of clusters and frequencies of first level diagnosis codes in them.\relax }}{38}{table.caption.34}\protected@file@percent }
-\newlabel{tab:diag_clusters}{{6.2}{38}{Size of clusters and frequencies of first level diagnosis codes in them.\relax }{table.caption.34}{}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {6.1.2}Drug embedding}{39}{subsection.6.1.2}\protected@file@percent }
-\@writefile{lot}{\contentsline {table}{\numberline {6.3}{\ignorespaces Similarities of embedding of multiple chosen ATC codes\relax }}{39}{table.caption.35}\protected@file@percent }
-\newlabel{tab:drug_emb_show}{{6.3}{39}{Similarities of embedding of multiple chosen ATC codes\relax }{table.caption.35}{}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {6.1.3}Medical procedure embedding}{39}{subsection.6.1.3}\protected@file@percent }
-\@writefile{lot}{\contentsline {table}{\numberline {6.4}{\ignorespaces Size of clusters and frequencies of first level drug codes in them.\relax }}{40}{table.caption.36}\protected@file@percent }
-\newlabel{tab:drug_clusters}{{6.4}{40}{Size of clusters and frequencies of first level drug codes in them.\relax }{table.caption.36}{}}
-\@writefile{lof}{\contentsline {figure}{\numberline {6.1}{\ignorespaces Medical procedures grouped in cluster number 215.\relax }}{41}{figure.caption.37}\protected@file@percent }
-\newlabel{fig:G215}{{6.1}{41}{Medical procedures grouped in cluster number 215.\relax }{figure.caption.37}{}}
-\@writefile{lof}{\contentsline {figure}{\numberline {6.2}{\ignorespaces Medical procedures grouped in cluster number 45.\relax }}{42}{figure.caption.38}\protected@file@percent }
-\newlabel{fig:G45}{{6.2}{42}{Medical procedures grouped in cluster number 45.\relax }{figure.caption.38}{}}
-\@writefile{toc}{\contentsline {section}{\numberline {6.2}Prediction of record cost}{42}{section.6.2}\protected@file@percent }
-\newlabel{costPredRes}{{6.2}{42}{Prediction of record cost}{section.6.2}{}}
-\@writefile{toc}{\contentsline {section}{\numberline {6.3}Prediction of future records}{42}{section.6.3}\protected@file@percent }
-\newlabel{recordPredRes}{{6.3}{42}{Prediction of future records}{section.6.3}{}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {6.3.1}LSTM}{42}{subsection.6.3.1}\protected@file@percent }
-\@writefile{lot}{\contentsline {table}{\numberline {6.5}{\ignorespaces Test and valuation loss for different number of layers and width of layer in LSTM model.\relax }}{43}{table.caption.39}\protected@file@percent }
-\newlabel{tab:lstm_train}{{6.5}{43}{Test and valuation loss for different number of layers and width of layer in LSTM model.\relax }{table.caption.39}{}}
-\@writefile{lot}{\contentsline {table}{\numberline {6.6}{\ignorespaces Test and valuation loss for different dropout rate in LSTM model with 12 layers of width 196.\relax }}{43}{table.caption.40}\protected@file@percent }
-\newlabel{tab:lstm_dropout}{{6.6}{43}{Test and valuation loss for different dropout rate in LSTM model with 12 layers of width 196.\relax }{table.caption.40}{}}
-\@writefile{lot}{\contentsline {table}{\numberline {6.7}{\ignorespaces Test and valuation loss for different number of layers and number of heads in Transformer model.\relax }}{44}{table.caption.41}\protected@file@percent }
-\newlabel{tab:transformer_train}{{6.7}{44}{Test and valuation loss for different number of layers and number of heads in Transformer model.\relax }{table.caption.41}{}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {6.3.2}Decoder-only Transformer}{44}{subsection.6.3.2}\protected@file@percent }
-\@writefile{lot}{\contentsline {table}{\numberline {6.8}{\ignorespaces Test and valuation loss for different dropout rate in Transformer model with 3 layers and 14 heads.\relax }}{45}{table.caption.42}\protected@file@percent }
-\newlabel{tab:transformer_dropout}{{6.8}{45}{Test and valuation loss for different dropout rate in Transformer model with 3 layers and 14 heads.\relax }{table.caption.42}{}}
-\@writefile{toc}{\contentsline {chapter}{\numberline {7}Results}{46}{chapter.7}\protected@file@percent }
+\newlabel{chap:research}{{7}{41}{Research}{chapter.7}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {7.1}Embedding of patient}{41}{section.7.1}\protected@file@percent }
+\newlabel{embeddingRes}{{7.1}{41}{Embedding of patient}{section.7.1}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {7.1.1}Diagnosis embedding}{41}{subsection.7.1.1}\protected@file@percent }
+\@writefile{lot}{\contentsline {table}{\numberline {7.1}{\ignorespaces Similarities of embedding of multiple chosen MKCH-10 codes\relax }}{41}{table.caption.33}\protected@file@percent }
+\newlabel{tab:diag_emb_show}{{7.1}{41}{Similarities of embedding of multiple chosen MKCH-10 codes\relax }{table.caption.33}{}}
+\@writefile{lot}{\contentsline {table}{\numberline {7.2}{\ignorespaces Size of clusters and frequencies of first level diagnosis codes in them.\relax }}{42}{table.caption.34}\protected@file@percent }
+\newlabel{tab:diag_clusters}{{7.2}{42}{Size of clusters and frequencies of first level diagnosis codes in them.\relax }{table.caption.34}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {7.1.2}Drug embedding}{43}{subsection.7.1.2}\protected@file@percent }
+\@writefile{lot}{\contentsline {table}{\numberline {7.3}{\ignorespaces Similarities of embedding of multiple chosen ATC codes\relax }}{43}{table.caption.35}\protected@file@percent }
+\newlabel{tab:drug_emb_show}{{7.3}{43}{Similarities of embedding of multiple chosen ATC codes\relax }{table.caption.35}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {7.1.3}Medical procedure embedding}{43}{subsection.7.1.3}\protected@file@percent }
+\@writefile{lot}{\contentsline {table}{\numberline {7.4}{\ignorespaces Size of clusters and frequencies of first level drug codes in them.\relax }}{44}{table.caption.36}\protected@file@percent }
+\newlabel{tab:drug_clusters}{{7.4}{44}{Size of clusters and frequencies of first level drug codes in them.\relax }{table.caption.36}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {7.1}{\ignorespaces Medical procedures grouped in cluster number 215.\relax }}{45}{figure.caption.37}\protected@file@percent }
+\newlabel{fig:G215}{{7.1}{45}{Medical procedures grouped in cluster number 215.\relax }{figure.caption.37}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {7.2}{\ignorespaces Medical procedures grouped in cluster number 45.\relax }}{46}{figure.caption.38}\protected@file@percent }
+\newlabel{fig:G45}{{7.2}{46}{Medical procedures grouped in cluster number 45.\relax }{figure.caption.38}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {7.2}Prediction of record cost}{46}{section.7.2}\protected@file@percent }
+\newlabel{costPredRes}{{7.2}{46}{Prediction of record cost}{section.7.2}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {7.3}Prediction of future records}{46}{section.7.3}\protected@file@percent }
+\newlabel{recordPredRes}{{7.3}{46}{Prediction of future records}{section.7.3}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {7.3.1}LSTM}{46}{subsection.7.3.1}\protected@file@percent }
+\@writefile{lot}{\contentsline {table}{\numberline {7.5}{\ignorespaces Test and valuation loss for different number of layers and width of layer in LSTM model.\relax }}{47}{table.caption.39}\protected@file@percent }
+\newlabel{tab:lstm_train}{{7.5}{47}{Test and valuation loss for different number of layers and width of layer in LSTM model.\relax }{table.caption.39}{}}
+\@writefile{lot}{\contentsline {table}{\numberline {7.6}{\ignorespaces Test and valuation loss for different dropout rate in LSTM model with 12 layers of width 196.\relax }}{47}{table.caption.40}\protected@file@percent }
+\newlabel{tab:lstm_dropout}{{7.6}{47}{Test and valuation loss for different dropout rate in LSTM model with 12 layers of width 196.\relax }{table.caption.40}{}}
+\@writefile{lot}{\contentsline {table}{\numberline {7.7}{\ignorespaces Test and valuation loss for different number of layers and number of heads in Transformer model.\relax }}{48}{table.caption.41}\protected@file@percent }
+\newlabel{tab:transformer_train}{{7.7}{48}{Test and valuation loss for different number of layers and number of heads in Transformer model.\relax }{table.caption.41}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {7.3.2}Decoder-only Transformer}{48}{subsection.7.3.2}\protected@file@percent }
+\@writefile{lot}{\contentsline {table}{\numberline {7.8}{\ignorespaces Test and valuation loss for different dropout rate in Transformer model with 3 layers and 14 heads.\relax }}{49}{table.caption.42}\protected@file@percent }
+\newlabel{tab:transformer_dropout}{{7.8}{49}{Test and valuation loss for different dropout rate in Transformer model with 3 layers and 14 heads.\relax }{table.caption.42}{}}
+\@writefile{toc}{\contentsline {chapter}{\numberline {8}Results}{50}{chapter.8}\protected@file@percent }
 \@writefile{lof}{\addvspace {10\p@ }}
 \@writefile{lot}{\addvspace {10\p@ }}
-\newlabel{chap:results}{{7}{46}{Results}{chapter.7}{}}
+\newlabel{chap:results}{{8}{50}{Results}{chapter.8}{}}
 \citation{*}
 \bibstyle{plain}
 \bibdata{references}
@@ -239,4 +263,4 @@
 \bibcite{bert_pretr_2}{{37}{}{{}}{{}}}
 \bibcite{attentionAllYouNeed}{{38}{}{{}}{{}}}
 \providecommand\NAT@force@numbers{}\NAT@force@numbers
-\gdef \@abspage@last{65}
+\gdef \@abspage@last{69}
