@@ -2,3 +2,118 @@
 
 \section{Prediction of record cost}
 \label{costPredRes}
+
+In case og prediction of record cost category we planned to use MLP model. All models we tested have in common that on input they took 196 dimensional vector, which is dimensionality of out embedding, after that there was multiple hidden linear layers with non-linear functions between them with final layer outputting 9 dimensional vector, which is number of cost categories, followed by softmax function to transform this vector into probabilities of each category. For purpose of loss computation we compared correct category to raw result from model while for accuracy computation we firstly transform this result into one-hot vector based on maximal value in resulting vector before comparing to correct category.
+\\
+
+Each model that was trained to assess best parameters was trained on subset of dataset containing 800 patient for training and 200 for validation. In terms of number of records, training dataset consisted on 2 132 436 records while validation contained 533 110 records.
+\\
+
+As mentioned in Sec. \ref{costPredImple} we were mainly focused on assessment of best depth, layer sizes and non-linear activation functions in-between those layers, but we also tested multiple different loss functions. Since number of possible depths and combinations of sizes are activation function we decided to approach it this way. For number of layers meaning depth we tried model with depth we denote as 0, which means that model contains single layer to transform vector of input dimension to vector of categories dimension followed by softmax function, we used this as a base value to see if there is something model can learn better from data, then we tried models width depths denoted as 1, 3, and 6, which means that in-between input vector and layer to result in category vector there are 1, 3 or 7 additional layers with their own activation functions after them. We choose these values to have representation of shallow model, slighly deeper one and relatively deep one.
+For each non-zero additional depth we tried multiple different configurations to see if we get significantly different results. We tested three configuration types from perspective of layer sizes, in first one we just gradually decrease layer size from input size to output size, in second which we firstly increase size from input to let it learn more patterns in input and then decrease it down to output size and in last we leave size to be of an input unlit very last layer which decrease to output size. For each of these layer size configuration we tested two non-linear activation function configurations, first being only Gaussian Error Linear Units function (GELU) in-between each layer and second being random combination of different activation function picked from this list: 
+
+\begin{itemize}
+	\item Sigmoid function (Sigmoid)
+	\item Hyperbolic tangent function (Tanh)
+	\item Rectified linear unit function (ReLU)
+	\item Leaky Rectified Linear Unit function (LeakyReLU)
+	\item Gaussian Error Linear Units function (GELU)
+	\item Sigmoid Linear Unit function (SiLU)
+\end{itemize}
+
+We choose these functions to have mixture of more standard functions like Sigmoid function and more modern varieties like Sigmoid Linear Unit function (SiLU). This in total gave us 28 different models (3 layer size configurations multiplied by 3 activation function configuration multiplied by 3 different non-zero addition depths plus 0 additional depth base model). We did this testing three times with three different loss functions so in total 84 models. Resulting accuracies are compiled in Tab. \ref{tab:MSE_MLP}.
+\\
+
+
+First loss function we tested was mean square error (MSE) loss, which computes loss based on equation shown in Eq. \ref{eqn:mse2} where $n$ denotes number of samples, $Y_i$ it i-th target vector and $\hat{Y}_i$ is i-th predicted vector, this gives result for each dimension which is then reduced one more time also using mean to get single number as a loss. When we look at results for this loss function in Tab. \ref{tab:MSE_MLP} we can see that adding layers improves model accuracy but only to certain point since model with only single layer followed by softmax function resulted in lowest accuracy barely just above 60\% while almost all other models surpassed 70\%, however as we deepen model further we get to point of diminishing return as we can almost no improvement once model has 3 or more layers and accuracy slowly approach 80\%. We can also see no signs of overtraining since in all cases difference between training and validation loss and accuracy is very small. From perspective of layer size architecture we can see that we received best usually received best results in models which firstly expand dimensionality and then decrease it to the number of categories. 
+\\
+
+\begin{equation}
+	\label{eqn:mse2}
+	Loss = \frac{1}{n}\sum_{i=1}^{n}(Y_i - \hat{Y}_i)^2
+\end{equation}
+
+Second loss function we tested was cross entropy loss, which in theory should be better for training classification problem like ours. We can see interesting behavior that very deep model perform similarly or even worse than shallow one and model with depth in-between them performed the best, this could be potentially caused by issues like vanishing gradient. Other than that from perspective of layer sizes and activation function models with this loss function show similar behavior to models with MSE loss. In general we can see that accuracy of these models is almost always lower compared to models with MSE loss.
+\\
+
+Last but not least loss function we tried was negative log likelihood (NLL) loss which should similarly to cross entropy loss be useful to train a classification problem. In this case results are very similar compared to MSE loss in all regards, with only small difference being slightly lower accuracy is less deep models however in deepest model tested we see relatively small to almost no tangible difference.
+\\  
+
+\renewcommand{\arraystretch}{1.8}
+\begin{table}[!h]
+	\centering
+	\tiny
+	%\scriptsize
+	%\footnotesize
+	%\small
+	\begin{tabular}{|l|l|l|ll|ll|ll|}
+		\hline
+		\multirow{2}{*}{Depth} & \multirow{2}{*}{\begin{tabular}[c]{@{}l@{}}Layer \\ sizes\end{tabular}}                           & \multirow{2}{*}{\begin{tabular}[c]{@{}l@{}}Activation\\ functions\end{tabular}}                     & \multicolumn{2}{l|}{Mean square error}                                                                                                         & \multicolumn{2}{l|}{Cross entropy}                                                                                                             & \multicolumn{2}{l|}{Negative log likelihood}                                                                                                   \\ \cline{4-9} 
+		&                                                                                                   &                                                                                                     & \multicolumn{1}{l|}{\begin{tabular}[c]{@{}l@{}}Test \\ accuracy\end{tabular}} & \begin{tabular}[c]{@{}l@{}}Validation \\ accuracy\end{tabular} & \multicolumn{1}{l|}{\begin{tabular}[c]{@{}l@{}}Test \\ accuracy\end{tabular}} & \begin{tabular}[c]{@{}l@{}}Validation \\ accuracy\end{tabular} & \multicolumn{1}{l|}{\begin{tabular}[c]{@{}l@{}}Test \\ accuracy\end{tabular}} & \begin{tabular}[c]{@{}l@{}}Validation \\ accuracy\end{tabular} \\ \hline
+		0                      & []                                                                                                & []                                                                                                  & \multicolumn{1}{l|}{63.2\%}                                                   & 63.0\%                                                         & \multicolumn{1}{l|}{63.5\%}                                                   & 63.3\%                                                         & \multicolumn{1}{l|}{62.9\%}                                                   & 62.6\%                                                         \\ \hline
+		\multirow{6}{*}{1}     & \multirow{2}{*}{[98]}                                                                             & [GELU]                                                                                              & \multicolumn{1}{l|}{74.5\%}                                                   & 74.3\%                                                         & \multicolumn{1}{l|}{72.8\%}                                                   & 72.6\%                                                         & \multicolumn{1}{l|}{73.2\%}                                                   & 73.0\%                                                         \\ \cline{3-9} 
+		&                                                                                                   & [Tanh]                                                                                              & \multicolumn{1}{l|}{71.3\%}                                                   & 71.0\%                                                         & \multicolumn{1}{l|}{70.9\%}                                                   & 70.6\%                                                         & \multicolumn{1}{l|}{71.1\%}                                                   & 70.9\%                                                         \\ \cline{2-9} 
+		& \multirow{2}{*}{[392]}                                                                            & [GELU]                                                                                              & \multicolumn{1}{l|}{76.6\%}                                                   & 76.3\%                                                         & \multicolumn{1}{l|}{74.2\%}                                                   & 74.0\%                                                         & \multicolumn{1}{l|}{75.5\%}                                                   & 75.2\%                                                         \\ \cline{3-9} 
+		&                                                                                                   & [Sigmoid]                                                                                           & \multicolumn{1}{l|}{70.8\%}                                                   & 70.6\%                                                         & \multicolumn{1}{l|}{69.9\%}                                                   & 69.6\%                                                         & \multicolumn{1}{l|}{70.2\%}                                                   & 70.0\%                                                         \\ \cline{2-9} 
+		& \multirow{2}{*}{[196]}                                                                            & [GELU]                                                                                              & \multicolumn{1}{l|}{75.9\%}                                                   & 75.6\%                                                         & \multicolumn{1}{l|}{74.1\%}                                                   & 73.8\%                                                         & \multicolumn{1}{l|}{74.1\%}                                                   & 73.8\%                                                         \\ \cline{3-9} 
+		&                                                                                                   & [LeakyReLU]                                                                                         & \multicolumn{1}{l|}{76.0\%}                                                   & 75.8\%                                                         & \multicolumn{1}{l|}{75.5\%}                                                   & 75.3\%                                                         & \multicolumn{1}{l|}{74.1\%}                                                   & 74.0\%                                                         \\ \hline
+		\multirow{6}{*}{3}     & \multirow{2}{*}{[98, 48, 24]}                                                                     & [GELU, GELU, GELU]                                                                                  & \multicolumn{1}{l|}{74.4\%}                                                   & 74.2\%                                                         & \multicolumn{1}{l|}{72.0\%}                                                   & 71.8\%                                                         & \multicolumn{1}{l|}{72.2\%}                                                   & 72.0\%                                                         \\ \cline{3-9} 
+		&                                                                                                   & [Sigmoid, ReLU, Tanh]                                                                               & \multicolumn{1}{l|}{69.7\%}                                                   & 69.5\%                                                         & \multicolumn{1}{l|}{69.7\%}                                                   & 69.4\%                                                         & \multicolumn{1}{l|}{70.3\%}                                                   & 70.1\%                                                         \\ \cline{2-9} 
+		& \multirow{2}{*}{[392, 196, 98]}                                                                   & [GELU, GELU, GELU]                                                                                  & \multicolumn{1}{l|}{77.7\%}                                                   & 77.5\%                                                         & \multicolumn{1}{l|}{75.2\%}                                                   & 75.0\%                                                         & \multicolumn{1}{l|}{75.5\%}                                                   & 75.3\%                                                         \\ \cline{3-9} 
+		&                                                                                                   & [SiLU, ReLU, GELU]                                                                                  & \multicolumn{1}{l|}{77.4\%}                                                   & 77.2\%                                                         & \multicolumn{1}{l|}{74.8\%}                                                   & 74.5\%                                                         & \multicolumn{1}{l|}{75.2\%}                                                   & 75.0\%                                                         \\ \cline{2-9} 
+		& \multirow{2}{*}{[196, 196, 196]}                                                                  & [GELU, GELU, GELU]                                                                                  & \multicolumn{1}{l|}{77.2\%}                                                   & 77.0\%                                                         & \multicolumn{1}{l|}{74.7\%}                                                   & 74.3\%                                                         & \multicolumn{1}{l|}{75.0\%}                                                   & 74.7\%                                                         \\ \cline{3-9} 
+		&                                                                                                   & [ReLU, Sigmoid, SiLU]                                                                               & \multicolumn{1}{l|}{76.7\%}                                                   & 76.5\%                                                         & \multicolumn{1}{l|}{73.9\%}                                                   & 73.7\%                                                         & \multicolumn{1}{l|}{75.0\%}                                                   & 74.8\%                                                         \\ \hline
+		\multirow{6}{*}{7}     & \multirow{2}{*}{\begin{tabular}[c]{@{}l@{}}[142, 104, 72, \\ 48, 30, 18, 12]\end{tabular}}        & \begin{tabular}[c]{@{}l@{}}[GELU, GELU, GELU, \\ GELU, GELU, \\ GELU, GELU]\end{tabular}            & \multicolumn{1}{l|}{77.1\%}                                                   & 76,9\%                                                         & \multicolumn{1}{l|}{72.0\%}                                                   & 71.7\%                                                         & \multicolumn{1}{l|}{76.5\%}                                                   & 76.2\%                                                         \\ \cline{3-9} 
+		&                                                                                                   & \begin{tabular}[c]{@{}l@{}}[SiLU, Sigmoid, GELU, \\ Tanh, ReLU, \\ Sigmoid, LeakyReLU]\end{tabular} & \multicolumn{1}{l|}{75.1\%}                                                   & 75.0\%                                                         & \multicolumn{1}{l|}{70.3\%}                                                   & 70.1\%                                                         & \multicolumn{1}{l|}{75.1\%}                                                   & 74.9\%                                                         \\ \cline{2-9} 
+		& \multirow{2}{*}{\begin{tabular}[c]{@{}l@{}}[588, 294, 147, \\ 49, 98, 36, 18]\end{tabular}}       & \begin{tabular}[c]{@{}l@{}}[GELU, GELU, GELU, \\ GELU, GELU, \\ GELU, GELU]\end{tabular}            & \multicolumn{1}{l|}{77.6\%}                                                   & 77.4\%                                                         & \multicolumn{1}{l|}{71.2\%}                                                   & 71.0\%                                                         & \multicolumn{1}{l|}{77.4\%}                                                   & 77.2\%                                                         \\ \cline{3-9} 
+		&                                                                                                   & \begin{tabular}[c]{@{}l@{}}[SiLU, GELU, Sigmoid, \\ GELU, SiLU, \\ GELU, LeakyReLU]\end{tabular}    & \multicolumn{1}{l|}{78.3\%}                                                   & 78.0\%                                                         & \multicolumn{1}{l|}{72.0\%}                                                   & 71.8\%                                                         & \multicolumn{1}{l|}{76.9\%}                                                   & 76.7\%                                                         \\ \cline{2-9} 
+		& \multirow{2}{*}{\begin{tabular}[c]{@{}l@{}}[196, 196, 196, \\ 196, 196, 196,\\ 196]\end{tabular}} & \begin{tabular}[c]{@{}l@{}}[GELU, GELU, GELU, \\ GELU, GELU, \\ GELU, GELU]\end{tabular}            & \multicolumn{1}{l|}{77.3\%}                                                   & 77.1\%                                                         & \multicolumn{1}{l|}{72.8\%}                                                   & 72.6\%                                                         & \multicolumn{1}{l|}{77.4\%}                                                   & 77.2\%                                                         \\ \cline{3-9} 
+		&                                                                                                   & \begin{tabular}[c]{@{}l@{}}[Sigmoid, GELU, ReLU, \\ SiLU, LeakyReLU,\\ GELU, SiLU]\end{tabular}     & \multicolumn{1}{l|}{77.1\%}                                                   & 76.9\%                                                         & \multicolumn{1}{l|}{72.8\%}                                                   & 72.6\%                                                         & \multicolumn{1}{l|}{77.2\%}                                                   & 77.0\%                                                         \\ \hline
+	\end{tabular}
+	\caption{Accuracies for various MLP models using different loss functions.}
+	\label{tab:MSE_MLP}
+\end{table}
+
+Based on these results we decided that for training on complete dataset we would use model from row 26 from Tab. \ref{tab:MSE_MLP}, so 8 layered model (7 additional layers and final layer with softmax activation function) with layer sizes and activation functions as in table and MSE loss which boasts highest accuracy in our testing. Since layer sizes, activation functions and depth were chosen arbitrarily we did some additional testing to tweak these parameters further however we did not find setup which would have tangibly higher accuracy so we decided to continue with current setup.
+\\
+
+Finally before moving to main training we compared approach using MLP to two other types of classifiers. First was Gradient Boosting Classification Tree model for which we tried to train trees with maximal depth of 1, 5, 10 and 20. Second tried classifier was Ridge regression model where we tried multiple values of parameter alpha which denotes regularization strength, we tried values $10^{-10}, 10^{-5}, 0.1, 1, 10, 10^3$. 
+\\
+
+\begin{table}[!h]
+	\centering
+	\begin{tabular}{|l|l|l|}
+		\hline
+		Maximum depth & Train accuracy & Validation accuracy \\ \hline
+		1             & 51.5\%         & 51.4\%              \\ \hline
+		5             & 69.0\%         & 68.8\%              \\ \hline
+		10            & 71.5\%         & 71.4\%              \\ \hline
+		20            & 71.2\%         & 71.0\%              \\ \hline
+	\end{tabular}
+	\caption{Accuracies of Gradient Boosting models with different maximal depths of tree.}
+	\label{tab:GB}
+\end{table}
+
+We can see results of Gradient Boosting model in Tab. \ref{tab:GB}. There we can notice initial increase of accuracy however beyond depth of 10 we see no improvement. Best model looks to be model with maximal depth of 10 which has around 71\% which is significantly lower than 78\% accuracy of our best MLP model.
+\\
+
+\begin{table}[!h]
+	\centering
+	\begin{tabular}{|l|l|l|}
+		\hline
+		Alpha      & Train accuracy & Validation accuracy \\ \hline
+		$10^{-10}$ & 67.1\%         & 66.9\%              \\ \hline
+		$10^{-5}$  & 67.0\%         & 66.8\%              \\ \hline
+		$10^{-1}$  & 67.0\%         & 66.8\%              \\ \hline
+		$10^{0}$   & 67.0\%         & 66.8\%              \\ \hline
+		$10^{1}$   & 66.9\%         & 66.7\%              \\ \hline
+		$10^{3}$   & 66.8\%         & 66.7\%              \\ \hline
+	\end{tabular}
+	\caption{Accuracies of Ridge models with different regularization strength.}
+	\label{tab:Ridge}
+\end{table}
+
+Results of Ridge model testing are shown in Tab. \ref{tab:Ridge} where we can see that different regularization strengths has no tangible effect on model performance, there seems to be very small decrease of accuracy with increased strength but not significant. All models have accuracy around 67\% which is higher then most basic MLP or Gradient Boosting models but is easily outperformed by their deeper versions.
+\\
+
+We can see that neither of models used for comparison was able to outperform our MLP model, so we saw no reason to use any of these models instead and stayed with our best MLP model for main training.

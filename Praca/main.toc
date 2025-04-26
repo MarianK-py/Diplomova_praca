@@ -53,9 +53,9 @@
 \contentsline {section}{\numberline {7.1}Embedding of patient}{41}{section.7.1}%
 \contentsline {subsection}{\numberline {7.1.1}Diagnosis embedding}{41}{subsection.7.1.1}%
 \contentsline {subsection}{\numberline {7.1.2}Drug embedding}{43}{subsection.7.1.2}%
-\contentsline {subsection}{\numberline {7.1.3}Medical procedure embedding}{43}{subsection.7.1.3}%
+\contentsline {subsection}{\numberline {7.1.3}Medical procedure embedding}{44}{subsection.7.1.3}%
 \contentsline {section}{\numberline {7.2}Prediction of record cost}{46}{section.7.2}%
-\contentsline {section}{\numberline {7.3}Prediction of future records}{46}{section.7.3}%
-\contentsline {subsection}{\numberline {7.3.1}LSTM}{46}{subsection.7.3.1}%
-\contentsline {subsection}{\numberline {7.3.2}Decoder-only Transformer}{48}{subsection.7.3.2}%
-\contentsline {chapter}{\numberline {8}Results}{50}{chapter.8}%
+\contentsline {section}{\numberline {7.3}Prediction of future records}{50}{section.7.3}%
+\contentsline {subsection}{\numberline {7.3.1}LSTM}{52}{subsection.7.3.1}%
+\contentsline {subsection}{\numberline {7.3.2}Decoder-only Transformer}{53}{subsection.7.3.2}%
+\contentsline {chapter}{\numberline {8}Results}{56}{chapter.8}%

@@ -8,14 +8,12 @@ During our research we utilized multiple different machine learning models, in t
 \section{Multilayer perceptron}
 \label{MLP}
 
-Multilayer perceptron is a feed-forward neural network, so network where data flow single direction or in other words neurons don't form cycles. This network consist of fully-connected, sometimes called dense, layers with non-linear activation functions as shown on Fig. \ref{fig:mlp}, where we can see that this model can be split into three parts which are input layer which load the data, hidden layer which are trying to extract desired information using linear transformations and activation functions and finally output layer which contains final linear transformation followed by activation to output extracted information. Each layer can be described using this formula:
+Multilayer perceptron is a feed-forward neural network, so network where data flow single direction or in other words neurons don't form cycles. This network consist of fully-connected, sometimes called dense, layers with non-linear activation functions as shown on Fig. \ref{fig:mlp}, where we can see that this model can be split into three parts which are input layer which load the data, hidden layer which are trying to extract desired information using linear transformations and activation functions and finally output layer which contains final linear transformation followed by activation to output extracted information. Each layer can be described using this formula shown in Eq. \ref{eqn:mlp}, where $h_i$ is resulting vector of i-th layer, $act()$ is a non-linear activation function, $W_i$ is weight matrix of i-th layer, $h_{i-1}$ is resulting vector from previous layer and $b_i$ is bias vector. 
 
 \begin{equation}
 	\label{eqn:mlp}
 	h_i = act(W_i h_{i-1} + b_i),
 \end{equation}
-
-where $h_i$ is resulting vector of i-th layer, $act()$ is a non-linear activation function, $W_i$ is weight matrix of i-th layer, $h_{i-1}$ is resulting vector from previous layer and $b_i$ is bias vector.
 
 \begin{figure}[!h]
 	\centering
@@ -33,7 +31,7 @@ In general recurrent neural network is type of neural network that in some way u
 
 \subsection{Elman RNN}
 
-Elman RNN also known as simple recurrent network (SNR) is type of recurrent neural network that utilize results of hidden layer before activation in previous step as an additional input in next one. We can see this architecture on figure \ref{fig:elman_arch}, where on left we can see how forward propagation look and on right how it looked unrolled over time, we see that middle layer which is a hidden layer of model gets two inputs, first is input vector $x_t$, where $t$ denotes step (usually time step), which is multiplied with matrix of weights $W_i$ and second one is vector $h_{t-1}$ which is result of this layer also called context vector in previous step. which is multiplied by different matrix of weight denoted as $W$, these two results after they are then summed together and result goes to activation layer which create resulting new vector $h_t$ \cite{elman}, this whole process can be summarized by this equation (where $b_i$ and $b$ are bias vectors):
+Elman RNN also known as simple recurrent network (SNR) is type of recurrent neural network that utilize results of hidden layer before activation in previous step as an additional input in next one. We can see this architecture on figure \ref{fig:elman_arch}, where on left we can see how forward propagation look and on right how it looked unrolled over time, we see that middle layer which is a hidden layer of model gets two inputs, first is input vector $x_t$, where $t$ denotes step (usually time step), which is multiplied with matrix of weights $W_i$ and second one is vector $h_{t-1}$ which is result of this layer also called context vector in previous step, which is multiplied by different matrix of weight denoted as $W$, these two results after they are then summed together and result goes to activation layer which create resulting new vector $h_t$ \cite{elman}, this whole process is summarized in Eq. \ref{eqn:elman}(where $b_i$ and $b$ are bias vectors).
 
 \begin{equation}
 	\label{eqn:elman}

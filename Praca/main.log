@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.24 (MiKTeX 22.12) (preloaded format=pdflatex 2023.1.22)  11 APR 2025 18:42
+This is pdfTeX, Version 3.141592653-2.6-1.40.24 (MiKTeX 22.12) (preloaded format=pdflatex 2023.1.22)  26 APR 2025 12:14
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -715,7 +715,32 @@ Underfull \vbox (badness 10000) has occurred while \output is active []
 \openout4 = `main.toc'.
 
 
-[11] (main.lof)
+[11] (main.lof
+
+Package natbib Warning: Citation `MLParch' on page xii undefined on input line 
+4.
+
+
+Package natbib Warning: Citation `elman_img' on page xii undefined on input lin
+e 5.
+
+
+Package natbib Warning: Citation `attentionAllYouNeed' on page xii undefined on
+ input line 8.
+
+
+Package natbib Warning: Citation `cbow' on page xii undefined on input line 10.
+
+
+
+Package natbib Warning: Citation `skipgram' on page xii undefined on input line
+ 11.
+
+
+Package natbib Warning: Citation `atc_who' on page xii undefined on input line 
+14.
+
+)
 \tf@lof=\write5
 \openout5 = `main.lof'.
 
@@ -755,6 +780,10 @@ Underfull \hbox (badness 10000) in paragraph at lines 3--5
  []
 
 
+Package natbib Warning: Citation `lorenzi2017predictive' on page 2 undefined on
+ input line 6.
+
+
 Underfull \hbox (badness 10000) in paragraph at lines 13--15
 
  []
@@ -762,7 +791,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 13--15
 [2
 
 ])
-Underfull \hbox (badness 10000) in paragraph at lines 16--7
+Underfull \hbox (badness 10000) in paragraph at lines 16--8
 
  []
 
@@ -770,6 +799,10 @@ Underfull \hbox (badness 10000) in paragraph at lines 16--7
 Underfull \hbox (badness 10000) in paragraph at lines 3--5
 
  []
+
+
+Package natbib Warning: Citation `caballer2019predicting' on page 3 undefined o
+n input line 6.
 
 
 Underfull \hbox (badness 10000) in paragraph at lines 6--8
@@ -780,6 +813,10 @@ Underfull \hbox (badness 10000) in paragraph at lines 6--8
 Underfull \hbox (badness 10000) in paragraph at lines 9--11
 
  []
+
+
+Package natbib Warning: Citation `morid2018supervised' on page 3 undefined on i
+nput line 12.
 
 
 Underfull \hbox (badness 10000) in paragraph at lines 12--14
@@ -802,9 +839,13 @@ Underfull \hbox (badness 10000) in paragraph at lines 21--23
  []
 
 )
-Underfull \hbox (badness 10000) in paragraph at lines 24--10
+Underfull \hbox (badness 10000) in paragraph at lines 24--11
 
  []
+
+
+Package natbib Warning: Citation `chatGPT' on page 4 undefined on input line 12
+.
 
 ) (data/data.tex [4]
 Chapter 2.
@@ -827,32 +868,51 @@ Underfull \hbox (badness 10000) in paragraph at lines 62--64
 
 ) (theory/theory.tex [7]
 Chapter 3.
-<images/MLP_arch.png, id=530, 293.095pt x 185.35916pt>
+<images/MLP_arch.png, id=524, 293.095pt x 185.35916pt>
 File: images/MLP_arch.png Graphic file (type png)
 <use images/MLP_arch.png>
-Package pdftex.def Info: images/MLP_arch.png  used on input line 23.
+Package pdftex.def Info: images/MLP_arch.png  used on input line 21.
 (pdftex.def)             Requested size: 352.81552pt x 223.12564pt.
+
+Package natbib Warning: Citation `MLParch' on page 8 undefined on input line 23
+.
+
+
+Package natbib Warning: Citation `MLParch' on page 8 undefined on input line 23
+.
+
 
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
 
-Underfull \vbox (badness 1838) has occurred while \output is active []
+Package natbib Warning: Citation `elman' on page 8 undefined on input line 34.
+
+
+Underfull \vbox (badness 2119) has occurred while \output is active []
 
  [8
 
 ]
-<images/Elman_RNN_architecture.png, id=541, 639.89063pt x 258.9675pt>
+<images/Elman_RNN_architecture.png, id=533, 639.89063pt x 258.9675pt>
 File: images/Elman_RNN_architecture.png Graphic file (type png)
 <use images/Elman_RNN_architecture.png>
 Package pdftex.def Info: images/Elman_RNN_architecture.png  used on input line 
-48.
+46.
 (pdftex.def)             Requested size: 374.86775pt x 151.71071pt.
+
+
+Package natbib Warning: Citation `elman_img' on page 9 undefined on input line 
+48.
+
+
+Package natbib Warning: Citation `elman_img' on page 9 undefined on input line 
+48.
 
 
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 56--58
+Underfull \hbox (badness 10000) in paragraph at lines 54--56
 
  []
 
@@ -860,17 +920,17 @@ Underfull \hbox (badness 10000) in paragraph at lines 56--58
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
  [9 <./images/MLP_arch.png>]
-Underfull \hbox (badness 10000) in paragraph at lines 59--61
+Underfull \hbox (badness 10000) in paragraph at lines 57--59
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 62--64
+Underfull \hbox (badness 10000) in paragraph at lines 60--62
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 65--67
+Underfull \hbox (badness 10000) in paragraph at lines 63--65
 
  []
 
@@ -878,99 +938,132 @@ Underfull \hbox (badness 10000) in paragraph at lines 65--67
 Underfull \vbox (badness 1082) has occurred while \output is active []
 
  [10 <./images/Elman_RNN_architecture.png>]
-<images/GRU_arch.png, id=558, 681.54625pt x 711.65875pt>
+<images/GRU_arch.png, id=547, 681.54625pt x 711.65875pt>
 File: images/GRU_arch.png Graphic file (type png)
 <use images/GRU_arch.png>
-Package pdftex.def Info: images/GRU_arch.png  used on input line 71.
+Package pdftex.def Info: images/GRU_arch.png  used on input line 69.
 (pdftex.def)             Requested size: 264.61333pt x 276.30786pt.
 
-Underfull \hbox (badness 10000) in paragraph at lines 81--83
+Underfull \hbox (badness 10000) in paragraph at lines 79--81
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 84--86
+Underfull \hbox (badness 10000) in paragraph at lines 82--84
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 87--89
+Underfull \hbox (badness 10000) in paragraph at lines 85--87
 
  []
 
 [11 <./images/GRU_arch.png>]
-Underfull \hbox (badness 10000) in paragraph at lines 90--92
+Underfull \hbox (badness 10000) in paragraph at lines 88--90
 
  []
 
-<images/LSTM_arch.png, id=567, 831.105pt x 793.96625pt>
+<images/LSTM_arch.png, id=556, 831.105pt x 793.96625pt>
 File: images/LSTM_arch.png Graphic file (type png)
 <use images/LSTM_arch.png>
-Package pdftex.def Info: images/LSTM_arch.png  used on input line 98.
+Package pdftex.def Info: images/LSTM_arch.png  used on input line 96.
 (pdftex.def)             Requested size: 264.61333pt x 252.7902pt.
+
+Package natbib Warning: Citation `attentionAllYouNeed' on page 12 undefined on 
+input line 105.
+
 [12 <./images/LSTM_arch.png>]
-<images/trans_arch.png, id=575, 204.765pt x 308.1111pt>
+<images/trans_arch.png, id=563, 204.765pt x 308.1111pt>
 File: images/trans_arch.png Graphic file (type png)
 <use images/trans_arch.png>
-Package pdftex.def Info: images/trans_arch.png  used on input line 112.
+Package pdftex.def Info: images/trans_arch.png  used on input line 110.
 (pdftex.def)             Requested size: 264.61333pt x 398.18898pt.
 
-Underfull \hbox (badness 10000) in paragraph at lines 120--122
+
+Package natbib Warning: Citation `attentionAllYouNeed' on page 13 undefined on 
+input line 112.
+
+
+Package natbib Warning: Citation `attentionAllYouNeed' on page 13 undefined on 
+input line 112.
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 118--120
 
  []
 
 [13 <./images/trans_arch.png>]
-Underfull \hbox (badness 10000) in paragraph at lines 134--136
+Underfull \hbox (badness 10000) in paragraph at lines 132--134
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 137--139
+Underfull \hbox (badness 10000) in paragraph at lines 135--137
 
  []
 
-<images/self_attention.png, id=584, 751.80875pt x 548.0475pt>
+<images/self_attention.png, id=570, 751.80875pt x 548.0475pt>
 File: images/self_attention.png Graphic file (type png)
 <use images/self_attention.png>
-Package pdftex.def Info: images/self_attention.png  used on input line 143.
+Package pdftex.def Info: images/self_attention.png  used on input line 141.
 (pdftex.def)             Requested size: 441.01773pt x 321.4971pt.
 
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 153--155
+Underfull \hbox (badness 10000) in paragraph at lines 151--153
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 156--158
+Underfull \hbox (badness 10000) in paragraph at lines 154--156
 
  []
 
 [14]
-Underfull \hbox (badness 10000) in paragraph at lines 159--161
+Underfull \hbox (badness 10000) in paragraph at lines 157--159
 
  []
 
 [15 <./images/self_attention.png>]
-Underfull \hbox (badness 10000) in paragraph at lines 170--172
+Underfull \hbox (badness 10000) in paragraph at lines 168--170
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 178--180
+Package natbib Warning: Citation `labse_kaggle' on page 16 undefined on input l
+ine 176.
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 176--178
 
  []
+
+
+Package natbib Warning: Citation `labse_hug' on page 16 undefined on input line
+ 179.
 
 [16]
-Underfull \hbox (badness 10000) in paragraph at lines 216--218
+Underfull \hbox (badness 10000) in paragraph at lines 214--216
 
  []
 
 [17]
-Underfull \hbox (badness 10000) in paragraph at lines 219--221
+Underfull \hbox (badness 10000) in paragraph at lines 217--219
 
  []
+
+
+Package natbib Warning: Citation `bert_pretr_1' on page 18 undefined on input l
+ine 220.
+
+
+Package natbib Warning: Citation `bert_pretr_2' on page 18 undefined on input l
+ine 220.
+
+
+Package natbib Warning: Citation `bert_pretr_3' on page 18 undefined on input l
+ine 220.
 
 
 Underfull \vbox (badness 2903) has occurred while \output is active []
@@ -979,20 +1072,36 @@ Underfull \vbox (badness 2903) has occurred while \output is active []
 Underfull \vbox (badness 1472) has occurred while \output is active []
 
  [19]
-<images/CBOW_arch.png, id=636, 598.235pt x 577.15625pt>
+<images/CBOW_arch.png, id=612, 598.235pt x 577.15625pt>
 File: images/CBOW_arch.png Graphic file (type png)
 <use images/CBOW_arch.png>
-Package pdftex.def Info: images/CBOW_arch.png  used on input line 253.
+Package pdftex.def Info: images/CBOW_arch.png  used on input line 251.
 (pdftex.def)             Requested size: 441.01773pt x 425.48611pt.
+
+
+Package natbib Warning: Citation `cbow' on page 20 undefined on input line 253.
+
+
+
+Package natbib Warning: Citation `cbow' on page 20 undefined on input line 253.
+
 
 
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
-<images/Skip_arch.png, id=640, 202.42291pt x 225.50917pt>
+<images/Skip_arch.png, id=614, 202.42291pt x 225.50917pt>
 File: images/Skip_arch.png Graphic file (type png)
 <use images/Skip_arch.png>
-Package pdftex.def Info: images/Skip_arch.png  used on input line 266.
+Package pdftex.def Info: images/Skip_arch.png  used on input line 264.
 (pdftex.def)             Requested size: 441.01773pt x 491.35246pt.
+
+Package natbib Warning: Citation `skipgram' on page 20 undefined on input line 
+266.
+
+
+Package natbib Warning: Citation `skipgram' on page 20 undefined on input line 
+266.
+
 
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
@@ -1021,11 +1130,20 @@ Underfull \hbox (badness 10000) in paragraph at lines 6--8
 [23
 
 ]
+
+Package natbib Warning: Citation `cdcICD10CM' on page 24 undefined on input lin
+e 18.
+
+
+Package natbib Warning: Citation `ncziMKCH' on page 24 undefined on input line 
+18.
+
+
 Underfull \hbox (badness 10000) in paragraph at lines 18--19
 
  []
 
-<images/ICD-10-CM.png, id=670, 813.0375pt x 520.94624pt>
+<images/ICD-10-CM.png, id=640, 813.0375pt x 520.94624pt>
 File: images/ICD-10-CM.png Graphic file (type png)
 <use images/ICD-10-CM.png>
 Package pdftex.def Info: images/ICD-10-CM.png  used on input line 23.
@@ -1050,12 +1168,20 @@ Underfull \hbox (badness 10000) in paragraph at lines 42--44
 
  []
 
-<images/atc_l1_classification_who.jpg, id=684, 578.16pt x 480.29437pt>
+<images/atc_l1_classification_who.jpg, id=652, 578.16pt x 480.29437pt>
 File: images/atc_l1_classification_who.jpg Graphic file (type jpg)
 <use images/atc_l1_classification_who.jpg>
 Package pdftex.def Info: images/atc_l1_classification_who.jpg  used on input li
 ne 56.
 (pdftex.def)             Requested size: 352.81552pt x 293.08905pt.
+
+Package natbib Warning: Citation `atc_who' on page 26 undefined on input line 5
+8.
+
+
+Package natbib Warning: Citation `atc_who' on page 26 undefined on input line 5
+8.
+
 
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
@@ -1087,6 +1213,10 @@ Underfull \hbox (badness 10000) in paragraph at lines 23--25
 
  []
 
+
+Package natbib Warning: Citation `num_of_vis' on page 28 undefined on input lin
+e 26.
+
 (proposed methods/future_records_prediction.tex
 Underfull \hbox (badness 10000) in paragraph at lines 6--8
 
@@ -1101,6 +1231,10 @@ Underfull \hbox (badness 10000) in paragraph at lines 9--11
 Underfull \hbox (badness 10000) in paragraph at lines 6--8
 
  []
+
+
+Package natbib Warning: Citation `morid2018supervised' on page 29 undefined on 
+input line 9.
 
 )) (software design/software_design.tex [29]
 Chapter 5.
@@ -1118,6 +1252,14 @@ Underfull \hbox (badness 10000) in paragraph at lines 21--23
 
  []
 
+
+Package natbib Warning: Citation `pandas' on page 30 undefined on input line 24
+.
+
+
+Package natbib Warning: Citation `numpy' on page 30 undefined on input line 24.
+
+
 [30
 
 ] (software design/embedDesign.tex
@@ -1125,7 +1267,31 @@ Underfull \hbox (badness 10000) in paragraph at lines 6--8
 
  []
 
+
+Package natbib Warning: Citation `scikitlearn' on page 31 undefined on input li
+ne 10.
+
+
+Package natbib Warning: Citation `ntlk' on page 31 undefined on input line 12.
+
+
+Package natbib Warning: Citation `simplemma' on page 31 undefined on input line
+ 14.
+
+
+Package natbib Warning: Citation `sentence_transformer' on page 31 undefined on
+ input line 16.
+
+
+Package natbib Warning: Citation `gensim' on page 31 undefined on input line 18
+.
+
 ) (software design/modelDesign.tex [31]
+
+Package natbib Warning: Citation `pytorch' on page 32 undefined on input line 7
+.
+
+
 Underfull \hbox (badness 10000) in paragraph at lines 7--9
 
  []
@@ -1154,7 +1320,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 24--27
 
  []
 
-<images/diagnosis_embed_showcase.png, id=752, 873.2625pt x 484.81125pt>
+<images/diagnosis_embed_showcase.png, id=701, 873.2625pt x 484.81125pt>
 File: images/diagnosis_embed_showcase.png Graphic file (type png)
 <use images/diagnosis_embed_showcase.png>
 Package pdftex.def Info: images/diagnosis_embed_showcase.png  used on input lin
@@ -1176,6 +1342,9 @@ Underfull \hbox (badness 10000) in paragraph at lines 70--72
  []
 
 
+Package natbib Warning: Citation `w2v' on page 35 undefined on input line 73.
+
+
 Underfull \hbox (badness 10000) in paragraph at lines 73--75
 
  []
@@ -1190,7 +1359,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 6--8
 
  []
 
-<images/cost_hist.png, id=771, 462.528pt x 346.896pt>
+<images/cost_hist.png, id=718, 462.528pt x 346.896pt>
 File: images/cost_hist.png Graphic file (type png)
 <use images/cost_hist.png>
 Package pdftex.def Info: images/cost_hist.png  used on input line 15.
@@ -1207,12 +1376,16 @@ Underfull \hbox (badness 10000) in paragraph at lines 40--42
  []
 
 [36]
+
+Package natbib Warning: Citation `adam' on page 37 undefined on input line 43.
+
+
 Underfull \hbox (badness 10000) in paragraph at lines 43--45
 
  []
 
 )
-Underfull \vbox (badness 1412) has occurred while \output is active []
+Underfull \vbox (badness 2435) has occurred while \output is active []
 
  [37 <./images/cost_hist.png>] (implementation/recordPredImple.tex
 Underfull \hbox (badness 10000) in paragraph at lines 6--8
@@ -1224,10 +1397,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 9--11
 
  []
 
-
-Underfull \vbox (badness 2035) has occurred while \output is active []
-
- [38]
+[38]
 Underfull \hbox (badness 10000) in paragraph at lines 26--28
 
  []
@@ -1238,18 +1408,23 @@ Underfull \hbox (badness 10000) in paragraph at lines 43--45
  []
 
 
+Package natbib Warning: Citation `pytorchLSTM' on page 39 undefined on input li
+ne 46.
+
+
 Underfull \hbox (badness 10000) in paragraph at lines 46--48
 
  []
 
 )) (research/research.tex [39] [40]
 Chapter 7.
-(research/embeddingRes.tex [41
+(research/embeddingRes.tex
 
-]
-Underfull \vbox (badness 10000) has occurred while \output is active []
+LaTeX Warning: `!h' float specifier changed to `!ht'.
 
- [42]
+[41
+
+] [42]
 Underfull \hbox (badness 10000) in paragraph at lines 90--92
 
  []
@@ -1267,23 +1442,28 @@ Underfull \hbox (badness 10000) in paragraph at lines 124--126
 
  []
 
-[43]
+
+Underfull \vbox (badness 2269) has occurred while \output is active []
+
+ [43]
 Underfull \hbox (badness 10000) in paragraph at lines 127--129
 
  []
 
 
+Underfull \vbox (badness 3138) has occurred while \output is active []
+
+ [44]
 Underfull \hbox (badness 10000) in paragraph at lines 130--132
 
  []
 
-[44]
-<images/G215.png, id=832, 376.40625pt x 364.36125pt>
+<images/G215.png, id=775, 376.40625pt x 364.36125pt>
 File: images/G215.png Graphic file (type png)
 <use images/G215.png>
 Package pdftex.def Info: images/G215.png  used on input line 139.
 (pdftex.def)             Requested size: 264.61333pt x 256.16307pt.
-<images/G45.png, id=833, 897.3525pt x 300.12125pt>
+<images/G45.png, id=776, 897.3525pt x 300.12125pt>
 File: images/G45.png Graphic file (type png)
 <use images/G45.png>
 Package pdftex.def Info: images/G45.png  used on input line 148.
@@ -1296,105 +1476,173 @@ Overfull \hbox (44.10446pt too wide) in paragraph at lines 148--149
 
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
-) (research/costPredRes.tex) (research/recordPredRes.tex
+) (research/costPredRes.tex
 Underfull \hbox (badness 10000) in paragraph at lines 6--8
 
  []
 
-
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
- [45 <./images/G215.png>]
-Underfull \hbox (badness 10000) in paragraph at lines 13--15
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 16--18
-
- []
-
-
-LaTeX Warning: No positions in optional float specifier.
-               Default added (so using `tbp') on input line 19.
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 38--40
+[45 <./images/G215.png>]
+Underfull \hbox (badness 10000) in paragraph at lines 9--11
 
  []
 
 [46 <./images/G45.png>]
-Underfull \hbox (badness 10000) in paragraph at lines 41--43
+Underfull \hbox (badness 10000) in paragraph at lines 24--26
 
  []
 
 
-LaTeX Warning: No positions in optional float specifier.
-               Default added (so using `tbp') on input line 46.
+Underfull \hbox (badness 10000) in paragraph at lines 28--30
 
+ []
 
-Underfull \hbox (badness 10000) in paragraph at lines 63--65
+[47]
+Underfull \hbox (badness 10000) in paragraph at lines 36--38
 
  []
 
 
-Underfull \vbox (badness 10000) has occurred while \output is active []
+Underfull \hbox (badness 10000) in paragraph at lines 39--41
 
- [47]
-
-LaTeX Warning: No positions in optional float specifier.
-               Default added (so using `tbp') on input line 68.
+ []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 87--89
+Overfull \vbox (12.6pt too high) detected at line 70
+ []
+
+
+LaTeX Warning: `!h' float specifier changed to `!ht'.
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 77--79
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 80--82
+
+ []
+
+
+LaTeX Warning: `!h' float specifier changed to `!ht'.
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 97--99
 
  []
 
 [48]
 
-LaTeX Warning: No positions in optional float specifier.
-               Default added (so using `tbp') on input line 92.
+LaTeX Warning: `!h' float specifier changed to `!ht'.
 
-)) (results/results.tex [49]
+
+Underfull \hbox (badness 10000) in paragraph at lines 116--118
+
+ []
+
+
+Underfull \vbox (badness 1946) has occurred while \output is active []
+
+ [49])
+(research/recordPredRes.tex
+Underfull \hbox (badness 10000) in paragraph at lines 6--8
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 9--11
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 12--14
+
+ []
+
+[50]
+Underfull \hbox (badness 10000) in paragraph at lines 28--30
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 48--50
+
+ []
+
+
+Underfull \vbox (badness 1122) has occurred while \output is active []
+
+ [51]
+Underfull \hbox (badness 10000) in paragraph at lines 51--53
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 73--75
+
+ []
+
+[52]
+Underfull \hbox (badness 10000) in paragraph at lines 76--78
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 79--81
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 101--103
+
+ []
+
+[53]
+Underfull \hbox (badness 10000) in paragraph at lines 125--127
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 128--130
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 131--133
+
+ []
+
+[54]
+Underfull \hbox (badness 10000) in paragraph at lines 151--153
+
+ []
+
+)) (results/results.tex [55]
 Chapter 8.
-) (conclusion.tex [50
+) (conclusion.tex [56
 
-]) [51
+]) [57
 
-] (main.bbl
-Underfull \hbox (badness 10000) in paragraph at lines 34--38
-[]\T1/cmr/m/n/12 Medzinárodná klasi-fiká-cia chorôb - MKCH-10 --- nczisk.sk.
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 34--38
-[]$\T1/cmtt/m/n/12 https : / / www . nczisk . sk / Standardy-[]v-[]zdravotnictv
-e / Pages /
- []
-
-[52
-
-
-] [53] [54])
+] (main.bbl)
 
 Package caption Warning: Unused \captionsetup[sub] on input line 34.
 See the caption package documentation for explanation.
 
-[55] (main.aux)
 
-LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
+Package natbib Warning: There were undefined citations.
 
+(main.aux)
 Package rerunfilecheck Info: File `main.out' has not changed.
 (rerunfilecheck)             Checksum: 88CFEA362E2FBC67AB94091FFB55DC74;9224.
  ) 
 Here is how much of TeX's memory you used:
- 13773 strings out of 476404
- 227857 string characters out of 2789524
- 1873324 words of memory out of 3000000
- 33563 multiletter control sequences out of 15000+600000
- 524440 words of font info for 61 fonts, out of 8000000 for 9000
+ 13635 strings out of 476404
+ 225311 string characters out of 2789524
+ 1890324 words of memory out of 3000000
+ 33454 multiletter control sequences out of 15000+600000
+ 525167 words of font info for 64 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 63i,10n,67p,2222b,664s stack positions out of 10000i,1000n,20000p,200000b,80000s
+ 63i,16n,67p,2231b,501s stack positions out of 10000i,1000n,20000p,200000b,80000s
 {C:/Users/majko/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/cm-super/cm-sup
 er-t1.enc}{C:/Users/majko/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/cm-supe
 r/cm-super-ts1.enc}<C:/Users/majko/AppData/Local/Programs/MiKTeX/fonts/type1/pu
@@ -1411,12 +1659,12 @@ ajko/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy10.pfb><C
 cm-super/sfbx1440.pfb><C:/Users/majko/AppData/Local/Programs/MiKTeX/fonts/type1
 /public/cm-super/sfbx1728.pfb><C:/Users/majko/AppData/Local/Programs/MiKTeX/fon
 ts/type1/public/cm-super/sfbx2488.pfb><C:/Users/majko/AppData/Local/Programs/Mi
-KTeX/fonts/type1/public/cm-super/sfrm1200.pfb><C:/Users/majko/AppData/Local/Pro
-grams/MiKTeX/fonts/type1/public/cm-super/sfti1200.pfb><C:/Users/majko/AppData/L
+KTeX/fonts/type1/public/cm-super/sfrm0600.pfb><C:/Users/majko/AppData/Local/Pro
+grams/MiKTeX/fonts/type1/public/cm-super/sfrm1200.pfb><C:/Users/majko/AppData/L
 ocal/Programs/MiKTeX/fonts/type1/public/cm-super/sftt1200.pfb>
-Output written on main.pdf (69 pages, 1896718 bytes).
+Output written on main.pdf (71 pages, 1879831 bytes).
 PDF statistics:
- 1031 PDF objects out of 1200 (max. 8388607)
- 237 named destinations out of 1000 (max. 500000)
+ 963 PDF objects out of 1000 (max. 8388607)
+ 206 named destinations out of 1000 (max. 500000)
  537 words of extra memory for PDF output out of 10000 (max. 10000000)
 
