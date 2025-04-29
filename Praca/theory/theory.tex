@@ -3,12 +3,12 @@
 \chapter{Theory - models}
 \label{chap:thoery}
 
-During our research we utilized multiple different machine learning models, in this chapter we introduce them from more theoretical point of view.
+During our research, we utilized several different machine learning models. In this chapter, we introduce these models from a more theoretical point of view.
 
 \section{Multilayer perceptron}
 \label{MLP}
 
-Multilayer perceptron is a feed-forward neural network, so network where data flow single direction or in other words neurons don't form cycles. This network consist of fully-connected, sometimes called dense, layers with non-linear activation functions as shown on Fig. \ref{fig:mlp}, where we can see that this model can be split into three parts which are input layer which load the data, hidden layer which are trying to extract desired information using linear transformations and activation functions and finally output layer which contains final linear transformation followed by activation to output extracted information. Each layer can be described using this formula shown in Eq. \ref{eqn:mlp}, where $h_i$ is resulting vector of i-th layer, $act()$ is a non-linear activation function, $W_i$ is weight matrix of i-th layer, $h_{i-1}$ is resulting vector from previous layer and $b_i$ is bias vector. 
+A multilayer perceptron is a feed-forward neural network, meaning that data flows in a single direction and neurons do not form cycles. This network consists of fully connected, sometimes called dense, layers with non-linear activation functions, as shown in Fig. \ref{fig:mlp}. We can see that this model can be split into three parts: the input layer, which loads the data; the hidden layers, which extract the desired information using linear transformations and activation functions; and finally, the output layer, which applies a final linear transformation followed by an activation function to produce the output. Each layer can be described using the formula shown in Eq. \ref{eqn:mlp}, where $h_i$ is the resulting vector of the $i$-th layer, $act()$ is a non-linear activation function, $W_i$ is the weight matrix of the $i$-th layer, $h_{i-1}$ is the resulting vector from the previous layer, and $b_i$ is the bias vector.
 
 \begin{equation}
 	\label{eqn:mlp}
@@ -27,18 +27,18 @@ Multilayer perceptron is a feed-forward neural network, so network where data fl
 \section{Recurrent neural network}
 \label{theoryRNN}
 
-In general recurrent neural network is type of neural network that in some way uses results from previous step or steps in order to improve prediction. These models are used for ordered data where next step is dependent on more than single previous one.
+In general, a recurrent neural network is a type of neural network that, in some way, uses results from previous steps to improve its predictions. These models are used for ordered data, where each subsequent step depends on more than just the immediately preceding one.
 
 \subsection{Elman RNN}
 
-Elman RNN also known as simple recurrent network (SNR) is type of recurrent neural network that utilize results of hidden layer before activation in previous step as an additional input in next one. We can see this architecture on figure \ref{fig:elman_arch}, where on left we can see how forward propagation look and on right how it looked unrolled over time, we see that middle layer which is a hidden layer of model gets two inputs, first is input vector $x_t$, where $t$ denotes step (usually time step), which is multiplied with matrix of weights $W_i$ and second one is vector $h_{t-1}$ which is result of this layer also called context vector in previous step, which is multiplied by different matrix of weight denoted as $W$, these two results after they are then summed together and result goes to activation layer which create resulting new vector $h_t$ \cite{elman}, this whole process is summarized in Eq. \ref{eqn:elman}(where $b_i$ and $b$ are bias vectors).
+The Elman RNN, also known as a simple recurrent network (SRN), is a type of recurrent neural network that utilizes the results of the hidden layer before activation in the previous step as an additional input in the next one. We can see this architecture in Fig. \ref{fig:elman_arch}, where on the left we observe how forward propagation occurs and on the right how it is unrolled over time. Here, the middle layer, which is the hidden layer of the model, receives two inputs: the input vector $x_t$, where $t$ denotes the step (usually a time step), which is multiplied by a matrix of weights $W_i$, and the vector $h_{t-1}$, which is the result of this layer (also called the context vector) from the previous step, multiplied by a different matrix of weights denoted as $W$. These two results are summed together, and the result is passed to the activation layer, which generates the new vector $h_t$ \cite{elman}. This entire process is summarized in Eq. \ref{eqn:elman}, where $b_i$ and $b$ are bias vectors.
 
 \begin{equation}
 	\label{eqn:elman}
 	h_t = act(x_t W^T_i + b_i + h_{t-1} W^T + b).
 \end{equation} 
 
-Usually this result is directly used as output or go into single fully-connected feed-forward layer. In multi-layered version of this network, result of first hidden layer would go into next hidden layer together with result of that specific layer in previous step and again both would get multiplied by matrices of weight specific for that layer, summed and results goes through activation function.
+Usually, this result is directly used as the output or passed through a single fully-connected feed-forward layer. In a multi-layered version of this network, the output of the first hidden layer is fed into the next hidden layer, along with the output of that specific layer from the previous step. Both inputs are multiplied by weight matrices specific to that layer, summed together, and then passed through an activation function.
 
 \begin{figure}[!h]
 	\centering
@@ -51,16 +51,23 @@ Usually this result is directly used as output or go into single fully-connected
 
 \subsection{Gated Recurrent Unit}
 
-Gated recurrent unit is more complex RNN compared to Elman RNN. This model was developed as simplification of even more complex LSTM model. We can say that it consist mainly of three parts that interact with each other and together create final prediction. Those parts are reset gate, update gate and candidate hidden state computation. We can see structure of hidden layer of GRU on figure \ref{fig:gru_arch}. On this diagram sigmoid means fully-connected feed-forward layer with sigmoid activation function and tanh means fully-connected feed-forward layer with hyperbolic tangent activation function.
+A Gated Recurrent Unit (GRU) is a more complex RNN variant compared to the Elman RNN. Developed as a simplification of the even more intricate LSTM model, the GRU primarily consists of three interacting components: the reset gate, update gate, and candidate hidden state computation. These components collaboratively regulate information flow to produce the final prediction.
 \\
 
-Reset gate is on left side of diagram, it's task is to using input and previous hidden state vectors modify previous hidden state vector which goes into candidate hidden state computation. This should helps capture short-term dependencies in time series by removing part of information from previous hidden state vector.
+The structure of a GRU’s hidden layer is illustrated in Fig. \ref{fig:gru_arch}. In this diagram:
+
+\begin{itemize}
+	\item Sigmoid: Represents a fully connected feed-forward layer with a sigmoid activation function.
+	\item Tanh: Represents a fully connected feed-forward layer with a hyperbolic tangent activation function.
+\end{itemize}
+
+The reset gate, located on the left side of the diagram, uses the input and previous hidden state vectors to modify the previous hidden state vector, which is then fed into the candidate hidden state computation. This process helps capture short-term dependencies in time series by selectively removing information from the previous hidden state vector.
 \\
 
-Candidate hidden vector computation is part that is similar to Elman RNN with two differences, firstly inputted hidden layer is modified by reset gate result and secondly resulting vector from this part is only candidate which goes into further calculation. This candidate contains mostly current and short-term past information thanks to specific vectors that input consist of. 
+The candidate hidden state computation is similar to the Elman RNN but with two key differences: first, the inputted hidden layer is modified by the reset gate's result; second, the resulting vector from this part serves only as a candidate that undergoes further calculation. This candidate vector primarily contains current and short-term past information due to the specific vectors that form its input.
 \\
 
-Update gate, similarly to reset gate, uses concatenation of input and previous hidden state vector on input, but this time results are used to modify both previous hidden state and candidate hidden state in a way that resulting hidden state is weighted average of those two vectors where weights are results from this gate. This should help to capture long-term dependencies in time series from previous hidden state vector and reintroducing it into final hidden state by combining it with candidate hidden state vector that should contain mostly current and short-term information. This whole architecture is shown on Fig. \ref{fig:gru_arch}.
+The update gate, similar to the reset gate, uses the concatenation of the input and previous hidden state vector as its input. However, its results are used to modify both the previous hidden state and the candidate hidden state, creating a final hidden state that is a weighted average of these two vectors, with weights derived from this gate. This architecture helps capture long-term dependencies in time series by reintroducing relevant information from the previous hidden state vector into the final hidden state, combining it with the candidate hidden state vector that contains mostly current and short-term information. The entire architecture is depicted in Fig. \ref{fig:gru_arch}.
 \\
 
 \begin{figure}[!h]
@@ -72,23 +79,23 @@ Update gate, similarly to reset gate, uses concatenation of input and previous h
 	\label{fig:gru_arch}
 \end{figure}
 
-Multi-layered version is achieved by stacking hidden layers where hidden state vector of one layer is input vector of next one.
+The multi-layered version of this architecture is achieved by stacking hidden layers, where the hidden state vector of one layer becomes the input vector for the next.
 
 \subsection{Long Short-Term Memory}
 
-As mentioned earlier, LSTM is more complex predecessor of GRU. This model was developed with aim to mitigate vanishing gradient problem, that cause lack of long-term memory in models like Elman RNN, mainly by introducing memory vector, sometimes called memory cell, that should maintain information over longer period. As we can see in figure \ref{fig:lstm_arch} this model consist of three gates, candidate memory computation. Legend in this diagram have same meaning as one in GRU architecture diagram.
+As mentioned earlier, the LSTM is a more complex predecessor of the GRU. Developed to address the vanishing gradient problem that limits long-term memory in models like the Elman RNN, the LSTM introduces a memory vector, often called a memory cell, designed to maintain information over longer periods. As shown in Fig. \ref{fig:lstm_arch}, this model consists of three gates and a candidate memory computation. The legend in this diagram has the same meaning as in the GRU architecture diagram.
 \\
 
-All three gates and candidate memory computation has same input, which consist of input and previous hidden state vectors. In all of them this input goes into fully-connected feed-forward layer and then into activation function. In case of gates this activation function is sigmoid function, that bound all values into range (0,1), while candidate memory calculation uses hyperbolic tangent as activation function.
+All three gates and the candidate memory computation share the same input, which consists of the input vector and the previous hidden state vector. In each case, this input passes through a fully connected feed-forward layer and then into an activation function. For the gates, this activation function is the sigmoid function, which bounds all values within the range (0,1), while the candidate memory calculation uses the hyperbolic tangent as its activation function.
 \\
 
-Forget gate has the task of removing unnecessary information from memory vector by elementwise multiplication of it's result with previous memory vector. 
+The forget gate is responsible for removing unnecessary information from the memory vector by performing an element-wise multiplication of its result with the previous memory vector.
 \\
 
-Input gate together with candidate memory vector computation are meant to introduce new information into memory cell after adjustment from forget gate. Firstly model computes candidate memory then, then this vector is adjusted by input gate result and finally added to the modified previous memory vector. This results in new memory vector.
+The input gate, together with the candidate memory vector computation, is designed to introduce new information into the memory cell after adjustments made by the forget gate. First, the model computes the candidate memory vector; this vector is then adjusted by the input gate's result and added to the modified previous memory vector, resulting in a new memory vector.
 \\
 
-Finally output gate is used to determine how much each part of memory should contribute into new hidden state vector. We can see diagram of this process on Fig. \ref{fig:lstm_arch}.
+Finally, the output gate determines how much each part of the memory should contribute to the new hidden state vector. This process is illustrated in Fig. \ref{fig:lstm_arch}.
 
 \begin{figure}[!h]
 	\centering
@@ -98,11 +105,12 @@ Finally output gate is used to determine how much each part of memory should con
 	\caption{Architecture of LSTM hidden layer.}
 	\label{fig:lstm_arch}
 \end{figure}
+\newpage
 
 \section{Transformer}
 \label{theoryTrans}
 
-Transformer is a deep learning model architecture introduced in 2017 by Vaswani et al. \cite{attentionAllYouNeed} that's especially good at handling sequences, like text. This architecture consist of encoder and decoder as shown in Fig. \ref{fig:trans}. Encoder in this model is meant to contextualized representation of input while decoder takes this contextualized representation and mixes together with previous outputs to get prediction of next output. Other than these two main blocks this model usually also contains Tokenizer , Embedding layer and Positional encoding to prepare in going data and Fully-connected Feed-forward layer with softmax activation function to turn result of decoder into probability distribution of possible tokens.  
+The Transformer is a deep learning model architecture introduced in 2017 by Vaswani et al. \cite{attentionAllYouNeed} that is especially good at handling sequences, such as text. This architecture consists of an encoder and a decoder, as shown in Fig. \ref{fig:trans}. The encoder in this model is meant to create a contextualized representation of the input, while the decoder takes this contextualized representation and combines it with previous outputs to predict the next output. In addition to these two main blocks, this model usually also contains a tokenizer, an embedding layer, and positional encoding to prepare the input data, as well as a fully connected feed-forward layer with a softmax activation function to turn the result of the decoder into a probability distribution over possible tokens.
 
 \begin{figure}[!h]
 	\centering
@@ -115,24 +123,23 @@ Transformer is a deep learning model architecture introduced in 2017 by Vaswani 
 
 \subsection{Tokenizer, Embedding layer and Positional encoding}
 
-First part of Transformer model is usually input preparation, this part may differ based on type of data used. This part consist of three parts:
-\\
+The first part of the Transformer model is usually input preparation, which may vary depending on the type of data used. This part consists of three components:
 
 \begin{itemize}
-	\item Tokenizer - this layer split input into tokens, for example if input is textual, tokens might words or syllables
-	\item Embedding layer - task of this layer is to transform each one of input tokens into numerical vectors of same length
-	\item Positional encoding - finally last preparation layer add to each embedding of token vector which encodes their position with regards to other tokens
+	\item Tokenizer: This layer splits the input into tokens. For example, if the input is textual, tokens might be words or syllables.
+	\item Embedding layer: The task of this layer is to transform each input token into a numerical vector of the same length.
+	\item Positional encoding: The final preparation layer adds a vector to each token’s embedding, encoding its position relative to other tokens.
 \end{itemize}
 
-In most cases Tokenizer and Embedding layer are trained separately and do not change during training if Transformer while Positional encoding is trained alongside rest of Transformer.
+In most cases, the Tokenizer and Embedding layer are trained separately and do not change during training of the Transformer, while the Positional Encoding is trained alongside the rest of the Transformer.
 
 \subsection{Encoder}
 \label{theoryEncoder}
 
-Encoder architecture consist of multiple attention blocks where each block consist of multi-headed Self-attention and Multi-layered Feed-forward Neural Network, after each of these step embeddings from step input are added to output and result is layer normalized, adding of step input embedding is done to create residual paths that helps mostly with vanishing gradient problem and layer normalization then helps by making sure results neither explode neither go to zero as well as it bring bit of additional non-linearity to model. Firstly input embeddings are split into parts that each goes into separate head  Self-attention.
+Encoder architecture consists of multiple attention blocks, where each block consists of multi-headed self-attention and a multi-layered feed-forward neural network. After each of these steps, the embeddings from the step input are added to the output, and the result is layer-normalized. Adding the step input embedding creates residual paths that help mainly with the vanishing gradient problem, while layer normalization ensures that the results neither explode nor vanish, and also brings a bit of additional non-linearity to the model. First, input embeddings are split into parts, each of which goes into a separate self-attention head.
 \\
 
-Architecture of Self-attention is shown on Fig. \ref{fig:self_att} where we can see that each input token get multiplied by key, query and value matrices to receive their key, query and value vectors, after that each query is multiplied with each key to create attention matrix which should encode how much each token influence other, after that matrix goes into column wise softmax function to normalize it and finally it's multiplied my matrix of value vectors to create new embedding of tokens that should contain not only original information but also influence information. 
+The architecture of self-attention is shown in Fig.~\ref{fig:self_att}, where we can see that each input token is multiplied by key, query, and value matrices to obtain their key, query, and value vectors. After that, each query is multiplied with each key to create the attention matrix, which encodes how much each token influences the others. This matrix then goes into a column-wise softmax function to normalize it, and finally, it is multiplied by the matrix of value vectors to create new embeddings of the tokens that should contain not only the original information but also the influence information.
 \\
 
 \begin{figure}[!h]
@@ -144,39 +151,45 @@ Architecture of Self-attention is shown on Fig. \ref{fig:self_att} where we can 
 	\label{fig:self_att}
 \end{figure}
 
-Results of each Self-attention head are then concatenated back into new embeddings that have same dimensions as original ones, then after adding residual connection and normalization results goes into Multi-layered Feed-forward Neural Network to further extract information from embeddings.
+The results of each self-attention head are then concatenated back into new embeddings that have the same dimensions as the original ones. After adding the residual connection and normalization, the results go into a multi-layered feed-forward neural network to further extract information from the embeddings.
 
 \subsection{Decoder}
 
-Architecture of decoder, similarly to encoder, consist of multiple attention blocks, however in this case attention block consist of three parts instead of two. 
+The architecture of the decoder, similarly to the encoder, consists of multiple attention blocks; however, in this case, each attention block consists of three parts instead of two.
 \\
 
-First is masked multi-headed Self-attention which is similar to unmasked Self-attention with only difference being application of masking to the attention matrix before softmax function to make sure that words on some specific positions does not affect words on other specific positions. Decoder use what's called casual or look-ahead masking which forbid future tokens to affect past ones, in our case this guarantees that record cannot be affected by record which happened after so in the future from it's perspective. 
+The first part is masked multi-headed self-attention, which is similar to unmasked self-attention, with the only difference being the application of masking to the attention matrix before the softmax function. This ensures that words at certain positions do not affect words at other specific positions. The decoder uses what is called causal or look-ahead masking, which prevents future tokens from affecting past ones. In our case, this guarantees that a record cannot be influenced by records that occur later, that is, in the future from its perspective.
 \\
 
-Second part is multi-headed Cross-attention, which takes two lists of token embeddings and compute effect of tokens in first list onto tokens in second list. In this case key and value vectors are computed from contextualized representation computed by encoder while query vectors are computed from results of self-attention in decoder, other than that remaining architecture is same as unmasked Self-attention. 
+The second part is multi-headed cross-attention, which takes two lists of token embeddings and computes the effect of tokens in the first list on tokens in the second list. In this case, the key and value vectors are computed from the contextualized representation produced by the encoder, while the query vectors are computed from the results of self-attention in the decoder. Other than this, the remaining architecture is the same as unmasked self-attention.. 
 \\
 
-Final part of decoder attention block is multi-layered feed-forward neural network that further extract information from embeddings. 
+The final part of the decoder attention block is a multi-layered feed-forward neural network that further extracts information from the embeddings.
 
 \subsection{Fully-connected Feed-forward layer}
 
-After that results of decoder goes into final Fully-connected Feed-forward layer which change dimensionality of the decoder output from embedding size into vocabulary and apply softmax activation on result. This way we expect to get in last token probability distribution through all possible tokens. In our case we changed this last part. We run into problem where most of our records (our tokens) are unique creating extremely large vocabulary, this was caused partially by many possible combinations of disease, drug and medical procedure which are encoded in record and partially by timestamp which add additional uniqueness since it's improbable that two patients would get for example same drug, for same disease, at same age. Because of this we decided to remove softmax activation, changing fully-connected feed-forward layer in a way that result maintain dimension of embedding and added function that split result, find closest embedding of each part and concatenate result together leaving us with specific new embedding prediction instead of probability distribution.
+After that, the results of the decoder pass into the final fully-connected feed-forward layer, which changes the dimensionality of the decoder output from the embedding size to the vocabulary size and applies a softmax activation to the result. This setup is designed to produce a probability distribution over all possible tokens for the last token.
+\\
+
+In our case, we modified this final step. We encountered a problem where most records (our tokens) were unique, creating an extremely large vocabulary. This issue arose partially due to the many possible combinations of diseases, drugs, and medical procedures encoded in each record, and partially due to timestamps adding uniqueness, as it is unlikely for two patients to receive the same drug for the same disease at the same age.
+\\
+
+To address this, we removed the softmax activation and altered the fully-connected feed-forward layer so that the result maintains the embedding dimension. We then added a function that splits the result, finds the closest embedding for each part, and concatenates these embeddings together, yielding a specific new embedding prediction instead of a probability distribution.
 
 \subsection{Decoder-only Transformer}
 
-Decoder-only version of Transformer model is simplified version of model which completely exclude Encoder part of model and from Decoder part it excludes Cross-attention mechanism. This model is usually used if we wanna generate next tokens without having stable context that would normally go into Encoder part.
+The Decoder-only version of the Transformer model is a simplified variant that entirely excludes the Encoder part and removes the Cross-Attention mechanism from the Decoder. This model is typically used when generating subsequent tokens without relying on a stable contextual input that would normally be processed by the Encoder.
 \\
 
-This means that this simplified architecture is much more similar to standard RNN in terms of input and expected output.
+This simplification makes the architecture more akin to a standard RNN in terms of input-output behavior, where the model generates sequences step-by-step without explicit cross-contextual dependencies.
 
 \section{Language-agnostic BERT Sentence Embedding}
 \label{theoryLaBSE}
 
-Language-agnostic BERT Sentence Embedding model also known under abbreviation LaBSE is model trained with main goal being to generate similar representation to pairs of sentences which have same meaning and are only translations in two different language \cite{labse_kaggle}. 
+The Language-agnostic BERT Sentence Embedding model, also known as LaBSE, is a model trained with the main goal of generating similar representations for pairs of sentences that have the same meaning and are only translations of each other in two different languages \cite{labse_kaggle}.
 \\
 
-Architecture of LaBSE model consist of 4 parts \cite{labse_hug}:
+The architecture of the LaBSE model consists of four parts \cite{labse_hug}:
 
 \begin{enumerate}
 	\item Encoder-only transformer (BERT model)
@@ -188,7 +201,10 @@ Architecture of LaBSE model consist of 4 parts \cite{labse_hug}:
 \subsection{Encoder-only Transformer (BERT model)}
 \label{emb:trans}
 
-First and most important part of LaBSE model is transformer, which is a deep learning architecture. More specifically LaBSE uses BERT so bidirectional encoder representations from transformers model which is encoder-only transformer architecture meaning this model does not contain decoder found in standard transformer which is usually used for prediction, because of this BERT model is focused in extracting contextual information from input text. Architecture of standard BERT model looks like this: 
+The first and most important part of the LaBSE model is the transformer, a deep learning architecture. More specifically, LaBSE uses BERT (Bidirectional Encoder Representations from Transformers), an encoder-only transformer architecture. This means the model lacks the decoder found in the standard Transformer (typically used for prediction tasks), allowing BERT to focus solely on extracting contextual information from input text.
+\\
+
+The architecture of the standard BERT model includes:
 
 \begin{enumerate}
 	\item Tokenizer layer
@@ -199,42 +215,49 @@ First and most important part of LaBSE model is transformer, which is a deep lea
 
 \subsubsection{Tokenizer layer}
 
-First layer is tokenizer, this layer takes input text split it into tokens which in case of BERT model is called PieceWise tokenizer which split text into subwords so something close to syllables. PieceWise tokenizer has advantage compared to different tokenizers that use either words or characters. Compared to character wise tokenizing, subwords contain more information than characters, and compared to word tokenizer is that there a lot less subwords than words and are more similar across multiple languages, creating much smaller vocabulary which is especially important for multilingual models. After split this layer assign integer number to each unique token, LaBSE model vocabulary distinguishes around 500 000 different tokens.
+The first layer is the tokenizer, which takes the input text and splits it into tokens. In the case of the BERT model, this is called the PieceWise tokenizer, which splits text into subwords, something similar to syllables. The PieceWise tokenizer has advantages compared to other tokenizers that use either words or characters. Compared to character-wise tokenization, subwords contain more information than individual characters. Compared to word tokenization, there are far fewer subwords than words, and subwords are more similar across multiple languages, resulting in a much smaller vocabulary. This is especially important for multilingual models. After splitting, this layer assigns an integer number to each unique token. The LaBSE model’s vocabulary distinguishes around 500,000 different tokens.
 
 \subsubsection{Embedding layer}
 
-After that comes embedding layer which assign real number vector to each token, more specifically BERT model compute three different embeddings and add them together and normalize result to get final one. First is token type embedding, which is basic embedding where each token in vocabulary is assigned it's unique embedding. Second is positional embedding, as name suggest this embedding contain information about where in the sequence token is found giving additional information. Third and final embedding is segment type, which encodes information about to which segment, usually sentence token belong, important for embedding input text consisting of multiple sentences.
+After that comes the embedding layer, which assigns a real-number vector to each token. Specifically, the BERT model computes three distinct embeddings, sums them, and normalizes the result to produce the final embedding:
+
+\begin{itemize}
+	\item Token type embedding: The base embedding where each token in the vocabulary is assigned a unique vector.
+	\item Positional embedding: Encodes the token’s position within the sequence, providing contextual information about its location.
+	\item Segment type embedding: Indicates which segment (typically a sentence) the token belongs to, crucial for processing multi-sentence input.
+\end{itemize}
 
 \subsubsection{Encoder}
 
-Third and most important layer is encoding. This is the layer in which contextual information are mined from the text. Architecture of this layer is same as architecture explained in Sec. \ref{theoryEncoder}. In case of BERT used in LaBSE there are 12 attention blocks. 
+The third and most important layer is the encoder. This is the layer in which contextual information is mined from the text. The architecture of this layer is the same as the encoder described in Sec. \ref{theoryEncoder}. In the BERT variant used by LaBSE, the encoder contains 12 attention blocks.
 
 \subsubsection{Task layer}
 
-Each head of self-attention layer takes a input set of embeddings and to compute new set of embeddings which should encode not only original information but also information about relationship between original ones, in other words it encodes effect of tokens onto each other. To do that it compute for each input embedding three vectors usually called key, query and value by multiplying input embedding with three matrices which values are learned during training. After that to get new embedding query vector is multiplied with matrix created from key vectors so resulting vector is vector of dot product of single query and all keys, this vector then goes through softmax function to normalize result. In some transformer models before softmax this vector get masked. Masking is done by setting values where key vector belongs to later embedding than query to minus infinity, this way after softmax this values become zeros. This is done so that later embedding does not affect previous ones. It's mostly useful in models trained to predict next token in order for model to learn to predict only based on tokens from past on not future. However in case of model like BERT where emphasis is on extracting as much information from input text masking is not done. Final step to get new embedding is to multiply vector we got after applying softmax with matrix composed of value vector to get linear combination of value vectors. This resulting vector is new embedding. This is done for all query vectors. List list resulting vectors is output embedding of attention head. Since this model use multi-headed attention more specifically in case of LaBSE 12-headed attention, this process is simultaneously independently done 12 times and results of each head are than concatenated into final result of attention. By using multiple head we expect that each head can extract different information from input and final concatenation give us result that contains all extracted information.    
+The training process of the BERT model usually consists of two tasks on which the model is trained at the same time. The first is Masked Language Modeling (MLM), where 15\% of input tokens are masked, meaning they are either replaced by a mask placeholder or by a random different token. The masked input then goes into the model, and the resulting tokens at the positions of the masked tokens in the input are compared to the correct tokens before masking. This creates an error that is back-propagated through the model, updating its parameters \cite{bert_pretr_1}. The other task usually used is called Next Sentence Prediction (NSP). In this task, the model receives input that starts with a special classification token and then two spans of text separated by a special separator token. The task of the model is to determine whether these two spans of text can appear one after another, or more precisely, whether they appeared consecutively in the training corpus. This information is encoded in the first token of the result using two special tokens, either "is next" or "not next." Similarly, the difference between the expected and resulting first token creates an error that is back-propagated through the model \cite{bert_pretr_2}.
 \\
 
-This concatenation of new embeddings goes than into multi-layered feed-forward neural network sometimes also called Multilayer Perceptron or MLP for short, architecture of this model is explained in Sec. \ref{MLP}.
+However, in some BERT-based models like LaBSE, the second task is replaced with Translation Language Modeling (TLM). This task is an extension of MLM, in which the model receives two concatenated sentences instead of one, where the second sentence is a translation of the first in another language. The rest of the task is the same as in MLM: the whole input is masked, and the model is tasked with predicting the masked tokens \cite{bert_pretr_3}. 
 \\
 
-Result goes to next attention block and process is repeated again. Result of final attention block then goes to last part which is task layer, this layer can be viewed as simple decoder that map resulting embeddings back into token space. Based on this results is then model pre-trained. Training process of BERT model usually consist of two tasks on which are model trained at the same time. First is Masked Language Modeling (MLM) where 15\% of input tokens are masked meaning either replaced by mask placeholder or by random different token, after that masked input goes into model, then from resulting tokens are taken those on position of masked tokens in input and are compared to correct token before masking which creates error that is back-propagated through model updating it's parameters \cite{bert_pretr_1}. Other task usually used is called Next Sentence Prediction (NSP), in this task model gets input which start with special classify token and after that two spans of texts separated by special separator token. Task of model is to say whether these two spans of text can appear one after another or more precisely whether they appeared one after another in training corpus and put this information into first token of result encoded by two special tokens either "is next" or "not next" token and similarly difference between expected and resulting first token create error that back-propagates through model \cite{bert_pretr_2}. However in some BERT-based model like LaBSE second task is replaced with translation language modeling (TLM), this task is extention of MLM in which model gets two concatenated sentence instead of one and where the second sentence is translation of the first in another language, rest of the task is than same as in MLM, so whole input gets masked and model is tasked to predict masked tokens \cite{bert_pretr_3}. Task layer is used primarly in only during pre-training and is omitted when model is used for different task as many use-cases does not need tokens in results but use embeddings from encoding layer as form of text encoding which is that further used in task specific layers on which then model is fine-tuned.
+The task layer is used primarily only during pre-training and is omitted when the model is used for a different task, as many use cases do not need tokens in the results but instead use embeddings from the encoding layer as a form of text encoding, which is then used in task-specific layers for fine-tuning.
+
 
 \subsection{Pooling layer}
 
-After BERT model returns embeddings of all input tokes, these then needs to be aggregated into single vector which corresponds to embedding of whole input. This aggregation is done using pooling layer. In case of LaBSE this pooling is done simply by taking embedding of first token which is an embedding of special classify token added to beginning of BERT input.    
+After the BERT model returns embeddings for all input tokens, these embeddings need to be aggregated into a single vector that represents the embedding of the entire input. This aggregation is typically performed using a pooling layer. In the case of LaBSE, this pooling is done simply by taking the embedding of the first token, which is the embedding of the special classification token added to the beginning of the BERT input.
 
 \subsection{Dense layer}
 
-Next layer is standard feed forward dense layer with use hyperbolic tangent activation function. Number of input and output neurons is same, and additional bias neuron is used.
+The next layer is a standard feed-forward dense layer using a hyperbolic tangent activation function. The number of input and output neurons is the same, and the layer includes an additional bias neuron.
 
 \subsection{Normalization layer}
 
-Final layer is normalization which task is only to normalize resulting vector, so divide vector by number in order to have final vector with $L_2$ norm equal one.
+The final layer is normalization, whose task is to normalize the resulting vector by dividing it by its $L_2$ norm, ensuring the final vector has an $L_2$ norm equal to one.
 
 \section{Word2vec model}
 \label{theoryW2v}
 
-Word2vec is a neural network-based method for generating word embeddings, which are dense vector representations of words that capture their semantic meaning and relationships, in other words properties like distance between two embeddings contains some underlying information about those words such as their similarity. There are two main approaches to implementing Word2vec:
+Word2vec is a neural network-based method for generating word embeddings, which are dense vector representations of words that capture their semantic meaning and relationships. In other words, properties like the distance between two embeddings contain underlying information about those words, such as their similarity. There are two main approaches to implementing Word2vec:
 
 \begin{itemize}
 	\item Continuous bag-of-words (CBOW) 
@@ -243,27 +266,28 @@ Word2vec is a neural network-based method for generating word embeddings, which 
 
 \subsection{CBOW approach}
 
-Model using CBOW approach gets sequence of words called context with one being missing and on the output it's trying to predict missing target word. Model initially assign one-hot encoding to each word in it's dictionary. During training, each word from context is firstly converted into it's one hot encoded embedding which is then multiplied by weight matrix to get their lower dimensional dense embedding, dense embedding of all words in context are then averaged out and resulting embedding goes into hidden layer which transform vector back into dimension of vocabulary, finally softmax function is applied to get probability of each word from vocabulary to be predicted as missing word. We can see this architecture in \ref{fig:cbow_arch}. Training is usually done using fixed context window moving along training text.
+A model using the CBOW approach receives a sequence of words called the context, with one word missing, and tries to predict the missing target word as output. The model initially assigns one-hot encoding to each word in its dictionary. During training, each word from the context is first converted into its one-hot encoded embedding, which is then multiplied by a weight matrix to obtain its lower-dimensional dense embedding. The dense embeddings of all words in the context are then averaged, and the resulting embedding goes into a hidden layer, which transforms the vector back into the dimension of the vocabulary. Finally, a softmax function is applied to get the probability of each word in the vocabulary being predicted as the missing word. We can see this architecture in Fig. \ref{fig:cbow_arch}. Training is usually done using a fixed context window moving along the training text.
 
 \begin{figure}[!h]
 	\centering
 	
-	\includegraphics[width=1\textwidth]{images/CBOW_arch.png}
+	\includegraphics[width=0.9\textwidth]{images/CBOW_arch.png}
 	
-	\caption{Architecture of NN to train CBOW implenetation of Word2vec model \cite{cbow}.}
+	\caption{Architecture of NN to train CBOW implementation of Word2vec model \cite{cbow}.}
 	\label{fig:cbow_arch}
 \end{figure}
 
 \subsection{Skip-gram approach}
 
-Skip-gram approach works in opposite way, where model gets target word and is trying to predict context around it. Similarly to CBOW, input word is firstly one-hot encoded then multiplied by weight matrix to transform it into dense encoding, the goes into next layer to transform it back into dimension of vocabulary goes into softmax creating vector of probabilities of surrounding context words. Error of Skip-gram is the sum of the negative log-likelihood of all context words. We can see this architecture in \ref{fig:skip_arch}.
+The Skip-gram approach works in the opposite way, the model receives a target word and tries to predict the surrounding context words. Similar to CBOW, the input word is first one-hot encoded and then multiplied by a weight matrix to transform it into a dense embedding. This embedding is passed to the next layer, which transforms it back into the vocabulary dimension. A softmax function is then applied to generate a probability distribution over potential context words.
+\\
 
+The Skip-gram’s loss function is the sum of the negative log-likelihoods of all context words. This architecture is illustrated in Fig. \ref{fig:skip_arch}.
 \begin{figure}[!h]
 	\centering
 	
-	\includegraphics[width=1\textwidth]{images/Skip_arch.png}
+	\includegraphics[width=0.9\textwidth]{images/Skip_arch.png}
 	
-	\caption{Architecture of NN to train Skip-gram implenetation of Word2vec model \cite{skipgram}}
+	\caption{Architecture of NN to train Skip-gram implementation of Word2vec model \cite{skipgram}}
 	\label{fig:skip_arch}
 \end{figure}
-\\ 

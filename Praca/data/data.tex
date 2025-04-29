@@ -5,10 +5,10 @@
 Our models were developed for a database of health insurance claims maintained by the Slovak National Health Information Center (NCZI). We focused primarily on datasets related to drug prescriptions and medical procedures administered by outpatient healthcare providers.
 \\
 
-To train and verify model we used completely artificial data with matching structure to data in NCZI database. The data were generated in a manner that simulates realistic patient records.
+To train and verify the model, we used completely artificial data with a structure matching that of the NCZI database. The data were generated in a way that simulates realistic patient records.
 \\
 
-Data we have can be split into two categories, those are patients records and mapping table. 
+The data we have can be split into two categories: patient records and a mapping table.
 
 \section{Patients records}
 
@@ -18,11 +18,12 @@ Patients records are split into two dataset:
 	\item Records of prescribed drugs
 \end{itemize}
 
-In total we have data about 173355 patients. Each patient have at least 70 records.
+In total, we have data on 173 355 patients. Each patient has at least 70 records, resulting in a dataset with 133 679 705 records overall. 
 
 \subsection{Records of medical procedures from ambulatory health care}
 
-Each row of this dataset is equivalent to single patient record, meaning single medical procedure done to them, in total this dataset consist of (ADD NUMBER HERE) records. Each record consist of these variable:
+Each row of this dataset corresponds to a single patient record, specifically representing one medical procedure performed on that patient. Each record consists of the following variables:
+
 \begin{itemize}
 	\item date of the procedure - date when procedure was performed
 	\item code of the patient - identification code unique for the patient
@@ -33,11 +34,12 @@ Each row of this dataset is equivalent to single patient record, meaning single 
 	\item cost of the procedure - cost associated with performing of the procedure
 \end{itemize}
 
-For our prediction we use most of these information, date of the procedure combined with patient age is used to create timestamp information used to order all records for patient as well as one of the dimension of record embedding. Identification code of patient is used to be able to gather all records for single patient. Identification codes for diagnosis and procedure are matched with their corresponding numerical vector and embedded into vector corresponding to record (see \ref{embedding}). Cost is encoded into cost category and used as information of cost associated with embedding of record.
+For our prediction model, we use most of this information. The date of the procedure, combined with the patient’s age, generates timestamp data used to chronologically order all records for a patient and serves as one dimension of the record embedding. The patient identification code enables the aggregation of all records for a single individual. Diagnosis and procedure codes are mapped to their corresponding numerical vectors and embedded into the record’s vector representation (see \ref{embedding}). Finally, cost is encoded into a cost category and serves as the target variable for training the record cost prediction models.
 
 \subsection{Records of prescribed medicines}
 
-Similarly to dataset containing procedures, each row is equivalent to single patient record, in this case it's single drug prescription for that specific patient, in total we have (ADD NUMBER HERE) records of prescribed drugs. Each record consist of these variable:
+Similarly to the dataset containing procedures, each row in this dataset corresponds to a single patient record, in this case representing one drug prescription for a specific patient. Each record consists of the following variables:
+
 \begin{itemize}
 	\item date of the prescription - date when drug was prescribed
 	\item code of the patient - identification code unique for the patient
@@ -48,61 +50,19 @@ Similarly to dataset containing procedures, each row is equivalent to single pat
 	\item cost of the drug - cost associated with performing of the procedure
 \end{itemize}
 
-Use of these variable is also similar to procedures, with only difference that instead of using encoding procedure into record embedding we encode drug.
+The use of these variables is also similar to that for procedures, with the only difference being that, instead of encoding the procedure into the record embedding, we encode the drug.
 
 \section{Mappings}
 
-Other than datasets containing patients data we use three mapping files to map identification codes used for attributes in patients records datasets to corresponding embedding vectors. Mapping datasets are:
+In addition to the patient records dataset, we utilize three mapping files to translate identification codes from the raw patient records into their corresponding embedding vectors. These mapping datasets are:
+
 \begin{itemize}
 	\item Diagnosis mapping
 	\item Drug mapping
 	\item Medical procedure mapping
 \end{itemize}
 
-These datasets are publicly available dimensional table from maintained and used by NCZI. In general all three mapping table have comparable structure consisting of three main attributes. First is internal identification number used by NCZI to join these mappings on patients records. Then second attribute is official code, in case of drugs and diagnosis it's an internationally standardized structured code while medical procedures uses code specific for Slovakia which unfortunately lack any kind of meaningful structure. Final last important part is textual description. 
+These datasets are publicly available dimension tables maintained and used by NCZI. In general, all three mapping tables have a comparable structure consisting of three main attributes. The first is an internal identification number used by NCZI to join these mappings to patient records. The second attribute is the official code; in the case of drugs and diagnoses, this is an internationally standardized structured code, while medical procedures use a code specific to Slovakia, which unfortunately lacks any meaningful structure. The final important part is the textual description.
 \\
 
-We used these dimensional table to generate embedding vectors for drugs, diagnosis and medical procedures. Process of this embedding is explained in section \ref{embeddingImple}.    
-
-
-\mycomment{
-EQUATION SHOWCASE:
-\begin{equation}
-	\label{eqn:starskynoise}
-	\sigma_{star} = \sqrt{S_{star}} \quad \sigma_{sky} = \sqrt{S_{sky}}
-\end{equation} 
-
-FIGURE SHOWCASE:
-\begin{figure}[!h]
-	\centering
-	\begin{subfigure}{.3\textwidth}
-		\centering
-		\includegraphics[width=\textwidth]{images/FMFI_logo_BP.png}
-		\caption{Hot pixels.}
-		\label{fig:hotpixels}
-	\end{subfigure}
-	\begin{subfigure}{.3\textwidth}
-		\centering
-		\includegraphics[width=\textwidth]{images/FMFI_logo_BP.png}
-		\caption{Dead columns.}
-		\label{fig:deadcolumns}
-	\end{subfigure}
-	
-	\vspace*{4mm}
-	
-	\begin{subfigure}{.3\textwidth}
-		\centering
-		\includegraphics[width=\textwidth]{images/FMFI_logo_BP.png}
-		\caption{Traps.}
-		\label{fig:trap}
-	\end{subfigure}
-	\begin{subfigure}{.3\textwidth}
-		\centering
-		\includegraphics[width=\textwidth]{images/FMFI_logo_BP.png}
-		\caption{Saturation trail.}
-		\label{fig:saturationtrail}
-	\end{subfigure}
-	\caption{Examples of some internal defects present on FITS images acquired by AGO70.}
-	\label{fig:internaldefects}
-\end{figure}
-}
+We used these dimension tables to generate embedding vectors for drugs, diagnoses, and medical procedures. The process of this embedding is explained in Sec. \ref{embeddingImple}.

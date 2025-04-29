@@ -28,3 +28,8 @@ Each of these method have it's own disadvantages. In case of linear regression, 
 \input{proposed methods/future_records_prediction}
 
 \input{proposed methods/cost_prediction}
+
+\section{Prediction of future cost of patient}
+\label{pat_fut_pred_met}
+
+This last task is our main goal. We wanna be able to predict what would be cost of patient in next year. In order to do this we utilize results from all our previous tasks where we firstly embed patients records after that we predict records that patient could receive in next year, for each predicted record we then predict it record cost category, finally all costs are summed and transformed into patient cost category.  

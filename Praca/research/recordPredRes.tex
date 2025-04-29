@@ -151,3 +151,4 @@ Since deeper models showed signs of overtraining we decided that for testing of 
 In results of dropout rate training shown in Tab. \ref{tab:transformer_dropout} we can see increasing dropout rate beyond 20\% has tangible improvement validation loss while training loss increases but again only to certain point where we can see no measurable improvement beyond 30\%. Based on these results we decided to choose as the best Decoder-only Transformer model one with 3 layers, 14 heads and 30\% dropout rate, which boast validation loss of 0.6212.
 \\
 
+With this we ended with two model to chose from, LSTM model with validation loss 0.6278 and Decoder-only Transformer with validation loss 0.6212. Out of these two we have chosen later one because it not only had slightly lower validation loss but also lower training loss of 0.5200 compared to training loss 0.5983 of LSTM model. 

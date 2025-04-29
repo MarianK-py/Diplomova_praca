@@ -1,24 +1,34 @@
 % !TeX spellcheck = en_EN-English
 
-Main goal of our study is to predict cost of patient in the future, so how much money would be spent on drugs and procedures for specific patient.
+The main goal of our study is to predict the future cost for each patient, specifically how much money will be spent on drugs and procedures for a given individual.
 \\
  
-One of similar studies in this regard is study by Caballer-Tarazona et al. \cite{caballer2019predicting} in which they tried to predict future cost of the patient primarily using what they called "Aggregated Clinical Risk Group 3" computed from standardized Clinical Risk Group (CRG), this variable consist of two parts, first in one of nine grouped CRGs and second part is one of six levels of severity. They also tested adding additional information such age or sex of patient to see if it helps improve model. To avoid issues with a possible large mass of observations with zero-cost they developed two-part model which first part uses logit model to determine probability of cost greater than zero and after that second model predicts expected cost in case of positive cost, for this second part they tried log-linear ordinary least square model and generalized linear model with log link. Final prediction was then multiplication of probability of non-zero cost and expected positive cost. Their models managed to get adjusted $R^2$ values of $46.4-49.4\%$, which they comment as comparable to those obtained in other similar studies that used different patient classification systems. 
+One similar study in this regard is by Caballer-Tarazona et al. \cite{caballer2019predicting}, which aimed to predict patients’ future healthcare costs using an "Aggregated Clinical Risk Group 3" (ACRG3) variable derived from standardized Clinical Risk Groups (CRGs). The ACRG3 variable consists of two components: the first assigns patients to one of nine grouped CRGs, and the second categorizes them into one of six severity levels. The authors also tested whether adding demographic variables like age or sex improved model performance.
 \\
 
-This approach was in the end not viable for us since it utilize specific attributes like CRG and severity level of patient which we did not had.
+To address the high proportion of zero-cost observations, they developed a two-part model:
+
+\begin{enumerate}
+	\item First part: A logit model estimating the probability of incurring non-zero costs.
+	\item Second part: Either a log-linear ordinary least squares (OLS) regression or a generalized linear model (GLM) with a log link to predict expected costs for patients with positive expenditures.
+\end{enumerate}
+
+The final predicted cost was calculated as the product of the probability from the first part and the conditional expectation from the second part. Their models achieved adjusted $R^2$ values of $46.4\%$–$49.4\%$, which they noted as comparable to results from studies using alternative patient classification systems.
 \\
 
-Another study focused on future patient cost predictions is study by Mohammad Amin Morid at al. \cite{morid2018supervised} which focuses on comparison of multiple model to compute future cost category of patient using medical claims and pharmacy claims data. 
+This approach was ultimately not viable for us, as it relies on specific attributes such as CRG and patient severity level, which we did not have available.
 \\
 
-Their data for single patient consisted of 21 features all connected to amounts spend on that patient, more specifically features of their data point were for example total cost for patient, total cost for patient in last 6 months, number of months with cost above patient average or linear trend of cost.
+Another study focused on future patient cost prediction is by Mohammad Amin Morid et al. \cite{morid2018supervised}, which compares multiple models for predicting a patient’s future cost category using medical and pharmacy claims data.
 \\
 
-They tried to predict to which of 5 cost categories would belong in the future, in order to do that they tried and compared multiple prediction models such as Linear Regression, Decision Tree and Artificial Neural Network (ANN). In case of Linear Regression they tried also versions utilizing regularization like Lasso or Ridge models and in case of Decision Tree models they tried also improved models based on it like Random Forest, Bagging or Gradient Boosting techniques.
+For each patient, their dataset included 21 features, all related to the amounts spent on that patient. Specifically, these features included values such as the total historical cost for the patient, the total cost in the last six months, the number of months with costs above the patient’s average, and the linear trend of cost over time.
 \\
 
-In their testing most successful model ended up being Gradient Boosting which were able to predict correct cost category in almost 95\% of cases, however in highest cost bucket which should have contained only 2\% of population model was successful only in 37.5\% of cases. Second and third best models were ANN and Ridge model, which both have very similar results with around 91.5\% total correct category assessment and over 50\% correct category assessment in each cost category. So in conclusion they assess that Gradient Boosting provides the best cost on cost prediction models in general, with ANN providing superior performance for higher cost patients.
+The authors aimed to predict into which of five cost categories a patient would fall in the future. To achieve this, they compared several predictive models, including Linear Regression, Decision Tree, and Artificial Neural Network (ANN). For Linear Regression, they also tested versions with regularization, such as Lasso and Ridge models. In the case of Decision Tree models, they evaluated improved ensemble methods based on decision trees, including Random Forest, Bagging, and Gradient Boosting techniques.
 \\
 
-This study gave us hope that our data might contain necessary information for prediction as most of features in their study and computed using information of cost of drug or procedure which is present for each record in our dataset while also containing much more about cause of that cost.
+In their testing, the most successful model turned out to be Gradient Boosting, which was able to predict the correct cost category in almost 95\% of cases. However, for the highest cost bucket-which was expected to contain only 2\% of the population-the model was successful in just 37.5\% of cases. The second and third best models were the ANN and Ridge models, both of which achieved very similar results, with around 91.5\% overall accuracy in category assignment and over 50\% correct classification in each cost category. In conclusion, they determined that Gradient Boosting generally provides the best performance for cost prediction models, while ANN offers superior results specifically for higher-cost patients.
+\\
+
+This study gave us hope that our data might contain the necessary information for accurate prediction, as most of the features in their study were computed using information about the cost of drugs or procedures-data that is present for each record in our dataset, which also contains much more detail about the causes of those costs.

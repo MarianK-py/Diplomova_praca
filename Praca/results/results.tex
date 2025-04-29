@@ -1,2 +1,89 @@
+% !TeX spellcheck = en_EN-English
+
 \chapter{Results} \label{chap:results}
 
+In this chapter we will report and discuss training and testing of models we chose as best performing on training subset of data in Sec. \ref{costPredRes} and Sec. \ref{recordPredRes} trained on complete training dataset.
+\\
+
+\section{Training of final models}
+\label{modelTrain}
+
+Both MLP and Decoder-only transformer models were trained on dataset consisting of 156 020 patients around 90\% of all patient in our complete dataset. Each of model was trained for 10 epochs. 
+\\
+
+In case of MLP model we finally settled on batch size of 512 and initial learning rate of 0.0004. After final epoch model finished with training loss 0.0303 and training accuracy of 80.2\% meaning there is slight improvement over model trained on only subset of data, but improvement is so small that it seems like we either reached upper limit of what information can be extracted from data or there is unknown flaw in our approach.
+\\
+
+When it comes to Decoder-only Transformer model we used lookback value of 20 meaning model always saw last 20 patient records with main goal being to predict 21-st record, since this significantly increased size of single model input we used batch size significantly smaller compared to MLP model, specifically we used batch size of 64. Initial learning rate was set to 0.0025. Training model with these parameters resulted in final training loss being 0.4005 so significantly lower compared to training loss 0.5200 of model trained on subset of data. 
+
+
+\section{Validation of trained models}
+\label{modelValid}
+
+Validation of models was done with dataset which contained records of 16 335 patients so more than 9\% of patients we have.
+\\
+
+In case of MLP model for cost prediction we received validation loss of 0.0305 and accuracy of 80.1\%. Meaning both loss and accuracy improved compared to model trained on subset of data with loss of 0.0349 and 78\% accuracy, however differences are relatively small. Also validation loss and accuracy is on par with training one so we can sure that model do not suffer from overtraining. In our case we ultimately won't use cost categories of predicted records as their are but we will aggregate them into single category for patient so if from time model would predict category which is off by one in either direction final results would be affected only slightly since there is high possibility that these errors might offset each other. So if we look at percentage of cases when model predicted either precise category or one off we get adjusted accuracy of 96.8\% (if we allow model to be off by 2 categories we get accuracy of 99.2\%). Another interesting statistics to check is accuracy of model in each cost category to make that can learned to predict correctly in each category not only in those into which majority of data belongs to. We can see results of this check can be seen in Tab. \ref{tab:cat_acc} where we see that accuracy of decline with decline of their frequency in dataset, however we can see that despite low frequency of categories 5 to 7 model still has over 50\% accuracy and only two caterogies under 50\% are 8 and 9 which only form very small part of dataset (less than 0.4\%).  
+\\
+
+\begin{table}[!h]
+	\centering
+	\begin{tabular}{|l|l|l|}
+		\hline
+		Category & Dataset frequency & Validation accuracy \\ \hline
+		1        & 34.7\%           & 87.5\%              \\ \hline
+		2        & 37.6\%           & 84.4\%              \\ \hline
+		3        & 15.0\%           & 62.5\%              \\ \hline
+		4        & 7.0\%            & 54.8\%              \\ \hline
+		5        & 3.3\%            & 53.7\%              \\ \hline
+		6        & 1.1\%            & 50.8\%              \\ \hline
+		7        & 0.9\%            & 58.1\%              \\ \hline
+		8        & 0.2\%            & 35.3\%              \\ \hline
+		9        & 0.2\%            & 38.2\%              \\ \hline
+	\end{tabular}
+	\caption{Accuracies of record cost prediction model in each possible prediction category.}
+	\label{tab:cat_acc}
+\end{table}
+ 
+As for Decoder-only Transformer model trained to predict future records, final validation error was 0.4740 which is much better than validation loss 0.6212 of same model trained on subset of data and is even better or on par with training error of all other different model setups tried during hyperparameter testing. 
+
+\section{Testing of patient future cost prediction}
+\label{pat_fut_res}
+
+Last 1 000 patients which were not used in neither training or validation were used to test if combination of trained model can succeed in our main task being to predict what would be cost of patient in next year.
+\\
+
+Since cost for whole year can be significantly larger that cost for single record we decided to adjust intervals for categories accordingly. Intervals for patient cost can be seen in Tab. \ref{tab:patCost}, in this we decided to go with approach where thresholds of next category is about double of previous one.
+\\
+
+\begin{table}[!h]
+	\centering
+	\begin{tabular}{|l|l|}
+		\hline
+		Category  & Interval \\ \hline
+		1 & $\interval[{0,100})$ \\ \hline
+		2 & $\interval[{100,200})$ \\ \hline
+		3 & $\interval[{200,500})$ \\ \hline
+		4 & $\interval[{500,1000})$ \\ \hline
+		5 & $\interval[{1000,2000})$ \\ \hline
+		6 & $\interval[{2000,5000})$ \\ \hline
+		7 & $\interval[{5000,10000})$ \\ \hline
+		8 & $\interval[{10000,20000})$ \\ \hline
+		9 & $\interval[{20000,\infty})$ \\ \hline
+	\end{tabular}
+	\caption{Intervals of patient cost for each category.}
+	\label{tab:patCost}
+\end{table}  
+
+Under normal circumstances workflow for computing patient future cost would look like this:
+
+\begin{enumerate}
+	\item load patient data
+	\item embed patient records
+	\item compute number of future records
+	\item predict given number of future records
+	\item predict cost of future records
+	\item transform sum of cost of future records into cost category of patient future
+\end{enumerate}
+
+However since in this case we want test our model, we modify this workflow slightly. After loading patients data, records from last year are separated from rest and would not seen by model, using remaining records model predict cost based on set workflow, afterwards cost is extracted from separated records and real cost category of patient for that year and is compared to results from model to assess if model was correct or at east close.
