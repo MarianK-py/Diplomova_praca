@@ -63,4 +63,4 @@
 \contentsline {chapter}{\numberline {9}Results}{59}{chapter.9}%
 \contentsline {section}{\numberline {9.1}Training of final models}{59}{section.9.1}%
 \contentsline {section}{\numberline {9.2}Validation of trained models}{60}{section.9.2}%
-\contentsline {section}{\numberline {9.3}Testing of patient future cost prediction}{60}{section.9.3}%
+\contentsline {section}{\numberline {9.3}Testing of patient future cost prediction}{61}{section.9.3}%

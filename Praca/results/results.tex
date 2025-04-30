@@ -19,10 +19,16 @@ For the Decoder-only Transformer model, we used a lookback value of 20, meaning 
 \section{Validation of trained models}
 \label{modelValid}
 
-Validation of models was done with dataset which contained records of 16 335 patients so more than 9\% of patients we have.
+Validation of the models was performed using a dataset containing records of 16 335 patients, accounting for over 9\% of our total patient population.
 \\
 
-In case of MLP model for cost prediction we received validation loss of 0.0305 and accuracy of 80.1\%. Meaning both loss and accuracy improved compared to model trained on subset of data with loss of 0.0349 and 78\% accuracy, however differences are relatively small. Also validation loss and accuracy is on par with training one so we can sure that model do not suffer from overtraining. In our case we ultimately won't use cost categories of predicted records as their are but we will aggregate them into single category for patient so if from time model would predict category which is off by one in either direction final results would be affected only slightly since there is high possibility that these errors might offset each other. So if we look at percentage of cases when model predicted either precise category or one off we get adjusted accuracy of 96.8\% (if we allow model to be off by 2 categories we get accuracy of 99.2\%). Another interesting statistics to check is accuracy of model in each cost category to make that can learned to predict correctly in each category not only in those into which majority of data belongs to. We can see results of this check can be seen in Tab. \ref{tab:cat_acc} where we see that accuracy of decline with decline of their frequency in dataset, however we can see that despite low frequency of categories 5 to 7 model still has over 50\% accuracy and only two caterogies under 50\% are 8 and 9 which only form very small part of dataset (less than 0.4\%).  
+In the case of the MLP model for cost prediction, we obtained a validation loss of 0.0305 and an accuracy of 80.1\%. Both loss and accuracy improved compared to the model trained on a subset of the data, which had a loss of 0.0349 and an accuracy of 78\%. However, these differences are relatively small. Additionally, the validation loss and accuracy are on par with the training metrics, indicating that the model does not suffer from overfitting.
+\\
+
+In our application, we ultimately won't use the cost categories of predicted records as they are but will aggregate them into a single category per patient. If the model occasionally predicts a category that is off by one in either direction, the final results will be affected only slightly, as there is a high likelihood that these errors might offset each other. Therefore, if we consider the percentage of cases where the model predicted either the precise category or one off, we achieve an adjusted accuracy of 96.8\% (and 99.2\% if we allow the model to be off by two categories). 
+\\
+
+Another interesting statistic to examine is the model's accuracy in each cost category to ensure it can predict correctly across all categories, not just those with the majority of the data. Here, accuracy is defined as the ratio of records successfully assigned to a category relative to all records that should belong to that category.  The results of this check can be seen in Tab. \ref{tab:cat_acc}, where we observe that accuracy declines with the frequency of categories in the dataset. However, despite the low frequency of categories 5 to 7, the model still achieves over 50\% accuracy, and only two categories (8 and 9) have accuracy below 50\%, which together form a very small part of the dataset (less than 0.4\%).
 \\
 
 \begin{table}[!h]
@@ -44,15 +50,16 @@ In case of MLP model for cost prediction we received validation loss of 0.0305 a
 	\label{tab:cat_acc}
 \end{table}
  
-As for Decoder-only Transformer model trained to predict future records, final validation error was 0.4740 which is much better than validation loss 0.6212 of same model trained on subset of data and is even better or on par with training error of all other different model setups tried during hyperparameter testing. 
+For the Decoder-only Transformer model trained to predict future records, the final validation loss was 0.4740. This is significantly better than the validation loss of 0.6212 for the same model trained on the subset of data and matches or exceeds the training errors of all other model configurations tested during hyperparameter tuning.
+\newpage
 
 \section{Testing of patient future cost prediction}
 \label{pat_fut_res}
 
-Last 1 000 patients which were not used in neither training or validation were used to test if combination of trained model can succeed in our main task being to predict what would be cost of patient in next year.
+The last 1,000 patients, who were not used in either training or validation, were employed to test whether the combination of trained models could succeed in our primary task: predicting the cost of a patient for the next year.
 \\
 
-Since cost for whole year can be significantly larger that cost for single record we decided to adjust intervals for categories accordingly. Intervals for patient cost can be seen in Tab. \ref{tab:patCost}, in this we decided to go with approach where thresholds of next category is about double of previous one.
+Since the cost for an entire year can be significantly larger than the cost for a single record, we decided to adjust the intervals for categories accordingly. The intervals for patient costs can be seen in Tab. \ref{tab:patCost}, where we adopted an approach in which the threshold for the next category is approximately double that of the previous one.
 \\
 
 \begin{table}[!h]
@@ -74,15 +81,15 @@ Since cost for whole year can be significantly larger that cost for single recor
 	\label{tab:patCost}
 \end{table}  
 
-Under normal circumstances workflow for computing patient future cost would look like this:
+Under normal circumstances, the workflow for computing a patient’s future cost would look like this:
 
 \begin{enumerate}
-	\item load patient data
-	\item embed patient records
-	\item compute number of future records
-	\item predict given number of future records
-	\item predict cost of future records
-	\item transform sum of cost of future records into cost category of patient future
+	\item Load patient data.
+	\item Embed patient records.
+	\item Compute the number of future records.
+	\item Predict the given number of future records.
+	\item Predict the cost of future records.
+	\item Transform the sum of future record costs into the patient’s future cost category.
 \end{enumerate}
 
-However since in this case we want test our model, we modify this workflow slightly. After loading patients data, records from last year are separated from rest and would not seen by model, using remaining records model predict cost based on set workflow, afterwards cost is extracted from separated records and real cost category of patient for that year and is compared to results from model to assess if model was correct or at east close.
+However, since we aim to test our model, we modify this workflow slightly. After loading patient data, records from the last year are separated from the rest and are not seen by the model. Using the remaining records, the model predicts costs based on the predefined workflow. Afterwards, the cost is extracted from the separated records, and the real cost category of the patient for that year is compared to the model’s predictions to assess accuracy or proximity.
