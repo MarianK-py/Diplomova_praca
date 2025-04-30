@@ -3,13 +3,12 @@
 \section{Embedding of patient}
 \label{embeddingRes}
 
-First of sub-tasks for prediction of patient future costs is to embed each patient record into numerical vector that would be understandable for neural network. For each record of a patient we embed four information. First and easy to implement is a timestamp which is computed using numerical and date values, then there three more tricky information and those are diagnosis, medical procedure and prescribed drug. 
-
+Once again, the first sub-task in predicting a patient’s future costs is to embed each patient record into a numerical vector that can be interpreted by a neural network. Our approach to this process is detailed in Sec. \ref{embeddingImple}. Here, we will examine whether the proposed solution possesses the desired property regarding the similarity between two embeddings.
 
 \subsection{Diagnosis embedding}
 
-We need to confirm that closely related diagnosis would get embedding with smaller distance meaning higher similarity compared to less related diagnosis.
-In order to confirm that our embedding has desired properties we computed similarity of embedding of multiple codes. As similarity function we choose simple multiplicative inverse of Euclidean distance. In Tab. \ref{tab:diag_emb_show} we can see results. Highest similarity was between codes G47.30 and G40.09 which is expected since they belong to same main category and very close subcategory, second highest was between H40.09 and H18.80 which are only other combination that belong to same main category, this confirms that main category has biggest impact since this similarity is significantly higher than that between G40.09 and H40.09 which differ only main category.
+We need to confirm that closely related diagnoses receive embeddings with smaller distances-indicating higher similarity-compared to less related diagnoses. To verify that our embeddings exhibit these desired properties, we computed the similarity between embeddings of multiple codes. As our similarity function, we used the simple multiplicative inverse of the Euclidean distance. The results are shown in Tab. \ref{tab:diag_emb_show}. The highest similarity was observed between codes G47.30 and G40.09, which is expected since they belong to the same main category and have very similar subcategories. The second highest similarity was between H40.09 and H18.80, the only other pair belonging to the same main category. This confirms that the main category has the greatest impact, as this similarity is significantly higher than that between G40.09 and H40.09, which differ only in the main category.
+\\
 
 \begin{table}[!h]
 	\centering
@@ -27,7 +26,7 @@ In order to confirm that our embedding has desired properties we computed simila
 	\label{tab:diag_emb_show}
 \end{table}  
 
-Another confirmation that embeddings works as intended by clustering them. More specifically we would expect that if we group embeddings into as many clusters as are main categories, each cluster should contain mostly if not only diagnosis from one main category. On order to test this we used K-means clustering with 26 clusters which is number of different main categories of diagnosis and got these results:
+Another confirmation that the embeddings function as intended comes from clustering analysis. Specifically, we expect that if we group embeddings into as many clusters as there are main categories, each cluster should contain mostly, if not exclusively, diagnoses from a single main category. To test this, we used K-means clustering with 26 clusters, corresponding to the number of different main diagnosis categories, and obtained the following results:
 
 \begin{table}[!h]
 	\centering
@@ -65,11 +64,11 @@ Another confirmation that embeddings works as intended by clustering them. More 
 	\label{tab:diag_clusters}
 \end{table}
 
-In Tab. \ref{tab:diag_clusters} we can see that almost every cluster consist of diagnosis from with only single main category. Only immediately visible issues are clusters 7 and 23 where two main categories got assigned same cluster which is most likely caused by their small size compared to other and by the fact that largest categories M and S got split into two clusters.
+In Tab. \ref{tab:diag_clusters}, we observe that almost every cluster consists of diagnoses from only a single main category. The only immediately visible issues occur in clusters 7 and 23, where two main categories were assigned to the same cluster. This overlap is likely due to their smaller size relative to other categories and the fact that the largest categories (M and S) were split into two clusters.
 
 \subsection{Drug embedding}
 
-To confirm this we do similar check as we did with diagnosis code and compute similarity of four chosen ATC codes and see if our theory holds. To compute similarity we again use multiplicative inverse of Euclidean distance. We choose C01EB15, C01CA04, C10AA07 and J01CA04, we would expect first two to be most similar since they match on first levels, than first two compared to third should have slightly lower similarity since they match on only first level and finally we expect that all three would be least similar to fourth one since first level is different, even though that second and forth match on all other levels.  We can see results in Tab. \ref{tab:drug_emb_show}. We can see that results met our expectation with highest similarity between first two and lowest between any of first three and fourth, even in case of second and forth that match on all other levels except first.
+To confirm that the desired property of similarity is satisfied also for drug embeddings, we performed a similar check as we did with diagnosis codes. We computed the similarity of four chosen ATC codes and verified if our theory holds. To compute similarity, we again used the multiplicative inverse of Euclidean distance. We selected C01EB15, C01CA04, C10AA07, and J01CA04. We expected the first two to be most similar since they match on the first levels, then the first two compared to the third should have slightly lower similarity since they match on only the first level, and finally, we expected that all three would be least similar to the fourth one since the first level is different, even though the second and fourth match on all other levels except the first. The results are shown in Tab. \ref{tab:drug_emb_show}. We can see that the results met our expectations, with the highest similarity between the first two and the lowest between any of the first three and the fourth, even in the case of the second and fourth that match on all other levels except the first.
 
 \begin{table}[!h]
 	\centering
@@ -87,7 +86,7 @@ To confirm this we do similar check as we did with diagnosis code and compute si
 	\label{tab:drug_emb_show}
 \end{table}  
 
-Also similarly to diagnosis we can test whether our embeddings would cluster mainly first level of code or not. Since there are 14 main anatomical or pharmacological groups as shown on Fig. \ref{fig:atc_l1} we used K-means algorithm with 14 clusters and got these results:
+Similarly to the diagnosis codes, we can test whether our embeddings primarily cluster according to the first level of the code. Since there are 14 main anatomical or pharmacological groups, as shown in Fig. \ref{fig:atc_l1}, we used the K-means algorithm with 14 clusters and obtained the following results:
 \\
 
 \begin{table}[!h]
@@ -114,24 +113,23 @@ Also similarly to diagnosis we can test whether our embeddings would cluster mai
 \label{tab:drug_clusters}
 \end{table}
 
-Based on results we can see on Tab. \ref{tab:drug_clusters} we concluded that embeddings works generally as intended. We can see that clusters mostly consist of embeddings with same first level values. There are some exceptions which are most likely caused by uneven number of drug in each category. Because of this categories with smallest number of drug like P, S, D, H or G got assigned to cluster along with bigger category and categories with biggest number of drugs like N, C or V got split into multiple categories.  
+Based on the results shown in Tab. \ref{tab:drug_clusters}, we conclude that the embeddings generally function as intended. The clusters predominantly consist of embeddings with identical first-level values. Exceptions likely arise from the uneven distribution of drugs across categories. Smaller categories with fewer drugs, such as P, S, D, H, and G, were occasionally assigned to the same cluster as larger categories. Conversely, the largest categories, such as N, C, and V, were split into multiple clusters due to their size. 
 \\
 
-Based on results of these tests we can conclude that embeddings works generally as intended.
+These test results confirm that the embeddings operate as designed overall.
 
 \subsection{Medical procedure embedding}
 
-As said in previous chapters we tried two different approaches both using pretrained models. After we embed medical procedure descriptions both ways we quickly found out that a lot of procedures did not received any embedding from Word2vec model, more specifically 731 out of 7329 procedures, so almost 10\% were not embedded, and even among procedures that receive any kind of embedding there were a lot words that were not embedded and so they didn't contributed to resulting embedding. This was caused mostly by limitations of Word2vec model that is able to embed only words which are in it's dictionary, so words available in it's training corpus, and it seems like a lot of professional medical terms such as 'polycystické' or 'cytokín' were not in corpus. Similar issue potentially could have happened also while using LaBSE model, however we found no case where LaBSE model was not able whole procedure. Also thanks to most professional medical terms being similar across multiple languages and fact that LaBSE model was trained on much bigger corpus consisting of 109 distinct languages it's highly probable that much more terms were successfully embed creating much better embedding of whole description. 
+As stated in previous chapters, we tried two different approaches, both using pretrained models. After embedding medical procedure descriptions with both methods, we quickly found that many procedures did not receive any embedding from the Word2vec model. More specifically, 731 out of 7,329 procedures, almost 10\%, were not embedded. Even among the procedures that did receive some embedding, there were many words that were not embedded and therefore did not contribute to the resulting embedding. This was mostly caused by the limitations of the Word2vec model, which can only embed words that are in its dictionary, meaning those available in its training corpus. It seems that many professional medical terms, such as 'polycystické' or 'cytokín', were not present in the corpus. A similar issue could potentially have occurred when using the LaBSE model, however, we found no case where the LaBSE model was unable to embed an entire procedure. Also, thanks to most professional medical terms being similar across multiple languages, and the fact that the LaBSE model was trained on a much larger corpus consisting of 109 distinct languages, it is highly probable that many more terms were successfully embedded, creating a much better embedding of the whole description.
 \\
 
-Since results of embedding using Word2vec model has a lot of issue we decided to proceed using only LaBSE model which was at least able to embed all descriptions. This model gave us embedding with 768 dimensions, in order to densify this information while maintaining most of it we decided to use PCA. We specifically wanted to first few dimensions that would explain over 90\% of variance, since in the case of PCA, the fraction of explained variance is often used as a good proxy for the fraction of preserved information. After running this algorithm we ended up with 119 dimensional embedding that explained 90.4\% of variance of original embedding.
+Due to the significant issues with embeddings produced by the Word2vec model, we proceeded exclusively with the LaBSE model, which successfully embedded all procedure descriptions. This model generated 768-dimensional embeddings. To densify the information while retaining most of its content, we applied PCA. We specifically targeted the first few dimensions that would collectively explain over 90\% of variance-a common proxy for preserved information in PCA applications. The algorithm yielded a 119-dimensional embedding that captured 90.4\% of the original embedding's variance.
 \\
 
-To confirm that resulting embedding successfully encode description of procedure and gave similar procedures similar embedding we did same thing as in case of drug and disease embedding validation and try to group embeddings using K-means algorithm. However in this case we did not have any information similar to highest level of codes for drugs and diagnosis on which we could base our validation, so we decided to just manually look through clusters to assess whether procedures inside them have meaningful connections.
+To validate whether these embeddings effectively encoded procedural semantics, we replicated our drug and diagnosis validation approach using K-means clustering. However, unlike those cases where we had hierarchical code levels for validation, we lacked analogous categorical metadata for procedures. We therefore manually inspected cluster contents to evaluate whether grouped procedures shared meaningful clinical or operational relationships.
 \\
 
-Since we have 7329 procedures we choose our K, so number of clusters, to be 365 to have on average close to 20 procedures in single group. This decision was mostly arbitrary. After checking multiple clusters we found cases such as group cluster number 215 which procedures are listed in Fig. \ref{fig:G215} where we can see that all procedures has something to do with transplantation. However in some cases clusters contained mixture of seemingly random procedures, such as procedures in cluster 45 in Fig. \ref{fig:G45} where we can see mixture evaluation of final reports mixed with investigation of pharmacokinetics and papillosphincterotomy, fortunately it seems content of clusters like these is not purely random but consist of multiple subgroups which might indicate embedding works as intended and we just clustered procedures into too few groups.
-
+Given the 7 329 procedures, we chose K (the number of clusters) to be 365, aiming for approximately 20 procedures per cluster on average. This decision was largely arbitrary. Upon inspecting multiple clusters, we identified many meaningful groupings such as cluster 215, whose procedures are listed in Fig. \ref{fig:G215}, which exclusively contains transplantation-related interventions. However, in some instances, clusters contained a mixture of seemingly unrelated procedures, such as those in cluster 45 shown in Fig. \ref{fig:G45}), which combines the evaluation of final reports with investigations of pharmacokinetics and papillosphincterotomy. Fortunately, it appears that the content of clusters like these is not entirely random but rather consists of multiple subgroups, suggesting that the embedding functions as intended and that we may have simply clustered procedures into too few groups.
 
 \begin{figure}[!h]
 	\centering

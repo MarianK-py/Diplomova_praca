@@ -3,13 +3,13 @@
 \section{Prediction of future records}
 \label{recordPredRes}
 
-As said in \ref{recordPredImple} we tried two type of models and those are standard RNN models and Decoder-only Transformer. In both cases we tried multiple combination of few hyperparameters to get most successful model. 
+As stated in Sec. \ref{recordPredImple}, we tested two types of models: standard RNNs and a Decoder-only Transformer. For both architectures, we evaluated multiple hyperparameter combinations to identify the most effective configuration.
 \\
 
-We trained each model on same subset of data which consist of 100 patient, which have in total (get number of records) records to train model for 5 epochs and then validate each model on data from 10 patient which are different from one used in training and have (get number of records) records in total. This number is significantly lower to assessment of parameters for model to predict cost of record this training of these models was significantly more complex from perspective of both computational and memory complexity.
+We trained each model on the same subset of data, which consisted of 100 patients, with a total of 270 351 records, training each model for 5 epochs. We then validated each model on data from 20 patients, which were different from those used in training, and which had 54 429 records in total. These numbers are significantly lower than in the assessment of parameters for the model to predict the cost of a record, because the training of these models was significantly more complex in terms of both computational and memory requirements.
 \\
 
-Firstly we have to assess which of standard RNN models we wanna test, whether for our task would basic Elman RNN be sufficient or whether we would see tangible improvement by using more complex model like GRU or LSTM. For this we tried all three models with same setup. First setup we tested was 6 layers with width 196 and 20\% dropout rate for regularization. With this setup we received results shown in Tab. \ref{tab:rnn_comp_1} where we can see that LSTM model achieved lowest loss on both training and validation data, with Elman RNN having second lowest training loss while GRU having second lowest validation loss. Based on these results we could conclude that LSTM model bring tangible improvement.
+Firstly, we needed to assess which standard RNN model to test, specifically whether a basic Elman RNN would suffice for our task or if using a more complex model like GRU or LSTM would yield tangible improvements. To do this, we tested all three models under the same conditions. The first setup we evaluated consisted of 6 layers with a width of 196 and a 20\% dropout rate for regularization. With this setup, we obtained the results shown in Tab. \ref{tab:rnn_comp_1}, where we observed that the LSTM model achieved the lowest loss on both training and validation data. The Elman RNN had the second-lowest training loss, while the GRU had the second-lowest validation loss. Based on these results, we concluded that the LSTM model provided tangible improvements.
 \\ 
 
 \begin{table}[!h]
@@ -25,7 +25,7 @@ Firstly we have to assess which of standard RNN models we wanna test, whether fo
   	\label{tab:rnn_comp_1}
 \end{table}
 
-To make sure these results are not fluke we decided to test one more setup. This time tried significantly bigger model deepened to 12 layers, so twice the depth, each with width 784, so quadruple width, we still left dropout rate to be 20\%. Results we received by using this setup can be viewed in Tab. \ref{tab:rnn_comp_2}. There we can see that based on training loss best model seems to GRU, however if we look at validation loss we can see that LSTM still have slight edge over both other models. So we can conclude that even though differences in performance became less pronounce as we increase model size LSTM model still maintain slight advantage compare to simpler models.
+To ensure these results were not a fluke, we tested another setup. This time, we used a significantly larger model with 12 layers (double the depth) and a width of 784 (quadruple the original width), while retaining the 20\% dropout rate. The results from this setup are shown in Tab. \ref{tab:rnn_comp_2}. Here, we observe that while the GRU model appears marginally better based on training loss, the LSTM still retains a slight edge in validation loss over both other models. We conclude that although performance differences diminish with increased model size, the LSTM maintains a small advantage compared to simpler architectures.
 \\
 
 \begin{table}[!h]
@@ -41,14 +41,14 @@ To make sure these results are not fluke we decided to test one more setup. This
 	\label{tab:rnn_comp_2}
 \end{table}
 
-Based on results of these two tested configurations we decided to use LSTM model for further testing.
+Based on the results of these two tested configurations, we decided to use the LSTM model for further testing.
 
 \subsection{LSTM}
 
-For LSTM we were interested to find best combination of number and size of hidden LSTM layers. Additionally we wanted to know whether adjusting dropout rate would improve model.
+For the LSTM, we were interested in finding the best combination of the number and size of hidden LSTM layers. Additionally, we wanted to determine whether adjusting the dropout rate would improve the model.
 \\
 
-As for depth we choose three values for initial testing, those were 3, 6 and 12, to have relatively shallow model, slightly deeper one and comparably significantly deeper one. For the width of these layers we choose 196 which is size embedding and then double and quadruple that size so 392 and 784. In both cases we were interested to see if increasing size of model in their corresponding dimension would have bring sizable improvement in model output quality or not. These two hyperparameters gave us 9 combination we tested, in each test we set dropout rate to 20\%, testing of different dropout rates was then afterwards on best model from this testing. 
+As for depth, we chose three values for initial testing: 3, 6, and 12. These values represented a relatively shallow model, a slightly deeper one, and a comparably significantly deeper one. For the width of these layers, we chose 196 (matching the embedding size), then doubled and quadrupled that size to 392 and 784, respectively. In both cases, we were interested in whether increasing the model size in their corresponding dimensions would bring a sizable improvement in output quality. These two hyperparameters gave us nine combinations to test. In each test, we set the dropout rate to 20\%. Testing of different dropout rates was conducted afterward on the best model from this phase.
 \\
 
 \begin{table}[!h]
@@ -66,17 +66,17 @@ As for depth we choose three values for initial testing, those were 3, 6 and 12,
 		& 392              & 0.5822          & 0.6292                \\ \cline{2-4} 
 		& 784              & 0.5780          & 0.6268                \\ \hline
 	\end{tabular}
-	\caption{Test and valuation loss for different number of layers and width of layer in LSTM model.}
+	\caption{Test and validation loss for different number of layers and width of layer in LSTM model.}
 	\label{tab:lstm_train}
 \end{table}
 
-Results of these tests are in Tab. \ref{tab:lstm_train} where we can see that from perspective of width of a model, we can see that shallower model with 3 and 6 layers show decrease in training with as width increase, however, at the same time we increase in validation loss indicating potential overtraining of wider models. In case of deep models with 12 layers, we see slight decrease in training loss, however this time validation loss stays mostly same for all widths of a model. 
+The results of these tests are shown in Tab. \ref{tab:lstm_train}. From the perspective of model width, we observe that shallower models (3 and 6 layers) exhibit a decrease in training loss as width increases. However, this is accompanied by an increase in validation loss, indicating potential overtraining in wider configurations. For deeper models (12 layers), there is a slight decrease in training loss, while validation loss remains mostly consistent across all widths.
 \\
 
-When we look at performance of models from perspective of different depths we can see similar behavior indifferently of width of model. We can see by deepening model training loss increase which is counter-intuitive and might indicate issues during training like insufficient regularization, vanishing gradient or wrong learning rate. On the other hand we can slight decrease in validation loss indicating that deeper more were able to generalize information.
+When analyzing model performance by depth, we observe similar behavior regardless of width. Counter-intuitively, increasing depth correlates with higher training loss, which may suggest training issues such as insufficient regularization, vanishing gradients, or suboptimal learning rates. Conversely, the slight decrease in validation loss implies that deeper models generalize better.
 \\
 
-For testing of different dropout rate we choose deep model with 12 LSTM layers as these models outperform shallower model significantly based on validation loss, and with each layer having width of 196 as these models showed slightly better results in shallower model while having comparable results to wider model in deep model.
+For dropout rate testing, we selected the 12-layer LSTM model (which significantly outperformed shallower models in validation loss) with a layer width of 196. We chose this width as it showed marginally better results in shallow models and comparable performance to wider models in deeper architectures.
 \\
 
 \begin{table}[!h]
@@ -90,18 +90,19 @@ For testing of different dropout rate we choose deep model with 12 LSTM layers a
 		25\%         & 0.5915    & 0.6342                \\ \hline
 		30\%         & 0.6257    & 0.6550                \\ \hline 
 	\end{tabular}
-	\caption{Test and valuation loss for different dropout rate in LSTM model with 12 layers of width 196.}
+	\caption{Test and validation loss for different dropout rate in LSTM model with 12 layers of width 196.}
 	\label{tab:lstm_dropout}
 \end{table}
 
-In Tab. \ref{tab:lstm_dropout} we see that optimal dropout rate seems to be 20\% which resulted in validation loss of 0.6278. This model we consider as the best LSTM model we have.
+In Tab. \ref{tab:lstm_dropout}, we see that the optimal dropout rate appears to be 20\%, which resulted in a validation loss of 0.6278. We consider this model to be the best LSTM model we have.
 
 \subsection{Decoder-only Transformer}
 
-In case of Transformer model when we were trying to find most suitable model we focused on three hyperparameters, two directly influencing model, those were number of transformer layers and number of heads, and one influencing training, which was dropout rate.
+In the case of the Transformer model, when trying to find the most suitable model, we focused on three hyperparameters: two directly influencing the model (the number of Transformer layers and the number of heads) and one influencing training (the dropout rate).
 \\
 
-Settling of hyperparameters was very similar to LSTM, so firstly we tried to assess best values for first two hyperparameters that influence model structure with dropout rate set to 20\% and once we got best results than we test couple of dropout rate values on that specific model. For number of layers we tested same depths of model as in LSTM meaning shallow model with only 3 layers, bit deeper model with 6 layers and relatively deep model with 12 layers to assess whether deepening model have positive effect on results. In case of number of head hyperparameter we are constricting by the fact that this number have to be divisor of number of dimension on input embedding since model split this embedding equally into the heads. Since our embedding has 196 dimension it's prime factorization is $2^2\cdot7^2$. Based on this we choose three values to test, those values were 7, 14 and 49 to see if model would profit more from bigger size of a head  or from higher number of heads. These two hyperparameters values gave us 9 combination to test.
+The hyperparameter setting process was very similar to that for the LSTM. First, we tried to assess the best values for the first two hyperparameters that influence model structure with the dropout rate set to 20\%. Once we obtained the best results, we tested a couple of dropout rate values on that specific model. For the number of layers, we tested the same model depths as for the LSTM: a shallow model with only 3 layers, a slightly deeper model with 6 layers, and a relatively deep model with 12 layers to evaluate whether deepening the model would have a positive effect on the results. In the case of the number of heads hyperparameter, we were constrained by the fact that this number must be a divisor of the number of dimensions in the input embedding, as the model splits this embedding equally into the heads. Since our embedding has 196 dimensions, with a prime factorization of $2^2\cdot7^2$, we chose three values to test: 7, 14, and 49. This allowed us to see if the model would benefit more from a larger head size or a higher number of heads. These two hyperparameter values gave us nine combinations to test.
+\\
 
 \begin{table}[!h]
 	\centering
@@ -118,17 +119,17 @@ Settling of hyperparameters was very similar to LSTM, so firstly we tried to ass
 		& 14              & 0.4301          &  0.6704               \\ \cline{2-4} 
 		& 49              & 0.4119          &  0.6729               \\ \hline
 	\end{tabular}
-	\caption{Test and valuation loss for different number of layers and number of heads in Transformer model.}
+	\caption{Test and validation loss for different number of layers and number of heads in Transformer model.}
 	\label{tab:transformer_train}
 \end{table}
 
-If we look at performance of models shown in Tab. \ref{tab:transformer_train} we see that from perspective of head counts less deep models with 3 and 6 layers have negligible differences with the best value being 14 head in both cases which might be just coincidence since differences are so small. In case of deeper model with 12 layers we see that increasing number of heads cause decrease in train loss so model fit training data better but increase in validation loss so model is worse in generalization of data.
+If we examine the performance of the models shown in Tab. \ref{tab:transformer_train}, we observe that for shallower models (3 and 6 layers), differences in head counts yield negligible results. The best value appears to be 14 heads in both cases, though this might be coincidental due to the minimal performance gaps. For the deeper 12-layer model, increasing the number of heads reduces training loss (improving fit to training data) but increases validation loss (worsening generalization).
 \\
 
-From perspective of depth of model we can interesting see completely opposite behavior to what we saw in LSTM model, where in this case with increased depth of model training loss decreases significantly while validation loss increases, this can be most likely caused by overtraining in deep models.
+Regarding model depth, we see behavior opposite to the LSTM results: deeper Transformer models exhibit significantly lower training loss but higher validation loss, likely due to overfitting.
 \\
 
-Since deeper models showed signs of overtraining we decided that for testing of dropout rate we would chose from shallow models with 3 layers, and more specifically we chose model with best both training and validation loss which have 14 heads. 
+Given these signs of overtraining in deeper models, we selected shallow 3-layer architectures for dropout rate testing. Specifically, we chose the model with 14 heads, which achieved the best training and validation loss among all 3-layer models.
 \\
 
 \begin{table}[!h]
@@ -144,11 +145,11 @@ Since deeper models showed signs of overtraining we decided that for testing of 
 		35\%         & 0.5225    & 0.6214                \\ \hline
 		40\%         & 0.5172    & 0.6226                \\ \hline 
 	\end{tabular}
-	\caption{Test and valuation loss for different dropout rate in Transformer model with 3 layers and 14 heads.}
+	\caption{Test and validation loss for different dropout rates in the Transformer model with 3 layers and 14 heads.}
 	\label{tab:transformer_dropout}
 \end{table}
 
-In results of dropout rate training shown in Tab. \ref{tab:transformer_dropout} we can see increasing dropout rate beyond 20\% has tangible improvement validation loss while training loss increases but again only to certain point where we can see no measurable improvement beyond 30\%. Based on these results we decided to choose as the best Decoder-only Transformer model one with 3 layers, 14 heads and 30\% dropout rate, which boast validation loss of 0.6212.
+In the results of dropout rate training shown in Tab. \ref{tab:transformer_dropout}, we observe that increasing the dropout rate beyond 20\% yields a tangible improvement in validation loss, although training loss increases, but only up to a certain point, beyond which no measurable improvement is seen (specifically, beyond 30\%). Based on these results, we decided to select as the best Decoder-only Transformer model one with 3 layers, 14 heads, and a 30\% dropout rate, which achieved a validation loss of 0.6212.
 \\
 
-With this we ended with two model to chose from, LSTM model with validation loss 0.6278 and Decoder-only Transformer with validation loss 0.6212. Out of these two we have chosen later one because it not only had slightly lower validation loss but also lower training loss of 0.5200 compared to training loss 0.5983 of LSTM model. 
+With this, we ended up with two models to choose from: an LSTM model with a validation loss of 0.6278 and a Decoder-only Transformer with a validation loss of 0.6212. We chose the latter because it not only had a slightly lower validation loss but also a lower training loss of 0.5200 compared to the LSTM model's training loss of 0.5983.

@@ -1,15 +1,16 @@
 % !TeX spellcheck = en_EN-English
 
 \chapter{Proposed Methods}
+\label{propMet}
 
-Task of predicting future cost of a patient can be split input multiple sub-tasks which follow each other. The sub-tasks are these:
+The task of predicting the future cost of a patient can be split into multiple sub-tasks, which follow each other. The sub-tasks are:
 
 \begin{enumerate}
-	\item Embed patient history into numerical vectors
-	\item Compute expected number of records patient would have in next year
-	\item Predict future records for patient
-	\item Predict cost of each future record
-	\item Complete total cost of patient for next year
+	\item Embed the patient’s history into numerical vectors
+	\item Compute the expected number of records the patient will have in the next year
+	\item Predict future records for the patient
+	\item Predict the cost of each future record
+	\item Compute the total cost of the patient for the next year
 \end{enumerate}
 
 
@@ -17,13 +18,13 @@ Task of predicting future cost of a patient can be split input multiple sub-task
 
 \section{Prediction of future number of records}
 
-Our task is to get information about how much will cost patient in the future, more specifically, how much it will cost in the next. Since our approach predicts future records, assign to them cost and sum the cost into resulting cost, we need to somehow be able to assess how many records need to be generated in order to simulate approximately next year. For this task we tried two different approaches.
+Our task is to determine how much a patient will cost in the future, specifically in the next year. Since our approach predicts future records, assigns costs to them, and sums these into a total cost, we need to estimate how many records to generate to simulate the next year. For this task, we tried two different approaches.
 \\
 
-First approach was to predict approximate number of records using linear regression which gets counts of records from previous years and predict next one. Other approach used stopping criterion, which uses timestamp information which is available in each input and generated records, and stop generating once difference between last timestamp from patient data and last generated timestamp surpass one year threshold.
+The first approach was to predict the approximate number of records using linear regression, which takes the counts of records from previous years and predicts the next year’s count. The second approach used a stopping criterion based on timestamp information available in each input and generated record. This method stops generating records once the difference between the last timestamp from the patient’s data and the last generated timestamp surpasses a one-year threshold.
 \\
 
-Each of these method have it's own disadvantages. In case of linear regression, number of records per year can vary significantly, so even though we expect increase \cite{num_of_vis} regression might not be able to catch this trend, especially if patient data consist of only few years in the past. Potential issue with second approach is that it's dependent on how well model learned that timestamp should always increase.  
+Each method has its own disadvantages. In the case of linear regression, the number of records per year can vary significantly. Even if we expect an increase \cite{num_of_vis}, regression might fail to capture this trend, especially if the patient’s data includes only a few years of historical records. A potential issue with the second approach is its reliance on how well the model learned that timestamps should always increase.
 
 \input{proposed methods/future_records_prediction}
 
@@ -32,4 +33,4 @@ Each of these method have it's own disadvantages. In case of linear regression, 
 \section{Prediction of future cost of patient}
 \label{pat_fut_pred_met}
 
-This last task is our main goal. We wanna be able to predict what would be cost of patient in next year. In order to do this we utilize results from all our previous tasks where we firstly embed patients records after that we predict records that patient could receive in next year, for each predicted record we then predict it record cost category, finally all costs are summed and transformed into patient cost category.  
+This last task is our main goal: to predict the cost of a patient in the next year. To achieve this, we utilize the results from all our previous tasks. First, we embed the patient’s records. Then, we predict the records that the patient could receive in the next year. For each predicted record, we predict its cost category. Finally, all costs are summed and transformed into a patient cost category.

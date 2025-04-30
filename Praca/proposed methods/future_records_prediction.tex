@@ -3,11 +3,11 @@
 \section{Future record prediction}
 \label{record_prediction}
 
-This task is most important while also hardest to train. Our goal is to create model which would be able to predict potential next record based on patient previous ones. This task in general is almost impossible with amount of information we have, since there are many other factors that determine whether, when and what new disease will the patient become infected with in the future, whether his current state will improve or worsen, and most importantly what specific steps will doctor take.
+This task is both the most important and the most challenging to train. Our goal is to develop a model capable of predicting a patient's potential next record based on their previous ones. Generally, this task is nearly impossible with the amount of information available, as numerous factors influence whether, when, and what new disease a patient might contract, how their current state will evolve, and what specific actions a doctor will take.
 \\
 
-Fortunately our ultimate goal is not to predict specific patient future but only estimate how much would he most likely cost. So we expect that even though we wouldn't predict what exactly happens we would be able to estimate total cost of those records.
+Fortunately, our ultimate goal is not to predict a patient's specific future but to estimate the likely total cost of their future records. We anticipate that even if we cannot predict exact outcomes, we can still estimate the overall cost.
 \\
 
-We try multiple different model for this prediction. First three models we tried were Recurrent Neural Networks (RNN). More specifically we tried multi-layer Elman RNN, multi-layered Gated Recurrent Unit (GRU) RNN and multi-layer Long Short-Term Memory (LSTM) RNN, architecture of these models is explained in Sec. \ref{theoryRNN}. Last model we tried was Transformer explained in Sec. \ref{theoryTrans}, more specifically we tried Decoder-only Transformer model.
+To achieve this prediction, we experimented with multiple models. The first three models we tested were Recurrent Neural Networks (RNNs): multi-layer Elman RNN, multi-layer Gated Recurrent Unit (GRU) RNN, and multi-layer Long Short-Term Memory (LSTM) RNN. The architecture of these models is detailed in Sec. \ref{theoryRNN}. The last model we tried was a Transformer, specifically a Decoder-only Transformer model, explained in Sec. \ref{theoryTrans}.
 

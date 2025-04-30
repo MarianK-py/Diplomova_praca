@@ -2,20 +2,19 @@
 
 \chapter{Results} \label{chap:results}
 
-In this chapter we will report and discuss training and testing of models we chose as best performing on training subset of data in Sec. \ref{costPredRes} and Sec. \ref{recordPredRes} trained on complete training dataset.
+In this chapter, we will report and discuss the training and testing of the models we identified as the best performing on the training subset of data in Sec. \ref{costPredRes} and Sec. \ref{recordPredRes}, now trained on the complete training dataset.
 \\
 
 \section{Training of final models}
 \label{modelTrain}
 
-Both MLP and Decoder-only transformer models were trained on dataset consisting of 156 020 patients around 90\% of all patient in our complete dataset. Each of model was trained for 10 epochs. 
+Both MLP and Decoder-only Transformer models were trained on a dataset consisting of 156 020 patients (approximately 90\% of all patients in our complete dataset). Each model was trained for 10 epochs.
 \\
 
-In case of MLP model we finally settled on batch size of 512 and initial learning rate of 0.0004. After final epoch model finished with training loss 0.0303 and training accuracy of 80.2\% meaning there is slight improvement over model trained on only subset of data, but improvement is so small that it seems like we either reached upper limit of what information can be extracted from data or there is unknown flaw in our approach.
+For the MLP model, we settled on a batch size of 512 and an initial learning rate of 0.0004. After the final epoch, the model achieved a training loss of 0.0303 and a training accuracy of 80.2\%, indicating a slight improvement over the model trained on the subset of data. However, the improvement is so minor that it suggests either reaching the upper limit of extractable information from the data or an unidentified flaw in our approach.
 \\
 
-When it comes to Decoder-only Transformer model we used lookback value of 20 meaning model always saw last 20 patient records with main goal being to predict 21-st record, since this significantly increased size of single model input we used batch size significantly smaller compared to MLP model, specifically we used batch size of 64. Initial learning rate was set to 0.0025. Training model with these parameters resulted in final training loss being 0.4005 so significantly lower compared to training loss 0.5200 of model trained on subset of data. 
-
+For the Decoder-only Transformer model, we used a lookback value of 20, meaning the model always processed the last 20 patient records to predict the 21st record. Due to the increased input size, we used a significantly smaller batch size of 64 compared to the MLP model. The initial learning rate was set to 0.0025. Training with these parameters resulted in a final training loss of 0.4005, which is significantly lower than the 0.5200 training loss of the model trained on the subset.
 
 \section{Validation of trained models}
 \label{modelValid}

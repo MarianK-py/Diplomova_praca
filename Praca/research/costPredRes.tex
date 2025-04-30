@@ -3,14 +3,31 @@
 \section{Prediction of record cost}
 \label{costPredRes}
 
-In case og prediction of record cost category we planned to use MLP model. All models we tested have in common that on input they took 196 dimensional vector, which is dimensionality of out embedding, after that there was multiple hidden linear layers with non-linear functions between them with final layer outputting 9 dimensional vector, which is number of cost categories, followed by softmax function to transform this vector into probabilities of each category. For purpose of loss computation we compared correct category to raw result from model while for accuracy computation we firstly transform this result into one-hot vector based on maximal value in resulting vector before comparing to correct category.
+In the case of predicting the record cost category, we planned to use an MLP model. All models we tested have in common that, as input, they take a 196-dimensional vector, which is the dimensionality of our embedding. After that, there are multiple hidden linear layers with non-linear functions between them, with the final layer outputting a 9-dimensional vector, which corresponds to the number of cost categories, followed by a softmax function to transform this vector into probabilities for each category. For the purpose of loss computation, we compared the correct category to the raw result from the model, while for accuracy computation, we first transformed this result into a one-hot vector based on the maximal value in the resulting vector before comparing it to the correct category.
 \\
 
-Each model that was trained to assess best parameters was trained on subset of dataset containing 800 patient for training and 200 for validation. In terms of number of records, training dataset consisted on 2 132 436 records while validation contained 533 110 records.
+Each model that was trained to assess the best parameters was trained on a subset of the dataset containing 800 patients for training and 200 for validation. In terms of the number of records, the training dataset consisted of 2 132 436 records, while the validation set contained 533 110 records.
 \\
 
-As mentioned in Sec. \ref{costPredImple} we were mainly focused on assessment of best depth, layer sizes and non-linear activation functions in-between those layers, but we also tested multiple different loss functions. Since number of possible depths and combinations of sizes are activation function we decided to approach it this way. For number of layers meaning depth we tried model with depth we denote as 0, which means that model contains single layer to transform vector of input dimension to vector of categories dimension followed by softmax function, we used this as a base value to see if there is something model can learn better from data, then we tried models width depths denoted as 1, 3, and 6, which means that in-between input vector and layer to result in category vector there are 1, 3 or 7 additional layers with their own activation functions after them. We choose these values to have representation of shallow model, slighly deeper one and relatively deep one.
-For each non-zero additional depth we tried multiple different configurations to see if we get significantly different results. We tested three configuration types from perspective of layer sizes, in first one we just gradually decrease layer size from input size to output size, in second which we firstly increase size from input to let it learn more patterns in input and then decrease it down to output size and in last we leave size to be of an input unlit very last layer which decrease to output size. For each of these layer size configuration we tested two non-linear activation function configurations, first being only Gaussian Error Linear Units function (GELU) in-between each layer and second being random combination of different activation function picked from this list: 
+As mentioned in Sec. \ref{costPredImple}, we primarily focused on assessing the optimal depth, layer sizes, and non-linear activation functions between those layers, but we also tested multiple different loss functions. Given the large number of possible depths and combinations of sizes and activation functions, we approached this systematically. For the number of layers (depth), we tested models with depths denoted as 0, 1, 3, and 6. A depth of 0 means the model contains a single layer to transform the input vector into a category vector, followed by a softmax function; this served as a baseline to see if the model could learn anything meaningful from the data. Depths of 1, 3, and 7 indicate that there are 1, 3, or 7 additional layers (respectively) between the input vector and the output layer, each with their own activation functions. We chose these values to represent shallow, moderately deep, and relatively deep models.
+\\
+
+For each non-zero additional depth, we tried multiple configurations to determine if we would obtain significantly different results. We tested three configuration types from the perspective of layer sizes:
+
+\begin{itemize}
+	\item Gradually decreasing layer size from input to output.
+	\item Initially increasing the size from input to allow the model to learn more patterns, then decreasing it to the output size.
+	\item Maintaining the input size until the very last layer, which decreases to the output size.
+\end{itemize}
+
+For each of these layer size configurations, we tested two non-linear activation function configurations:
+
+\begin{itemize}
+	\item Using only Gaussian Error Linear Units (GELU) between each layer
+	\item A random combination of different activation functions selected from a predefined list
+\end{itemize}
+
+We selected activation functions for models with random combinations from the following list:
 
 \begin{itemize}
 	\item Sigmoid function (Sigmoid)
@@ -21,22 +38,17 @@ For each non-zero additional depth we tried multiple different configurations to
 	\item Sigmoid Linear Unit function (SiLU)
 \end{itemize}
 
-We choose these functions to have mixture of more standard functions like Sigmoid function and more modern varieties like Sigmoid Linear Unit function (SiLU). This in total gave us 28 different models (3 layer size configurations multiplied by 3 activation function configuration multiplied by 3 different non-zero addition depths plus 0 additional depth base model). We did this testing three times with three different loss functions so in total 84 models. Resulting accuracies are compiled in Tab. \ref{tab:MSE_MLP}.
+We selected these functions to include a mix of more traditional options, such as the Sigmoid function, and more modern variants, like the Sigmoid Linear Unit function (SiLU). This approach resulted in a total of 19 different models, derived from multiplying three layer size configurations by two activation function configurations by three non-zero additional depths, plus a base model with zero additional depth. We conducted this testing three times using three different loss functions, yielding a total of 67 models. The resulting accuracies are compiled in Tab. \ref{tab:MSE_MLP}.
 \\
 
 
-First loss function we tested was mean square error (MSE) loss, which computes loss based on equation shown in Eq. \ref{eqn:mse2} where $n$ denotes number of samples, $Y_i$ it i-th target vector and $\hat{Y}_i$ is i-th predicted vector, this gives result for each dimension which is then reduced one more time also using mean to get single number as a loss. When we look at results for this loss function in Tab. \ref{tab:MSE_MLP} we can see that adding layers improves model accuracy but only to certain point since model with only single layer followed by softmax function resulted in lowest accuracy barely just above 60\% while almost all other models surpassed 70\%, however as we deepen model further we get to point of diminishing return as we can almost no improvement once model has 3 or more layers and accuracy slowly approach 80\%. We can also see no signs of overtraining since in all cases difference between training and validation loss and accuracy is very small. From perspective of layer size architecture we can see that we received best usually received best results in models which firstly expand dimensionality and then decrease it to the number of categories. 
+The first loss function we tested was the mean square error (MSE) loss, which, as the name suggests, computes the average of the squared differences between the model output and the target. When examining the results for this loss function in Tab. \ref{tab:MSE_MLP}, we observe that adding layers improves model accuracy but only up to a certain point. A model with only a single layer followed by a softmax function achieved the lowest accuracy, barely exceeding 60\%, while nearly all other models surpassed 70\% accuracy. However, as we deepen the model further, we reach diminishing returns, with almost no improvement once the model has three or more layers, and accuracy slowly approaches 80\%. We also observe no signs of overfitting, as the differences between training and validation accuracy were minimal in all cases. From the perspective of layer size architecture, the best results were generally achieved by models that first expanded the dimensionality before reducing it to the number of categories.
 \\
 
-\begin{equation}
-	\label{eqn:mse2}
-	Loss = \frac{1}{n}\sum_{i=1}^{n}(Y_i - \hat{Y}_i)^2
-\end{equation}
-
-Second loss function we tested was cross entropy loss, which in theory should be better for training classification problem like ours. We can see interesting behavior that very deep model perform similarly or even worse than shallow one and model with depth in-between them performed the best, this could be potentially caused by issues like vanishing gradient. Other than that from perspective of layer sizes and activation function models with this loss function show similar behavior to models with MSE loss. In general we can see that accuracy of these models is almost always lower compared to models with MSE loss.
+The second loss function we tested was cross-entropy loss, which is theoretically better suited for classification tasks like ours. The results show an interesting pattern: very deep models performed similarly to or even worse than shallower ones, while models with intermediate depths achieved the best performance. This could potentially stem from issues like vanishing gradients. From the perspective of layer sizes and activation functions, models using this loss exhibited behavior similar to those trained with MSE loss. Overall, the accuracy of these models was almost always lower compared to models using MSE loss.
 \\
 
-Last but not least loss function we tried was negative log likelihood (NLL) loss which should similarly to cross entropy loss be useful to train a classification problem. In this case results are very similar compared to MSE loss in all regards, with only small difference being slightly lower accuracy is less deep models however in deepest model tested we see relatively small to almost no tangible difference.
+The final loss function we evaluated was negative log-likelihood (NLL) loss, which, like cross-entropy loss, is designed for classification problems. The results closely mirrored those of MSE loss across all metrics, with only minor differences: slightly lower accuracy in shallower models. However, for the deepest models tested, we observed minimal to no measurable difference in performance.
 \\  
 
 \renewcommand{\arraystretch}{1.8}
@@ -74,10 +86,10 @@ Last but not least loss function we tried was negative log likelihood (NLL) loss
 	\label{tab:MSE_MLP}
 \end{table}
 
-Based on these results we decided that for training on complete dataset we would use model from row 26 from Tab. \ref{tab:MSE_MLP}, so 8 layered model (7 additional layers and final layer with softmax activation function) with layer sizes and activation functions as in table and MSE loss which boasts highest accuracy in our testing. Since layer sizes, activation functions and depth were chosen arbitrarily we did some additional testing to tweak these parameters further however we did not find setup which would have tangibly higher accuracy so we decided to continue with current setup.
+Based on these results, we decided to use the model from row 17 in Tab. \ref{tab:MSE_MLP} for training on the complete dataset. This model is an 8-layered model (7 additional layers plus a final layer with a softmax activation function) featuring an initially expanding layer size architecture, random activation functions, and MSE loss, which achieved the highest accuracy in our testing. Since the layer sizes, activation functions, and depth were chosen somewhat arbitrarily, we conducted additional testing to fine-tune these parameters further. However, we did not find a setup that yielded tangibly higher accuracy, so we decided to proceed with the current configuration.
 \\
 
-Finally before moving to main training we compared approach using MLP to two other types of classifiers. First was Gradient Boosting Classification Tree model for which we tried to train trees with maximal depth of 1, 5, 10 and 20. Second tried classifier was Ridge regression model where we tried multiple values of parameter alpha which denotes regularization strength, we tried values $10^{-10}, 10^{-5}, 0.1, 1, 10, 10^3$. 
+Before moving to the main training, we compared the MLP approach to two other types of classifiers. The first was a Gradient Boosting Classification Tree model, for which we trained trees with maximum depths of 1, 5, 10, and 20. The second classifier we tried was a Ridge regression model, where we tested multiple values for the parameter alpha, which denotes regularization strength. We used values of $10^{-10}, 10^{-5}, 0.1, 1, 10,$ and $10^3$.
 \\
 
 \begin{table}[!h]
@@ -94,7 +106,7 @@ Finally before moving to main training we compared approach using MLP to two oth
 	\label{tab:GB}
 \end{table}
 
-We can see results of Gradient Boosting model in Tab. \ref{tab:GB}. There we can notice initial increase of accuracy however beyond depth of 10 we see no improvement. Best model looks to be model with maximal depth of 10 which has around 71\% which is significantly lower than 78\% accuracy of our best MLP model.
+The results of the Gradient Boosting model are shown in Tab. \ref{tab:GB}. We observe an initial increase in accuracy; however, beyond a depth of 10, no further improvements occur. The best-performing model appears to be the one with a maximum depth of 10, achieving approximately 71\% accuracy. This is significantly lower than the 78\% accuracy of our top MLP model.
 \\
 
 \begin{table}[!h]
@@ -113,7 +125,7 @@ We can see results of Gradient Boosting model in Tab. \ref{tab:GB}. There we can
 	\label{tab:Ridge}
 \end{table}
 
-Results of Ridge model testing are shown in Tab. \ref{tab:Ridge} where we can see that different regularization strengths has no tangible effect on model performance, there seems to be very small decrease of accuracy with increased strength but not significant. All models have accuracy around 67\% which is higher then most basic MLP or Gradient Boosting models but is easily outperformed by their deeper versions.
+The results of the Ridge model testing are shown in Tab. \ref{tab:Ridge}, where we can see that different regularization strengths have no tangible effect on model performance. There appears to be a very small decrease in accuracy with increased regularization strength, but it is not significant. All models achieve an accuracy of around 67\%, which is higher than the most basic MLP or Gradient Boosting models, but is easily outperformed by their deeper versions.
 \\
 
-We can see that neither of models used for comparison was able to outperform our MLP model, so we saw no reason to use any of these models instead and stayed with our best MLP model, which was assessed earlier, for main training with 78.3\% training accuracy and 78.0\% validation accuracy, training loss of this model was 0.0346 and validation loss was 0.0349.
+We can see that neither of the models used for comparison was able to outperform our MLP model, so we saw no reason to use any of these models instead. Therefore, we proceeded with our best MLP model, as assessed earlier, for the main training. This model achieved a training accuracy of 78.3\% and a validation accuracy of 78.0\%. The training loss for this model was 0.0346, and the validation loss was 0.0349.

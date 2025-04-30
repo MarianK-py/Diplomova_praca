@@ -2,26 +2,27 @@
 
 \chapter{Software Design} \label{chap:softwaredesign}
 
-This chapter is dedicated to introduce software used to create, train, validate and used machine learning model described in this thesis.
-Whole code was written using Python language, more specifically in \texttt{Python 3.11.4}. We chose this language for its ease of use and wide selection of libraries for data processing and machine learning. All scripts are available at the GitHub repository \url{https://github.com/MarianK-py/diploma_thesis_code}.
+Here is your paragraph with minimal changes, focusing on grammar and clarity:
+
+This chapter is dedicated to introducing the software used to create, train, validate, and use the machine learning model described in this thesis. The entire code was written in Python, more specifically in \texttt{Python 3.11.4}. We chose this language for its ease of use and wide selection of libraries for data processing and machine learning. All scripts are available in the GitHub repository at \url{https://github.com/MarianK-py/diploma_thesis_code}.
 \\
 
-Whole code can be split into three parts:
+The code can be divided into three parts:
 
 \begin{enumerate}
-	\item Embedding - code to add create embedding mapping files
-	\item Model training and validation - code to setup, train, validate and save prediction models, has to be run once 
-	\item Predictor - code to load trained models and predict future cost of inputted patients 
+	\item Embedding – code to create embedding mapping files
+	\item Model training and validation – code to set up, train, validate, and save prediction models; this needs to be run once
+	\item Predictor – code to load trained models and predict the future cost of inputted patients
 \end{enumerate}
 
-Code for model training and validation, and code for prediction use same technologies, that's we put them into single section. Now we will introduce libraries and pre-trained models used in our code. Firstly ones used in general and then specific ones used in each part mentioned above.
+The code for model training and validation, and the code for prediction, use the same technologies, which is why they are described in a single section. Now we will introduce the libraries and pre-trained models used in our code: first those used in general, and then those specific to each part mentioned above.
 
 \section{General}
 
-Some of the libraries were used in all parts of code to maintain some coherence in technologies used. 
+Some of the libraries were used in all parts of the code to maintain coherence in the technologies used.
 \\
 
-To this category belong \texttt{Pandas 2.2.1} library a fast, powerful, flexible and easy to use open source data analysis and manipulation tool \cite{pandas} which was used to load, manipulate and save all datasets. Another one is \texttt{Numpy 1.26.4} library an open source project that enables numerical computing with Python \cite{numpy} which we use for computations such as random number generation, computations of mean and standard deviation for data normalization and many more.
+In this category belongs the \texttt{Pandas 2.2.1} library, a fast, powerful, flexible, and easy-to-use open-source data analysis and manipulation tool \cite{pandas}, which was used to load, manipulate, and save all datasets. Another is the \texttt{Numpy 1.26.4} library, an open-source project that enables numerical computing with Python \cite{numpy}. We used it for computations such as random number generation, calculation of mean and standard deviation for data normalization, and many other tasks.
 
 \input{software design/embedDesign}
 
