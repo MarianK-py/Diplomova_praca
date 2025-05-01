@@ -3,7 +3,6 @@
 \chapter{Results} \label{chap:results}
 
 In this chapter, we will report and discuss the training and testing of the models we identified as the best performing on the training subset of data in Sec. \ref{costPredRes} and Sec. \ref{recordPredRes}, now trained on the complete training dataset.
-\\
 
 \section{Training of final models}
 \label{modelTrain}
@@ -81,7 +80,7 @@ Since the cost for an entire year can be significantly larger than the cost for 
 	\label{tab:patCost}
 \end{table}  
 
-Under normal circumstances, the workflow for computing a patient’s future cost would look like this:
+The complete workflow for computing a patient’s future cost would look like this:
 
 \begin{enumerate}
 	\item Load patient data.
@@ -92,4 +91,49 @@ Under normal circumstances, the workflow for computing a patient’s future cost
 	\item Transform the sum of future record costs into the patient’s future cost category.
 \end{enumerate}
 
-However, since we aim to test our model, we modify this workflow slightly. After loading patient data, records from the last year are separated from the rest and are not seen by the model. Using the remaining records, the model predicts costs based on the predefined workflow. Afterwards, the cost is extracted from the separated records, and the real cost category of the patient for that year is compared to the model’s predictions to assess accuracy or proximity.
+We very briefly tried, instead of computing the number of future records beforehand, letting the Transformer predict future records until the timestamp surpassed one year after the last current patient record, however, this approach was too inconsistent, so we decided to omit it entirely.
+\\
+
+Since we aim to test our model, we modify this workflow slightly. After loading patient data, records from the last year are separated from the rest and are not seen by the model. Using the remaining records, the model predicts costs based on the predefined workflow. Afterwards, the cost is extracted from the separated records, and the real cost category of the patient for that year is compared to the model’s predictions to assess accuracy or proximity.
+\\
+
+After running testing for all 1,000 patients, we obtained the results shown in Tab. \ref{tab:testRes}, where we distinguish three result types:
+
+\begin{itemize}
+	\item Great: The portion of patients for whom the model predicted the cost category accurately.
+	\item Good: Patients for whom the model predicted a category either one lower or higher than the true value.
+	\item Wrong: Patients for whom the model was off by more than one category.
+\end{itemize}
+
+From these results, we see that if we consider success as only precise category predictions, our model achieved 39.9\% accuracy. However, if we allow the model to be off by one category, considering results correct if they are in the ballpark, this accuracy increases to 84.4\%.
+
+
+\begin{table}[!h]
+	\centering
+	\begin{tabular}{|l|l|l|}
+		\hline
+		Result type & count & Fraction \\ \hline
+		Great & 399 & 39.9\% \\ \hline
+		Good  & 445 & 44.5\% \\ \hline
+		Wrong & 156 & 15.6\% \\ \hline
+	\end{tabular}
+	\caption{Results of future patient cost model split by types of results.}
+	\label{tab:testRes}
+\end{table}
+
+In 60.1\% of cases, the model did not predict the precise correct category. We can examine what fraction of these involved overestimation (where the model predicted a higher category than the actual one) versus underestimation (the opposite). These results are shown in Tab. \ref{tab:testRes2}, where we observe that the model underestimates in far more cases than it overestimates. This behavior might be partially explained by the lower accuracy of the record cost prediction model for high-cost categories. If this component underestimates individual record costs, it would propagate to the complete model, causing systematic underestimation of the patient’s future total cost.
+\\
+
+\begin{table}[!h]
+	\centering
+	\begin{tabular}{|l|l|l|}
+		\hline
+		Error type & count & Fraction \\ \hline
+		Overestimate   & 237 & 39.4\% \\ \hline
+		Underestimate  & 364 & 60.6\% \\ \hline
+	\end{tabular}
+	\caption{Assessment of overestimating and underestimating in imperfect results.}
+	\label{tab:testRes2}
+\end{table}
+
+In general, we can conclude that our model can predict a patient’s future cost to some extent, however, the results are still suboptimal.

@@ -2,7 +2,24 @@
 
 \chapter*{Conclusion}
 
-REFERENCE SHOWCASE: \ref{chap:data}  
+This thesis set out to address the challenge of predicting the future costs for patients within the Slovak healthcare system, using underutilized medical data available. The primary objective was to develop a machine learning framework capable of forecasting patient expenses for the following year, using historical records of medical procedures and drug prescriptions.
+\\
 
+To achieve this, the work was divided into several key tasks: embedding patient records into meaningful numerical vectors, predicting future medical events, estimating the costs of these events, and aggregating these predictions to forecast annual patient expenses. A variety of models were explored, including multilayer perceptrons (MLP), recurrent neural networks (RNNs) such as LSTM, and decoder-only Transformer architectures. Special attention was devoted to the design of embeddings for diagnoses, drugs, and procedures, ensuring that similar medical events would have similar representations, thereby improving the models’ predictive capabilities.
+\\
+
+In the embedding tasks, the desired results were achieved, especially for medical procedures. Based on our evaluations, the resulting embeddings can be used for clustering procedures into groups, a capability for which no practical solution currently exists. While the approach did not yield perfect results, we believe that with further refinement, it could become suitable for production use.
+\\
+
+The results for predicting patient future cost categories showed that the approach works reasonably well. The model managed to get the exact cost category right in 39.9\% of cases, and was within one category in 84.4\% of cases.
+\\
+
+However, the analysis also revealed limitations. The model tended to underestimate costs, particularly for patients with records in higher-cost categories. This is likely due to class imbalance and the inherent difficulty of predicting rare, high-expense events.
+\\
+
+Despite these challenges, the thesis demonstrates that it is possible to use routinely collected healthcare data to forecast future patient costs with decent precision. The framework developed here could help healthcare providers and policymakers with planning resources, identifying high-risk patients earlier, and managing care more efficiently.
+\\
+
+In summary, this thesis demonstrates that advanced machine learning methods can improve predictive analytics in healthcare. There’s definitely room for improvement, especially as more and better data becomes available, but we believe this work is a step towards more personalized and data-driven healthcare in Slovakia and possibly elsewhere.
 
 

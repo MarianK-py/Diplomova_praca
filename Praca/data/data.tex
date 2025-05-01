@@ -25,13 +25,13 @@ In total, we have data on 173 355 patients. Each patient has at least 70 records
 Each row of this dataset corresponds to a single patient record, specifically representing one medical procedure performed on that patient. Each record consists of the following variables:
 
 \begin{itemize}
-	\item date of the procedure - date when procedure was performed
-	\item code of the patient - identification code unique for the patient
-	\item age of the patient - age of the patient at the time of procedure
-	\item gender of the patient
-	\item code of the diagnosis - identification code unique for the diagnosis for which procedure was prescribed
-	\item code of the procedure - identification code unique for the medical procedure 
-	\item cost of the procedure - cost associated with performing of the procedure
+	\item Date of the procedure - date when procedure was performed.
+	\item Code of the patient - identification code unique for the patient.
+	\item Age of the patient - age of the patient at the time of procedure.
+	\item Gender of the patient - gender patient had assigned in the system.
+	\item Code of the diagnosis - identification code unique for the diagnosis for which procedure was prescribed.
+	\item Code of the procedure - identification code unique for the medical procedure.
+	\item Cost of the procedure - cost associated with performing of the procedure.
 \end{itemize}
 
 For our prediction model, we use most of this information. The date of the procedure, combined with the patient’s age, generates timestamp data used to chronologically order all records for a patient and serves as one dimension of the record embedding. The patient identification code enables the aggregation of all records for a single individual. Diagnosis and procedure codes are mapped to their corresponding numerical vectors and embedded into the record’s vector representation (see \ref{embedding}). Finally, cost is encoded into a cost category and serves as the target variable for training the record cost prediction models.
@@ -41,13 +41,13 @@ For our prediction model, we use most of this information. The date of the proce
 Similarly to the dataset containing procedures, each row in this dataset corresponds to a single patient record, in this case representing one drug prescription for a specific patient. Each record consists of the following variables:
 
 \begin{itemize}
-	\item date of the prescription - date when drug was prescribed
-	\item code of the patient - identification code unique for the patient
-	\item age of the patient - age of the patient at the time of procedure
-	\item gender of the patient
-	\item code of the diagnosis - identification code unique for the diagnosis for which drug was prescribed
-	\item code of the drug - identification code unique for the drug 
-	\item cost of the drug - cost associated with performing of the procedure
+	\item Date of the prescription - date when drug was prescribed.
+	\item Code of the patient - identification code unique for the patient.
+	\item Age of the patient - age of the patient at the time of procedure.
+	\item Gender of the patient - gender patient had assigned in the system.
+	\item Code of the diagnosis - identification code unique for the diagnosis for which drug was prescribed.
+	\item Code of the drug - identification code unique for the drug.
+	\item Cost of the drug - cost associated with performing of the procedure.
 \end{itemize}
 
 The use of these variables is also similar to that for procedures, with the only difference being that, instead of encoding the procedure into the record embedding, we encode the drug.

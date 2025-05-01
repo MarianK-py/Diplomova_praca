@@ -11,7 +11,7 @@
 \contentsline {figure}{\numberline {4.7}{\ignorespaces Architecture of NN to train CBOW implementation of Word2vec model \cite {cbow}.\relax }}{22}{figure.caption.25}%
 \contentsline {figure}{\numberline {4.8}{\ignorespaces Architecture of NN to train Skip-gram implementation of Word2vec model \cite {skipgram}\relax }}{23}{figure.caption.26}%
 \addvspace {10\p@ }
-\contentsline {figure}{\numberline {5.1}{\ignorespaces Structure of MKCH-10 code.\relax }}{26}{figure.caption.27}%
+\contentsline {figure}{\numberline {5.1}{\ignorespaces Structure of MKCH-10 code.\relax }}{25}{figure.caption.27}%
 \contentsline {figure}{\numberline {5.2}{\ignorespaces Fourteen main anatomical or pharmacological groups and their corresponding first level ATC code \cite {atc_who}.\relax }}{28}{figure.caption.28}%
 \addvspace {10\p@ }
 \addvspace {10\p@ }

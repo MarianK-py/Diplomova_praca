@@ -24,3 +24,5 @@
 \addvspace {10\p@ }
 \contentsline {table}{\numberline {9.1}{\ignorespaces Accuracies of record cost prediction model in each possible prediction category.\relax }}{61}{table.caption.48}%
 \contentsline {table}{\numberline {9.2}{\ignorespaces Intervals of patient cost for each category.\relax }}{62}{table.caption.49}%
+\contentsline {table}{\numberline {9.3}{\ignorespaces Results of future patient cost model split by types of results.\relax }}{63}{table.caption.50}%
+\contentsline {table}{\numberline {9.4}{\ignorespaces Assessment of overestimating and underestimating in imperfect results.\relax }}{63}{table.caption.51}%
