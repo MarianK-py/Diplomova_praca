@@ -8,7 +8,7 @@ During our research, we utilized several different machine learning models. In t
 \section{Multilayer perceptron}
 \label{MLP}
 
-A multilayer perceptron is a feed-forward neural network, meaning that data flows in a single direction and neurons do not form cycles. This network consists of fully connected, sometimes called dense, layers with non-linear activation functions, as shown in Fig. \ref{fig:mlp}. We can see that this model can be split into three parts: the input layer, which loads the data; the hidden layers, which extract the desired information using linear transformations and activation functions; and finally, the output layer, which applies a final linear transformation followed by an activation function to produce the output. Each layer can be described using the formula shown in Eq. \ref{eqn:mlp}, where $h_i$ is the resulting vector of the $i$-th layer, $act()$ is a non-linear activation function, $W_i$ is the weight matrix of the $i$-th layer, $h_{i-1}$ is the resulting vector from the previous layer, and $b_i$ is the bias vector.
+A multilayer perceptron is a feed-forward neural network, meaning that data flows in a single direction and neurons do not form cycles. This network consists of fully connected, sometimes called dense, layers with non-linear activation functions, as shown in Fig. \ref{fig:mlp}. We can see that this model can be split into three parts: the input layer, which loads the data, the hidden layers, which extract the desired information using linear transformations and activation functions, and finally, the output layer, which applies a final linear transformation followed by an activation function to produce the output. Each layer can be described using the formula shown in Eq. \ref{eqn:mlp}, where $h_i$ is the resulting vector of the $i$-th layer, $act()$ is a non-linear activation function, $W_i$ is the weight matrix of the $i$-th layer, $h_{i-1}$ is the resulting vector from the previous layer, and $b_i$ is the bias vector.
 
 \begin{equation}
 	\label{eqn:mlp}
@@ -64,7 +64,7 @@ The structure of a GRU’s hidden layer is illustrated in Fig. \ref{fig:gru_arch
 The reset gate, located on the left side of the diagram, uses the input and previous hidden state vectors to modify the previous hidden state vector, which is then fed into the candidate hidden state computation. This process helps capture short-term dependencies in time series by selectively removing information from the previous hidden state vector.
 \\
 
-The candidate hidden state computation is similar to the Elman RNN but with two key differences: first, the inputted hidden layer is modified by the reset gate's result; second, the resulting vector from this part serves only as a candidate that undergoes further calculation. This candidate vector primarily contains current and short-term past information due to the specific vectors that form its input.
+The candidate hidden state computation is similar to the Elman RNN but with two key differences: first, the inputted hidden layer is modified by the reset gate's result, second, the resulting vector from this part serves only as a candidate that undergoes further calculation. This candidate vector primarily contains current and short-term past information due to the specific vectors that form its input.
 \\
 
 The update gate, similar to the reset gate, uses the concatenation of the input and previous hidden state vector as its input. However, its results are used to modify both the previous hidden state and the candidate hidden state, creating a final hidden state that is a weighted average of these two vectors, with weights derived from this gate. This architecture helps capture long-term dependencies in time series by reintroducing relevant information from the previous hidden state vector into the final hidden state, combining it with the candidate hidden state vector that contains mostly current and short-term information. The entire architecture is depicted in Fig. \ref{fig:gru_arch}.
@@ -92,7 +92,7 @@ All three gates and the candidate memory computation share the same input, which
 The forget gate is responsible for removing unnecessary information from the memory vector by performing an element-wise multiplication of its result with the previous memory vector.
 \\
 
-The input gate, together with the candidate memory vector computation, is designed to introduce new information into the memory cell after adjustments made by the forget gate. First, the model computes the candidate memory vector; this vector is then adjusted by the input gate's result and added to the modified previous memory vector, resulting in a new memory vector.
+The input gate, together with the candidate memory vector computation, is designed to introduce new information into the memory cell after adjustments made by the forget gate. First, the model computes the candidate memory vector, this vector is then adjusted by the input gate's result and added to the modified previous memory vector, resulting in a new memory vector.
 \\
 
 Finally, the output gate determines how much each part of the memory should contribute to the new hidden state vector. This process is illustrated in Fig. \ref{fig:lstm_arch}.
@@ -155,7 +155,7 @@ The results of each self-attention head are then concatenated back into new embe
 
 \subsection{Decoder}
 
-The architecture of the decoder, similarly to the encoder, consists of multiple attention blocks; however, in this case, each attention block consists of three parts instead of two.
+The architecture of the decoder, similarly to the encoder, consists of multiple attention blocks, however, in this case, each attention block consists of three parts instead of two.
 \\
 
 The first part is masked multi-headed self-attention, which is similar to unmasked self-attention, with the only difference being the application of masking to the attention matrix before the softmax function. This ensures that words at certain positions do not affect words at other specific positions. The decoder uses what is called causal or look-ahead masking, which prevents future tokens from affecting past ones. In our case, this guarantees that a record cannot be influenced by records that occur later, that is, in the future from its perspective.
@@ -171,10 +171,8 @@ The final part of the decoder attention block is a multi-layered feed-forward ne
 After that, the results of the decoder pass into the final fully-connected feed-forward layer, which changes the dimensionality of the decoder output from the embedding size to the vocabulary size and applies a softmax activation to the result. This setup is designed to produce a probability distribution over all possible tokens for the last token.
 \\
 
-In our case, we modified this final step. We encountered a problem where most records (our tokens) were unique, creating an extremely large vocabulary. This issue arose partially due to the many possible combinations of diseases, drugs, and medical procedures encoded in each record, and partially due to timestamps adding uniqueness, as it is unlikely for two patients to receive the same drug for the same disease at the same age.
-\\
+However, for some tasks (like ours) where the vocabulary of possible tokens is too large or where we are not interested in generating a probability distribution over tokens, this layer can be modified. Instead of resizing the output to match the vocabulary size, it retains the embedding dimension and removes the softmax activation, allowing direct prediction of the next token rather than a probability distribution over the vocabulary.
 
-To address this, we removed the softmax activation and altered the fully-connected feed-forward layer so that the result maintains the embedding dimension. We then added a function that splits the result, finds the closest embedding for each part, and concatenates these embeddings together, yielding a specific new embedding prediction instead of a probability distribution.
 
 \subsection{Decoder-only Transformer}
 
@@ -201,7 +199,7 @@ The architecture of the LaBSE model consists of four parts \cite{labse_hug}:
 \subsection{Encoder-only Transformer (BERT model)}
 \label{emb:trans}
 
-The first and most important part of the LaBSE model is the transformer, a deep learning architecture. More specifically, LaBSE uses BERT (Bidirectional Encoder Representations from Transformers), an encoder-only transformer architecture. This means the model lacks the decoder found in the standard Transformer (typically used for prediction tasks), allowing BERT to focus solely on extracting contextual information from input text.
+The first and most important part of the LaBSE model is the transformer. More specifically, LaBSE uses BERT (Bidirectional Encoder Representations from Transformers), an encoder-only transformer architecture. This means the model lacks the decoder found in the standard Transformer, allowing BERT to focus solely on extracting contextual information from input text.
 \\
 
 The architecture of the standard BERT model includes:
@@ -233,7 +231,16 @@ The third and most important layer is the encoder. This is the layer in which co
 
 \subsubsection{Task layer}
 
-The training process of the BERT model usually consists of two tasks on which the model is trained at the same time. The first is Masked Language Modeling (MLM), where 15\% of input tokens are masked, meaning they are either replaced by a mask placeholder or by a random different token. The masked input then goes into the model, and the resulting tokens at the positions of the masked tokens in the input are compared to the correct tokens before masking. This creates an error that is back-propagated through the model, updating its parameters \cite{bert_pretr_1}. The other task usually used is called Next Sentence Prediction (NSP). In this task, the model receives input that starts with a special classification token and then two spans of text separated by a special separator token. The task of the model is to determine whether these two spans of text can appear one after another, or more precisely, whether they appeared consecutively in the training corpus. This information is encoded in the first token of the result using two special tokens, either "is next" or "not next." Similarly, the difference between the expected and resulting first token creates an error that is back-propagated through the model \cite{bert_pretr_2}.
+The task layer in BERT is a module added on top of the BERT encoder during training to transform embeddings from the encoder into task-specific predictions. It can be loosely described as a "simple decoder" or "un-embedding layer," but it lacks the complexity of a full Transformer decoder.
+\\
+
+The training process of the BERT model usually consists of two tasks on which the model is trained at the same time. 
+\\
+
+The first is Masked Language Modeling (MLM), where 15\% of input tokens are masked, meaning they are either replaced by a mask placeholder or by a random different token. The masked input then goes into the model, and the resulting tokens at the positions of the masked tokens in the input are compared to the correct tokens before masking. This creates an error that is back-propagated through the model, updating its parameters \cite{bert_pretr_1}. 
+\\
+
+The other task usually used is called Next Sentence Prediction (NSP). In this task, the model receives input that starts with a special classification token and then two spans of text separated by a special separator token. The task of the model is to determine whether these two spans of text can appear one after another, or more precisely, whether they appeared consecutively in the training corpus. This information is encoded in the first token of the result using two special tokens, either "is next" or "not next." Similarly, the difference between the expected and resulting first token creates an error that is back-propagated through the model \cite{bert_pretr_2}.
 \\
 
 However, in some BERT-based models like LaBSE, the second task is replaced with Translation Language Modeling (TLM). This task is an extension of MLM, in which the model receives two concatenated sentences instead of one, where the second sentence is a translation of the first in another language. The rest of the task is the same as in MLM: the whole input is masked, and the model is tasked with predicting the masked tokens \cite{bert_pretr_3}. 
@@ -279,10 +286,8 @@ A model using the CBOW approach receives a sequence of words called the context,
 
 \subsection{Skip-gram approach}
 
-The Skip-gram approach works in the opposite way, the model receives a target word and tries to predict the surrounding context words. Similar to CBOW, the input word is first one-hot encoded and then multiplied by a weight matrix to transform it into a dense embedding. This embedding is passed to the next layer, which transforms it back into the vocabulary dimension. A softmax function is then applied to generate a probability distribution over potential context words.
-\\
+The Skip-gram approach works in the opposite way, the model receives a target word and tries to predict the surrounding context words. Similar to CBOW, the input word is first one-hot encoded and then multiplied by a weight matrix to transform it into a dense embedding. This embedding is passed to the next layer, which transforms it back into the vocabulary dimension. A softmax function is then applied to generate a probability distribution over potential context words. The Skip-gram’s loss function is the sum of the negative log-likelihoods of all context words. This architecture is illustrated in Fig. \ref{fig:skip_arch}.
 
-The Skip-gram’s loss function is the sum of the negative log-likelihoods of all context words. This architecture is illustrated in Fig. \ref{fig:skip_arch}.
 \begin{figure}[!h]
 	\centering
 	

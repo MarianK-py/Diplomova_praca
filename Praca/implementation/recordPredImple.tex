@@ -20,7 +20,7 @@ Here, $n$ is the number of dimensions, $Y_i$ is the target value at the $i$-th d
 
 \begin{equation}
 	\label{eqn:swmse}
-	SubpartWeightedMSE = \frac{1}{p} \sum_{j=1}^{p}(\frac{1}{l_j}\sum_{i=1}^{l_j}(Y_{s_j+i}-\hat{Y_{s_j+i}})^2).
+	SubpartWeightedMSE = \frac{1}{p} \sum_{j=1}^{p}(\frac{1}{l_j}\sum_{i=1}^{l_j}(Y_{s_j+i}-\hat{Y}_{s_j+i})^2).
 \end{equation} 
 
 In this equation, we have a few additional attributes: $p$ represents the number of subparts, $l_j$ is the number of dimensions of the $j$-th subpart, and $s_j$ is the index of the first dimension of the $j$-th subpart. For the optimizer, we used the same one as in the cost of record prediction model, which is Adam.

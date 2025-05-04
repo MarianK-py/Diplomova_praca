@@ -77,13 +77,11 @@ CDC.
 \newblock [Accessed 16-09-2024].
 
 \bibitem{icd10expl}
-{Centers for Medicare & Medicaid Services} and {National Center for Health
-  Statistics}.
-\newblock Icd-10-cm official guidelines for coding and reporting fy 2022.
-\newblock
-  \url{https://www.cms.gov/files/document/fy-2022-icd-10-cm-coding-guidelines-updated-02012022.pdf},
+{Centers for Medicare \& Medicaid Services (CMS)} and {National Center for
+  Health Statistics (NCHS)}.
+\newblock Icd-10-cm official guidelines for coding and reporting fy 2022, 2022.
+\newblock Updated April 1, 2022. Effective October 1, 2021–September 30,
   2022.
-\newblock Updated April 1, 2022. Accessed April 30, 2025.
 
 \bibitem{chechulin2014predicting}
 Yuriy Chechulin, Amir Nazerian, Saad Rais, and Kamil Malikov.
@@ -237,15 +235,6 @@ Nils Reimers and Iryna Gurevych.
   Natural Language Processing}. Association for Computational Linguistics, 11
   2019.
 
-\bibitem{mkch10expl}
-Ján Poprac Zuzana Ďurčíková Ján Popovič Boris~Leštianský
-  Stanislav~Žiaran, Kvetoslava~Bernátová.
-\newblock {\em Praktická príručka pre používanie pravidiel kódovania v
-  systéme SK-DRG v súlade s Výnosom MZ SR č. 09467/2015}.
-\newblock Úrad pre dohľad nad zdravotnou starostlivosťou, 2016.
-\newblock Dostupné online:
-  \url{https://www.udzs-sk.sk/documents/14214/24311/03112016_Praktick%C3%A1+pr%C3%ADru%C4%8Dka+pre+pou%C5%BE%C3%ADvanie+pravidiel+k%C3%B3dovania+v+syst%C3%A9me+SKDRG+v+s%C3%BAlade+s+V%C3%BDnosom+MZ+SR+%C4%8D+094672015+_+kb+kody+mkch.pdf}.
-
 \bibitem{bert_pretr_2}
 Yi~Sun, Yu~Zheng, Chao Hao, and Hangping Qiu.
 \newblock Nsp-bert: A prompt-based few-shot learner through an original
@@ -256,5 +245,14 @@ Yi~Sun, Yu~Zheng, Chao Hao, and Hangping Qiu.
 A~Vaswani.
 \newblock Attention is all you need.
 \newblock {\em Advances in Neural Information Processing Systems}, 2017.
+
+\bibitem{mkch10expl}
+Stanislav Žiaran, Kvetoslava Bernátová, Ján Poprac, Zuzana Ďurčíková,
+  Ján Popovič, and Boris Leštianský.
+\newblock {\em Praktická príručka pre používanie pravidiel kódovania v
+  systéme SK-DRG v súlade s Výnosom MZ SR č. 09467/2015}.
+\newblock Úrad pre dohľad nad zdravotnou starostlivosťou, 2016.
+\newblock Dostupné online:
+  \url{https://www.udzs-sk.sk/documents/14214/24311/03112016_Praktick%C3%A1+pr%C3%ADru%C4%8Dka+pre+pou%C5%BE%C3%ADvanie+pravidiel+k%C3%B3dovania+v+syst%C3%A9me+SKDRG+v+s%C3%BAlade+s+V%C3%BDnosom+MZ+SR+%C4%8D+094672015+_+kb+kody+mkch.pdf}.
 
 \end{thebibliography}

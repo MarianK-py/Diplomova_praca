@@ -62,7 +62,7 @@ In addition to the patient records dataset, we utilize three mapping files to tr
 	\item Medical procedure mapping
 \end{itemize}
 
-These datasets are publicly available dimension tables maintained and used by NCZI. In general, all three mapping tables have a comparable structure consisting of three main attributes. The first is an internal identification number used by NCZI to join these mappings to patient records. The second attribute is the official code; in the case of drugs and diagnoses, this is an internationally standardized structured code, while medical procedures use a code specific to Slovakia, which unfortunately lacks any meaningful structure. The final important part is the textual description.
+These datasets are publicly available dimension tables maintained and used by NCZI. In general, all three mapping tables have a comparable structure consisting of three main attributes. The first is an internal identification number used by NCZI to join these mappings to patient records. The second attribute is the official code, in the case of drugs and diagnoses, this is an internationally standardized structured code, while medical procedures use a code specific to Slovakia, which unfortunately lacks any meaningful structure. The final important part is the textual description.
 \\
 
 We used these dimension tables to generate embedding vectors for drugs, diagnoses, and medical procedures. The process of this embedding is explained in Sec. \ref{embeddingImple}.

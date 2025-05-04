@@ -22,54 +22,42 @@ Warning--to sort, need author or key in atc_who
 Warning--to sort, need author or key in labse_kaggle
 Warning--to sort, need author or key in labse_hug
 Warning--to sort, need author or key in ncziMKCH
-Too many commas in name 1 of "Stanislav Žiaran, Kvetoslava Bernátová, Ján Poprac, Zuzana Ďurčíková, Ján Popovič, Boris Leštianský" for entry mkch10expl
-while executing---line 1049 of file plain.bst
-Too many commas in name 1 of "Stanislav Žiaran, Kvetoslava Bernátová, Ján Poprac, Zuzana Ďurčíková, Ján Popovič, Boris Leštianský" for entry mkch10expl
-while executing---line 1049 of file plain.bst
-Too many commas in name 1 of "Stanislav Žiaran, Kvetoslava Bernátová, Ján Poprac, Zuzana Ďurčíková, Ján Popovič, Boris Leštianský" for entry mkch10expl
-while executing---line 1049 of file plain.bst
 Warning--to sort, need author or key in w2v
 Warning--to sort, need author or key in pytorchLSTM
 Warning--to sort, need author or key in word2vec
 Warning--empty school in cbow
 Warning--empty journal in skipgram
 Warning--empty year in chatGPT
-Too many commas in name 1 of "Stanislav Žiaran, Kvetoslava Bernátová, Ján Poprac, Zuzana Ďurčíková, Ján Popovič, Boris Leštianský" for entry mkch10expl
-while executing---line 1090 of file plain.bst
-Too many commas in name 1 of "Stanislav Žiaran, Kvetoslava Bernátová, Ján Poprac, Zuzana Ďurčíková, Ján Popovič, Boris Leštianský" for entry mkch10expl
-while executing---line 1090 of file plain.bst
-Too many commas in name 1 of "Stanislav Žiaran, Kvetoslava Bernátová, Ján Poprac, Zuzana Ďurčíková, Ján Popovič, Boris Leštianský" for entry mkch10expl
-while executing---line 1090 of file plain.bst
 You've used 40 entries,
             2118 wiz_defined-function locations,
-            710 strings with 12775 characters,
-and the built_in function-call counts, 14088 in all, are:
-= -- 1312
-> -- 864
+            709 strings with 12729 characters,
+and the built_in function-call counts, 14237 in all, are:
+= -- 1320
+> -- 890
 < -- 8
-+ -- 345
-- -- 305
-* -- 1007
-:= -- 2320
-add.period$ -- 123
++ -- 355
+- -- 315
+* -- 1028
+:= -- 2347
+add.period$ -- 122
 call.type$ -- 40
-change.case$ -- 268
+change.case$ -- 273
 chr.to.int$ -- 0
 cite$ -- 50
 duplicate$ -- 468
 empty$ -- 1011
-format.name$ -- 305
-if$ -- 2919
+format.name$ -- 315
+if$ -- 2943
 int.to.chr$ -- 0
 int.to.str$ -- 40
 missing$ -- 26
-newline$ -- 203
+newline$ -- 202
 num.names$ -- 68
-pop$ -- 357
+pop$ -- 363
 preamble$ -- 2
-purify$ -- 231
+purify$ -- 236
 quote$ -- 0
-skip$ -- 359
+skip$ -- 360
 stack$ -- 0
 substring$ -- 608
 swap$ -- 115
@@ -80,5 +68,5 @@ type$ -- 158
 warning$ -- 10
 while$ -- 100
 width$ -- 42
-write$ -- 416
-(There were 8 error messages)
+write$ -- 414
+(There were 2 error messages)
