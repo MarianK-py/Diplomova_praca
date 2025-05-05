@@ -9,7 +9,7 @@ In the case of predicting the record cost category, we planned to use an MLP mod
 Each model that was trained to assess the best parameters was trained on a subset of the dataset containing 800 patients for training and 200 for validation. In terms of the number of records, the training dataset consisted of 2 132 436 records, while the validation set contained 533 110 records.
 \\
 
-As mentioned in Sec. \ref{costPredImple}, we primarily focused on assessing the optimal depth, layer sizes, and non-linear activation functions between those layers, but we also tested multiple different loss functions. Given the large number of possible depths and combinations of sizes and activation functions, we approached this systematically. For the number of layers (depth), we tested models with depths denoted as 0, 1, 3, and 7. A depth of 0 means the model contains a single layer to transform the input vector into a category vector, followed by a softmax function, this served as a baseline to see if the model could learn anything meaningful from the data. Depths of 1, 3, and 7 indicate that there are 1, 3, or 7 additional layers (respectively) between the input vector and the output layer, each with their own activation functions. We chose these values to represent shallow, moderately deep, and relatively deep models.
+As mentioned in Sec. \ref{costPredImple}, we primarily focused on assessing the optimal depth, layer sizes, and non-linear activation functions between those layers, but we also tested multiple different loss functions. Given the large number of possible depths and combinations of layer sizes and activation functions, we approached this systematically. For the number of layers (depth), we tested models with depths denoted as 0, 1, 3, and 7. A depth of 0 means the model contains a single layer to transform the input vector into a category vector, followed by a softmax function, this served as a baseline to see if the model could learn anything meaningful from the data. Depths of 1, 3, and 7 indicate that there are 1, 3, or 7 additional layers (respectively) between the input vector and the output layer, each with their own activation functions. We chose these values to represent shallow, moderately deep, and relatively deep models.
 \\
 
 For each non-zero additional depth, we tried multiple configurations to determine if we would obtain significantly different results. We tested three configuration types from the perspective of layer sizes:
@@ -49,7 +49,7 @@ The second loss function we tested was cross-entropy loss, which is theoreticall
 \\
 
 The final loss function we evaluated was negative log-likelihood (NLL) loss, which, like cross-entropy loss, is designed for classification problems. The results closely mirrored those of MSE loss across all metrics, with only minor differences: slightly lower accuracy in shallower models. However, for the deepest models tested, we observed minimal to no measurable difference in performance.
-\\  
+\\
 
 \renewcommand{\arraystretch}{1.8}
 \begin{table}[!h]
@@ -87,7 +87,7 @@ The final loss function we evaluated was negative log-likelihood (NLL) loss, whi
 \end{table}
 
 Based on these results, we decided to use the model from row 17 in Tab. \ref{tab:MSE_MLP} for training on the complete dataset. This model is an 8-layered model (7 additional layers plus a final layer with a softmax activation function) featuring an initially expanding layer size architecture, random activation functions, and MSE loss, which achieved the highest accuracy in our testing. Since the layer sizes, activation functions, and depth were chosen somewhat arbitrarily, we conducted additional testing to fine-tune these parameters further. However, we did not find a setup that yielded tangibly higher accuracy, so we decided to proceed with the current configuration.
-\\
+\newpage
 
 Before moving to the main training, we compared the MLP approach to two other types of classifiers. The first was a Gradient Boosting Classification Tree model, for which we trained trees with maximum depths of 1, 5, 10, and 20. The second classifier we tried was a Ridge regression model, where we tested multiple values for the parameter alpha, which denotes regularization strength. We used values of $10^{-10}, 10^{-5}, 0.1, 1, 10,$ and $10^3$.
 \\

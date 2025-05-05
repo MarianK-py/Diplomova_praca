@@ -2,7 +2,7 @@
 
 \chapter{Results} \label{chap:results}
 
-In this chapter, we will report and discuss the training and testing of the models we identified as the best performing on the training subset of data in Sec. \ref{costPredRes} and Sec. \ref{recordPredRes}, now trained on the complete training dataset.
+In this chapter, we report and discuss the training and testing of the models identified as the best performing on the training subset of data in Sec. \ref{costPredRes} and Sec. \ref{recordPredRes}, now retrained on the complete training dataset. Additionally, we assess whether these models, when used together, are able to accurately predict the cost category of a patient in the following year, which is the main objective of our work.
 
 \section{Training of final models}
 \label{modelTrain}
@@ -80,18 +80,18 @@ Since the cost for an entire year can be significantly larger than the cost for 
 	\label{tab:patCost}
 \end{table}  
 
-The complete workflow for computing a patient’s future cost would look like this:
+The complete workflow for computing a patient’s future cost look like this:
 
 \begin{enumerate}
 	\item Load patient data.
 	\item Embed patient records.
 	\item Compute the number of future records.
 	\item Predict the given number of future records.
-	\item Predict the cost of future records.
+	\item Predict the cost of these future records.
 	\item Transform the sum of future record costs into the patient’s future cost category.
 \end{enumerate}
 
-We very briefly tried, instead of computing the number of future records beforehand, letting the Transformer predict future records until the timestamp surpassed one year after the last current patient record, however, this approach was too inconsistent, so we decided to omit it entirely.
+We briefly experimented with an alternative approach: instead of precomputing the number of future records, we let the Transformer predict records iteratively until the timestamp exceeded one year beyond the patient's last existing record. However, this approach proved too inconsistent, so we omitted it entirely.
 \\
 
 Since we aim to test our model, we modify this workflow slightly. After loading patient data, records from the last year are separated from the rest and are not seen by the model. Using the remaining records, the model predicts costs based on the predefined workflow. Afterwards, the cost is extracted from the separated records, and the real cost category of the patient for that year is compared to the model’s predictions to assess accuracy or proximity.

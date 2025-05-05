@@ -3,7 +3,7 @@
 \section{Prediction of future records}
 \label{recordPredImple}
 
-For the task of predicting future patient records based on their history, we decided to use two models: LSTM and Transformer. We briefly experimented with simpler models, such as basic RNN and GRU, but in both cases, we immediately observed significantly worse results. Therefore, we chose to omit them from our results entirely and focus on the more complex models.
+For the task of predicting future patient records based on their history, we decided to use two models: LSTM and Transformer. We briefly experimented with simpler models, such as basic RNN and GRU, but in both cases, we immediately observed significantly worse results. Therefore, we chose to only briefly show them in our results entirely and focus on the more complex models.
 \\
 
 In both tested models, we optimized the model depth, which refers to the number of hidden layers, and the dropout rate, which is the percentage of neurons randomly deactivated (set to zero) at each training step. This technique allows other neurons to learn patterns from those that are dropped out, helping to reduce overfitting and improve generalization. For the LSTM model, we also optimized the size of the hidden layer, and for the decoder-only Transformer, we optimized the number of transformer heads.
@@ -30,14 +30,14 @@ When we began trying to train these models, we encountered memory limitations, s
 
 \begin{enumerate}
 	\item Get batch of patients.
-	\item For each patient in patch:
+	\item For each patient in batch:
 	\begin{enumerate}
-		\item Get all records for patient.
-		\item Order records of patient.
-		\item Using moving window of our maximal context size, that moves by one record at the time, this generate list of all windows for patient.
+		\item Retrieve all records for the patient.
+		\item Order the patient's records.
+		\item Using a moving window of the maximal context size, which moves by one record at a time, generate a list of all windows for the patient.
 		\item Generate the input list by removing the last window and the target list by removing the first window.
 	\end{enumerate}
-	\item Collect inputs and targets for all patients in batch.
+	\item Collect inputs and targets for all patients in the batch.
 \end{enumerate}
 
 In step 2(b), we primarily order by date in ascending order, and if we have multiple records with the same date, we secondarily order them based on the internal ID value of diagnosis, medical procedure, and drug, in this order. We do this to make sure the ordering is coherent throughout all training inputs.
