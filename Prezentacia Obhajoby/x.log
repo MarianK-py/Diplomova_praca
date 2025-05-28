@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.24 (MiKTeX 22.12) (preloaded format=pdflatex 2023.1.22)  28 MAY 2025 09:40
+This is pdfTeX, Version 3.141592653-2.6-1.40.24 (MiKTeX 22.12) (preloaded format=pdflatex 2023.1.22)  28 MAY 2025 18:47
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1316,20 +1316,52 @@ Package pdftex.def Info: images/MLP_train.png  used on input line 416.
 
  <./images/MLP_train.png>] [24
 
-] [25
+]
+<images/tot_res_1.png, id=852, 398.99063pt x 255.95625pt>
+File: images/tot_res_1.png Graphic file (type png)
+<use images/tot_res_1.png>
+Package pdftex.def Info: images/tot_res_1.png  used on input line 458.
+(pdftex.def)             Requested size: 153.45662pt x 98.44672pt.
+<images/tot_res_2.png, id=853, 435.6275pt x 194.22563pt>
+File: images/tot_res_2.png Graphic file (type png)
+<use images/tot_res_2.png>
+Package pdftex.def Info: images/tot_res_2.png  used on input line 458.
+(pdftex.def)             Requested size: 153.16321pt x 68.28644pt.
 
-] [26
+Overfull \hbox (30.76761pt too wide) in paragraph at lines 458--458
+[][] 
+ []
+
+
+Overfull \hbox (30.4742pt too wide) in paragraph at lines 458--458
+[]  
+ []
+
+<images/tot_cat.png, id=854, 194.22563pt x 360.34625pt>
+File: images/tot_cat.png Graphic file (type png)
+<use images/tot_cat.png>
+Package pdftex.def Info: images/tot_cat.png  used on input line 458.
+(pdftex.def)             Requested size: 98.14984pt x 182.09746pt.
+
+Overfull \hbox (8.91992pt too wide) in paragraph at lines 458--458
+[][]  
+ []
+
+[25
+
+ <./images/tot_res_1.png> <./images/tot_res_2.png> <./images/tot_cat.png>]
+[26
 
 ] (x.toc) [27
 
 ]
-<images/thesis_defense_2x.png, id=948, 442.20206pt x 316.18124pt>
+<images/thesis_defense_2x.png, id=954, 442.20206pt x 316.18124pt>
 File: images/thesis_defense_2x.png Graphic file (type png)
 <use images/thesis_defense_2x.png>
-Package pdftex.def Info: images/thesis_defense_2x.png  used on input line 467.
+Package pdftex.def Info: images/thesis_defense_2x.png  used on input line 474.
 (pdftex.def)             Requested size: 278.55502pt x 199.16928pt.
-LaTeX Font Info:    Trying to load font information for T1+pcr on input line 46
-7.
+LaTeX Font Info:    Trying to load font information for T1+pcr on input line 47
+4.
 
 (C:\Users\majko\AppData\Local\Programs\MiKTeX\tex/latex/psnfss\t1pcr.fd
 File: t1pcr.fd 2001/06/04 font definitions for T1/pcr.
@@ -1351,10 +1383,10 @@ Package rerunfilecheck Info: File `x.out' has not changed.
 (rerunfilecheck)             Checksum: 6252FEC39F48CD991312D685FA3D4355;840.
  ) 
 Here is how much of TeX's memory you used:
- 24331 strings out of 476404
- 474472 string characters out of 2789524
+ 24352 strings out of 476404
+ 474950 string characters out of 2789524
  1866324 words of memory out of 3000000
- 44054 multiletter control sequences out of 15000+600000
+ 44072 multiletter control sequences out of 15000+600000
  550000 words of font info for 83 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  128i,15n,122p,423b,768s stack positions out of 10000i,1000n,20000p,200000b,80000s
@@ -1364,9 +1396,9 @@ msam10.pfb><C:/Users/majko/AppData/Local/Programs/MiKTeX/fonts/type1/urw/courie
 r/ucrr8a.pfb><C:/Users/majko/AppData/Local/Programs/MiKTeX/fonts/type1/urw/helv
 etic/uhvr8a.pfb><C:/Users/majko/AppData/Local/Programs/MiKTeX/fonts/type1/urw/h
 elvetic/uhvro8a.pfb>
-Output written on x.pdf (28 pages, 1525033 bytes).
+Output written on x.pdf (28 pages, 1632696 bytes).
 PDF statistics:
- 1016 PDF objects out of 1200 (max. 8388607)
+ 1022 PDF objects out of 1200 (max. 8388607)
  62 named destinations out of 1000 (max. 500000)
- 203 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 218 words of extra memory for PDF output out of 10000 (max. 10000000)
 

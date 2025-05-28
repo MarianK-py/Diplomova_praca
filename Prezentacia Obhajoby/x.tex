@@ -37,7 +37,7 @@
 %\usepackage{epsfig}
 %\usepackage{pgf,pgfarrows,pgfnodes,pgfautomata,pgfheaps}
 
-\title[Predikcia budúcich nákladov na pacienta]{Predikcia budúcich nákladov na pacienta}
+\title[Predikcia zhoršenia zdravotného stavu]{Predikcia zhoršenia zdravotného stavu}
 
 
 \author[]{Marián Kravec \\ školiteľ: MSc. František Dráček }
@@ -444,10 +444,17 @@
 
 \begin{frame}
 	\frametitle{Predikcia cenovej kategórie pacienta - validácia}
-	\begin{itemize}
-		\item<1> AAAAAAAAAAAAAAA
-	\end{itemize}
-	
+	\begin{columns}[T]%{cl}  
+		\begin{column}{.44\textwidth}<1->%{c}
+			\includegraphics[height=3.46cm]{images/tot_res_1.png}
+			\includegraphics[height=2.4cm]{images/tot_res_2.png}
+		\end{column}
+		%&
+		\hfill%
+		\begin{column}{.32\textwidth}<1->%{l}
+			\includegraphics[height=6.4cm]{images/tot_cat.png}
+		\end{column}  
+	\end{columns}
 \end{frame}
 
 
