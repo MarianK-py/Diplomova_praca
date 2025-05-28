@@ -1,0 +1,6 @@
+\babel@toc {slovak}{}\relax 
+\beamer@sectionintoc {1}{Motivácia a ciele práce}{2}{0}{1}
+\beamer@sectionintoc {2}{Dáta}{4}{0}{2}
+\beamer@sectionintoc {3}{Embedding záznamov}{6}{0}{3}
+\beamer@sectionintoc {4}{Predikcia budúcich nákladov na pacienta}{17}{0}{4}
+\beamer@sectionintoc {5}{Príprava na otázky s posudkov}{27}{0}{5}
